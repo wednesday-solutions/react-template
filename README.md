@@ -92,3 +92,18 @@
   
   * [app/containers/HomeContainer/Loadable.js](app/containers/HomeContainer/Loading.js)
   * [app/utils/loadable.js](app/utils/loadable.js)
+
+## App entry point
+
+  * [app/app.js](app/app.js)
+
+
+## PWA
+
+  * [Offline Plugin](https://github.com/NekR/offline-plugin)
+  * [Webpack PWA Manifest](https://github.com/arthurbergmz/webpack-pwa-manifest)
+
+  Take a look at the following files
+  
+  * [app/app.js](app/app.js)
+  * [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
