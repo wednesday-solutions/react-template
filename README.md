@@ -6,8 +6,8 @@
 
   Take a look at the following files
 
-  * [app/utils/apiUtils.js](blob/master/app/containers/HomeContainer/index.js)
-  * app/service/repoApi.js
+  * [app/utils/apiUtils.js](app/utils/apiUtils.js)
+  * [app/services/repoApi.js](app/services/repoApi.js)
 
 ## Side Effects
 
@@ -15,12 +15,12 @@
 
   Take a look at the following files
 
-  * app/utils/injectSaga.js
-  * app/utils/sagaInjectors.js
-  * app/containers/HomeContainer/saga.js
-  * app/containers/HomeContainer/actions.js
-  * app/containers/HomeContainer/constants.js
-  * app/containers/HomeContainer/index.js
+  * [app/utils/injectSaga.js](app/utils/injectSaga.js)
+  * [app/utils/sagaInjectors.js](app/utils/sagaInjectors.js)
+  * [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
+  * [app/containers/HomeContainer/actions.js](app/containers/HomeContainer/actions.js)
+  * [app/containers/HomeContainer/constants.js](app/containers/HomeContainer/constants.js)
+  * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
   
 ## Global state management
 
@@ -28,18 +28,18 @@
 
   Take a look at the following files  
 
-  * app/utils/injectReducer.js
-  * app/utils/reducerInjectors.js
-  * app/containers/HomeContainer/reducer.js
-  * app/containers/HomeContainer/actions.js
-  * app/containers/HomeContainer/constants.js
-  * app/containers/HomeContainer/index.js
+  * [app/utils/injectReducer.js](app/utils/injectReducer.js)
+  * [app/utils/reducerInjectors.js](app/utils/reducerInjectors.js)
+  * [app/containers/HomeContainer/reducer.js](app/containers/HomeContainer/reducer.js)
+  * [app/containers/HomeContainer/actions.js](app/containers/HomeContainer/actions.js)
+  * [app/containers/HomeContainer/constants.js](app/containers/HomeContainer/constants.js)
+  * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
 * Computing and getting state from the redux store using [Reselect](https://github.com/reduxjs/reselect)
 
   Take a look at the following files
 
-  * app/containers/HomeContainer/selector.js
+  * [app/containers/HomeContainer/selector.js](app/containers/HomeContainer/selector.js)
 
 ## Design and Style
 
@@ -47,14 +47,14 @@
 
   Take a look at the following files
 
-  * app/components/Text/index.js
-  * app/containers/HomeContainer/index.js
+  * [app/components/Text/index.js](app/components/Text/index.js)
+  * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
 * Reusing components from [Ant design](https://ant.design)
 
   Take a look at the following files
 
-  * app/containers/HomeContainer/index.js
+  * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
   
 ## Translations
 
@@ -62,8 +62,8 @@
 
   Take a look at the following files
 
-  * app/translations/en.json
-  * app/containers/LanguageProvider/
+  * [app/translations/en.json](app/translations/en.json)
+  * [app/containers/LanguageProvider/](app/containers/LanguageProvider/)
   
 ## Routing
 
@@ -71,8 +71,8 @@
 
   Take a look at the following files
 
-  * app/routeConfig.js
-  * app/containers/App/index
+  * [app/routeConfig.js](app/routeConfig.js)
+  * [app/containers/App/index.js](app/containers/App/index.js)
 
 ## Aliasing
 
@@ -84,11 +84,11 @@
 
   Take a look at the following files
 
-  * internals/webpack/weboack.base.babel.js
+  * [internals/webpack/webpack.base.babel.js](internals/webpack/weboack.base.babel.js)
 
 ## Chunkify and Lazy loading
 
   Take a look at the following files
   
-  * app/containers/HomeContainer/Loading.js
-  * app/utils/loadable.js
+  * [app/containers/HomeContainer/Loadable.js](app/containers/HomeContainer/Loading.js)
+  * [app/utils/loadable.js](app/utils/loadable.js)
