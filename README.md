@@ -6,7 +6,7 @@
 
   Take a look at the following files
 
-  * app/utils/apiUtils.js
+  * [app/utils/apiUtils.js](blob/master/app/containers/HomeContainer/index.js)
   * app/service/repoApi.js
 
 ## Side Effects
