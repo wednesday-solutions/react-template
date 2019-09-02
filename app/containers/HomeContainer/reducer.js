@@ -5,27 +5,29 @@
  */
 import produce from 'immer'
 import { fromJS } from 'immutable'
-import {
-  DEFAULT_ACTION,
-  REQUEST_GET_GITHUB_REPOS,
-  SUCCESS_GET_GITHUB_REPOS,
-  FAILURE_GET_GITHUB_REPOS
-} from './constants'
+import { createActions } from 'reduxsauce'
+import _ from 'lodash'
 
+export const { Types: repoTypes, Creators: repoCreators } = createActions({
+  requestGetGithubRepos: ['repoName'],
+  successGetGithubRepos: ['data'],
+  failureGetGithubRepos: ['error']
+})
 export const initialState = fromJS({})
 
 /* eslint-disable default-case, no-param-reassign */
 const homeContainerReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
-        break
-      case REQUEST_GET_GITHUB_REPOS:
+      case repoTypes.REQUEST_GET_GITHUB_REPOS:
         return initialState.set('repoName', action.repoName)
-      case SUCCESS_GET_GITHUB_REPOS:
+      case repoTypes.SUCCESS_GET_GITHUB_REPOS:
         return state.set('reposData', action.data)
-      case FAILURE_GET_GITHUB_REPOS:
-        return state.set('reposError', action.error)
+      case repoTypes.FAILURE_GET_GITHUB_REPOS:
+        return state.set(
+          'reposError',
+          _.get(action.error, 'message', 'something_went_wrong')
+        )
     }
     return state
   })

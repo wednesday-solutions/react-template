@@ -22,9 +22,8 @@ import {
   selectReposError,
   selectRepoName
 } from './selectors'
-import reducer from './reducer'
+import reducer, { repoCreators } from './reducer'
 import saga from './saga'
-import { getGithubRepos } from './actions'
 
 const { Search } = Input
 
@@ -32,6 +31,8 @@ const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
     max-width: ${props => props.maxWidth};
+    color: ${props => props.color};
+    ${props => props.color && `color: ${props.color}`};
   }
 `
 const Container = styled.div`
@@ -58,16 +59,17 @@ export function HomeContainer({
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
     // Effect will be called after render, even the first render bro
-    const loaded =
-      _.get(reposData, 'items', null) || _.get(reposError, 'error', null)
+    const loaded = _.get(reposData, 'items', null) || reposError
     if (loading && loaded) {
       setLoading(false)
     }
   })
 
   const handleOnChange = rName => {
-    setLoading(true)
-    dipatchGithubRepos(rName)
+    if (rName) {
+      dipatchGithubRepos(rName)
+      setLoading(true)
+    }
   }
   const debouncedHandleOnChange = _.debounce(handleOnChange, 200)
 
@@ -75,7 +77,7 @@ export function HomeContainer({
     const items = _.get(reposData, 'items', [])
     const totalCount = _.get(reposData, 'totalCount', 0)
     return (
-      items.length !== 0 && (
+      (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
             {repoName && (
@@ -102,16 +104,19 @@ export function HomeContainer({
   }
   const renderErrorState = () => {
     let repoError
-    if (_.get(reposError, 'error')) {
-      repoError = _.get(reposError, 'error')
+    if (reposError) {
+      repoError = reposError
     } else if (!_.get(reposData, 'totalCount', 0)) {
-      repoError = intl.formatMessage({ id: 'respo_search_default' })
+      repoError = 'respo_search_default'
     }
     return (
       !loading &&
       repoError && (
-        <CustomCard title={intl.formatMessage({ id: 'repo_list' })}>
-          {repoError}
+        <CustomCard
+          color={reposError ? 'red' : 'grey'}
+          title={intl.formatMessage({ id: 'repo_list' })}
+        >
+          <T id={repoError} />
         </CustomCard>
       )
     )
@@ -124,7 +129,7 @@ export function HomeContainer({
       >
         <Text marginBottom={10} id="get_repo_details" />
         <Search
-          value={repoName}
+          defaultValue={repoName}
           type="text"
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
@@ -156,8 +161,9 @@ const mapStateToProps = createStructuredSelector({
 })
 
 function mapDispatchToProps(dispatch) {
+  const { requestGetGithubRepos } = repoCreators
   return {
-    dipatchGithubRepos: repoName => dispatch(getGithubRepos(repoName))
+    dipatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName))
   }
 }
 

@@ -4,5 +4,6 @@
   "respo_search_default": "Search for a repository by entering it's name in the search box",
   "get_repo_details": "Get details of repositories",
   "search_query": "Search query: {repoName}",
-  "matching_repos": "Total number of matching repos: {totalCount}"
+  "matching_repos": "Total number of matching repos: {totalCount}",
+  "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime."
 }

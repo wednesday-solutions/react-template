@@ -1,15 +1,16 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
 import { getRepos } from '@services/repoApi'
-import { REQUEST_GET_GITHUB_REPOS } from './constants'
-import { successGithubRepos, failureGithubRepos } from './actions'
+import { repoTypes, repoCreators } from './reducer'
 
+const { REQUEST_GET_GITHUB_REPOS } = repoTypes
+const { successGetGithubRepos, failureGetGithubRepos } = repoCreators
 export function* getGithubRepos(action) {
   const response = yield call(getRepos, action.repoName)
-  const { data, error, ok } = response
+  const { data, ok } = response
   if (ok) {
-    yield put(successGithubRepos(data))
+    yield put(successGetGithubRepos(data))
   } else {
-    yield put(failureGithubRepos(error))
+    yield put(failureGetGithubRepos(data))
   }
 }
 // Individual exports for testing
