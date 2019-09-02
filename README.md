@@ -84,7 +84,7 @@
 
   Take a look at the following files
 
-  * [internals/webpack/webpack.base.babel.js](internals/webpack/weboack.base.babel.js)
+  * [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
 
 ## Chunkify and Lazy loading
 
