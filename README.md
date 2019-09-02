@@ -8,6 +8,7 @@
 
   * [app/utils/apiUtils.js](app/utils/apiUtils.js)
   * [app/services/repoApi.js](app/services/repoApi.js)
+  * [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
 
 ## Side Effects
 
@@ -18,21 +19,17 @@
   * [app/utils/injectSaga.js](app/utils/injectSaga.js)
   * [app/utils/sagaInjectors.js](app/utils/sagaInjectors.js)
   * [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
-  * [app/containers/HomeContainer/actions.js](app/containers/HomeContainer/actions.js)
-  * [app/containers/HomeContainer/constants.js](app/containers/HomeContainer/constants.js)
   * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
   
 ## Global state management
 
-* Global state management using [Redux](https://redux.js.org/)
+* Global state management using [Redux Sauce](https://github.com/infinitered/reduxsauce)
 
   Take a look at the following files  
 
   * [app/utils/injectReducer.js](app/utils/injectReducer.js)
   * [app/utils/reducerInjectors.js](app/utils/reducerInjectors.js)
   * [app/containers/HomeContainer/reducer.js](app/containers/HomeContainer/reducer.js)
-  * [app/containers/HomeContainer/actions.js](app/containers/HomeContainer/actions.js)
-  * [app/containers/HomeContainer/constants.js](app/containers/HomeContainer/constants.js)
   * [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
 * Computing and getting state from the redux store using [Reselect](https://github.com/reduxjs/reselect)
@@ -79,7 +76,7 @@
   * @app -> app/
   * @containers -> app/containers/
   * @components -> app/components/
-  * @services -> app/services/
+  * @services -> app/services/****
   * @utils -> app/utils/
 
   Take a look at the following files
