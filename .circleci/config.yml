@@ -19,8 +19,11 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run Tests
-          command: npm run test
-      - run:
-          name: Run Build
+          name: Run build
           command: npm run build
+      - run:
+          name: Run lint
+          command: npm run lint:eslint
+      - run:
+          name: Run tests
+          command: npm run test
