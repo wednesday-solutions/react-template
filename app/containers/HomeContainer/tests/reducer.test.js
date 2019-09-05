@@ -1,4 +1,5 @@
 // import produce from 'immer';
+import { fromJS } from 'immutable'
 import homeContainerReducer from '../reducer'
 // import { someAction } from '../actions';
 
@@ -6,9 +7,9 @@ import homeContainerReducer from '../reducer'
 describe('homeContainerReducer', () => {
   let state
   beforeEach(() => {
-    state = {
+    state = fromJS({
       // default state params here
-    }
+    })
   })
 
   it('returns the initial state', () => {

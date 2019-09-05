@@ -37,7 +37,7 @@ module.exports = options => ({
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: ['style-loader', 'css-loader']
       },
       {
         // Preprocess 3rd party .css files located in node_modules
@@ -117,7 +117,8 @@ module.exports = options => ({
     // drop any unreachable code.
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
-    })
+    }),
+    new webpack.IgnorePlugin(/\.\/locale$/)
   ]),
   resolve: {
     modules: ['node_modules', 'app'],

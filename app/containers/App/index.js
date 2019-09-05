@@ -11,9 +11,9 @@ import React from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import _ from 'lodash'
 import { compose } from 'redux'
-import { routeConfig } from '../../routeConfig'
+import { routeConfig } from '@app/routeConfig'
 
-import GlobalStyle from '../../global-styles'
+import GlobalStyle from '@app/global-styles'
 
 function App() {
   return (

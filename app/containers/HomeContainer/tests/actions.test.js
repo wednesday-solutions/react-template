@@ -1,13 +1,13 @@
-import { defaultAction } from '../actions'
-import { DEFAULT_ACTION } from '../constants'
+import { repoTypes, repoCreators } from '../reducer'
 
 describe('HomeContainer actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('REQUEST_GET_GITHUB_REPOS Action', () => {
+    it('has a type of REQUEST_GET_GITHUB_REPOS', () => {
       const expected = {
-        type: DEFAULT_ACTION
+        type: repoTypes.REQUEST_GET_GITHUB_REPOS,
+        repoName: 'repoName'
       }
-      expect(defaultAction()).toEqual(expected)
+      expect(repoCreators.requestGetGithubRepos('repoName')).toEqual(expected)
     })
   })
 })
