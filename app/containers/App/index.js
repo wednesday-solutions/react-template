@@ -11,11 +11,12 @@ import React from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import _ from 'lodash'
 import { compose } from 'redux'
+import { PropTypes } from 'prop-types'
 import { routeConfig } from '@app/routeConfig'
 
 import GlobalStyle from '@app/global-styles'
 
-function App() {
+function App({ location }) {
   return (
     <div>
       <Switch>
@@ -23,7 +24,7 @@ function App() {
           <Route
             exact={routeConfig[routeKey].exact}
             key={index}
-            path={routeConfig[routeKey].route}
+            path={location.pathname + routeConfig[routeKey].route}
             component={routeConfig[routeKey].component}
           />
         ))}
@@ -32,5 +33,7 @@ function App() {
     </div>
   )
 }
-
+App.propTypes = {
+  location: PropTypes.object
+}
 export default compose(withRouter)(App)

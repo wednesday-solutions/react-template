@@ -12,7 +12,7 @@ module.exports = options => ({
     {
       // Compile into js/build.js
       path: path.resolve(process.cwd(), 'build'),
-      publicPath: '/'
+      publicPath: '/react-template/'
     },
     options.output
   ), // Merge with env dependent settings
@@ -117,8 +117,7 @@ module.exports = options => ({
     // drop any unreachable code.
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
-    }),
-    new webpack.IgnorePlugin(/\.\/locale$/)
+    })
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
@@ -127,7 +126,8 @@ module.exports = options => ({
       '@components': path.resolve(__dirname, '../../app/components'),
       '@containers': path.resolve(__dirname, '../../app/containers'),
       '@utils': path.resolve(__dirname, '../../app/utils'),
-      '@services': path.resolve(__dirname, '../../app/services')
+      '@services': path.resolve(__dirname, '../../app/services'),
+      moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js')
     },
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main']

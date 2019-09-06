@@ -27,10 +27,14 @@ module.exports = {
     dev: {
       plugins: [['import', { libraryName: 'antd', style: 'css' }]]
     },
+    development: {
+      plugins: [['import', { libraryName: 'antd', style: 'css' }]]
+    },
     test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
-        'dynamic-import-node'
+        'dynamic-import-node',
+        ['import', { libraryName: 'antd', style: 'css' }]
       ]
     }
   }

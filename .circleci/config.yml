@@ -20,10 +20,21 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Run build
-          command: npm run build
+          command: yarn build
       - run:
           name: Run lint
-          command: npm run lint:eslint
+          command: yarn lint:eslint
       - run:
           name: Run tests
-          command: npm run test
+          command: yarn test
+      - add_ssh_keys:
+          fingerprints:
+            - "3f:ba:0c:2c:1f:e7:e6:5d:10:02:6a:ad:b5:ed:4f:3e"
+      - run:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git config user.email "mac@wednesday.is"
+              git config user.name "mac"
+              yarn deploy ci skip
+            fi

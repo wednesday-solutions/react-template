@@ -1,16 +1,17 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-template",
   "version": "4.0.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "description": "A template react application",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/wednesday-solutions/react-template.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Max Stoiber",
+  "author": "Mac",
+  "homepage": "http://wednesday-solutions.github.io/react-template",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -22,6 +23,8 @@
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --message \"[skip ci] Updates\"",
     "start": "cross-env NODE_ENV=development node server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
@@ -135,6 +138,7 @@
     "eslint-plugin-react-hooks": "1.6.0",
     "eslint-plugin-redux-saga": "1.0.0",
     "file-loader": "3.0.1",
+    "gh-pages": "^2.1.1",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "4.6.0",
