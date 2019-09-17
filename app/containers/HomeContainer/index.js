@@ -30,7 +30,7 @@ const { Search } = Input
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    max-width: ${props => props.maxWidth};
+    max-width: ${props => props.maxwidth};
     color: ${props => props.color};
     ${props => props.color && `color: ${props.color}`};
   }
@@ -125,7 +125,7 @@ export function HomeContainer({
     <Container>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
-        maxWidth={500}
+        maxwidth={500}
       >
         <Text marginBottom={10} id="get_repo_details" />
         <Search
