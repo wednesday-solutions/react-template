@@ -17,7 +17,7 @@ const StyledText = styled.div`
 function Text({ id, marginBottom }) {
   return (
     <StyledText marginBottom={marginBottom}>
-      <FormattedMessage id={id} />
+      {id && <FormattedMessage id={id} />}
     </StyledText>
   )
 }
@@ -28,4 +28,4 @@ Text.propTypes = {
 }
 
 const TextComponent = memo(Text)
-export { TextComponent as Text }
+export default TextComponent

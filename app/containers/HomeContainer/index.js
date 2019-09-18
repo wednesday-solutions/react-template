@@ -15,7 +15,7 @@ import { useInjectReducer } from 'utils/injectReducer'
 import { Card, Skeleton, Input } from 'antd'
 import styled from 'styled-components'
 import { FormattedMessage as T, injectIntl } from 'react-intl'
-import { Text } from '@components/Text'
+import Text from '@components/Text'
 import {
   selectHomeContainer,
   selectReposData,

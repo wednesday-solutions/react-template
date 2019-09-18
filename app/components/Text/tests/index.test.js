@@ -7,21 +7,17 @@
  */
 
 import React from 'react'
-import { render } from 'react-testing-library'
-// import 'jest-dom/extend-expect'; // add some helpful assertions
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+// import 'jest-dom/extend-expect' // add some helpful assertions
 
 import Text from '../index'
 
+Enzyme.configure({ adapter: new Adapter() })
+
 describe('<Text />', () => {
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
-    const {
-      container: { firstChild }
-    } = render(<Text />)
-    expect(firstChild).toMatchSnapshot()
+  it('Should render and match the snapshot', () => {
+    const component = shallow(<Text />)
+    expect(component).toMatchSnapshot()
   })
 })
