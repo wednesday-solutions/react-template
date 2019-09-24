@@ -104,3 +104,7 @@
   
   * [app/app.js](app/app.js)
   * [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+
+
+### Clean up commit history
+```yarn initialize```
