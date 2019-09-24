@@ -47,7 +47,8 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master"
   },
   "browserslist": [
     "last 2 versions",
