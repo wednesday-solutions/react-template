@@ -76,7 +76,7 @@
   * @app -> app/
   * @containers -> app/containers/
   * @components -> app/components/
-  * @services -> app/services/****
+  * @services -> app/services/
   * @utils -> app/utils/
 
   Take a look at the following files
