@@ -29,7 +29,7 @@ jobs:
           command: yarn test
       - add_ssh_keys:
           fingerprints:
-            - "3f:ba:0c:2c:1f:e7:e6:5d:10:02:6a:ad:b5:ed:4f:3e"
+            - "f1:f6:41:15:3e:a2:cb:95:a6:2d:20:20:48:24:f8:4d"
       - run:
           name: Deploy
           command: |
