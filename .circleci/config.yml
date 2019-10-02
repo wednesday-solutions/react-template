@@ -23,7 +23,7 @@ jobs:
           command: yarn build
       - run:
           name: Run lint
-          command: yarn lint:eslint
+          command: yarn lint:eslint ./
       - run:
           name: Run tests
           command: yarn test
@@ -34,7 +34,13 @@ jobs:
           name: Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git config user.email "mac@wednesday.is"
+              git config user.email "mohammed.ali.chherawalla@gmail.com"
               git config user.name "mac"
               yarn deploy ci skip
+            fi
+      - run:
+          name: Deploy Storybook
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              yarn deploy-storybook-gh
             fi
