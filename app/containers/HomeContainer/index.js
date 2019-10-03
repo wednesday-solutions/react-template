@@ -13,8 +13,9 @@ import _ from 'lodash'
 import { Card, Skeleton, Input } from 'antd'
 import styled from 'styled-components'
 import { FormattedMessage as T, injectIntl } from 'react-intl'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Text from '@components/Text'
+import Clickable from '@components/Clickable'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import {
@@ -55,7 +56,8 @@ export function HomeContainer({
   intl,
   reposData = {},
   reposError = {},
-  repoName
+  repoName,
+  history
 }) {
   useInjectReducer({ key: 'homeContainer', reducer })
   useInjectSaga({ key: 'homeContainer', saga })
@@ -125,12 +127,14 @@ export function HomeContainer({
       )
     )
   }
+  const refreshPage = () => {
+    history.push('stories')
+    window.location.reload()
+  }
   return (
     <Container>
       <RightContent>
-        <Link to="stories/">
-          <T id="stories" />
-        </Link>
+        <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
@@ -159,7 +163,8 @@ HomeContainer.propTypes = {
     items: PropTypes.array
   }),
   reposError: PropTypes.object,
-  repoName: PropTypes.string
+  repoName: PropTypes.string,
+  history: PropTypes.object
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -184,5 +189,6 @@ const withConnect = connect(
 export default compose(
   injectIntl,
   withConnect,
-  memo
+  memo,
+  withRouter
 )(HomeContainer)
