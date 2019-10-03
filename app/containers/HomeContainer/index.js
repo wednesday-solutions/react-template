@@ -10,12 +10,14 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 import _ from 'lodash'
-import { useInjectSaga } from 'utils/injectSaga'
-import { useInjectReducer } from 'utils/injectReducer'
 import { Card, Skeleton, Input } from 'antd'
 import styled from 'styled-components'
 import { FormattedMessage as T, injectIntl } from 'react-intl'
+import { withRouter } from 'react-router-dom'
 import Text from '@components/Text'
+import Clickable from '@components/Clickable'
+import { useInjectSaga } from 'utils/injectSaga'
+import { useInjectReducer } from 'utils/injectReducer'
 import {
   selectHomeContainer,
   selectReposData,
@@ -45,13 +47,17 @@ const Container = styled.div`
     padding: 20px;
   }
 `
-
+const RightContent = styled.div`
+  display: flex;
+  align-self: flex-end;
+`
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
   reposData = {},
   reposError = {},
-  repoName
+  repoName,
+  history
 }) {
   useInjectReducer({ key: 'homeContainer', reducer })
   useInjectSaga({ key: 'homeContainer', saga })
@@ -121,8 +127,15 @@ export function HomeContainer({
       )
     )
   }
+  const refreshPage = () => {
+    history.push('stories')
+    window.location.reload()
+  }
   return (
     <Container>
+      <RightContent>
+        <Clickable textId="stories" onClick={refreshPage} />
+      </RightContent>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
         maxwidth={500}
@@ -150,7 +163,8 @@ HomeContainer.propTypes = {
     items: PropTypes.array
   }),
   reposError: PropTypes.object,
-  repoName: PropTypes.string
+  repoName: PropTypes.string,
+  history: PropTypes.object
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -175,5 +189,6 @@ const withConnect = connect(
 export default compose(
   injectIntl,
   withConnect,
-  memo
+  memo,
+  withRouter
 )(HomeContainer)

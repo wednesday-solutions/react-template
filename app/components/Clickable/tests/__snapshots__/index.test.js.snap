@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Clickable /> Should render and match the snapshot 1`] = `ShallowWrapper {}`;

@@ -8,7 +8,6 @@ import { setIntlConfig, withIntl } from 'storybook-addon-intl';
 import { addLocaleData } from 'react-intl'
 import enLocaleData from 'react-intl/locale-data/en'
 import { translationMessages, appLocales, DEFAULT_LOCALE } from '../app/i18n.js';
-import Container from './Container'
 Object.values = (obj) => Object.keys(obj).map(key => obj[key]);
 addDecorator(withKnobs);
 
@@ -22,7 +21,7 @@ setIntlConfig({locales:appLocales, defaultLocale: DEFAULT_LOCALE, getMessages})
 
 addDecorator(withIntl)
 
-addDecorator(story => <Container story={story} />);
+// addDecorator(story => <Container story={story} />);
 
 // automatically import all files ending in *.stories.js
 function requireAll(requireContext) {
