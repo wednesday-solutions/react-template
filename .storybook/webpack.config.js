@@ -1,15 +1,11 @@
 const path = require('path')
 const genBaseConfig = require('../internals/webpack/webpack.base.babel.js')
-module.exports = (baseConfig, env, defaultConfig = baseConfig.config) => {
-  // baseConfig.config.babelQuery = ({options: {
-  //         presets: ['@babel/preset-env'],
-  //         plugins: ['@babel/plugin-proposal-object-rest-spread']
-  // }});
-  const config = genBaseConfig(baseConfig.config)
-  defaultConfig.resolve.modules.push('app')
-  defaultConfig.resolve.alias = config.resolve.alias
-  defaultConfig.resolve.extensions.push('.js', '.jsx', '.react.js')
+module.exports = ({ config }) => {
+  const defualtConfig = genBaseConfig(config)
+  config.resolve.modules.push('app')
+  config.resolve.alias = config.resolve.alias
+  config.resolve.extensions.push('.js', '.jsx', '.react.js')
 
-  defaultConfig.module.rules.push(...config.module.rules)
-  return defaultConfig
+  config.module.rules.push(...defualtConfig.module.rules)
+  return config
 };
