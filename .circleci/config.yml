@@ -36,11 +36,5 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               git config user.email "mohammed.ali.chherawalla@gmail.com"
               git config user.name "mac"
-              yarn deploy ci skip
-            fi
-      - run:
-          name: Deploy Storybook
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              yarn deploy-storybook-gh
+              yarn deploy ci skip=
             fi

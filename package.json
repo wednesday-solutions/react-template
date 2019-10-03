@@ -23,7 +23,7 @@
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && yarn build-storybook -o build/stories",
     "deploy": "gh-pages -d build --message \"[skip ci] Updates\"",
     "start": "cross-env NODE_ENV=development node server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
@@ -48,7 +48,6 @@
     "prettify": "prettier --write",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy-storybook-gh": "storybook-to-ghpages",
     "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master"
   },
   "browserslist": [
@@ -70,14 +69,8 @@
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
-  "storybook-deployer": {
-    "gitUsername": "mac",
-    "gitEmail": "mohammed.ali.chherawalla@gmail.com",
-    "commitMessage": "Deploy Storybook [skip ci]"
-  },
   "dependencies": {
     "@babel/polyfill": "7.4.3",
-    "@storybook/storybook-deployer": "^2.8.1",
     "antd": "^3.22.2",
     "apisauce": "^1.1.0",
     "babel-plugin-import": "^1.12.1",

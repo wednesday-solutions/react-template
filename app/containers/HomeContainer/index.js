@@ -10,12 +10,13 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 import _ from 'lodash'
-import { useInjectSaga } from 'utils/injectSaga'
-import { useInjectReducer } from 'utils/injectReducer'
 import { Card, Skeleton, Input } from 'antd'
 import styled from 'styled-components'
 import { FormattedMessage as T, injectIntl } from 'react-intl'
+import { Link } from 'react-router-dom'
 import Text from '@components/Text'
+import { useInjectSaga } from 'utils/injectSaga'
+import { useInjectReducer } from 'utils/injectReducer'
 import {
   selectHomeContainer,
   selectReposData,
@@ -45,7 +46,10 @@ const Container = styled.div`
     padding: 20px;
   }
 `
-
+const RightContent = styled.div`
+  display: flex;
+  align-self: flex-end;
+`
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
@@ -123,6 +127,11 @@ export function HomeContainer({
   }
   return (
     <Container>
+      <RightContent>
+        <Link to="stories/">
+          <T id="stories" />
+        </Link>
+      </RightContent>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
         maxwidth={500}
