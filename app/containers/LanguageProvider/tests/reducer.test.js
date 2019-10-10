@@ -1,5 +1,7 @@
+import deepFreeze from 'deep-freeze'
 import languageProviderReducer from '../reducer'
 import { CHANGE_LOCALE } from '../constants'
+import { DEFAULT_LOCALE } from '../../../i18n'
 
 /* eslint-disable default-case, no-param-reassign */
 describe('languageProviderReducer', () => {
@@ -9,14 +11,23 @@ describe('languageProviderReducer', () => {
     })
   })
 
+  const stateBefore = {
+    locale: DEFAULT_LOCALE
+  }
+
+  const action = {
+    type: CHANGE_LOCALE,
+    locale: 'de'
+  }
+
+  const stateAfter = {
+    locale: 'de'
+  }
+
+  deepFreeze(stateBefore)
+  deepFreeze(action)
+
   it('changes the locale', () => {
-    expect(
-      languageProviderReducer(undefined, {
-        type: CHANGE_LOCALE,
-        locale: 'de'
-      })
-    ).toEqual({
-      locale: 'de'
-    })
+    expect(languageProviderReducer(stateBefore, action)).toEqual(stateAfter)
   })
 })
