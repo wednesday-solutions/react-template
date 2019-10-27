@@ -24,7 +24,7 @@ import {
   selectReposError,
   selectRepoName
 } from './selectors'
-import reducer, { repoCreators } from './reducer'
+import reducer, { homeContainerCreators } from './reducer'
 import saga from './saga'
 
 const { Search } = Input
@@ -55,7 +55,7 @@ export function HomeContainer({
   dipatchGithubRepos,
   intl,
   reposData = {},
-  reposError = {},
+  reposError = null,
   repoName,
   history
 }) {
@@ -142,6 +142,7 @@ export function HomeContainer({
       >
         <Text marginBottom={10} id="get_repo_details" />
         <Search
+          data-testid="search-bar"
           defaultValue={repoName}
           type="text"
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
@@ -175,7 +176,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos } = repoCreators
+  const { requestGetGithubRepos } = homeContainerCreators
   return {
     dipatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName))
   }
@@ -192,3 +193,5 @@ export default compose(
   memo,
   withRouter
 )(HomeContainer)
+
+export const HomeContainerTest = compose(injectIntl)(HomeContainer)

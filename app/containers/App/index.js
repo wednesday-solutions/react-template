@@ -13,24 +13,32 @@ import _ from 'lodash'
 import { compose } from 'redux'
 import { PropTypes } from 'prop-types'
 import { routeConfig } from '@app/routeConfig'
-
+import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '@app/global-styles'
+import { colors } from '@themes'
+
+const theme = {
+  fg: colors.primary,
+  bg: colors.secondary
+}
 
 function App({ location }) {
   return (
-    <div>
-      <Switch>
-        {_.map(Object.keys(routeConfig), (routeKey, index) => (
-          <Route
-            exact={routeConfig[routeKey].exact}
-            key={index}
-            path={location.pathname + routeConfig[routeKey].route}
-            component={routeConfig[routeKey].component}
-          />
-        ))}
-      </Switch>
-      <GlobalStyle />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Switch>
+          {_.map(Object.keys(routeConfig), (routeKey, index) => (
+            <Route
+              exact={routeConfig[routeKey].exact}
+              key={index}
+              path={location.pathname + routeConfig[routeKey].route}
+              component={routeConfig[routeKey].component}
+            />
+          ))}
+        </Switch>
+        <GlobalStyle />
+      </div>
+    </ThemeProvider>
   )
 }
 App.propTypes = {

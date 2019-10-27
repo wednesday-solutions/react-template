@@ -7,21 +7,31 @@
  */
 
 import React from 'react'
-import { render } from 'react-testing-library'
-// import 'jest-dom/extend-expect'; // add some helpful assertions
-
-import { HomeContainer } from '../index'
+import { timeout, renderProvider } from '@utils/testUtils'
+import { fireEvent } from '@testing-library/dom'
+import { HomeContainerTest as HomeContainer } from '../index'
 
 describe('<HomeContainer />', () => {
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
-    const {
-      container: { firstChild }
-    } = render(<HomeContainer />)
-    expect(firstChild).toMatchSnapshot()
+  let submitSpy
+
+  beforeEach(() => {
+    submitSpy = jest.fn()
+  })
+  it('Should render and match the snapshot', () => {
+    const { baseElement } = renderProvider(
+      <HomeContainer dipatchGithubRepos={submitSpy} />
+    )
+    expect(baseElement).toMatchSnapshot()
+  })
+
+  it('should call dipatchGithubRepos on change', async () => {
+    const { getByTestId } = renderProvider(
+      <HomeContainer dipatchGithubRepos={submitSpy} />
+    )
+    fireEvent.change(getByTestId('search-bar'), {
+      target: { value: 'some repo' }
+    })
+    await timeout(500)
+    expect(submitSpy).toBeCalled()
   })
 })

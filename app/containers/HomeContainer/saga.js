@@ -1,9 +1,9 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
 import { getRepos } from '@services/repoApi'
-import { repoTypes, repoCreators } from './reducer'
+import { homeContainerTypes, homeContainerCreators } from './reducer'
 
-const { REQUEST_GET_GITHUB_REPOS } = repoTypes
-const { successGetGithubRepos, failureGetGithubRepos } = repoCreators
+const { REQUEST_GET_GITHUB_REPOS } = homeContainerTypes
+const { successGetGithubRepos, failureGetGithubRepos } = homeContainerCreators
 export function* getGithubRepos(action) {
   const response = yield call(getRepos, action.repoName)
   const { data, ok } = response

@@ -7,8 +7,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import { FormattedMessage as T } from 'react-intl'
+import T from '@components/Text'
 
 const StyledClickable = styled.div`
   color: #1890ff;
@@ -18,7 +17,7 @@ const StyledClickable = styled.div`
 `
 function Clickable({ onClick, textId }) {
   return (
-    <StyledClickable onClick={onClick}>
+    <StyledClickable data-testid="clickable" onClick={onClick}>
       {textId && <T id={textId} />}
     </StyledClickable>
   )

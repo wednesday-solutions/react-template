@@ -14,17 +14,19 @@ const StyledText = styled.div`
     ${props => props.marginBottom && `margin-bottom: ${props.marginBottom}px;`};
   }
 `
-function Text({ id, marginBottom }) {
-  return (
-    <StyledText marginBottom={marginBottom}>
-      {id && <FormattedMessage id={id} />}
-    </StyledText>
-  )
-}
+export const Text = ({ id, marginBottom }) => (
+  <StyledText data-testid="text" marginBottom={marginBottom}>
+    {id && <FormattedMessage id={id} />}
+  </StyledText>
+)
 
 Text.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   marginBottom: PropTypes.number
+}
+
+Text.defaultProps = {
+  id: 'some_text'
 }
 
 const TextComponent = memo(Text)

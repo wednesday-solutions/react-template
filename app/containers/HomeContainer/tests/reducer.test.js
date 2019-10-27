@@ -1,33 +1,51 @@
-// import produce from 'immer';
-import { fromJS } from 'immutable'
-import homeContainerReducer from '../reducer'
-// import { someAction } from '../actions';
+import {
+  homeContainerReducer,
+  initialState,
+  homeContainerTypes
+} from '../reducer'
 
 /* eslint-disable default-case, no-param-reassign */
 describe('homeContainerReducer', () => {
   let state
   beforeEach(() => {
-    state = fromJS({
-      // default state params here
-    })
+    state = initialState
   })
 
-  it('returns the initial state', () => {
+  it('should return the initial state', () => {
     const expectedResult = state
     expect(homeContainerReducer(undefined, {})).toEqual(expectedResult)
   })
 
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
+  it('should return the initial state when an action of type FETCH_USER is dispatched', () => {
+    const repoName = 'Mohammed Ali Chherawalla'
+    const expectedResult = state.set('repoName', repoName)
+    expect(
+      homeContainerReducer(state, {
+        type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS,
+        repoName
+      })
+    ).toEqual(expectedResult)
+  })
+
+  it('should ensure that the user data is present and userLoading = false when FETCH_USER_SUCCESS is dispatched', () => {
+    const data = { name: 'Mohammed Ali Chherawalla' }
+    const expectedResult = state.set('reposData', data)
+    expect(
+      homeContainerReducer(state, {
+        type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
+        data
+      })
+    ).toEqual(expectedResult)
+  })
+
+  it('should ensure that the userErrorMessage has some data and userLoading = false when FETCH_USER_FAILURE is dispatched', () => {
+    const error = 'something_went_wrong'
+    const expectedResult = state.set('reposError', error)
+    expect(
+      homeContainerReducer(state, {
+        type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
+        error
+      })
+    ).toEqual(expectedResult)
+  })
 })

@@ -1,6 +1,8 @@
 import { create } from 'apisauce'
 import mapKeysDeep from 'map-keys-deep'
 import { camelCase, snakeCase } from 'lodash'
+
+const { GITHUB_URL } = process.env
 const apiClients = {
   github: null,
   default: null
@@ -9,17 +11,17 @@ export const getApiClient = (type = 'github') => apiClients[type]
 export const generateApiClient = (type = 'github') => {
   switch (type) {
     case 'github':
-      apiClients[type] = createApiClientWithTransForm()
+      apiClients[type] = createApiClientWithTransForm(GITHUB_URL)
       return apiClients[type]
     default:
-      apiClients.default = createApiClientWithTransForm()
+      apiClients.default = createApiClientWithTransForm(GITHUB_URL)
       return apiClients.default
   }
 }
 
-export const createApiClientWithTransForm = () => {
+export const createApiClientWithTransForm = baseURL => {
   const api = create({
-    baseURL: 'https://api.github.com/',
+    baseURL,
     headers: { 'Content-Type': 'application/json' }
   })
   api.addResponseTransform(response => {

@@ -4,6 +4,14 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const dotenv = require('dotenv')
+
+const env = dotenv.config().parsed
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next])
+  return prev
+}, {})
 
 module.exports = options => ({
   mode: options.mode,
@@ -117,7 +125,8 @@ module.exports = options => ({
     // drop any unreachable code.
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
@@ -127,6 +136,8 @@ module.exports = options => ({
       '@containers': path.resolve(__dirname, '../../app/containers'),
       '@utils': path.resolve(__dirname, '../../app/utils'),
       '@services': path.resolve(__dirname, '../../app/services'),
+      '@themes': path.resolve(__dirname, '../../app/themes'),
+      '@images': path.resolve(__dirname, '../../app/images'),
       moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js')
     },
     extensions: ['.js', '.jsx', '.react.js'],
