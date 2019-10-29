@@ -1,5 +1,5 @@
-import NotFound from '@containers/NotFoundPage/Loadable'
-import HomeContainer from '@containers/HomeContainer/Loadable'
+import NotFound from '@containers/NotFoundPage/Loadable';
+import HomeContainer from '@containers/HomeContainer/Loadable';
 
 export const routeConfig = {
   repos: {
@@ -11,4 +11,4 @@ export const routeConfig = {
     component: NotFound,
     route: '/'
   }
-}
+};

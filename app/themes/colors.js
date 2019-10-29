@@ -5,11 +5,11 @@
  * That allows to change them more easily later on.
  */
 
-const primary = '#fcedda'
-const text = '#212529'
-const secondary = '#f8c49c'
-const success = '#28a745'
-const error = '#dc3545'
+const primary = '#fcedda';
+const text = '#212529';
+const secondary = '#f8c49c';
+const success = '#28a745';
+const error = '#dc3545';
 
 export default {
   transparent: 'rgba(0,0,0,0)',
@@ -29,4 +29,4 @@ export default {
       secondary: primary
     }
   }
-}
+};

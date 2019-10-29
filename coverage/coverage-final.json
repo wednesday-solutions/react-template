@@ -1,6 +1,6 @@
 {
-  "/Users/mac/wednesday/react-template/app/configureStore.js": {
-    "path": "/Users/mac/wednesday/react-template/app/configureStore.js",
+  "/Users/Ali/Consulting/react-template/app/configureStore.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/configureStore.js",
     "statementMap": {
       "0": {
         "start": { "line": 11, "column": 25 },
@@ -28,19 +28,19 @@
       },
       "6": {
         "start": { "line": 46, "column": 2 },
-        "end": { "line": 46, "column": 36 }
+        "end": { "line": 46, "column": 37 }
       },
       "7": {
         "start": { "line": 47, "column": 2 },
-        "end": { "line": 47, "column": 29 }
+        "end": { "line": 47, "column": 30 }
       },
       "8": {
         "start": { "line": 48, "column": 2 },
-        "end": { "line": 48, "column": 26 }
+        "end": { "line": 48, "column": 27 }
       },
       "9": {
         "start": { "line": 58, "column": 2 },
-        "end": { "line": 58, "column": 14 }
+        "end": { "line": 58, "column": 15 }
       }
     },
     "fnMap": {
@@ -88,10 +88,10 @@
     "f": { "0": 44 },
     "b": { "0": [1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "dc191d7b19253adbdb1678ea6bb7546fd461488a"
+    "hash": "870e9a407e9942f94101df3f8b08e3157e82a3db"
   },
-  "/Users/mac/wednesday/react-template/app/i18n.js": {
-    "path": "/Users/mac/wednesday/react-template/app/i18n.js",
+  "/Users/Ali/Consulting/react-template/app/i18n.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/i18n.js",
     "statementMap": {
       "0": {
         "start": { "line": 10, "column": 22 },
@@ -107,7 +107,7 @@
       },
       "3": {
         "start": { "line": 15, "column": 0 },
-        "end": { "line": 15, "column": 27 }
+        "end": { "line": 15, "column": 28 }
       },
       "4": {
         "start": { "line": 17, "column": 30 },
@@ -135,11 +135,11 @@
       },
       "10": {
         "start": { "line": 34, "column": 4 },
-        "end": { "line": 34, "column": 72 }
+        "end": { "line": 34, "column": 73 }
       },
       "11": {
         "start": { "line": 36, "column": 2 },
-        "end": { "line": 36, "column": 67 }
+        "end": { "line": 36, "column": 68 }
       },
       "12": {
         "start": { "line": 39, "column": 35 },
@@ -246,10 +246,10 @@
     "f": { "0": 16, "1": 103 },
     "b": { "0": [1, 15], "1": [1, 102], "2": [103, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "43a40b5c57669c48487065366de66d8468515010"
+    "hash": "476505c20cbf24e264fe416e54cb95d3ebd8b7c5"
   },
-  "/Users/mac/wednesday/react-template/app/reducers.js": {
-    "path": "/Users/mac/wednesday/react-template/app/reducers.js",
+  "/Users/Ali/Consulting/react-template/app/reducers.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/reducers.js",
     "statementMap": {
       "0": {
         "start": { "line": 15, "column": 22 },
@@ -257,7 +257,7 @@
       },
       "1": {
         "start": { "line": 21, "column": 2 },
-        "end": { "line": 21, "column": 20 }
+        "end": { "line": 21, "column": 21 }
       }
     },
     "fnMap": {
@@ -294,10 +294,10 @@
     "f": { "0": 51 },
     "b": { "0": [44] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "8b8427f8195b56fa148da9d9526dc09498d471fd"
+    "hash": "560bf9f510969d7550779a5969b56115006b584b"
   },
-  "/Users/mac/wednesday/react-template/app/routeConfig.js": {
-    "path": "/Users/mac/wednesday/react-template/app/routeConfig.js",
+  "/Users/Ali/Consulting/react-template/app/routeConfig.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/routeConfig.js",
     "statementMap": {
       "0": {
         "start": { "line": 4, "column": 27 },
@@ -310,10 +310,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "907ba56d79fd8b205b0a166a3b849ab33f1e0959"
+    "hash": "209e0c8a1bb4130c7704a8c40510b3a95392531b"
   },
-  "/Users/mac/wednesday/react-template/app/components/Clickable/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/components/Clickable/index.js",
+  "/Users/Ali/Consulting/react-template/app/components/Clickable/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/components/Clickable/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 12, "column": 24 },
@@ -321,11 +321,11 @@
       },
       "1": {
         "start": { "line": 19, "column": 2 },
-        "end": { "line": 23, "column": 3 }
+        "end": { "line": 23, "column": 4 }
       },
       "2": {
         "start": { "line": 26, "column": 0 },
-        "end": { "line": 29, "column": 1 }
+        "end": { "line": 29, "column": 2 }
       }
     },
     "fnMap": {
@@ -366,10 +366,10 @@
     "f": { "0": 7 },
     "b": { "0": [7, 5] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "78e24fcfd6bdc7d8548a93bbf375ad523ef5ac36"
+    "hash": "e72c378b23c1e5cdd3c70149f28459dd15a79069"
   },
-  "/Users/mac/wednesday/react-template/app/components/Text/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/components/Text/index.js",
+  "/Users/Ali/Consulting/react-template/app/components/Text/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/components/Text/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 12, "column": 19 },
@@ -389,11 +389,11 @@
       },
       "4": {
         "start": { "line": 23, "column": 0 },
-        "end": { "line": 26, "column": 1 }
+        "end": { "line": 26, "column": 2 }
       },
       "5": {
         "start": { "line": 28, "column": 0 },
-        "end": { "line": 30, "column": 1 }
+        "end": { "line": 30, "column": 2 }
       },
       "6": {
         "start": { "line": 32, "column": 22 },
@@ -468,10 +468,10 @@
     "f": { "0": 10, "1": 11 },
     "b": { "0": [10, 3], "1": [11, 11] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "e60210d46fcccfbc7ad57e68dc7c52fc964394da"
+    "hash": "fa058512049bada84984b8c618d79fd0296e8f8e"
   },
-  "/Users/mac/wednesday/react-template/app/containers/App/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/App/index.js",
+  "/Users/Ali/Consulting/react-template/app/containers/App/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/App/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 20, "column": 14 },
@@ -479,7 +479,7 @@
       },
       "1": {
         "start": { "line": 26, "column": 2 },
-        "end": { "line": 42, "column": 3 }
+        "end": { "line": 42, "column": 4 }
       },
       "2": {
         "start": { "line": 31, "column": 12 },
@@ -487,7 +487,7 @@
       },
       "3": {
         "start": { "line": 44, "column": 0 },
-        "end": { "line": 46, "column": 1 }
+        "end": { "line": 46, "column": 2 }
       }
     },
     "fnMap": {
@@ -521,10 +521,10 @@
     "f": { "0": 0, "1": 0 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "388623672c6955e89b0eef47f3ce68eca17d7cc3"
+    "hash": "ea6d2e5b04410417e21ef2f61bb66f039ee4f853"
   },
-  "/Users/mac/wednesday/react-template/app/containers/App/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/App/selectors.js",
+  "/Users/Ali/Consulting/react-template/app/containers/App/selectors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/App/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 3, "column": 21 },
@@ -590,10 +590,10 @@
     "f": { "0": 1, "1": 1, "2": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "551dc4547005060b0462a7caf882ae50e751b48a"
+    "hash": "aed7d9fe69063c2b4c8732aa2b1569ed4a0b8f05"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/index.js",
+  "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 30, "column": 19 },
@@ -625,11 +625,11 @@
       },
       "7": {
         "start": { "line": 62, "column": 2 },
-        "end": { "line": 62, "column": 53 }
+        "end": { "line": 62, "column": 54 }
       },
       "8": {
         "start": { "line": 63, "column": 2 },
-        "end": { "line": 63, "column": 47 }
+        "end": { "line": 63, "column": 48 }
       },
       "9": {
         "start": { "line": 64, "column": 32 },
@@ -637,7 +637,7 @@
       },
       "10": {
         "start": { "line": 65, "column": 2 },
-        "end": { "line": 72, "column": 4 }
+        "end": { "line": 72, "column": 5 }
       },
       "11": {
         "start": { "line": 68, "column": 19 },
@@ -649,7 +649,7 @@
       },
       "13": {
         "start": { "line": 70, "column": 6 },
-        "end": { "line": 70, "column": 23 }
+        "end": { "line": 70, "column": 24 }
       },
       "14": {
         "start": { "line": 74, "column": 25 },
@@ -661,11 +661,11 @@
       },
       "16": {
         "start": { "line": 76, "column": 6 },
-        "end": { "line": 76, "column": 31 }
+        "end": { "line": 76, "column": 32 }
       },
       "17": {
         "start": { "line": 77, "column": 6 },
-        "end": { "line": 77, "column": 22 }
+        "end": { "line": 77, "column": 23 }
       },
       "18": {
         "start": { "line": 80, "column": 34 },
@@ -685,7 +685,7 @@
       },
       "22": {
         "start": { "line": 85, "column": 4 },
-        "end": { "line": 109, "column": 5 }
+        "end": { "line": 109, "column": 6 }
       },
       "23": {
         "start": { "line": 100, "column": 14 },
@@ -701,7 +701,7 @@
       },
       "26": {
         "start": { "line": 114, "column": 6 },
-        "end": { "line": 114, "column": 28 }
+        "end": { "line": 114, "column": 29 }
       },
       "27": {
         "start": { "line": 115, "column": 11 },
@@ -709,11 +709,11 @@
       },
       "28": {
         "start": { "line": 116, "column": 6 },
-        "end": { "line": 116, "column": 40 }
+        "end": { "line": 116, "column": 41 }
       },
       "29": {
         "start": { "line": 118, "column": 4 },
-        "end": { "line": 128, "column": 5 }
+        "end": { "line": 128, "column": 6 }
       },
       "30": {
         "start": { "line": 130, "column": 22 },
@@ -721,15 +721,15 @@
       },
       "31": {
         "start": { "line": 131, "column": 4 },
-        "end": { "line": 131, "column": 27 }
+        "end": { "line": 131, "column": 28 }
       },
       "32": {
         "start": { "line": 132, "column": 4 },
-        "end": { "line": 132, "column": 28 }
+        "end": { "line": 132, "column": 29 }
       },
       "33": {
         "start": { "line": 134, "column": 2 },
-        "end": { "line": 155, "column": 3 }
+        "end": { "line": 155, "column": 4 }
       },
       "34": {
         "start": { "line": 148, "column": 27 },
@@ -741,7 +741,7 @@
       },
       "36": {
         "start": { "line": 158, "column": 0 },
-        "end": { "line": 169, "column": 1 }
+        "end": { "line": 169, "column": 2 }
       },
       "37": {
         "start": { "line": 171, "column": 24 },
@@ -753,7 +753,7 @@
       },
       "39": {
         "start": { "line": 180, "column": 2 },
-        "end": { "line": 182, "column": 3 }
+        "end": { "line": 182, "column": 4 }
       },
       "40": {
         "start": { "line": 181, "column": 36 },
@@ -1270,10 +1270,10 @@
       "13": [0, 2]
     },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "bcf70b33a55c7d2389ac52932ef1d34da0227e6b"
+    "hash": "3e442f786974d5d7857e7cf17b143b1aed4cf1be"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/reducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/reducer.js",
+  "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/reducer.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/reducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 4 },
@@ -1297,19 +1297,19 @@
       },
       "5": {
         "start": { "line": 26, "column": 8 },
-        "end": { "line": 26, "column": 60 }
+        "end": { "line": 26, "column": 61 }
       },
       "6": {
         "start": { "line": 28, "column": 8 },
-        "end": { "line": 28, "column": 50 }
+        "end": { "line": 28, "column": 51 }
       },
       "7": {
         "start": { "line": 30, "column": 8 },
-        "end": { "line": 33, "column": 9 }
+        "end": { "line": 33, "column": 10 }
       },
       "8": {
         "start": { "line": 35, "column": 4 },
-        "end": { "line": 35, "column": 16 }
+        "end": { "line": 35, "column": 17 }
       }
     },
     "fnMap": {
@@ -1362,15 +1362,15 @@
         "locations": [
           {
             "start": { "line": 25, "column": 6 },
-            "end": { "line": 26, "column": 60 }
+            "end": { "line": 26, "column": 61 }
           },
           {
             "start": { "line": 27, "column": 6 },
-            "end": { "line": 28, "column": 50 }
+            "end": { "line": 28, "column": 51 }
           },
           {
             "start": { "line": 29, "column": 6 },
-            "end": { "line": 33, "column": 9 }
+            "end": { "line": 33, "column": 10 }
           }
         ],
         "line": 24
@@ -1390,10 +1390,10 @@
     "f": { "0": 10, "1": 10 },
     "b": { "0": [7], "1": [1, 1, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0695d1e0e2a9ce41a0cf4506acd5b750ca855f52"
+    "hash": "999e2f4fd4f1836c8b1096a723a34f4458e753e6"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/saga.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/saga.js",
+  "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/saga.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/saga.js",
     "statementMap": {
       "0": {
         "start": { "line": 5, "column": 37 },
@@ -1417,15 +1417,15 @@
       },
       "5": {
         "start": { "line": 11, "column": 4 },
-        "end": { "line": 11, "column": 42 }
+        "end": { "line": 11, "column": 43 }
       },
       "6": {
         "start": { "line": 13, "column": 4 },
-        "end": { "line": 13, "column": 42 }
+        "end": { "line": 13, "column": 43 }
       },
       "7": {
         "start": { "line": 18, "column": 2 },
-        "end": { "line": 18, "column": 60 }
+        "end": { "line": 18, "column": 61 }
       }
     },
     "fnMap": {
@@ -1478,10 +1478,10 @@
     "f": { "0": 2, "1": 3 },
     "b": { "0": [1, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "2e9bd99233a254a4f3400148bec530f59e556611"
+    "hash": "45ed149fb3ac82fc3b2ed859064fc5f9725011b1"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/selectors.js",
+  "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/selectors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/HomeContainer/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 9, "column": 34 },
@@ -1699,14 +1699,14 @@
     },
     "b": { "0": [4, 0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0a2b768a3d509e1061b3c025d5f9a10ac538c8c8"
+    "hash": "bf2842b24628c9deff2c8b778a05f27099641e16"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/actions.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/actions.js",
+  "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/actions.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/actions.js",
     "statementMap": {
       "0": {
         "start": { "line": 10, "column": 2 },
-        "end": { "line": 13, "column": 3 }
+        "end": { "line": 13, "column": 4 }
       }
     },
     "fnMap": {
@@ -1728,10 +1728,10 @@
     "f": { "0": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "75c66b77607136ef0976e15d5110041a3dbb6e5e"
+    "hash": "4cfc09d53051afde2b57cb322dbc1434365bedf6"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/constants.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/constants.js",
+  "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/constants.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/constants.js",
     "statementMap": {
       "0": {
         "start": { "line": 7, "column": 29 },
@@ -1744,18 +1744,18 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "f3f9a49a05aab5dc40353b6c9fa0fb2e8deeb378"
+    "hash": "f40c01244bf75e13af313ea210eca09428e98d7d"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/index.js",
+  "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 18, "column": 2 },
-        "end": { "line": 26, "column": 3 }
+        "end": { "line": 26, "column": 4 }
       },
       "1": {
         "start": { "line": 29, "column": 0 },
-        "end": { "line": 33, "column": 1 }
+        "end": { "line": 33, "column": 2 }
       },
       "2": {
         "start": { "line": 35, "column": 24 },
@@ -1767,7 +1767,7 @@
       },
       "4": {
         "start": { "line": 43, "column": 2 },
-        "end": { "line": 45, "column": 3 }
+        "end": { "line": 45, "column": 4 }
       }
     },
     "fnMap": {
@@ -1813,10 +1813,10 @@
     "f": { "0": 4, "1": 2, "2": 3 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "dd67334b9992c63c399ae31db91889255afac7b1"
+    "hash": "902d0c1155e35597e9ecbdba14dff77d7d2bdf75"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/reducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/reducer.js",
+  "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/reducer.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/reducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 11, "column": 28 },
@@ -1836,11 +1836,11 @@
       },
       "4": {
         "start": { "line": 20, "column": 8 },
-        "end": { "line": 20, "column": 36 }
+        "end": { "line": 20, "column": 37 }
       },
       "5": {
         "start": { "line": 21, "column": 8 },
-        "end": { "line": 21, "column": 13 }
+        "end": { "line": 21, "column": 14 }
       }
     },
     "fnMap": {
@@ -1893,7 +1893,7 @@
         "locations": [
           {
             "start": { "line": 19, "column": 6 },
-            "end": { "line": 21, "column": 13 }
+            "end": { "line": 21, "column": 14 }
           }
         ],
         "line": 18
@@ -1903,10 +1903,10 @@
     "f": { "0": 160, "1": 160 },
     "b": { "0": [148], "1": [1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "a8b05e5ab46c68734bc5c65bbdbe93e317001abf"
+    "hash": "246ad7ae37eed315c434cc4491aeb5a22137a7df"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/selectors.js",
+  "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/selectors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/LanguageProvider/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 7, "column": 23 },
@@ -1991,14 +1991,14 @@
     "f": { "0": 6, "1": 5, "2": 2 },
     "b": { "0": [6, 0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "a427ecb5d5703ae59eac8348aac9bf3240f3e495"
+    "hash": "97b4b4b92cefd1ffa7449781e32572758189a982"
   },
-  "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/index.js",
+  "/Users/Ali/Consulting/react-template/app/containers/NotFoundPage/index.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/NotFoundPage/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 2 },
-        "end": { "line": 18, "column": 3 }
+        "end": { "line": 18, "column": 4 }
       }
     },
     "fnMap": {
@@ -2020,10 +2020,10 @@
     "f": { "0": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "903ac61a570bb51e17d7f5cf406bfc44317e8033"
+    "hash": "ac228aeb271b6c6796cbef241e1dece929643630"
   },
-  "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/messages.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/messages.js",
+  "/Users/Ali/Consulting/react-template/app/containers/NotFoundPage/messages.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/containers/NotFoundPage/messages.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 21 },
@@ -2036,10 +2036,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0187ddd3139ded568bb74252ae62e23fa14fde09"
+    "hash": "14432493b99570a441b31f298d8f61e4a465bf6c"
   },
-  "/Users/mac/wednesday/react-template/app/services/repoApi.js": {
-    "path": "/Users/mac/wednesday/react-template/app/services/repoApi.js",
+  "/Users/Ali/Consulting/react-template/app/services/repoApi.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/services/repoApi.js",
     "statementMap": {
       "0": {
         "start": { "line": 2, "column": 16 },
@@ -2073,10 +2073,10 @@
     "f": { "0": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "9ba08f17d0099a76daa7878de79dcbb116da8c14"
+    "hash": "ec150a8f19cdcf38de05f8f4685bde3d661745f1"
   },
-  "/Users/mac/wednesday/react-template/app/themes/colors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/themes/colors.js",
+  "/Users/Ali/Consulting/react-template/app/themes/colors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/themes/colors.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 16 },
@@ -2105,10 +2105,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "edfeb22ce3825e78ec4591024ede31bb3678222e"
+    "hash": "57c94c0db5d65e3e2740e1123b1795063add1814"
   },
-  "/Users/mac/wednesday/react-template/app/themes/fonts.js": {
-    "path": "/Users/mac/wednesday/react-template/app/themes/fonts.js",
+  "/Users/Ali/Consulting/react-template/app/themes/fonts.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/themes/fonts.js",
     "statementMap": {
       "0": {
         "start": { "line": 4, "column": 16 },
@@ -2373,10 +2373,10 @@
     },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "d8058a5d222aa59f88f60c52121a53647107be46"
+    "hash": "7a59e18f858fd44bca23ed87d714f7b234ce3028"
   },
-  "/Users/mac/wednesday/react-template/app/utils/checkStore.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/checkStore.js",
+  "/Users/Ali/Consulting/react-template/app/utils/checkStore.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/checkStore.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 16 },
@@ -2384,7 +2384,7 @@
       },
       "1": {
         "start": { "line": 17, "column": 2 },
-        "end": { "line": 20, "column": 3 }
+        "end": { "line": 20, "column": 4 }
       }
     },
     "fnMap": {
@@ -2406,10 +2406,10 @@
     "f": { "0": 17 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "69a4a11342a15bf4e6cf6fab98d0fa0696195c56"
+    "hash": "caf454df206a5160e8af32ba27e6db004ecffd57"
   },
-  "/Users/mac/wednesday/react-template/app/utils/constants.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/constants.js",
+  "/Users/Ali/Consulting/react-template/app/utils/constants.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/constants.js",
     "statementMap": {
       "0": {
         "start": { "line": 1, "column": 34 },
@@ -2430,10 +2430,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "a154acc8516cd2af10457c576006edbe49812b85"
+    "hash": "e376fe4086ffa6fa16dcf29f6e845455c44fea66"
   },
-  "/Users/mac/wednesday/react-template/app/utils/history.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/history.js",
+  "/Users/Ali/Consulting/react-template/app/utils/history.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/history.js",
     "statementMap": {
       "0": {
         "start": { "line": 2, "column": 16 },
@@ -2446,10 +2446,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "49a9cb7a77a62652464ec3959e7cf68c950e0341"
+    "hash": "63b9b8b7ca2a4ff63f9d708d7f119f7b2018dfd3"
   },
-  "/Users/mac/wednesday/react-template/app/utils/injectReducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/injectReducer.js",
+  "/Users/Ali/Consulting/react-template/app/utils/injectReducer.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/injectReducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 37 },
@@ -2469,19 +2469,19 @@
       },
       "4": {
         "start": { "line": 25, "column": 6 },
-        "end": { "line": 25, "column": 27 }
+        "end": { "line": 25, "column": 28 }
       },
       "5": {
         "start": { "line": 27, "column": 6 },
-        "end": { "line": 27, "column": 61 }
+        "end": { "line": 27, "column": 62 }
       },
       "6": {
         "start": { "line": 31, "column": 6 },
-        "end": { "line": 31, "column": 49 }
+        "end": { "line": 31, "column": 50 }
       },
       "7": {
         "start": { "line": 35, "column": 2 },
-        "end": { "line": 35, "column": 64 }
+        "end": { "line": 35, "column": 65 }
       },
       "8": {
         "start": { "line": 38, "column": 25 },
@@ -2493,11 +2493,11 @@
       },
       "10": {
         "start": { "line": 40, "column": 2 },
-        "end": { "line": 42, "column": 8 }
+        "end": { "line": 42, "column": 9 }
       },
       "11": {
         "start": { "line": 41, "column": 4 },
-        "end": { "line": 41, "column": 59 }
+        "end": { "line": 41, "column": 60 }
       }
     },
     "fnMap": {
@@ -2615,10 +2615,10 @@
     "f": { "0": 4, "1": 4, "2": 2, "3": 2, "4": 4, "5": 3 },
     "b": { "0": [4, 4, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "a65ec67d0930a439092ea5f45d6de1049344843b"
+    "hash": "737da834984690f9d80a8894e66bb3dc2f404ead"
   },
-  "/Users/mac/wednesday/react-template/app/utils/injectSaga.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/injectSaga.js",
+  "/Users/Ali/Consulting/react-template/app/utils/injectSaga.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/injectSaga.js",
     "statementMap": {
       "0": {
         "start": { "line": 19, "column": 40 },
@@ -2638,27 +2638,27 @@
       },
       "4": {
         "start": { "line": 30, "column": 6 },
-        "end": { "line": 30, "column": 27 }
+        "end": { "line": 30, "column": 28 }
       },
       "5": {
         "start": { "line": 32, "column": 6 },
-        "end": { "line": 32, "column": 50 }
+        "end": { "line": 32, "column": 51 }
       },
       "6": {
         "start": { "line": 34, "column": 6 },
-        "end": { "line": 34, "column": 64 }
+        "end": { "line": 34, "column": 65 }
       },
       "7": {
         "start": { "line": 38, "column": 6 },
-        "end": { "line": 38, "column": 35 }
+        "end": { "line": 38, "column": 36 }
       },
       "8": {
         "start": { "line": 42, "column": 6 },
-        "end": { "line": 42, "column": 49 }
+        "end": { "line": 42, "column": 50 }
       },
       "9": {
         "start": { "line": 46, "column": 2 },
-        "end": { "line": 46, "column": 59 }
+        "end": { "line": 46, "column": 60 }
       },
       "10": {
         "start": { "line": 49, "column": 22 },
@@ -2670,7 +2670,7 @@
       },
       "12": {
         "start": { "line": 51, "column": 2 },
-        "end": { "line": 57, "column": 8 }
+        "end": { "line": 57, "column": 9 }
       },
       "13": {
         "start": { "line": 52, "column": 22 },
@@ -2678,15 +2678,15 @@
       },
       "14": {
         "start": { "line": 53, "column": 4 },
-        "end": { "line": 53, "column": 45 }
+        "end": { "line": 53, "column": 46 }
       },
       "15": {
         "start": { "line": 54, "column": 4 },
-        "end": { "line": 56, "column": 5 }
+        "end": { "line": 56, "column": 6 }
       },
       "16": {
         "start": { "line": 55, "column": 6 },
-        "end": { "line": 55, "column": 30 }
+        "end": { "line": 55, "column": 31 }
       }
     },
     "fnMap": {
@@ -2833,10 +2833,10 @@
     "f": { "0": 5, "1": 5, "2": 3, "3": 1, "4": 3, "5": 5, "6": 4, "7": 4 },
     "b": { "0": [5, 5, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "d83e8675cace9cc8e7fd962a0586457898d9b540"
+    "hash": "7bd65effae9534d958c971a0d160caf291c56ae4"
   },
-  "/Users/mac/wednesday/react-template/app/utils/loadable.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/loadable.js",
+  "/Users/Ali/Consulting/react-template/app/utils/loadable.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/loadable.js",
     "statementMap": {
       "0": {
         "start": { "line": 3, "column": 17 },
@@ -2848,7 +2848,7 @@
       },
       "2": {
         "start": { "line": 6, "column": 2 },
-        "end": { "line": 10, "column": 3 }
+        "end": { "line": 10, "column": 4 }
       },
       "3": {
         "start": { "line": 7, "column": 4 },
@@ -2915,50 +2915,50 @@
     "f": { "0": 2, "1": 0 },
     "b": { "0": [2], "1": [0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "11b7f028ea315f582e78726be3eef18f3efb6f08"
+    "hash": "56f856ba75c33adaf6ae801a8b87c416c8211834"
   },
-  "/Users/mac/wednesday/react-template/app/utils/reducerInjectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/reducerInjectors.js",
+  "/Users/Ali/Consulting/react-template/app/utils/reducerInjectors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/reducerInjectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 2 },
-        "end": { "line": 25, "column": 3 }
+        "end": { "line": 25, "column": 4 }
       },
       "1": {
         "start": { "line": 9, "column": 4 },
-        "end": { "line": 9, "column": 35 }
+        "end": { "line": 9, "column": 36 }
       },
       "2": {
         "start": { "line": 9, "column": 18 },
-        "end": { "line": 9, "column": 35 }
+        "end": { "line": 9, "column": 36 }
       },
       "3": {
         "start": { "line": 11, "column": 4 },
-        "end": { "line": 14, "column": 5 }
+        "end": { "line": 14, "column": 6 }
       },
       "4": {
         "start": { "line": 17, "column": 4 },
-        "end": { "line": 21, "column": 12 }
+        "end": { "line": 21, "column": 13 }
       },
       "5": {
         "start": { "line": 21, "column": 6 },
-        "end": { "line": 21, "column": 12 }
+        "end": { "line": 21, "column": 13 }
       },
       "6": {
         "start": { "line": 23, "column": 4 },
-        "end": { "line": 23, "column": 41 }
+        "end": { "line": 23, "column": 42 }
       },
       "7": {
         "start": { "line": 24, "column": 4 },
-        "end": { "line": 24, "column": 63 }
+        "end": { "line": 24, "column": 64 }
       },
       "8": {
         "start": { "line": 29, "column": 2 },
-        "end": { "line": 29, "column": 19 }
+        "end": { "line": 29, "column": 20 }
       },
       "9": {
         "start": { "line": 31, "column": 2 },
-        "end": { "line": 33, "column": 3 }
+        "end": { "line": 33, "column": 4 }
       }
     },
     "fnMap": {
@@ -3003,17 +3003,17 @@
       "0": {
         "loc": {
           "start": { "line": 9, "column": 4 },
-          "end": { "line": 9, "column": 35 }
+          "end": { "line": 9, "column": 36 }
         },
         "type": "if",
         "locations": [
           {
             "start": { "line": 9, "column": 4 },
-            "end": { "line": 9, "column": 35 }
+            "end": { "line": 9, "column": 36 }
           },
           {
             "start": { "line": 9, "column": 4 },
-            "end": { "line": 9, "column": 35 }
+            "end": { "line": 9, "column": 36 }
           }
         ],
         "line": 9
@@ -3043,17 +3043,17 @@
       "2": {
         "loc": {
           "start": { "line": 17, "column": 4 },
-          "end": { "line": 21, "column": 12 }
+          "end": { "line": 21, "column": 13 }
         },
         "type": "if",
         "locations": [
           {
             "start": { "line": 17, "column": 4 },
-            "end": { "line": 21, "column": 12 }
+            "end": { "line": 21, "column": 13 }
           },
           {
             "start": { "line": 17, "column": 4 },
-            "end": { "line": 21, "column": 12 }
+            "end": { "line": 21, "column": 13 }
           }
         ],
         "line": 17
@@ -3092,10 +3092,10 @@
     "f": { "0": 10, "1": 12, "2": 4 },
     "b": { "0": [1, 11], "1": [11, 9, 8], "2": [1, 7], "3": [8, 2] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "9c6a74904ac208bd67a6fc3e83582d41b9af2403"
+    "hash": "7d6fc4cf900902594f107219e08eec914b012d8f"
   },
-  "/Users/mac/wednesday/react-template/app/utils/sagaInjectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/sagaInjectors.js",
+  "/Users/Ali/Consulting/react-template/app/utils/sagaInjectors.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/sagaInjectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 7, "column": 21 },
@@ -3123,19 +3123,19 @@
       },
       "6": {
         "start": { "line": 20, "column": 2 },
-        "end": { "line": 23, "column": 3 }
+        "end": { "line": 23, "column": 4 }
       },
       "7": {
         "start": { "line": 27, "column": 2 },
-        "end": { "line": 61, "column": 3 }
+        "end": { "line": 61, "column": 4 }
       },
       "8": {
         "start": { "line": 28, "column": 4 },
-        "end": { "line": 28, "column": 35 }
+        "end": { "line": 28, "column": 36 }
       },
       "9": {
         "start": { "line": 28, "column": 18 },
-        "end": { "line": 28, "column": 35 }
+        "end": { "line": 28, "column": 36 }
       },
       "10": {
         "start": { "line": 30, "column": 26 },
@@ -3147,11 +3147,11 @@
       },
       "12": {
         "start": { "line": 36, "column": 4 },
-        "end": { "line": 36, "column": 17 }
+        "end": { "line": 36, "column": 18 }
       },
       "13": {
         "start": { "line": 37, "column": 4 },
-        "end": { "line": 37, "column": 34 }
+        "end": { "line": 37, "column": 35 }
       },
       "14": {
         "start": { "line": 39, "column": 18 },
@@ -3171,11 +3171,11 @@
       },
       "18": {
         "start": { "line": 45, "column": 8 },
-        "end": { "line": 45, "column": 35 }
+        "end": { "line": 45, "column": 36 }
       },
       "19": {
         "start": { "line": 46, "column": 8 },
-        "end": { "line": 46, "column": 23 }
+        "end": { "line": 46, "column": 24 }
       },
       "20": {
         "start": { "line": 50, "column": 4 },
@@ -3183,23 +3183,23 @@
       },
       "21": {
         "start": { "line": 55, "column": 6 },
-        "end": { "line": 58, "column": 7 }
+        "end": { "line": 58, "column": 8 }
       },
       "22": {
         "start": { "line": 65, "column": 2 },
-        "end": { "line": 81, "column": 3 }
+        "end": { "line": 81, "column": 4 }
       },
       "23": {
         "start": { "line": 66, "column": 4 },
-        "end": { "line": 66, "column": 35 }
+        "end": { "line": 66, "column": 36 }
       },
       "24": {
         "start": { "line": 66, "column": 18 },
-        "end": { "line": 66, "column": 35 }
+        "end": { "line": 66, "column": 36 }
       },
       "25": {
         "start": { "line": 68, "column": 4 },
-        "end": { "line": 68, "column": 17 }
+        "end": { "line": 68, "column": 18 }
       },
       "26": {
         "start": { "line": 70, "column": 4 },
@@ -3215,7 +3215,7 @@
       },
       "29": {
         "start": { "line": 73, "column": 8 },
-        "end": { "line": 73, "column": 32 }
+        "end": { "line": 73, "column": 33 }
       },
       "30": {
         "start": { "line": 75, "column": 8 },
@@ -3223,15 +3223,15 @@
       },
       "31": {
         "start": { "line": 77, "column": 10 },
-        "end": { "line": 77, "column": 43 }
+        "end": { "line": 77, "column": 44 }
       },
       "32": {
         "start": { "line": 85, "column": 2 },
-        "end": { "line": 85, "column": 19 }
+        "end": { "line": 85, "column": 20 }
       },
       "33": {
         "start": { "line": 86, "column": 2 },
-        "end": { "line": 89, "column": 3 }
+        "end": { "line": 89, "column": 4 }
       }
     },
     "fnMap": {
@@ -3386,17 +3386,17 @@
       "3": {
         "loc": {
           "start": { "line": 28, "column": 4 },
-          "end": { "line": 28, "column": 35 }
+          "end": { "line": 28, "column": 36 }
         },
         "type": "if",
         "locations": [
           {
             "start": { "line": 28, "column": 4 },
-            "end": { "line": 28, "column": 35 }
+            "end": { "line": 28, "column": 36 }
           },
           {
             "start": { "line": 28, "column": 4 },
-            "end": { "line": 28, "column": 35 }
+            "end": { "line": 28, "column": 36 }
           }
         ],
         "line": 28
@@ -3520,17 +3520,17 @@
       "10": {
         "loc": {
           "start": { "line": 66, "column": 4 },
-          "end": { "line": 66, "column": 35 }
+          "end": { "line": 66, "column": 36 }
         },
         "type": "if",
         "locations": [
           {
             "start": { "line": 66, "column": 4 },
-            "end": { "line": 66, "column": 35 }
+            "end": { "line": 66, "column": 36 }
           },
           {
             "start": { "line": 66, "column": 4 },
-            "end": { "line": 66, "column": 35 }
+            "end": { "line": 66, "column": 36 }
           }
         ],
         "line": 66
@@ -3672,10 +3672,10 @@
       "14": [2, 1]
     },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "7e95dd0bdce79f207f3a659b254930f308cc2f2b"
+    "hash": "53cc7219f4ecef532422a3f6104afa372b2da844"
   },
-  "/Users/mac/wednesday/react-template/app/utils/testUtils.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/testUtils.js",
+  "/Users/Ali/Consulting/react-template/app/utils/testUtils.js": {
+    "path": "/Users/Ali/Consulting/react-template/app/utils/testUtils.js",
     "statementMap": {
       "0": {
         "start": { "line": 11, "column": 30 },
@@ -3691,7 +3691,7 @@
       },
       "3": {
         "start": { "line": 22, "column": 2 },
-        "end": { "line": 22, "column": 34 }
+        "end": { "line": 22, "column": 35 }
       },
       "4": {
         "start": { "line": 23, "column": 32 },
@@ -3703,7 +3703,7 @@
       },
       "6": {
         "start": { "line": 26, "column": 2 },
-        "end": { "line": 26, "column": 59 }
+        "end": { "line": 26, "column": 60 }
       },
       "7": {
         "start": { "line": 29, "column": 30 },
@@ -3715,7 +3715,7 @@
       },
       "9": {
         "start": { "line": 31, "column": 2 },
-        "end": { "line": 43, "column": 3 }
+        "end": { "line": 43, "column": 4 }
       },
       "10": {
         "start": { "line": 45, "column": 23 },
@@ -3848,6 +3848,6 @@
     "f": { "0": 8, "1": 1, "2": 2, "3": 1, "4": 1, "5": 2 },
     "b": { "0": [0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "dc6b3d23361774a8575bbce7b0d5071c9d9780f2"
+    "hash": "994670d79b6b76b2d20375ddb45827517e131943"
   }
 }

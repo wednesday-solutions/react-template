@@ -4,30 +4,30 @@
  *
  */
 
-import React, { useEffect, memo, useState } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-import { compose } from 'redux'
-import _ from 'lodash'
-import { Card, Skeleton, Input } from 'antd'
-import styled from 'styled-components'
-import { FormattedMessage as T, injectIntl } from 'react-intl'
-import { withRouter } from 'react-router-dom'
-import Text from '@components/Text'
-import Clickable from '@components/Clickable'
-import { useInjectSaga } from 'utils/injectSaga'
-import { useInjectReducer } from 'utils/injectReducer'
+import React, { useEffect, memo, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import _ from 'lodash';
+import { Card, Skeleton, Input } from 'antd';
+import styled from 'styled-components';
+import { FormattedMessage as T, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
+import Text from '@components/Text';
+import Clickable from '@components/Clickable';
+import { useInjectSaga } from 'utils/injectSaga';
+import { useInjectReducer } from 'utils/injectReducer';
 import {
   selectHomeContainer,
   selectReposData,
   selectReposError,
   selectRepoName
-} from './selectors'
-import reducer, { homeContainerCreators } from './reducer'
-import saga from './saga'
+} from './selectors';
+import reducer, { homeContainerCreators } from './reducer';
+import saga from './saga';
 
-const { Search } = Input
+const { Search } = Input;
 
 const CustomCard = styled(Card)`
   && {
@@ -36,7 +36,7 @@ const CustomCard = styled(Card)`
     color: ${props => props.color};
     ${props => props.color && `color: ${props.color}`};
   }
-`
+`;
 const Container = styled.div`
   && {
     display: flex;
@@ -46,11 +46,11 @@ const Container = styled.div`
     margin: 0 auto;
     padding: 20px;
   }
-`
+`;
 const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
-`
+`;
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
@@ -59,29 +59,29 @@ export function HomeContainer({
   repoName,
   history
 }) {
-  useInjectReducer({ key: 'homeContainer', reducer })
-  useInjectSaga({ key: 'homeContainer', saga })
-  const [loading, setLoading] = useState(false)
+  useInjectReducer({ key: 'homeContainer', reducer });
+  useInjectSaga({ key: 'homeContainer', saga });
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
     // Effect will be called after render, even the first render bro
-    const loaded = _.get(reposData, 'items', null) || reposError
+    const loaded = _.get(reposData, 'items', null) || reposError;
     if (loading && loaded) {
-      setLoading(false)
+      setLoading(false);
     }
-  })
+  });
 
   const handleOnChange = rName => {
     if (rName) {
-      dipatchGithubRepos(rName)
-      setLoading(true)
+      dipatchGithubRepos(rName);
+      setLoading(true);
     }
-  }
-  const debouncedHandleOnChange = _.debounce(handleOnChange, 200)
+  };
+  const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
 
   const renderRepoList = () => {
-    const items = _.get(reposData, 'items', [])
-    const totalCount = _.get(reposData, 'totalCount', 0)
+    const items = _.get(reposData, 'items', []);
+    const totalCount = _.get(reposData, 'totalCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
@@ -106,14 +106,14 @@ export function HomeContainer({
           </Skeleton>
         </CustomCard>
       )
-    )
-  }
+    );
+  };
   const renderErrorState = () => {
-    let repoError
+    let repoError;
     if (reposError) {
-      repoError = reposError
+      repoError = reposError;
     } else if (!_.get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default'
+      repoError = 'respo_search_default';
     }
     return (
       !loading &&
@@ -125,12 +125,12 @@ export function HomeContainer({
           <T id={repoError} />
         </CustomCard>
       )
-    )
-  }
+    );
+  };
   const refreshPage = () => {
-    history.push('stories')
-    window.location.reload()
-  }
+    history.push('stories');
+    window.location.reload();
+  };
   return (
     <Container>
       <RightContent>
@@ -152,7 +152,7 @@ export function HomeContainer({
       {renderRepoList()}
       {renderErrorState()}
     </Container>
-  )
+  );
 }
 
 HomeContainer.propTypes = {
@@ -166,32 +166,32 @@ HomeContainer.propTypes = {
   reposError: PropTypes.object,
   repoName: PropTypes.string,
   history: PropTypes.object
-}
+};
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
   reposData: selectReposData(),
   reposError: selectReposError(),
   repoName: selectRepoName()
-})
+});
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos } = homeContainerCreators
+  const { requestGetGithubRepos } = homeContainerCreators;
   return {
     dipatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName))
-  }
+  };
 }
 
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps
-)
+);
 
 export default compose(
   injectIntl,
   withConnect,
   memo,
   withRouter
-)(HomeContainer)
+)(HomeContainer);
 
-export const HomeContainerTest = compose(injectIntl)(HomeContainer)
+export const HomeContainerTest = compose(injectIntl)(HomeContainer);

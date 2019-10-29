@@ -1,8 +1,8 @@
-import React from 'react'
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import { ReactReduxContext } from 'react-redux'
+import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import { ReactReduxContext } from 'react-redux';
 
-import getInjectors from './sagaInjectors'
+import getInjectors from './sagaInjectors';
 
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
@@ -18,43 +18,43 @@ import getInjectors from './sagaInjectors'
  */
 export default ({ key, saga, mode }) => WrappedComponent => {
   class InjectSaga extends React.Component {
-    static WrappedComponent = WrappedComponent
+    static WrappedComponent = WrappedComponent;
 
-    static contextType = ReactReduxContext
+    static contextType = ReactReduxContext;
 
     static displayName = `withSaga(${WrappedComponent.displayName ||
       WrappedComponent.name ||
-      'Component'})`
+      'Component'})`;
 
     constructor(props, context) {
-      super(props, context)
+      super(props, context);
 
-      this.injectors = getInjectors(context.store)
+      this.injectors = getInjectors(context.store);
 
-      this.injectors.injectSaga(key, { saga, mode }, this.props)
+      this.injectors.injectSaga(key, { saga, mode }, this.props);
     }
 
     componentWillUnmount() {
-      this.injectors.ejectSaga(key)
+      this.injectors.ejectSaga(key);
     }
 
     render() {
-      return <WrappedComponent {...this.props} />
+      return <WrappedComponent {...this.props} />;
     }
   }
 
-  return hoistNonReactStatics(InjectSaga, WrappedComponent)
-}
+  return hoistNonReactStatics(InjectSaga, WrappedComponent);
+};
 
 const useInjectSaga = ({ key, saga, mode }) => {
-  const context = React.useContext(ReactReduxContext)
+  const context = React.useContext(ReactReduxContext);
   React.useEffect(() => {
-    const injectors = getInjectors(context.store)
-    injectors.injectSaga(key, { saga, mode })
+    const injectors = getInjectors(context.store);
+    injectors.injectSaga(key, { saga, mode });
     return () => {
-      injectors.ejectSaga(key)
-    }
-  }, [])
-}
+      injectors.ejectSaga(key);
+    };
+  }, []);
+};
 
-export { useInjectSaga }
+export { useInjectSaga };
