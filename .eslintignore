@@ -6,3 +6,5 @@ stats.json
 npm-debug.log
 .idea
 **/coverage/**
+**/storybook-static/**
+**/server/**
