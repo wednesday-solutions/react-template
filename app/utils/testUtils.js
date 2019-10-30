@@ -1,12 +1,12 @@
-import React from 'react'
-import { IntlProvider } from 'react-intl'
-import { render } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import configureStore from '@app/configureStore'
-import { DEFAULT_LOCALE, translationMessages } from '@app/i18n'
-import ConnectedLanguageProvider from '@containers/LanguageProvider'
-import { browserHistory } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from '@app/configureStore';
+import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
+import ConnectedLanguageProvider from '@containers/LanguageProvider';
+import { browserHistory } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 export const renderWithIntl = children =>
   render(
@@ -16,18 +16,18 @@ export const renderWithIntl = children =>
     >
       {children}
     </IntlProvider>
-  )
+  );
 
 export const getComponentStyles = (Component, props = {}) => {
-  renderWithIntl(Component(props))
-  const { styledComponentId } = Component(props).type
-  const componentRoots = document.getElementsByClassName(styledComponentId)
+  renderWithIntl(Component(props));
+  const { styledComponentId } = Component(props).type;
+  const componentRoots = document.getElementsByClassName(styledComponentId);
   // eslint-disable-next-line no-underscore-dangle
-  return window.getComputedStyle(componentRoots[0])._values
-}
+  return window.getComputedStyle(componentRoots[0])._values;
+};
 
 export const renderProvider = children => {
-  const store = configureStore({}, browserHistory)
+  const store = configureStore({}, browserHistory);
   return render(
     <Provider store={store}>
       <ConnectedLanguageProvider messages={translationMessages}>
@@ -40,10 +40,10 @@ export const renderProvider = children => {
         </ThemeProvider>
       </ConnectedLanguageProvider>
     </Provider>
-  )
-}
-export const timeout = ms => new Promise(resolve => setTimeout(resolve, ms))
+  );
+};
+export const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const apiResponseGenerator = (ok, data) => ({
   ok,
   data
-})
+});

@@ -446,30 +446,30 @@
  *
  */
 &nbsp;
-import React, { useEffect, memo, useState } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-import { compose } from 'redux'
-import _ from 'lodash'
-import { Card, Skeleton, Input } from 'antd'
-import styled from 'styled-components'
-import { FormattedMessage as T, injectIntl } from 'react-intl'
-import { withRouter } from 'react-router-dom'
-import Text from '@components/Text'
-import Clickable from '@components/Clickable'
-import { useInjectSaga } from 'utils/injectSaga'
-import { useInjectReducer } from 'utils/injectReducer'
+import React, { useEffect, memo, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import _ from 'lodash';
+import { Card, Skeleton, Input } from 'antd';
+import styled from 'styled-components';
+import { FormattedMessage as T, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
+import Text from '@components/Text';
+import Clickable from '@components/Clickable';
+import { useInjectSaga } from 'utils/injectSaga';
+import { useInjectReducer } from 'utils/injectReducer';
 import {
   selectHomeContainer,
   selectReposData,
   selectReposError,
   selectRepoName
-} from './selectors'
-import reducer, { homeContainerCreators } from './reducer'
-import saga from './saga'
+} from './selectors';
+import reducer, { homeContainerCreators } from './reducer';
+import saga from './saga';
 &nbsp;
-const { Search } = Input
+const { Search } = Input;
 &nbsp;
 const CustomCard = styled(Card)`
   &amp;&amp; {
@@ -478,7 +478,7 @@ const CustomCard = styled(Card)`
     color: ${props =&gt; props.color};
     ${props =&gt; props.color &amp;&amp; `color: ${props.color}`};
   }
-`
+`;
 const Container = styled.div`
   &amp;&amp; {
     display: flex;
@@ -488,11 +488,11 @@ const Container = styled.div`
     margin: 0 auto;
     padding: 20px;
   }
-`
+`;
 const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
-`
+`;
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
@@ -501,29 +501,29 @@ export function HomeContainer({
   repoName,
   history
 }) {
-  useInjectReducer({ key: 'homeContainer', reducer })
-  useInjectSaga({ key: 'homeContainer', saga })
-  const [loading, setLoading] = useState(false)
+  useInjectReducer({ key: 'homeContainer', reducer });
+  useInjectSaga({ key: 'homeContainer', saga });
+  const [loading, setLoading] = useState(false);
   useEffect(() =&gt; {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
     // Effect will be called after render, even the first render bro
-    const loaded = _.get(reposData, 'items', null) || reposError
+    const loaded = _.get(reposData, 'items', null) || reposError;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (loading &amp;&amp; loaded) {
-<span class="cstat-no" title="statement not covered" >      setLoading(false)</span>
+<span class="cstat-no" title="statement not covered" >      setLoading(false);</span>
     }
-  })
+  });
 &nbsp;
   const handleOnChange = rName =&gt; {
     <span class="missing-if-branch" title="else path not taken" >E</span>if (rName) {
-      dipatchGithubRepos(rName)
-      setLoading(true)
+      dipatchGithubRepos(rName);
+      setLoading(true);
     }
-  }
-  const debouncedHandleOnChange = _.debounce(handleOnChange, 200)
+  };
+  const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
 &nbsp;
   const renderRepoList = () =&gt; {
-    const items = _.get(reposData, 'items', [])
-    const totalCount = _.get(reposData, 'totalCount', 0)
+    const items = _.get(reposData, 'items', []);
+    const totalCount = _.get(reposData, 'totalCount', 0);
     return (
       (items.length !== 0 || loading) &amp;&amp; (
         &lt;CustomCard&gt;
@@ -548,14 +548,14 @@ export function HomeContainer({
           &lt;/Skeleton&gt;
         &lt;/CustomCard&gt;
       )
-    )
-  }
+    );
+  };
   const renderErrorState = () =&gt; {
-    let repoError
+    let repoError;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (reposError) {
-<span class="cstat-no" title="statement not covered" >      repoError = reposError</span>
+<span class="cstat-no" title="statement not covered" >      repoError = reposError;</span>
     } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!_.get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default'
+      repoError = 'respo_search_default';
     }
     return (
       !loading &amp;&amp;
@@ -567,12 +567,12 @@ export function HomeContainer({
           &lt;T id={repoError} /&gt;
         &lt;/CustomCard&gt;
       )
-    )
-  }
+    );
+  };
   const refreshPage = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    history.push('stories')</span>
-<span class="cstat-no" title="statement not covered" >    window.location.reload()</span>
-  }
+<span class="cstat-no" title="statement not covered" >    history.push('stories');</span>
+<span class="cstat-no" title="statement not covered" >    window.location.reload();</span>
+  };
   return (
     &lt;Container&gt;
       &lt;RightContent&gt;
@@ -594,7 +594,7 @@ export function HomeContainer({
       {renderRepoList()}
       {renderErrorState()}
     &lt;/Container&gt;
-  )
+  );
 }
 &nbsp;
 HomeContainer.propTypes = {
@@ -608,42 +608,42 @@ HomeContainer.propTypes = {
   reposError: PropTypes.object,
   repoName: PropTypes.string,
   history: PropTypes.object
-}
+};
 &nbsp;
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
   reposData: selectReposData(),
   reposError: selectReposError(),
   repoName: selectRepoName()
-})
+});
 &nbsp;
 function <span class="fstat-no" title="function not covered" >mapDispatchToProps(</span>dispatch) {
-  const { requestGetGithubRepos } = <span class="cstat-no" title="statement not covered" >homeContainerCreators</span>
+  const { requestGetGithubRepos } = <span class="cstat-no" title="statement not covered" >homeContainerCreators;</span>
 <span class="cstat-no" title="statement not covered" >  return {</span>
     dipatchGithubRepos: <span class="fstat-no" title="function not covered" >re</span>poName =&gt; <span class="cstat-no" title="statement not covered" >dispatch(requestGetGithubRepos(repoName))</span>
-  }
+  };
 }
 &nbsp;
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps
-)
+);
 &nbsp;
 export default compose(
   injectIntl,
   withConnect,
   memo,
   withRouter
-)(HomeContainer)
+)(HomeContainer);
 &nbsp;
-export const HomeContainerTest = compose(injectIntl)(HomeContainer)
+export const HomeContainerTest = compose(injectIntl)(HomeContainer);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 28 2019 00:42:54 GMT+0530 (India Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 01:19:31 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

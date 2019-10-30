@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> Should render and match the snapshot 1`] = `
+exports[`<Text /> component tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div

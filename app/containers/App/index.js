@@ -7,20 +7,20 @@
  *
  */
 
-import React from 'react'
-import { Switch, Route, withRouter } from 'react-router-dom'
-import _ from 'lodash'
-import { compose } from 'redux'
-import { PropTypes } from 'prop-types'
-import { routeConfig } from '@app/routeConfig'
-import { ThemeProvider } from 'styled-components'
-import GlobalStyle from '@app/global-styles'
-import { colors } from '@themes'
+import React from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import _ from 'lodash';
+import { compose } from 'redux';
+import { PropTypes } from 'prop-types';
+import { routeConfig } from '@app/routeConfig';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from '@app/global-styles';
+import { colors } from '@themes';
 
 const theme = {
   fg: colors.primary,
   bg: colors.secondary
-}
+};
 
 function App({ location }) {
   return (
@@ -39,9 +39,9 @@ function App({ location }) {
         <GlobalStyle />
       </div>
     </ThemeProvider>
-  )
+  );
 }
 App.propTypes = {
   location: PropTypes.object
-}
-export default compose(withRouter)(App)
+};
+export default compose(withRouter)(App);

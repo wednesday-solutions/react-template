@@ -1,14 +1,14 @@
-import React from 'react'
-import ShallowRenderer from 'react-test-renderer/shallow'
+import React from 'react';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
-import App from '../index'
+import App from '../index';
 
-const renderer = new ShallowRenderer()
+const renderer = new ShallowRenderer();
 
-describe('<App />', () => {
+describe('<App /> container tests', () => {
   it('should render and match the snapshot', () => {
-    renderer.render(<App />)
-    const renderedOutput = renderer.getRenderOutput()
-    expect(renderedOutput).toMatchSnapshot()
-  })
-})
+    renderer.render(<App />);
+    const renderedOutput = renderer.getRenderOutput();
+    expect(renderedOutput).toMatchSnapshot();
+  });
+});
