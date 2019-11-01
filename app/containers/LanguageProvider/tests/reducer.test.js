@@ -1,22 +1,28 @@
-import languageProviderReducer from '../reducer';
-import { CHANGE_LOCALE } from '../constants';
+import {
+  initialState,
+  languageProviderTypes,
+  languageProviderReducer
+} from '../reducer';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('LanguageProvider reducer tests', () => {
+describe('Tests for LanguageProvider actions', () => {
+  let mockedState;
+  beforeEach(() => {
+    mockedState = initialState;
+  });
+
   it('returns the initial state', () => {
-    expect(languageProviderReducer(undefined, {})).toEqual({
-      locale: 'en'
-    });
+    expect(languageProviderReducer(undefined, {})).toEqual(mockedState);
   });
 
   it('changes the locale', () => {
+    const locale = 'de';
+    mockedState = mockedState.set('locale', locale);
     expect(
       languageProviderReducer(undefined, {
-        type: CHANGE_LOCALE,
-        locale: 'de'
+        type: languageProviderTypes.CHANGE_LOCALE,
+        locale
       })
-    ).toEqual({
-      locale: 'de'
-    });
+    ).toEqual(mockedState);
   });
 });
