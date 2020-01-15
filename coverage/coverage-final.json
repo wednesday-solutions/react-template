@@ -1,6 +1,6 @@
 {
-  "/Users/mac/wednesday/react-template/app/configureStore.js": {
-    "path": "/Users/mac/wednesday/react-template/app/configureStore.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/configureStore.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/configureStore.js",
     "statementMap": {
       "0": {
         "start": { "line": 11, "column": 25 },
@@ -88,10 +88,10 @@
     "f": { "0": 44 },
     "b": { "0": [1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "b17b4b4f6aeba967720235734ba72e691af067ba"
+    "hash": "7fb28b9e2685bbc0d2d0e8d8561e1892eff88b64"
   },
-  "/Users/mac/wednesday/react-template/app/i18n.js": {
-    "path": "/Users/mac/wednesday/react-template/app/i18n.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/i18n.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/i18n.js",
     "statementMap": {
       "0": {
         "start": { "line": 10, "column": 22 },
@@ -246,10 +246,10 @@
     "f": { "0": 16, "1": 103 },
     "b": { "0": [1, 15], "1": [1, 102], "2": [103, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "60cb43466f8433a1f275ba84afcecbe4215be955"
+    "hash": "440c98994cd8ba81aeefea687b81d293a41af017"
   },
-  "/Users/mac/wednesday/react-template/app/reducers.js": {
-    "path": "/Users/mac/wednesday/react-template/app/reducers.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/reducers.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/reducers.js",
     "statementMap": {
       "0": {
         "start": { "line": 15, "column": 22 },
@@ -294,10 +294,10 @@
     "f": { "0": 51 },
     "b": { "0": [44] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "32249377b9dd0163989c90a8c6e8af95381642c5"
+    "hash": "cd3ac35eddad0221492d88fdeb43d731d89de1a3"
   },
-  "/Users/mac/wednesday/react-template/app/routeConfig.js": {
-    "path": "/Users/mac/wednesday/react-template/app/routeConfig.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/routeConfig.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/routeConfig.js",
     "statementMap": {
       "0": {
         "start": { "line": 4, "column": 27 },
@@ -310,10 +310,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "907ba56d79fd8b205b0a166a3b849ab33f1e0959"
+    "hash": "115dcc315641a355c1cafe615be5150338d3a060"
   },
-  "/Users/mac/wednesday/react-template/app/components/Clickable/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/components/Clickable/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/components/Clickable/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/components/Clickable/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 12, "column": 24 },
@@ -366,10 +366,10 @@
     "f": { "0": 7 },
     "b": { "0": [7, 5] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "d788e490255dceaaf344d43af016f75051bda7c1"
+    "hash": "3ddc56fe5ec3dbe0c5b1083a4ed3e4f8d15eb02c"
   },
-  "/Users/mac/wednesday/react-template/app/components/Text/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/components/Text/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/components/Text/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/components/Text/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 12, "column": 19 },
@@ -468,10 +468,10 @@
     "f": { "0": 10, "1": 11 },
     "b": { "0": [10, 3], "1": [11, 11] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0d0a3b8ec48882afcb19f00e0ba152876e1a382b"
+    "hash": "025d8accaf822a4e040e880358c23a8327919152"
   },
-  "/Users/mac/wednesday/react-template/app/containers/App/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/App/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/App/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/App/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 20, "column": 14 },
@@ -521,10 +521,10 @@
     "f": { "0": 0, "1": 0 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "686217497e1768f3e52602115e5552abd11de3fa"
+    "hash": "f183b982608a33a6bda65aadb12a0d0f3b02664c"
   },
-  "/Users/mac/wednesday/react-template/app/containers/App/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/App/selectors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/App/selectors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/App/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 3, "column": 21 },
@@ -590,10 +590,10 @@
     "f": { "0": 1, "1": 1, "2": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "551dc4547005060b0462a7caf882ae50e751b48a"
+    "hash": "baa6c62f6bcbfe3befb8cf350c6ca09b0e36acb1"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 30, "column": 19 },
@@ -1270,10 +1270,10 @@
       "13": [0, 2]
     },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "62170408b58119540e54127fb00df90939f6b322"
+    "hash": "7c74f7ae9e790fc6dbccbb0bc58f3872faa16487"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/reducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/reducer.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/reducer.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/reducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 4 },
@@ -1390,10 +1390,10 @@
     "f": { "0": 10, "1": 10 },
     "b": { "0": [7], "1": [1, 1, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "e3ceb475c969699c06d1535a8ecc98bfbdfee69f"
+    "hash": "c3a01c15ef721e4f0646b54efc99d5ea56fdc919"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/saga.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/saga.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/saga.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/saga.js",
     "statementMap": {
       "0": {
         "start": { "line": 5, "column": 37 },
@@ -1478,10 +1478,10 @@
     "f": { "0": 2, "1": 3 },
     "b": { "0": [1, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "3126424f3320604a4219d55bf3d1eb3aa0714985"
+    "hash": "9187362598292eddb3bd86bb7284b566b1b16bc7"
   },
-  "/Users/mac/wednesday/react-template/app/containers/HomeContainer/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/HomeContainer/selectors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/selectors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/HomeContainer/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 9, "column": 34 },
@@ -1699,10 +1699,10 @@
     },
     "b": { "0": [4, 0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0a2b768a3d509e1061b3c025d5f9a10ac538c8c8"
+    "hash": "e91b7c33cfa9996d05ee8ede0909aad5fc89edd0"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 18, "column": 2 },
@@ -1768,10 +1768,10 @@
     "f": { "0": 4, "1": 2, "2": 3 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "f784970f5e7836bebdb40061e6eda78ff58efbfa"
+    "hash": "9839c51f864933dbc6ebc0ad8a1cdad62126148e"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/reducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/reducer.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/reducer.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/reducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 4 },
@@ -1782,7 +1782,7 @@
         "end": { "line": 20, "column": 2 }
       },
       "2": {
-        "start": { "line": 23, "column": 32 },
+        "start": { "line": 23, "column": 39 },
         "end": { "line": 31, "column": 4 }
       },
       "3": {
@@ -1795,19 +1795,19 @@
       },
       "5": {
         "start": { "line": 27, "column": 8 },
-        "end": { "line": 27, "column": 49 }
+        "end": { "line": 27, "column": 50 }
       },
       "6": {
         "start": { "line": 29, "column": 8 },
-        "end": { "line": 29, "column": 20 }
+        "end": { "line": 29, "column": 21 }
       }
     },
     "fnMap": {
       "0": {
         "name": "(anonymous_0)",
         "decl": {
-          "start": { "line": 23, "column": 32 },
-          "end": { "line": 23, "column": 33 }
+          "start": { "line": 23, "column": 39 },
+          "end": { "line": 23, "column": 40 }
         },
         "loc": {
           "start": { "line": 24, "column": 2 },
@@ -1831,14 +1831,14 @@
     "branchMap": {
       "0": {
         "loc": {
-          "start": { "line": 23, "column": 33 },
-          "end": { "line": 23, "column": 53 }
+          "start": { "line": 23, "column": 40 },
+          "end": { "line": 23, "column": 60 }
         },
         "type": "default-arg",
         "locations": [
           {
-            "start": { "line": 23, "column": 41 },
-            "end": { "line": 23, "column": 53 }
+            "start": { "line": 23, "column": 48 },
+            "end": { "line": 23, "column": 60 }
           }
         ],
         "line": 23
@@ -1852,11 +1852,11 @@
         "locations": [
           {
             "start": { "line": 26, "column": 6 },
-            "end": { "line": 27, "column": 49 }
+            "end": { "line": 27, "column": 50 }
           },
           {
             "start": { "line": 28, "column": 6 },
-            "end": { "line": 29, "column": 20 }
+            "end": { "line": 29, "column": 21 }
           }
         ],
         "line": 25
@@ -1866,10 +1866,10 @@
     "f": { "0": 160, "1": 160 },
     "b": { "0": [148], "1": [1, 159] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0977313e858d95c91c918d2adadeb557618f7079"
+    "hash": "b6b57ff187e42624e961b805b1e2e727d9e5b691"
   },
-  "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/selectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/LanguageProvider/selectors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/selectors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/LanguageProvider/selectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 7, "column": 23 },
@@ -1954,10 +1954,10 @@
     "f": { "0": 6, "1": 5, "2": 5 },
     "b": { "0": [6, 0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "ef7a2bf4ba1ced2061f9a900d717f6282c83cc5a"
+    "hash": "62126c56cfec8a0cb28d9fc581cd8418e44feb5b"
   },
-  "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/index.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/index.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/NotFoundPage/index.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/NotFoundPage/index.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 2 },
@@ -1983,10 +1983,10 @@
     "f": { "0": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "ae436f916626d5d375c20ba2946f461841a5f420"
+    "hash": "7924fb7af0b50a6e1e565ca9817fa5871e8f1b2a"
   },
-  "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/messages.js": {
-    "path": "/Users/mac/wednesday/react-template/app/containers/NotFoundPage/messages.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/containers/NotFoundPage/messages.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/containers/NotFoundPage/messages.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 21 },
@@ -1999,10 +1999,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0187ddd3139ded568bb74252ae62e23fa14fde09"
+    "hash": "2a4f4c2deba6beba261d03f128cac08660836089"
   },
-  "/Users/mac/wednesday/react-template/app/services/repoApi.js": {
-    "path": "/Users/mac/wednesday/react-template/app/services/repoApi.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/services/repoApi.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/services/repoApi.js",
     "statementMap": {
       "0": {
         "start": { "line": 2, "column": 16 },
@@ -2036,10 +2036,10 @@
     "f": { "0": 1 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "9ba08f17d0099a76daa7878de79dcbb116da8c14"
+    "hash": "d1611a0e7e0801153332201430c017983dfe4233"
   },
-  "/Users/mac/wednesday/react-template/app/themes/colors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/themes/colors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/themes/colors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/themes/colors.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 16 },
@@ -2068,10 +2068,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "edfeb22ce3825e78ec4591024ede31bb3678222e"
+    "hash": "2dec086746695e8b14e3fc7626e3e735d15031b8"
   },
-  "/Users/mac/wednesday/react-template/app/themes/fonts.js": {
-    "path": "/Users/mac/wednesday/react-template/app/themes/fonts.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/themes/fonts.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/themes/fonts.js",
     "statementMap": {
       "0": {
         "start": { "line": 4, "column": 16 },
@@ -2336,10 +2336,10 @@
     },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "d8058a5d222aa59f88f60c52121a53647107be46"
+    "hash": "5f917c4bea455866e253a5ba868988829f3ed61a"
   },
-  "/Users/mac/wednesday/react-template/app/utils/checkStore.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/checkStore.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/checkStore.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/checkStore.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 16 },
@@ -2369,10 +2369,10 @@
     "f": { "0": 17 },
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "56ac1748edebf243da5107fd4142aef2d7db0340"
+    "hash": "d2a548b48a8f1b2d51a02547e8cf1a607b253972"
   },
-  "/Users/mac/wednesday/react-template/app/utils/constants.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/constants.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/constants.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/constants.js",
     "statementMap": {
       "0": {
         "start": { "line": 1, "column": 34 },
@@ -2393,10 +2393,10 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "a154acc8516cd2af10457c576006edbe49812b85"
+    "hash": "4ef0075b45627e2fc9071919036c893b743fd340"
   },
-  "/Users/mac/wednesday/react-template/app/utils/history.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/history.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/history.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/history.js",
     "statementMap": {
       "0": {
         "start": { "line": 2, "column": 16 },
@@ -2409,44 +2409,56 @@
     "f": {},
     "b": {},
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "49a9cb7a77a62652464ec3959e7cf68c950e0341"
+    "hash": "24b773d18a04790c76aa67ed1f56fc021aa53c00"
   },
-  "/Users/mac/wednesday/react-template/app/utils/injectReducer.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/injectReducer.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/injectReducer.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/injectReducer.js",
     "statementMap": {
       "0": {
         "start": { "line": 14, "column": 37 },
         "end": { "line": 36, "column": 1 }
       },
       "1": {
+        "start": { "line": 16, "column": 30 },
+        "end": { "line": 16, "column": 46 }
+      },
+      "2": {
+        "start": { "line": 18, "column": 25 },
+        "end": { "line": 18, "column": 42 }
+      },
+      "3": {
+        "start": { "line": 20, "column": 25 },
+        "end": { "line": 22, "column": 20 }
+      },
+      "4": {
         "start": { "line": 25, "column": 6 },
         "end": { "line": 25, "column": 28 }
       },
-      "2": {
+      "5": {
         "start": { "line": 27, "column": 6 },
         "end": { "line": 27, "column": 62 }
       },
-      "3": {
+      "6": {
         "start": { "line": 31, "column": 6 },
         "end": { "line": 31, "column": 50 }
       },
-      "4": {
+      "7": {
         "start": { "line": 35, "column": 2 },
         "end": { "line": 35, "column": 65 }
       },
-      "5": {
+      "8": {
         "start": { "line": 38, "column": 25 },
         "end": { "line": 43, "column": 1 }
       },
-      "6": {
+      "9": {
         "start": { "line": 39, "column": 18 },
         "end": { "line": 39, "column": 53 }
       },
-      "7": {
+      "10": {
         "start": { "line": 40, "column": 2 },
         "end": { "line": 42, "column": 9 }
       },
-      "8": {
+      "11": {
         "start": { "line": 41, "column": 4 },
         "end": { "line": 41, "column": 60 }
       }
@@ -2551,76 +2563,91 @@
     },
     "s": {
       "0": 4,
-      "1": 2,
-      "2": 2,
-      "3": 2,
-      "4": 4,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 2,
       "5": 2,
-      "6": 4,
+      "6": 2,
       "7": 4,
-      "8": 3
+      "8": 2,
+      "9": 4,
+      "10": 4,
+      "11": 3
     },
     "f": { "0": 4, "1": 4, "2": 2, "3": 2, "4": 4, "5": 3 },
     "b": { "0": [4, 4, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "7464d5446d0bf6a25929e99886ac7a014a4af677"
+    "hash": "86b2913b4fbf33879bf52b3fea632f87b8687dd0"
   },
-  "/Users/mac/wednesday/react-template/app/utils/injectSaga.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/injectSaga.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/injectSaga.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/injectSaga.js",
     "statementMap": {
       "0": {
         "start": { "line": 19, "column": 40 },
         "end": { "line": 47, "column": 1 }
       },
       "1": {
+        "start": { "line": 21, "column": 30 },
+        "end": { "line": 21, "column": 46 }
+      },
+      "2": {
+        "start": { "line": 23, "column": 25 },
+        "end": { "line": 23, "column": 42 }
+      },
+      "3": {
+        "start": { "line": 25, "column": 25 },
+        "end": { "line": 27, "column": 20 }
+      },
+      "4": {
         "start": { "line": 30, "column": 6 },
         "end": { "line": 30, "column": 28 }
       },
-      "2": {
+      "5": {
         "start": { "line": 32, "column": 6 },
         "end": { "line": 32, "column": 51 }
       },
-      "3": {
+      "6": {
         "start": { "line": 34, "column": 6 },
         "end": { "line": 34, "column": 65 }
       },
-      "4": {
+      "7": {
         "start": { "line": 38, "column": 6 },
         "end": { "line": 38, "column": 36 }
       },
-      "5": {
+      "8": {
         "start": { "line": 42, "column": 6 },
         "end": { "line": 42, "column": 50 }
       },
-      "6": {
+      "9": {
         "start": { "line": 46, "column": 2 },
         "end": { "line": 46, "column": 60 }
       },
-      "7": {
+      "10": {
         "start": { "line": 49, "column": 22 },
         "end": { "line": 58, "column": 1 }
       },
-      "8": {
+      "11": {
         "start": { "line": 50, "column": 18 },
         "end": { "line": 50, "column": 53 }
       },
-      "9": {
+      "12": {
         "start": { "line": 51, "column": 2 },
         "end": { "line": 57, "column": 9 }
       },
-      "10": {
+      "13": {
         "start": { "line": 52, "column": 22 },
         "end": { "line": 52, "column": 49 }
       },
-      "11": {
+      "14": {
         "start": { "line": 53, "column": 4 },
         "end": { "line": 53, "column": 46 }
       },
-      "12": {
+      "15": {
         "start": { "line": 54, "column": 4 },
         "end": { "line": 56, "column": 6 }
       },
-      "13": {
+      "16": {
         "start": { "line": 55, "column": 6 },
         "end": { "line": 55, "column": 31 }
       }
@@ -2749,27 +2776,30 @@
     },
     "s": {
       "0": 5,
-      "1": 3,
-      "2": 3,
-      "3": 3,
-      "4": 1,
+      "1": 5,
+      "2": 5,
+      "3": 5,
+      "4": 3,
       "5": 3,
-      "6": 5,
-      "7": 2,
-      "8": 5,
+      "6": 3,
+      "7": 1,
+      "8": 3,
       "9": 5,
-      "10": 4,
-      "11": 4,
-      "12": 4,
-      "13": 4
+      "10": 2,
+      "11": 5,
+      "12": 5,
+      "13": 4,
+      "14": 4,
+      "15": 4,
+      "16": 4
     },
     "f": { "0": 5, "1": 5, "2": 3, "3": 1, "4": 3, "5": 5, "6": 4, "7": 4 },
     "b": { "0": [5, 5, 1] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "0d556cf9f2d680b9e993eee7fc1554e1c7044cc7"
+    "hash": "b1b3e3b7de82060e3d48ac213541c92870eaac15"
   },
-  "/Users/mac/wednesday/react-template/app/utils/loadable.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/loadable.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/loadable.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/loadable.js",
     "statementMap": {
       "0": {
         "start": { "line": 3, "column": 17 },
@@ -2848,10 +2878,10 @@
     "f": { "0": 2, "1": 0 },
     "b": { "0": [2], "1": [0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "97656ea20756824d5cffc18b48d68723264b260a"
+    "hash": "dd5ebc963a2b0804b8d8a0a106c100443162c0ce"
   },
-  "/Users/mac/wednesday/react-template/app/utils/reducerInjectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/reducerInjectors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/reducerInjectors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/reducerInjectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 8, "column": 2 },
@@ -3025,10 +3055,10 @@
     "f": { "0": 10, "1": 12, "2": 4 },
     "b": { "0": [1, 11], "1": [11, 9, 8], "2": [1, 7], "3": [8, 2] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "884a93e604c93f7a7742079e5c92237dbc87e149"
+    "hash": "dbce7723f9d904365182e7e12f5031761eada37b"
   },
-  "/Users/mac/wednesday/react-template/app/utils/sagaInjectors.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/sagaInjectors.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/sagaInjectors.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/sagaInjectors.js",
     "statementMap": {
       "0": {
         "start": { "line": 7, "column": 21 },
@@ -3605,10 +3635,10 @@
       "14": [2, 1]
     },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "17808a86eacb9797f65a470ee21ec3877bb436a0"
+    "hash": "3099d367560eb896957c15db927ca164b1aaad80"
   },
-  "/Users/mac/wednesday/react-template/app/utils/testUtils.js": {
-    "path": "/Users/mac/wednesday/react-template/app/utils/testUtils.js",
+  "/Users/chetangiri/Desktop/prod/react-template/app/utils/testUtils.js": {
+    "path": "/Users/chetangiri/Desktop/prod/react-template/app/utils/testUtils.js",
     "statementMap": {
       "0": {
         "start": { "line": 11, "column": 30 },
@@ -3781,6 +3811,6 @@
     "f": { "0": 8, "1": 1, "2": 2, "3": 1, "4": 1, "5": 2 },
     "b": { "0": [0] },
     "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
-    "hash": "6a7ae3ada8aeebb605b3d2e9abac87bd47bc989f"
+    "hash": "42f05bf61ac85cbd1e1d3a27a8f94e8227e36274"
   }
 }
