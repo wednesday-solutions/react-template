@@ -6,8 +6,11 @@ const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
-const env = dotenv.config().parsed;
-
+const dotEnvFile =
+  process.env.NODE_ENV === 'production'
+    ? `.env`
+    : `.env.${process.env.NODE_ENV}`;
+const env = dotenv.config({ path: dotEnvFile }).parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
   return prev;
