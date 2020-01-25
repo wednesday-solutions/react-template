@@ -1,5 +1,7 @@
 # React Template
 
+[![CircleCI](https://circleci.com/gh/wednesday-solutions/react-template/tree/master.svg?style=svg)](https://circleci.com/gh/wednesday-solutions/react-template/tree/master)
+
 ## API Calls
 
 * API calls using [Api Sauce](https://github.com/infinitered/apisauce/)
