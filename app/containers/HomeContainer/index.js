@@ -1,9 +1,3 @@
-/**
- *
- * HomeContainer
- *
- */
-
 import React, { useEffect, memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -62,9 +56,10 @@ export function HomeContainer({
   useInjectReducer({ key: 'homeContainer', reducer });
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
-    // Effect will be called after render, even the first render bro
+    // This effect will be called for every render.
     const loaded = _.get(reposData, 'items', null) || reposError;
     if (loading && loaded) {
       setLoading(false);
