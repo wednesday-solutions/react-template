@@ -22,7 +22,7 @@ const theme = {
   bg: colors.secondary
 };
 
-function App({ location }) {
+const App = ({ location }) => {
   return (
     <ThemeProvider theme={theme}>
       <div>
@@ -40,7 +40,7 @@ function App({ location }) {
       </div>
     </ThemeProvider>
   );
-}
+};
 App.propTypes = {
   location: PropTypes.object
 };
