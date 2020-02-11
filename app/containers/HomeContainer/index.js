@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import _ from 'lodash';
+import get from 'lodash/get';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { FormattedMessage as T, injectIntl } from 'react-intl';
@@ -58,8 +59,6 @@ export function HomeContainer({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
-    // This effect will be called for every render.
     const loaded = _.get(reposData, 'items', null) || reposError;
     if (loading && loaded) {
       setLoading(false);
@@ -73,6 +72,22 @@ export function HomeContainer({
     }
   };
   const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
+
+  const activateLasers = () => {
+    // console.log('hello');
+    return (
+      <Search
+        data-testid="search-bar"
+        defaultValue={repoName}
+        type="text"
+        onSearch={searchText => {
+          // console.log('!313232'+ searchText);
+          // console.log('repo'+repoName);
+          debouncedHandleOnChange(searchText);
+        }}
+      />
+    );
+  };
 
   const renderRepoList = () => {
     const items = _.get(reposData, 'items', []);
@@ -91,13 +106,23 @@ export function HomeContainer({
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
             )}
-            {items.map((item, index) => (
+            {/* {items.map((item, index) => (
               <CustomCard key={index}>
                 <div>Repository Name: {item.name}</div>
                 <div>Repository Full Name: {item.fullName}</div>
                 <div>Repository stars: {item.stargazersCount}</div>
               </CustomCard>
-            ))}
+            ))} */}
+
+            {
+              <CustomCard key={1}>
+                <div>Repository Name: {get(items, '0.name', '')}</div>
+                <div>Repository Full Name: {get(items, '0.fullName', '')}</div>
+                <div>
+                  Repository stars: {get(items, '0.stargazersCount', '')}
+                </div>
+              </CustomCard>
+            }
           </Skeleton>
         </CustomCard>
       )
@@ -143,6 +168,27 @@ export function HomeContainer({
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
+      </CustomCard>
+
+      <CustomCard
+        title={intl.formatMessage({ id: 'repo_search' })}
+        maxwidth={500}
+      >
+        <Text marginBottom={10} id="get_repo_details" />
+        <Search
+          data-testid="search-bar"
+          defaultValue={repoName}
+          type="text"
+          onChange={evt => debouncedHandleOnChange(evt.target.value)}
+          onSearch={searchText => {
+            // console.log('!313232'+ searchText);
+            // console.log('repo'+repoName);
+            debouncedHandleOnChange(searchText);
+          }}
+        />
+        <button onClick={() => debouncedHandleOnChange(repoName)}>
+          I'm Felling Lucky
+        </button>
       </CustomCard>
       {renderRepoList()}
       {renderErrorState()}
