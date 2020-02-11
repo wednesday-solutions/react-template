@@ -45,6 +45,13 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+const Button = styled.button`
+  && {
+    display: flex;
+    align-self: flex-end;
+    hieght: 10;
+  }
+`;
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
@@ -56,6 +63,7 @@ export function HomeContainer({
   useInjectReducer({ key: 'homeContainer', reducer });
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
+  const [text, setText] = useState('');
 
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
@@ -72,11 +80,20 @@ export function HomeContainer({
       setLoading(true);
     }
   };
+
+  const customHandleOnChange = rName => {
+    if (rName) {
+      setText(rName);
+      dipatchGithubRepos(rName);
+    }
+  };
+
   const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
 
   const renderRepoList = () => {
     const items = _.get(reposData, 'items', []);
     const totalCount = _.get(reposData, 'totalCount', 0);
+
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
@@ -98,6 +115,46 @@ export function HomeContainer({
                 <div>Repository stars: {item.stargazersCount}</div>
               </CustomCard>
             ))}
+
+            {/* {totalCount >= 1 && (
+            <CustomCard >
+                <div>Repository Name: {items[0].name}</div>
+                <div>Repository Full Name: {items[0].fullName}</div>
+                <div>Repository stars: {items[0].stargazersCount}</div>
+              </CustomCard>
+            )} */}
+          </Skeleton>
+        </CustomCard>
+      )
+    );
+  };
+
+  const customRenderRepoList = () => {
+    const items = _.get(reposData, 'items', []);
+    const totalCount = _.get(reposData, 'totalCount', 0);
+    //  console.log(items);
+    return (
+      (items.length !== 0 || loading) && (
+        <CustomCard>
+          <Skeleton loading={loading} active>
+            {repoName && (
+              <div>
+                <T id="search_query" values={{ repoName }} />
+              </div>
+            )}
+            {totalCount !== 0 && (
+              <div>
+                <T id="matching_repos" values={{ totalCount }} />
+              </div>
+            )}
+
+            {totalCount >= 1 && (
+              <CustomCard>
+                <div>Repository Name: {items[0].name}</div>
+                <div>Repository Full Name: {items[0].fullName}</div>
+                <div>Repository stars: {items[0].stargazersCount}</div>
+              </CustomCard>
+            )}
           </Skeleton>
         </CustomCard>
       )
@@ -126,6 +183,9 @@ export function HomeContainer({
     history.push('stories');
     window.location.reload();
   };
+
+  const feelingLucky = _.debounce(customHandleOnChange, 200);
+
   return (
     <Container>
       <RightContent>
@@ -144,7 +204,31 @@ export function HomeContainer({
           onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
       </CustomCard>
+
+      <CustomCard
+        title={intl.formatMessage({ id: 'custom_repo_search' })}
+        maxwidth={500}
+      >
+        <Text marginBottom={10} id="get_repo_details" />
+        <Search
+          data-testid="search-bar"
+          defaultValue={repoName}
+          type="text"
+          onChange={evt => setText(evt.target.value)}
+          onSearch={searchText => setText(searchText)}
+          // onSearch={searchText => debouncedHandleOnChange(searchText)}
+        />
+
+        <Button
+          style={{ width: 407, paddingLeft: 150, marginTop: 20 }}
+          onClick={() => feelingLucky(text)}
+        >
+          I am feeling lucky
+        </Button>
+      </CustomCard>
+
       {renderRepoList()}
+      {customRenderRepoList()}
       {renderErrorState()}
     </Container>
   );
