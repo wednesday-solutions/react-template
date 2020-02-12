@@ -185,19 +185,7 @@ export function HomeContainer({
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
-      <CustomCard
-        title={intl.formatMessage({ id: 'repo_search' })}
-        maxwidth={500}
-      >
-        <Text marginBottom={10} id="get_repo_details" />
-        <Search
-          data-testid="search-bar"
-          defaultValue={repoName}
-          type="text"
-          onChange={evt => debouncedHandleOnChange(evt.target.value)}
-          onSearch={searchText => debouncedHandleOnChange(searchText)}
-        />
-      </CustomCard>
+      
 
       <CustomCard
         title={intl.formatMessage({ id: 'custom_repo_search' })}
@@ -209,7 +197,7 @@ export function HomeContainer({
           defaultValue={repoName}
           type="text"
           onChange={evt => setText(evt.target.value)}
-          onSearch={searchText => setText(searchText)}
+          onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
 
         <Button
