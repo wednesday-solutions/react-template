@@ -64,7 +64,7 @@ export function HomeContainer({
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
-  const [flag, flagSet] = useState(false);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
@@ -79,7 +79,7 @@ export function HomeContainer({
     if (rName) {
       dipatchGithubRepos(rName);
       setLoading(true);
-      flagSet(false);
+      setFlag(false);
     }
   };
 
@@ -87,7 +87,7 @@ export function HomeContainer({
     if (rName) {
       setText(rName);
       dipatchGithubRepos(rName);
-      flagSet(true);
+      setFlag(true);
     }
   };
 
