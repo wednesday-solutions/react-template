@@ -64,6 +64,7 @@ export function HomeContainer({
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
+  const [flag, flagSet] = useState(false);
 
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
@@ -78,6 +79,7 @@ export function HomeContainer({
     if (rName) {
       dipatchGithubRepos(rName);
       setLoading(true);
+      flagSet(false);
     }
   };
 
@@ -85,6 +87,7 @@ export function HomeContainer({
     if (rName) {
       setText(rName);
       dipatchGithubRepos(rName);
+      flagSet(true);
     }
   };
 
@@ -95,7 +98,7 @@ export function HomeContainer({
     const totalCount = _.get(reposData, 'totalCount', 0);
 
     return (
-      (items.length !== 0 || loading) && (
+      ((!flag && items.length !== 0) || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
             {repoName && (
@@ -133,8 +136,9 @@ export function HomeContainer({
     const items = _.get(reposData, 'items', []);
     const totalCount = _.get(reposData, 'totalCount', 0);
     //  console.log(items);
+    console.log(flag);
     return (
-      (items.length !== 0 || loading) && (
+      ((flag && items.length !== 0) || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
             {repoName && (
