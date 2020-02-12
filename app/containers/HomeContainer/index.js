@@ -111,23 +111,25 @@ export function HomeContainer({
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
             )}
-            {(flag?<div>
-            {totalCount >= 1 &&(
-              <CustomCard>
-                <div>Repository Name: {items[0].name}</div>
-                <div>Repository Full Name: {items[0].fullName}</div>
-                <div>Repository stars: {items[0].stargazersCount}</div>
-              </CustomCard>
-            )}
-            </div>
-            :<div>
-              {items.map((item, index) => (
-                <CustomCard key={index}>
-                  <div>Repository Name: {item.name}</div>
-                  <div>Repository Full Name: {item.fullName}</div>
-                  <div>Repository stars: {item.stargazersCount}</div>
-                </CustomCard>
-              ))}
+            {( flag ? 
+              <div>
+                {totalCount >= 1 &&(
+                  <CustomCard>
+                    <div>Repository Name: {items[0].name}</div>
+                    <div>Repository Full Name: {items[0].fullName}</div>
+                    <div>Repository stars: {items[0].stargazersCount}</div>
+                  </CustomCard>
+                )}
+              </div>
+            :
+              <div>
+                {items.map((item, index) => (
+                  <CustomCard key={index}>
+                    <div>Repository Name: {item.name}</div>
+                    <div>Repository Full Name: {item.fullName}</div>
+                    <div>Repository stars: {item.stargazersCount}</div>
+                  </CustomCard>
+                ))}
               </div>
             )}
           </Skeleton>
@@ -183,7 +185,6 @@ export function HomeContainer({
         <Button
           style={{ flex:1, marginTop: 20, paddingLeft: 150 , paddingRight: 150}}
           onClick={() => feelingLucky(inputRepoName)}
-          
         >
          <Text margin={10} id="on_submit" />
         </Button>
