@@ -118,14 +118,6 @@ export function HomeContainer({
                 <div>Repository stars: {item.stargazersCount}</div>
               </CustomCard>
             ))}
-
-            {/* {totalCount >= 1 && (
-            <CustomCard >
-                <div>Repository Name: {items[0].name}</div>
-                <div>Repository Full Name: {items[0].fullName}</div>
-                <div>Repository stars: {items[0].stargazersCount}</div>
-              </CustomCard>
-            )} */}
           </Skeleton>
         </CustomCard>
       )
@@ -135,8 +127,6 @@ export function HomeContainer({
   const customRenderRepoList = () => {
     const items = _.get(reposData, 'items', []);
     const totalCount = _.get(reposData, 'totalCount', 0);
-    //  console.log(items);
-    console.log(flag);
     return (
       ((flag && items.length !== 0) || loading) && (
         <CustomCard>
@@ -220,7 +210,6 @@ export function HomeContainer({
           type="text"
           onChange={evt => setText(evt.target.value)}
           onSearch={searchText => setText(searchText)}
-          // onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
 
         <Button
