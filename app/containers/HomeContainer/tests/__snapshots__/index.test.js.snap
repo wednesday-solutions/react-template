@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<HomeContainer /> tests should call dipatchGithubRepos on change 1`] = `[MockFunction]`;
+
+exports[`<HomeContainer /> tests should call dipatchGithubRepos on submit 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      null,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
 exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
@@ -36,7 +54,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             <div
               class="ant-card-head-title"
             >
-              Repository Search
+              Custom Repository Search
             </div>
           </div>
         </div>
@@ -44,7 +62,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <div
-            class="Text__StyledText-ap7h6t-0 hlCHn"
+            class="Text__StyledText-ap7h6t-0 kCetqI"
             data-testid="text"
           >
             <span>
@@ -85,6 +103,20 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
               </i>
             </span>
           </span>
+          <button
+            class="HomeContainer__Button-l0s8pp-3 jlECLQ"
+            data-testid="submit-bar"
+            style="flex: 1; margin-top: 20px; padding-left: 150px; padding-right: 150px;"
+          >
+            <div
+              class="Text__StyledText-ap7h6t-0 kCetqI"
+              data-testid="text"
+            >
+              <span>
+                I am feeling lucky
+              </span>
+            </div>
+          </button>
         </div>
       </div>
       <div

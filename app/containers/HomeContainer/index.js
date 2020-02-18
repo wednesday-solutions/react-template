@@ -45,6 +45,12 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+const Button = styled.button`
+  && {
+    display: flex;
+    align-self: flex-end;
+  }
+`;
 export function HomeContainer({
   dipatchGithubRepos,
   intl,
@@ -56,6 +62,8 @@ export function HomeContainer({
   useInjectReducer({ key: 'homeContainer', reducer });
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
+  const [inputRepoName, setInputRepoName] = useState(null);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
@@ -67,18 +75,26 @@ export function HomeContainer({
   });
 
   const handleOnChange = rName => {
-    if (rName) {
-      dipatchGithubRepos(rName);
-      setLoading(true);
-    }
+    dipatchGithubRepos(rName);
+    setLoading(true);
+    setFlag(false);
   };
+
+  const customHandleOnChange = inputRepoNameSearch => {
+    dipatchGithubRepos(inputRepoNameSearch);
+    setLoading(true);
+    setFlag(true);
+  };
+
   const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
+  const feelingLucky = _.debounce(customHandleOnChange, 200);
 
   const renderRepoList = () => {
     const items = _.get(reposData, 'items', []);
     const totalCount = _.get(reposData, 'totalCount', 0);
+
     return (
-      (items.length !== 0 || loading) && (
+      (items.length || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
             {repoName && (
@@ -91,18 +107,33 @@ export function HomeContainer({
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
             )}
-            {items.map((item, index) => (
-              <CustomCard key={index}>
-                <div>Repository Name: {item.name}</div>
-                <div>Repository Full Name: {item.fullName}</div>
-                <div>Repository stars: {item.stargazersCount}</div>
-              </CustomCard>
-            ))}
+            {flag ? (
+              <div>
+                {totalCount >= 1 && (
+                  <CustomCard>
+                    <div>Repository Name: {items[0].name}</div>
+                    <div>Repository Full Name: {items[0].fullName}</div>
+                    <div>Repository stars: {items[0].stargazersCount}</div>
+                  </CustomCard>
+                )}
+              </div>
+            ) : (
+              <div>
+                {items.map((item, index) => (
+                  <CustomCard key={index}>
+                    <div>Repository Name: {item.name}</div>
+                    <div>Repository Full Name: {item.fullName}</div>
+                    <div>Repository stars: {item.stargazersCount}</div>
+                  </CustomCard>
+                ))}
+              </div>
+            )}
           </Skeleton>
         </CustomCard>
       )
     );
   };
+
   const renderErrorState = () => {
     let repoError;
     if (reposError) {
@@ -126,24 +157,40 @@ export function HomeContainer({
     history.push('stories');
     window.location.reload();
   };
+
   return (
     <Container>
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
+
       <CustomCard
-        title={intl.formatMessage({ id: 'repo_search' })}
+        title={intl.formatMessage({ id: 'custom_repo_search' })}
         maxwidth={500}
       >
-        <Text marginBottom={10} id="get_repo_details" />
+        <Text margin={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"
           defaultValue={repoName}
           type="text"
-          onChange={evt => debouncedHandleOnChange(evt.target.value)}
-          onSearch={searchText => debouncedHandleOnChange(searchText)}
+          onChange={evt => setInputRepoName(evt.target.value)}
+          onSearch={debouncedHandleOnChange}
         />
+
+        <Button
+          style={{
+            flex: 1,
+            marginTop: 20,
+            paddingLeft: 150,
+            paddingRight: 150
+          }}
+          data-testid="submit-bar"
+          onClick={() => feelingLucky(inputRepoName)}
+        >
+          <Text margin={10} id="on_submit" />
+        </Button>
       </CustomCard>
+
       {renderRepoList()}
       {renderErrorState()}
     </Container>
