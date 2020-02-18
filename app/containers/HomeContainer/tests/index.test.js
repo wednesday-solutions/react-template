@@ -1,9 +1,3 @@
-/**
- *
- * Tests for HomeContainer
- *
- */
-
 import React from 'react';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { fireEvent } from '@testing-library/dom';
@@ -11,13 +5,19 @@ import { HomeContainerTest as HomeContainer } from '../index';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
-
   beforeEach(() => {
     submitSpy = jest.fn();
+    test = jest.fn();
   });
   it('should render and match the snapshot', () => {
     const { baseElement } = renderProvider(
       <HomeContainer dipatchGithubRepos={submitSpy} />
+    );
+    expect(baseElement).toMatchSnapshot();
+  });
+  it('should render and match the snapshot', () => {
+    const { baseElement } = renderProvider(
+      <HomeContainer Iamfeelinglucky={submitSpy} />
     );
     expect(baseElement).toMatchSnapshot();
   });
@@ -30,6 +30,6 @@ describe('<HomeContainer /> tests', () => {
       target: { value: 'some repo' }
     });
     await timeout(500);
-    expect(submitSpy).toBeCalled();
+    expect(submitSpy).toBeCalledWith();
   });
 });
