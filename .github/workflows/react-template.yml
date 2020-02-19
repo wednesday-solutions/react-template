@@ -37,7 +37,7 @@ jobs:
         CI: true
     - name: Deploy
       run: |
-        if [ "${GITHUB_REF##*/}" == "master" ]; then
+        if [ ${GITHUB_REF##*/} == "master" ]; then
           git config user.email "mohammed.ali.chherawalla@gmail.com"
           git config user.name "mac"
           yarn deploy ci skip=
