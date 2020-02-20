@@ -1,0 +1,12 @@
+name: Deploy GH pages
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn
+      - name: Build and Deploy
+        run: git config user.email "mohammed.ali.chherawalla@gmail.com" && git config user.name "mac" && yarn deploy

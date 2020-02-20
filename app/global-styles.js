@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@import '~antd/dist/antd.css'
+@import '~antd/dist/antd.css';
   html,
   body {
     height: 100%;
