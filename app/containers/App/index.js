@@ -27,14 +27,23 @@ function App({ location }) {
     <ThemeProvider theme={theme}>
       <div>
         <Switch>
-          {_.map(Object.keys(routeConfig), (routeKey, index) => (
-            <Route
-              exact={routeConfig[routeKey].exact}
-              key={index}
-              path={location.pathname + routeConfig[routeKey].route}
-              component={routeConfig[routeKey].component}
-            />
-          ))}
+          {_.map(Object.keys(routeConfig), (routeKey, index) => {
+            const Component = routeConfig[routeKey].component;
+            return (
+              <Route
+                exact={routeConfig[routeKey].exact}
+                key={index}
+                path={routeConfig[routeKey].route}
+                render={props => {
+                  const updatedProps = {
+                    ...props,
+                    ...routeConfig[routeKey].props
+                  };
+                  return <Component {...updatedProps} />;
+                }}
+              />
+            );
+          })}
         </Switch>
         <GlobalStyle />
       </div>
