@@ -1,7 +1,10 @@
 name: React Template CI
 
 on:
-  [push]
+  push:
+    branches-ignore:
+      - develop
+
 jobs:
   build_and_test:
     name: Build & Test
