@@ -1,11 +1,7 @@
 name: React Template CI
 
 on:
-  push:
-    branches-ignore:
-      - master
-      - develop
-
+  [push]
 jobs:
   build_and_test:
     name: Build & Test
@@ -14,24 +10,31 @@ jobs:
       matrix:
         node-version: [10.x]
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn
-      env:
-        CI: true
-    - name: Build
-      run: yarn build
-      env:
-        CI: true
-    - name: Lint
-      run: yarn lint
-      env:
-        CI: true
-    - name: Test
-      run: yarn test
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn
+        env:
+          CI: true
+      - name: Build
+        run: yarn build
+        env:
+          CI: true
+      - name: Lint
+        run: yarn lint
+        env:
+          CI: true
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
+      - name: Deploy
+        run: |
+          if [ ${GITHUB_REF##*/} == "master" ]; then
+            git config user.email "mohammed.ali.chherawalla@gmail.com"
+            git config user.name "mac"
+            yarn deploy ci skip=
+          fi
