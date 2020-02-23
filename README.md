@@ -63,7 +63,7 @@
 
   - [app/translations/en.json](app/translations/en.json)
   - [app/containers/LanguageProvider/](app/containers/LanguageProvider/)
-  - [app/i18n]
+  - [app/i18n](app/i18n.js)
 
 ## Routing
 
