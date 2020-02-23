@@ -1,18 +1,14 @@
 name: React Template CI
 
-on:
-  push:
-    branches-ignore:
-      - master
-      - develop
-
+on: push
 jobs:
-  build_and_test:
+  build-and-test:
     name: Build & Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.x]
+    if: github.ref != 'refs/heads/master'
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -35,10 +31,24 @@ jobs:
       run: yarn test
       env:
         CI: true
-    - name: Deploy
-      run: |
-        if [ "${GITHUB_REF##*/}" == "master" ]; then
-          git config user.email "mohammed.ali.chherawalla@gmail.com"
-          git config user.name "mac"
-          yarn deploy ci skip=
-        fi
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: setup git token
+        uses: fregante/setup-git-token@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies
+        run: yarn
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.2.0
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      - name: Deploy storybooks and gh-pages
+        run: | 
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${DEPLOY_KEY}"
+          yarn deploy
