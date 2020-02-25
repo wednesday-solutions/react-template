@@ -9,7 +9,6 @@ export const routeConfig = {
     props: {
       maxwidth: 500,
       padding: 20
-      // other_props: 'something_something'
     },
     exact: true
   },

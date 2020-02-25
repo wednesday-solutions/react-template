@@ -52,7 +52,8 @@ export function HomeContainer({
   reposError = null,
   repoName,
   history,
-  ...props
+  maxwidth,
+  padding
 }) {
   useInjectReducer({ key: 'homeContainer', reducer });
   useInjectSaga({ key: 'homeContainer', saga });
@@ -128,13 +129,13 @@ export function HomeContainer({
     window.location.reload();
   };
   return (
-    <Container maxwidth={props.maxwidth} padding={props.padding}>
+    <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
-        maxwidth={500}
+        maxwidth={maxwidth}
       >
         <Text marginBottom={10} id="get_repo_details" />
         <Search
