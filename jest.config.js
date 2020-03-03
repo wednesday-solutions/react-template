@@ -6,8 +6,9 @@ module.exports = {
     '!app/app.js',
     '!app/global-styles.js',
     '!app/*/*/Loadable.{js,jsx}',
+    '!**/loadable.js',
     '!**/apiUtils.js',
-    '!**/testUtils.js/**',
+    '!**/testUtils.js',
     '!**/stories/**',
     '!**/themes/images.js',
     '!**/themes/index.js'
