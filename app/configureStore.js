@@ -5,7 +5,20 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore, persistReducer } from 'redux-persist';
+import immutableTransform from 'redux-persist-transform-immutable';
+import storage from 'redux-persist/lib/storage';
 import createReducer from './reducers';
+
+// redux persit configuration
+const persistConfig = {
+  transforms: [immutableTransform()],
+  key: 'root',
+  blacklist: ['router'],
+  storage
+};
+
+const persistedReducer = persistReducer(persistConfig, createReducer());
 
 export default function configureStore(initialState = {}, history) {
   let composeEnhancers = compose;
@@ -37,10 +50,12 @@ export default function configureStore(initialState = {}, history) {
   const enhancers = [applyMiddleware(...middlewares)];
 
   const store = createStore(
-    createReducer(),
+    persistedReducer,
     initialState,
     composeEnhancers(...enhancers)
   );
+
+  const persistor = persistStore(store);
 
   // Extensions
   store.runSaga = sagaMiddleware.run;
@@ -55,5 +70,5 @@ export default function configureStore(initialState = {}, history) {
     });
   }
 
-  return store;
+  return { store, persistor };
 }

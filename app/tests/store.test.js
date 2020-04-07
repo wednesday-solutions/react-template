@@ -9,7 +9,7 @@ describe('configureStore tests', () => {
   let store;
 
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    store = configureStore({}, browserHistory).store;
   });
 
   it('should contain an object for reducers', () => {

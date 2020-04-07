@@ -11,14 +11,13 @@ import { withRouter } from 'react-router-dom';
 import Text from '@components/Text';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import {
   selectHomeContainer,
   selectReposData,
   selectReposError,
   selectRepoName
 } from './selectors';
-import reducer, { homeContainerCreators } from './reducer';
+import { homeContainerCreators } from './reducer';
 import saga from './saga';
 
 const { Search } = Input;
@@ -53,7 +52,6 @@ export function HomeContainer({
   repoName,
   history
 }) {
-  useInjectReducer({ key: 'homeContainer', reducer });
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
 
