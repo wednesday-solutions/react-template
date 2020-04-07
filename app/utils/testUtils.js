@@ -27,7 +27,7 @@ export const getComponentStyles = (Component, props = {}) => {
 };
 
 export const renderProvider = children => {
-  const store = configureStore({}, browserHistory);
+  const store = configureStore({}, browserHistory).store;
   return render(
     <Provider store={store}>
       <ConnectedLanguageProvider messages={translationMessages}>

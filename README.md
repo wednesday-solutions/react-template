@@ -29,8 +29,6 @@
 
   Take a look at the following files
 
-  - [app/utils/injectReducer.js](app/utils/injectReducer.js)
-  - [app/utils/reducerInjectors.js](app/utils/reducerInjectors.js)
   - [app/containers/HomeContainer/reducer.js](app/containers/HomeContainer/reducer.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
