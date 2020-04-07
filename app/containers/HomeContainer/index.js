@@ -34,10 +34,10 @@ const Container = styled.div`
   && {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: ${props => props.maxwidth}px;
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: ${props => props.padding}px;
   }
 `;
 const RightContent = styled.div`
@@ -50,7 +50,9 @@ export function HomeContainer({
   reposData = {},
   reposError = null,
   repoName,
-  history
+  history,
+  maxwidth,
+  padding
 }) {
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
@@ -125,13 +127,13 @@ export function HomeContainer({
     window.location.reload();
   };
   return (
-    <Container>
+    <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
-        maxwidth={500}
+        maxwidth={maxwidth}
       >
         <Text marginBottom={10} id="get_repo_details" />
         <Search
@@ -158,7 +160,14 @@ HomeContainer.propTypes = {
   }),
   reposError: PropTypes.object,
   repoName: PropTypes.string,
-  history: PropTypes.object
+  history: PropTypes.object,
+  maxwidth: PropTypes.number,
+  padding: PropTypes.number
+};
+
+HomeContainer.defaultProps = {
+  maxwidth: 500,
+  padding: 20
 };
 
 const mapStateToProps = createStructuredSelector({

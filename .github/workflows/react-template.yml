@@ -1,0 +1,53 @@
+name: React Template CI
+
+on: push
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    if: github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn
+        env:
+          CI: true
+      - name: Build
+        run: yarn build
+        env:
+          CI: true
+      - name: Lint
+        run: yarn lint
+        env:
+          CI: true
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: setup git token
+        uses: fregante/setup-git-token@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies
+        run: yarn
+      - name: Deploy storybooks and gh-pages
+        env:
+          DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${DEPLOY_KEY}"
+          yarn deploy
