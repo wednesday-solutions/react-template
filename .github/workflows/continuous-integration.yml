@@ -1,0 +1,31 @@
+name: Continuous Integration
+
+on: [pull_request]
+
+jobs:
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/qa'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn
+        env:
+          CI: true
+      - name: Build
+        run: yarn build:master
+        env:
+          CI: true
+      - name: Lint
+        run: yarn lint
+        env:
+          CI: true
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
