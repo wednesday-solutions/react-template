@@ -3,7 +3,7 @@ name: Continuous Integration
 on: [pull_request]
 
 jobs:
-  buildAndTest:
+  build-and-test:
     name: Build and Test
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/qa'
