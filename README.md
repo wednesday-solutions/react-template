@@ -2,7 +2,9 @@
 
 ![React Template CI](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CI/badge.svg)
 
-## Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
+
+### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
+
 
 ## API Calls
 
