@@ -64,7 +64,7 @@ export function HomeContainer({
     if (loading && loaded) {
       setLoading(false);
     }
-  });
+  }, []);
 
   const handleOnChange = rName => {
     if (rName) {
