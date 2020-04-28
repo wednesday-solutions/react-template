@@ -17,9 +17,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             class="Text__StyledText-ap7h6t-0 kCetqI"
             data-testid="text"
           >
-            <span>
-              Go to Storybook
-            </span>
+            Go to Storybook
           </div>
         </div>
       </div>
@@ -47,9 +45,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             class="Text__StyledText-ap7h6t-0 hlCHn"
             data-testid="text"
           >
-            <span>
-              Get details of repositories
-            </span>
+            Get details of repositories
           </div>
           <span
             class="ant-input-search ant-input-affix-wrapper"
@@ -107,9 +103,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         <div
           class="ant-card-body"
         >
-          <span>
-            Search for a repository by entering it's name in the search box
-          </span>
+          Search for a repository by entering it's name in the search box
         </div>
       </div>
     </div>

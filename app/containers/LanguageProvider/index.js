@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
-
+import { IntlGlobalProvider } from '@app/components/IntlGlobalProvider';
 import { makeSelectLocale } from './selectors';
 
 export function LanguageProvider(props) {
@@ -21,7 +21,9 @@ export function LanguageProvider(props) {
       key={props.locale}
       messages={props.messages[props.locale]}
     >
-      {React.Children.only(props.children)}
+      <IntlGlobalProvider>
+        {React.Children.only(props.children)}
+      </IntlGlobalProvider>
     </IntlProvider>
   );
 }

@@ -7,9 +7,7 @@ exports[`<Text /> component tests should render and match the snapshot 1`] = `
       class="Text__StyledText-ap7h6t-0 kCetqI"
       data-testid="text"
     >
-      <span>
-        some_text
-      </span>
+      some_text
     </div>
   </div>
 </body>
