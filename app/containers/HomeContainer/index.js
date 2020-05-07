@@ -64,7 +64,7 @@ export function HomeContainer({
     if (loading && loaded) {
       setLoading(false);
     }
-  }, []);
+  }, [reposData]);
 
   const handleOnChange = rName => {
     if (rName) {
