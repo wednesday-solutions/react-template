@@ -13,12 +13,12 @@ exports[`<App /> container tests should render and match the snapshot 1`] = `
           class="Clickable__StyledClickable-sc-19lp5om-0 avquq"
           data-testid="clickable"
         >
-          <div
+          <p
             class="Text__StyledText-ap7h6t-0 kCetqI"
             data-testid="text"
           >
             Go to Storybook
-          </div>
+          </p>
         </div>
       </div>
       <div
@@ -41,12 +41,12 @@ exports[`<App /> container tests should render and match the snapshot 1`] = `
         <div
           class="ant-card-body"
         >
-          <div
+          <p
             class="Text__StyledText-ap7h6t-0 hlCHn"
             data-testid="text"
           >
             Get details of repositories
-          </div>
+          </p>
           <span
             class="ant-input-search ant-input-affix-wrapper"
           >

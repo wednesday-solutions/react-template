@@ -3,12 +3,10 @@
 exports[`<Text /> component tests should render and match the snapshot 1`] = `
 <body>
   <div>
-    <div
+    <p
       class="Text__StyledText-ap7h6t-0 kCetqI"
       data-testid="text"
-    >
-      some_text
-    </div>
+    />
   </div>
 </body>
 `;
