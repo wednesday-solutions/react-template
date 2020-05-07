@@ -1,10 +1,10 @@
 /**
  * COMMON WEBPACK CONFIGURATION
  */
-
 const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const colors = require('../../app/themes/colors');
 
 const dotEnvFile =
   process.env.NODE_ENV === 'production'
@@ -15,7 +15,6 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
   return prev;
 }, {});
-
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -48,7 +47,25 @@ module.exports = options => ({
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  'primary-color': colors.secondary
+                }
+              }
+            }
+          }
+        ]
       },
       {
         // Preprocess 3rd party .css files located in node_modules
@@ -141,6 +158,7 @@ module.exports = options => ({
       '@services': path.resolve(__dirname, '../../app/services'),
       '@themes': path.resolve(__dirname, '../../app/themes'),
       '@images': path.resolve(__dirname, '../../app/images'),
+      '@hooks': path.resolve(__dirname, '../../app/hooks'),
       moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js')
     },
     extensions: ['.js', '.jsx', '.react.js'],
