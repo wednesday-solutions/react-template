@@ -1,6 +1,6 @@
 /**
  *
- * Stories for Text
+ * Stories for T
  *
  * @see https://github.com/storybookjs/storybook
  *
@@ -9,6 +9,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
-import Text from '../index';
+import T from '../index';
 
-storiesOf('Text').add('simple', () => <Text id={text('id', 'Text')} />);
+storiesOf('T').add('simple', () => <T id={text('id', 'T')} />);

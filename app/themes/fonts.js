@@ -1,17 +1,47 @@
 import { css } from 'styled-components';
+import media from '@app/themes/media';
 
 // sizes
+const dynamicFontSize = (font, desktopDelta = 0, tabletDelta = 0) => css`
+  ${font()}
+  ${media.tablet.min(
+    `font-size: ${tabletDelta +
+      parseInt(
+        font()[0]
+          .replace('font-size:', '')
+          .replace('rem;', '')
+          .replace(/\s+/g, '')
+      )}rem;`
+  )};
+  ${media.desktop.min(
+    `font-size: ${desktopDelta +
+      parseInt(
+        font()[0]
+          .replace('font-size:', '')
+          .replace('rem;', '')
+          .replace(/\s+/g, '')
+      )}rem;`
+  )};
+`;
+
 const regular = () => css`
-  font-size: 17px;
+  font-size: 1rem;
+`;
+
+const xRegular = () => css`
+  font-size: 1.125rem;
 `;
 const small = () => css`
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
 const big = () => css`
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 const large = () => css`
-  font-size: 24px;
+  font-size: 1.5rem;
+`;
+const extraLarge = () => css`
+  font-size: 2rem;
 `;
 
 // weights
@@ -48,11 +78,14 @@ const subText = () => css`
 `;
 
 export default {
+  dynamicFontSize,
   size: {
     regular,
     small,
     big,
-    large
+    large,
+    extraLarge,
+    xRegular
   },
   style: {
     heading,

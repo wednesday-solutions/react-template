@@ -6,5 +6,6 @@
   "search_query": "Search query: {repoName}",
   "matching_repos": "Total number of matching repos: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
-  "stories": "Go to Storybook"
+  "stories": "Go to Storybook",
+  "wednesday_solutions": "Wednesday Solutions"
 }

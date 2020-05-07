@@ -2,9 +2,7 @@
 
 ![React Template CI](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CI/badge.svg)
 
-
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
-
 
 ## API Calls
 
@@ -48,7 +46,7 @@
 
   Take a look at the following files
 
-  - [app/components/Text/index.js](app/components/Text/index.js)
+  - [app/components/T/index.js](app/components/T/index.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
 - Reusing components from [Ant design](https://ant.design)

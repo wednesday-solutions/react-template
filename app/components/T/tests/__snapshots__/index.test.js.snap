@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<T /> component tests should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <p
+      class="T__StyledText-gjlic1-0 cbAvsY"
+      data-testid="t"
+    />
+  </div>
+</body>
+`;

@@ -6,9 +6,9 @@ import { compose } from 'redux';
 import _ from 'lodash';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
-import { FormattedMessage as T, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
-import Text from '@components/Text';
+import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
@@ -135,7 +135,7 @@ export function HomeContainer({
         title={intl.formatMessage({ id: 'repo_search' })}
         maxwidth={maxwidth}
       >
-        <Text marginBottom={10} id="get_repo_details" />
+        <T marginBottom={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"
           defaultValue={repoName}

@@ -14,8 +14,8 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           data-testid="clickable"
         >
           <p
-            class="Text__StyledText-ap7h6t-0 kCetqI"
-            data-testid="text"
+            class="T__StyledText-gjlic1-0 cbAvsY"
+            data-testid="t"
           >
             Go to Storybook
           </p>
@@ -42,8 +42,8 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="Text__StyledText-ap7h6t-0 hlCHn"
-            data-testid="text"
+            class="T__StyledText-gjlic1-0 eEFXad"
+            data-testid="t"
           >
             Get details of repositories
           </p>
@@ -103,7 +103,12 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         <div
           class="ant-card-body"
         >
-          Search for a repository by entering it's name in the search box
+          <p
+            class="T__StyledText-gjlic1-0 cbAvsY"
+            data-testid="t"
+          >
+            Search for a repository by entering it's name in the search box
+          </p>
         </div>
       </div>
     </div>

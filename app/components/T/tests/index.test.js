@@ -1,26 +1,26 @@
 /**
  *
- * Tests for Text
+ * Tests for T
  *
  */
 
 import React from 'react';
 import { renderWithIntl, getComponentStyles } from '@utils/testUtils';
-import { Text } from '../index';
+import { T } from '../index';
 
-describe('<Text /> component tests', () => {
+describe('<T /> component tests', () => {
   it('should render and match the snapshot', () => {
-    const { baseElement } = renderWithIntl(<Text />);
+    const { baseElement } = renderWithIntl(<T />);
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should contain 1 Text component', () => {
-    const { getAllByTestId } = renderWithIntl(<Text />);
-    expect(getAllByTestId('text').length).toBe(1);
+  it('should contain 1 T component', () => {
+    const { getAllByTestId } = renderWithIntl(<T />);
+    expect(getAllByTestId('t').length).toBe(1);
   });
 
   it('should contain render the text according to the id', () => {
-    const { getAllByText } = renderWithIntl(<Text id="repo_list" />);
+    const { getAllByText } = renderWithIntl(<T id="repo_list" />);
     expect(getAllByText(/Repository List/).length).toBe(1);
   });
 
@@ -29,7 +29,7 @@ describe('<Text /> component tests', () => {
       marginBottom: 5,
       id: 'repo_list'
     };
-    const styles = getComponentStyles(Text, props);
+    const styles = getComponentStyles(T, props);
     expect(styles['margin-bottom']).toBe(`${props.marginBottom}px`);
   });
 });

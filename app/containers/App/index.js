@@ -17,6 +17,7 @@ import { routeConfig } from '@app/routeConfig';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
+import Header from '@components/Header';
 
 const theme = {
   fg: colors.primary,
@@ -26,6 +27,7 @@ const theme = {
 function App({ location }) {
   return (
     <ThemeProvider theme={theme}>
+      <Header />
       <Layout.Content>
         <Switch>
           {_.map(Object.keys(routeConfig), (routeKey, index) => {
