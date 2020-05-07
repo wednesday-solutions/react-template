@@ -4,8 +4,10 @@ const GlobalStyle = createGlobalStyle`
 @import '~antd/dist/antd.css';
   html,
   body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
   }
 
   body {
@@ -23,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p,
+  span,
+  button,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
