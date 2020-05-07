@@ -11,7 +11,7 @@ const secondary = '#f8c49c';
 const success = '#28a745';
 const error = '#dc3545';
 
-export default {
+const colors = {
   transparent: 'rgba(0,0,0,0)',
   // Example colors:
   text,
@@ -30,3 +30,4 @@ export default {
     }
   }
 };
+module.exports = colors;
