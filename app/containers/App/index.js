@@ -29,18 +29,14 @@ function App({ location }) {
         <Switch>
           {_.map(Object.keys(routeConfig), (routeKey, index) => {
             const Component = routeConfig[routeKey].component;
+            console.log({ [routeKey]: routeConfig[routeKey] });
+            console.log({ Component });
             return (
               <Route
                 exact={routeConfig[routeKey].exact}
                 key={index}
-                path={routeConfig[routeKey].route}
-                render={props => {
-                  const updatedProps = {
-                    ...props,
-                    ...routeConfig[routeKey].props
-                  };
-                  return <Component {...updatedProps} />;
-                }}
+                path={`${location.pathname}${routeConfig[routeKey].route}`}
+                render={routeConfig[routeKey].component}
               />
             );
           })}
