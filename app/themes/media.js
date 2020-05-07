@@ -10,7 +10,7 @@ const sizes = {
   mobile: ScreenSizes.PHONE
 };
 // iterate through sizes and create a media template
-export const media = Object.keys(sizes).reduce((acc, label) => {
+export default Object.keys(sizes).reduce((acc, label) => {
   acc[label] = {
     min: args =>
       css`
