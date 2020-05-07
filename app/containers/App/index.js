@@ -10,6 +10,7 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import _ from 'lodash';
+import { Layout } from 'antd';
 import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { routeConfig } from '@app/routeConfig';
@@ -25,24 +26,28 @@ const theme = {
 function App({ location }) {
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <Layout.Content>
         <Switch>
           {_.map(Object.keys(routeConfig), (routeKey, index) => {
             const Component = routeConfig[routeKey].component;
-            console.log({ [routeKey]: routeConfig[routeKey] });
-            console.log({ Component });
             return (
               <Route
                 exact={routeConfig[routeKey].exact}
                 key={index}
                 path={`${location.pathname}${routeConfig[routeKey].route}`}
-                render={routeConfig[routeKey].component}
+                render={props => {
+                  const updatedProps = {
+                    ...props,
+                    ...routeConfig[routeKey].props
+                  };
+                  return <Component {...updatedProps} />;
+                }}
               />
             );
           })}
         </Switch>
         <GlobalStyle />
-      </div>
+      </Layout.Content>
     </ThemeProvider>
   );
 }

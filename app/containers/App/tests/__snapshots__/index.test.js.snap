@@ -2,7 +2,9 @@
 
 exports[`<App /> container tests should render and match the snapshot 1`] = `
 <div>
-  <div>
+  <main
+    class="ant-layout-content"
+  >
     <div
       class="HomeContainer__Container-l0s8pp-1 eLjtlX"
     >
@@ -107,6 +109,6 @@ exports[`<App /> container tests should render and match the snapshot 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </div>
 `;

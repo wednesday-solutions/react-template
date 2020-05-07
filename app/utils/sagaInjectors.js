@@ -25,7 +25,9 @@ const checkDescriptor = descriptor => {
 
 export function injectSagaFactory(store, isValid) {
   return function injectSaga(key, descriptor = {}, args) {
-    if (!isValid) checkStore(store);
+    if (!isValid) {
+      checkStore(store);
+    }
 
     const newDescriptor = {
       ...descriptor,
@@ -63,7 +65,9 @@ export function injectSagaFactory(store, isValid) {
 
 export function ejectSagaFactory(store, isValid) {
   return function ejectSaga(key) {
-    if (!isValid) checkStore(store);
+    if (!isValid) {
+      checkStore(store);
+    }
 
     checkKey(key);
 
