@@ -4,6 +4,8 @@ build
 node_modules
 stats.json
 coverage/
+.vscode/
+switcher_backup.env
 
 # Cruft
 .DS_Store
