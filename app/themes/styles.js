@@ -120,10 +120,16 @@ const zIndex = (z = 1) => {
     z-index: ${z};
   `;
 };
-
+const textEllipsis = (width = '200px') => css`
+  white-space: nowrap;
+  overflow: hidden;
+  width: ${width};
+  text-overflow: ellipsis;
+`;
 export default {
   height,
   zIndex,
+  textEllipsis,
   margin: {
     top,
     bottom,

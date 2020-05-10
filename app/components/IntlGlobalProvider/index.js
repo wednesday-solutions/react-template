@@ -14,3 +14,6 @@ export function IntlGlobalProvider({ children }) {
 export function appIntl() {
   return intl;
 }
+
+export const translate = (id, values = {}) =>
+  intl.formatMessage({ id }, values);
