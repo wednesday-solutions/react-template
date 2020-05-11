@@ -16,7 +16,9 @@ export const getCurrentRouteDetails = location => {
   }
   const route = find(
     Object.keys(routeConfig),
-    key => routeConfig[key].route === location.pathname
+    key =>
+      routeConfig[key].route === location.pathname ||
+      `${routeConfig[key].route}/` === location.pathname
   );
   if (route) {
     return routeConfig[route];
