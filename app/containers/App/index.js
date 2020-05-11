@@ -8,11 +8,12 @@
  */
 
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import _ from 'lodash';
-import { Layout } from 'antd';
+import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
+import map from 'lodash/map';
 import { compose } from 'redux';
-import { PropTypes } from 'prop-types';
+import { Layout } from 'antd';
 import { routeConfig } from '@app/routeConfig';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
@@ -24,13 +25,13 @@ const theme = {
   bg: colors.secondary
 };
 
-function App({ location }) {
+export function App({ location }) {
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <Layout.Content>
         <Switch>
-          {_.map(Object.keys(routeConfig), (routeKey, index) => {
+          {map(Object.keys(routeConfig), (routeKey, index) => {
             const Component = routeConfig[routeKey].component;
             return (
               <Route

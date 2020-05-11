@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import _ from 'lodash';
+import get from 'lodash/get';
+import debounce from 'lodash/debounce';
+import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -45,12 +47,12 @@ const RightContent = styled.div`
   align-self: flex-end;
 `;
 export function HomeContainer({
-  dipatchGithubRepos,
+  dispatchGithubRepos,
+  dispatchClearGithubRepos,
   intl,
   reposData = {},
   reposError = null,
   repoName,
-  history,
   maxwidth,
   padding
 }) {
@@ -60,23 +62,27 @@ export function HomeContainer({
   useEffect(() => {
     // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
     // This effect will be called for every render.
-    const loaded = _.get(reposData, 'items', null) || reposError;
+    const loaded = get(reposData, 'items', null) || reposError;
     if (loading && loaded) {
       setLoading(false);
     }
   }, [reposData]);
 
+  const history = useHistory();
+
   const handleOnChange = rName => {
-    if (rName) {
-      dipatchGithubRepos(rName);
+    if (!isEmpty(rName)) {
+      dispatchGithubRepos(rName);
       setLoading(true);
+    } else {
+      dispatchClearGithubRepos();
     }
   };
-  const debouncedHandleOnChange = _.debounce(handleOnChange, 200);
+  const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const renderRepoList = () => {
-    const items = _.get(reposData, 'items', []);
-    const totalCount = _.get(reposData, 'totalCount', 0);
+    const items = get(reposData, 'items', []);
+    const totalCount = get(reposData, 'totalCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
@@ -107,7 +113,7 @@ export function HomeContainer({
     let repoError;
     if (reposError) {
       repoError = reposError;
-    } else if (!_.get(reposData, 'totalCount', 0)) {
+    } else if (!get(reposData, 'totalCount', 0)) {
       repoError = 'respo_search_default';
     }
     return (
@@ -151,7 +157,8 @@ export function HomeContainer({
 }
 
 HomeContainer.propTypes = {
-  dipatchGithubRepos: PropTypes.func,
+  dispatchGithubRepos: PropTypes.func,
+  dispatchClearGithubRepos: PropTypes.func,
   intl: PropTypes.object,
   reposData: PropTypes.shape({
     totalCount: PropTypes.number,
@@ -178,9 +185,10 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos } = homeContainerCreators;
+  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
-    dipatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName))
+    dispatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName)),
+    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
   };
 }
 
@@ -192,8 +200,7 @@ const withConnect = connect(
 export default compose(
   injectIntl,
   withConnect,
-  memo,
-  withRouter
+  memo
 )(HomeContainer);
 
 export const HomeContainerTest = compose(injectIntl)(HomeContainer);

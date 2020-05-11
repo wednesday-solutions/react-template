@@ -1,19 +1,9 @@
-import React from 'react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-import { renderProvider } from '@utils/testUtils';
+import { renderWithIntl } from '@utils/testUtils';
+import App from '../index';
 
 describe('<App /> container tests', () => {
-  const App = require('../index').default;
-  const history = createMemoryHistory();
-  history.push('/');
-  const { container } = renderProvider(
-    <Router history={history}>
-      <App />
-    </Router>
-  );
-
   it('should render and match the snapshot', () => {
+    const { container } = renderWithIntl(App);
     expect(container).toMatchSnapshot();
   });
 });

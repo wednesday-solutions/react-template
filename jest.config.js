@@ -31,6 +31,7 @@ module.exports = {
       '<rootDir>/internals/mocks/image.js'
   },
   setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.js',
     '<rootDir>/internals/testing/test-bundler.js',
     'react-testing-library/cleanup-after-each'
   ],
