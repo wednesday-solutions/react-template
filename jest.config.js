@@ -4,6 +4,8 @@ module.exports = {
     '!app/**/*.test.{js,jsx}',
     '!app/*/RbGenerated*/*.{js,jsx}',
     '!app/app.js',
+    '!app/components/ScrollToTop/*.js',
+    '!app/components/ErrorBoundary/*.js',
     '!app/global-styles.js',
     '!app/*/*/Loadable.{js,jsx}',
     '!**/loadable.js',

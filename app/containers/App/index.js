@@ -19,6 +19,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
 import Header from '@components/Header';
+import For from '@components/For';
 
 const theme = {
   fg: colors.primary,
@@ -30,8 +31,10 @@ export function App({ location }) {
     <ThemeProvider theme={theme}>
       <Header />
       <Layout.Content>
-        <Switch>
-          {map(Object.keys(routeConfig), (routeKey, index) => {
+        <For
+          ParentComponent={props => <Switch {...props} />}
+          of={map(Object.keys(routeConfig))}
+          renderItem={(routeKey, index) => {
             const Component = routeConfig[routeKey].component;
             return (
               <Route
@@ -47,8 +50,8 @@ export function App({ location }) {
                 }}
               />
             );
-          })}
-        </Switch>
+          }}
+        />
         <GlobalStyle />
       </Layout.Content>
     </ThemeProvider>

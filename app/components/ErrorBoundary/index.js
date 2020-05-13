@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { translate } from '@components/IntlGlobalProvider/index';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // handle gracefully
-      return <h1>Something went wrong.</h1>;
+      return <h1>{translate('something_went_wrong')}</h1>;
     }
     return this.props.children;
   }
