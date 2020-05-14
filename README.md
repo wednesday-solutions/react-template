@@ -107,6 +107,12 @@ Take a look at the following files
 - [app/app.js](app/app.js)
 - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
 
-### Clean up commit history
+## Scaffolding components
 
-`yarn initialize`
+Components, containers, tests and stories can be scaffolded using
+
+```
+yarn generate
+```
+
+For documentation take a look at: [react-floki](https://github.com/wednesday-solutions/react-floki)
