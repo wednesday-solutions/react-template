@@ -11,10 +11,17 @@ const dotEnvFile =
     ? `.env`
     : `.env.${process.env.NODE_ENV}`;
 const env = dotenv.config({ path: dotEnvFile }).parsed;
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
+const envKeys = {
+  ...Object.keys(process.env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
+    return prev;
+  }, {}),
+  ...Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+  }, {})
+};
+
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
