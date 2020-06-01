@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import configureStore from '@app/configureStore';
 import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
 import ConnectedLanguageProvider from '@containers/LanguageProvider';
+import { IntlGlobalProvider } from '@components/IntlGlobalProvider';
 
 export const renderWithIntl = children =>
   render(
@@ -14,7 +15,7 @@ export const renderWithIntl = children =>
       locale={DEFAULT_LOCALE}
       messages={translationMessages[DEFAULT_LOCALE]}
     >
-      {children}
+      <IntlGlobalProvider>{children}</IntlGlobalProvider>
     </IntlProvider>
   );
 
