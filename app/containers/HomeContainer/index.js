@@ -60,8 +60,6 @@ export function HomeContainer({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Effects will be called instead of componentDidMount, componentDidUpdate, componentWillRecieveProps
-    // This effect will be called for every render.
     const loaded = get(reposData, 'items', null) || reposError;
     if (loading && loaded) {
       setLoading(false);
