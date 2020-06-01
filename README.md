@@ -4,6 +4,8 @@
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
+![](react-template.svg)
+
 ## API Calls
 
 - API calls using [Api Sauce](https://github.com/infinitered/apisauce/)
