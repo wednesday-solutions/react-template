@@ -126,3 +126,8 @@ For documentation take a look at: [react-floki](https://github.com/wednesday-sol
    ```
    path={routeConfig[routeKey].route}
    ```
+- Another hack for github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have a hack here [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L32)  
+   This should actually be 
+   ```
+   publicPath: '/'
+   ```
