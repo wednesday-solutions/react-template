@@ -4,7 +4,7 @@
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
-![](react-template.svg)
+![](react-template.png)
 
 ## API Calls
 
