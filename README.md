@@ -4,7 +4,7 @@
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
-![](react-template.png)
+<img src="./react-template.png" height="250px" />
 
 ## API Calls
 
