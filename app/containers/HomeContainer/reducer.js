@@ -26,7 +26,7 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
         return initialState.set('repoName', action.repoName);
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState.set('repoName', null).set('reposData', null);
+        return initialState;
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
         return state.set('reposData', action.data);
       case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
