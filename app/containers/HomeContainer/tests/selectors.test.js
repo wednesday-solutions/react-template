@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import {
   selectHomeContainer,
   selectRepoName,
@@ -18,17 +17,17 @@ describe('HomeContainer selector tests', () => {
     reposError = 'There was some error while fetching the repository details';
 
     mockedState = {
-      homeContainer: fromJS({
+      homeContainer: {
         repoName,
         reposData,
         reposError
-      })
+      }
     };
   });
   it('should select the homeContainer state', () => {
     const homeContainerSelector = selectHomeContainer();
     expect(homeContainerSelector(mockedState)).toEqual(
-      mockedState.homeContainer.toJS()
+      mockedState.homeContainer
     );
   });
   it('should select the repoName', () => {

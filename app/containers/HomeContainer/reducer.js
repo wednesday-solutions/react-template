@@ -4,9 +4,8 @@
  *
  */
 import produce from 'immer';
-import { fromJS } from 'immutable';
 import { createActions } from 'reduxsauce';
-import _ from 'lodash';
+import get from 'lodash/get';
 
 export const {
   Types: homeContainerTypes,
@@ -17,25 +16,25 @@ export const {
   failureGetGithubRepos: ['error'],
   clearGithubRepos: []
 });
-export const initialState = fromJS({});
+export const initialState = {};
 
 /* eslint-disable default-case, no-param-reassign */
 export const homeContainerReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
-        return initialState.set('repoName', action.repoName);
+        draft.repoName = action.repoName;
+        break;
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState;
+        draft = initialState;
+        break;
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
-        return state.set('reposData', action.data);
+        draft.reposData = action.data;
+        break;
       case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
-        return state.set(
-          'reposError',
-          _.get(action.error, 'message', 'something_went_wrong')
-        );
+        draft.reposError = get(action.error, 'message', 'something_went_wrong');
+        break;
     }
-    return state;
   });
 
 export default homeContainerReducer;
