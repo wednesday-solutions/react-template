@@ -7,10 +7,7 @@ import { createActions } from 'reduxsauce';
 import produce from 'immer';
 import { DEFAULT_LOCALE } from '@app/i18n';
 
-export const {
-  Types: languageProviderTypes,
-  Creators: languageProviderActions
-} = createActions({
+export const { Types: languageProviderTypes, Creators: languageProviderActions } = createActions({
   changeLocale: ['locale']
 });
 

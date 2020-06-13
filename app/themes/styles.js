@@ -88,24 +88,13 @@ const borderRadius = radius =>
     border-radius: ${radius + `${typeof radius === `string` ? `;` : `px`}`};
   `;
 
-const borderWithRadius = (
-  width = 1,
-  type = 'solid',
-  color = '#ccc',
-  radius = 0
-) =>
+const borderWithRadius = (width = 1, type = 'solid', color = '#ccc', radius = 0) =>
   css`
     border: ${width}px ${type} ${color};
     ${borderRadius(radius)}
   `;
 
-const boxShadow = (
-  hOffset = 0,
-  vOffset = 0,
-  blur = 0,
-  spread = 0,
-  color = '#ccc'
-) =>
+const boxShadow = (hOffset = 0, vOffset = 0, blur = 0, spread = 0, color = '#ccc') =>
   css`
     box-shadow: ${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color};
   `;

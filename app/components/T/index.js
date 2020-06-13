@@ -19,12 +19,7 @@ const StyledText = styled.p`
 `;
 const getFontStyle = type => (fonts.style[type] ? fonts.style[type] : () => {});
 export const T = ({ type, text, id, marginBottom, values, ...otherProps }) => (
-  <StyledText
-    data-testid="t"
-    font={getFontStyle(type)}
-    marginBottom={marginBottom}
-    {...otherProps}
-  >
+  <StyledText data-testid="t" font={getFontStyle(type)} marginBottom={marginBottom} {...otherProps}>
     <If condition={id} otherwise={text}>
       <FormattedMessage id={id} values={values} />
     </If>

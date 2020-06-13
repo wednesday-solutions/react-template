@@ -13,12 +13,7 @@ import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import {
-  selectHomeContainer,
-  selectReposData,
-  selectReposError,
-  selectRepoName
-} from './selectors';
+import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
 
@@ -124,10 +119,7 @@ export function HomeContainer({
     return (
       !loading &&
       repoError && (
-        <CustomCard
-          color={reposError ? 'red' : 'grey'}
-          title={intl.formatMessage({ id: 'repo_list' })}
-        >
+        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
@@ -142,10 +134,7 @@ export function HomeContainer({
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
-      <CustomCard
-        title={intl.formatMessage({ id: 'repo_search' })}
-        maxwidth={maxwidth}
-      >
+      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"

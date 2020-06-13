@@ -16,9 +16,7 @@ describe('<HomeContainer /> tests', () => {
     submitSpy = jest.fn();
   });
   it('should render and match the snapshot', () => {
-    const { baseElement } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} />
-    );
+    const { baseElement } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -26,10 +24,7 @@ describe('<HomeContainer /> tests', () => {
     const getGithubReposSpy = jest.fn();
     const clearGithubReposSpy = jest.fn();
     const { getByTestId } = renderProvider(
-      <HomeContainer
-        dispatchClearGithubRepos={clearGithubReposSpy}
-        dispatchGithubRepos={getGithubReposSpy}
-      />
+      <HomeContainer dispatchClearGithubRepos={clearGithubReposSpy} dispatchGithubRepos={getGithubReposSpy} />
     );
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'a' }
@@ -44,9 +39,7 @@ describe('<HomeContainer /> tests', () => {
   });
 
   it('should call dispatchGithubRepos on change', async () => {
-    const { getByTestId } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} />
-    );
+    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'some repo' }
     });

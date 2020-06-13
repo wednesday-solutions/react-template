@@ -7,10 +7,7 @@ import produce from 'immer';
 import { createActions } from 'reduxsauce';
 import get from 'lodash/get';
 
-export const {
-  Types: homeContainerTypes,
-  Creators: homeContainerCreators
-} = createActions({
+export const { Types: homeContainerTypes, Creators: homeContainerCreators } = createActions({
   requestGetGithubRepos: ['repoName'],
   successGetGithubRepos: ['data'],
   failureGetGithubRepos: ['error'],

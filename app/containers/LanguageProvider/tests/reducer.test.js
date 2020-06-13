@@ -1,8 +1,4 @@
-import {
-  initialState,
-  languageProviderTypes,
-  languageProviderReducer
-} from '../reducer';
+import { initialState, languageProviderTypes, languageProviderReducer } from '../reducer';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('Tests for LanguageProvider actions', () => {
