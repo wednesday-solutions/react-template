@@ -1,15 +1,15 @@
 /**
  *
- * Tests for HomeContainer
+ * Tests for GithubRepos
  *
  */
 
 import React from 'react';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { fireEvent } from '@testing-library/dom';
-import { HomeContainerTest as HomeContainer } from '../index';
+import { GithubReposTest as GithubRepos } from '../../GithubRepos';
 
-describe('<HomeContainer /> tests', () => {
+describe('<GithubRepos /> tests', () => {
   let submitSpy;
 
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('<HomeContainer /> tests', () => {
   });
   it('should render and match the snapshot', () => {
     const { baseElement } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} />
+      <GithubRepos dispatchGithubRepos={submitSpy} />
     );
     expect(baseElement).toMatchSnapshot();
   });
@@ -26,7 +26,7 @@ describe('<HomeContainer /> tests', () => {
     const getGithubReposSpy = jest.fn();
     const clearGithubReposSpy = jest.fn();
     const { getByTestId } = renderProvider(
-      <HomeContainer
+      <GithubRepos
         dispatchClearGithubRepos={clearGithubReposSpy}
         dispatchGithubRepos={getGithubReposSpy}
       />
@@ -45,7 +45,7 @@ describe('<HomeContainer /> tests', () => {
 
   it('should call dispatchGithubRepos on change', async () => {
     const { getByTestId } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} />
+      <GithubRepos dispatchGithubRepos={submitSpy} />
     );
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'some repo' }
