@@ -6,7 +6,6 @@ const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
@@ -62,7 +61,6 @@ module.exports = require('./webpack.base.babel')({
   },
 
   plugins: [
-    new LodashModuleReplacementPlugin(),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: 'app/index.html',
