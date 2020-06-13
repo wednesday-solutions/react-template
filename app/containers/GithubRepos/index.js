@@ -36,7 +36,7 @@ function GithubRepos({
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [reposData, reposError]);
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
@@ -67,9 +67,15 @@ function GithubRepos({
             )}
             {items.map((item, index) => (
               <CustomCard key={index}>
-                <div>Repository Name: {item.name}</div>
-                <div>Repository Full Name: {item.fullName}</div>
-                <div>Repository stars: {item.stargazersCount}</div>
+                <div>
+                  <b>Repository Name:</b> {item.name}
+                </div>
+                <div>
+                  <b>Repository Full Name:</b> {item.fullName}
+                </div>
+                <div>
+                  <b>Repository stars:</b> {item.stargazersCount}
+                </div>
               </CustomCard>
             ))}
           </Skeleton>
@@ -149,7 +155,7 @@ GithubRepos.propTypes = {
     incompleteResults: PropTypes.bool,
     items: PropTypes.array
   }),
-  reposError: PropTypes.object,
+  reposError: PropTypes.string,
   repoName: PropTypes.string
 };
 

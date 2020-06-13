@@ -51,7 +51,7 @@ describe('HomeContainer saga tests', () => {
     ).toEqual(
       put({
         type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
-        data: reposResponse
+        repoData: reposResponse
       })
     );
   });

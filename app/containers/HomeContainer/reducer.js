@@ -13,11 +13,11 @@ export const {
   Creators: homeContainerCreators
 } = createActions({
   requestGetGithubRepos: ['repoName'],
-  successGetGithubRepos: ['data'],
+  successGetGithubRepos: ['repoData'],
   failureGetGithubRepos: ['error'],
   clearGithubRepos: [],
   requestGetArtistSongs: ['artistName'],
-  successGetArtistSongs: ['data'],
+  successGetArtistSongs: ['songsData'],
   failureGetArtistSongs: ['error'],
   clearArtistSongs: []
 });
@@ -31,9 +31,13 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
         return initialState.set('repoName', action.repoName);
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return state.set('repoName', null).set('reposData', null);
+        return state.merge({
+          repoName: null,
+          reposData: null,
+          reposError: null
+        });
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
-        return state.set('reposData', action.data);
+        return state.set('reposData', action.repoData);
       case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
         return state.set(
           'reposError',
@@ -44,7 +48,7 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.REQUEST_GET_ARTIST_SONGS:
         return state.set('artistName', action.artistName);
       case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS: {
-        const { results, resultCount } = action.data;
+        const { results, resultCount } = action.songsData;
         const filteredTrackIds = results?.map(
           result => result.trackId || _.uniqueId()
         );
@@ -58,7 +62,8 @@ export const homeContainerReducer = (state = initialState, action) =>
           artistName: null,
           songsData: null,
           songsCount: null,
-          allTrackIds: null
+          allTrackIds: null,
+          songsError: null
         });
       case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
         return state.set(

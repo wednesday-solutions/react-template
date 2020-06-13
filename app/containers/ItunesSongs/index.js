@@ -30,8 +30,8 @@ const Image = styled.img`
 function ItunesSongs({
   artistName,
   allTrackIds: trackIds,
-  songsData,
-  songsError,
+  songsData = {},
+  songsError = null,
   intl,
   maxwidth,
   padding,
@@ -45,7 +45,7 @@ function ItunesSongs({
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [songsData]);
+  }, [songsData, songsError]);
 
   const handleOnChange = artistName => {
     if (!isEmpty(artistName)) {
@@ -87,6 +87,25 @@ function ItunesSongs({
     );
   };
 
+  const renderErrorState = () => {
+    let searchTextOrError = 'songs_search_default';
+    if (songsError) {
+      searchTextOrError = songsError;
+    }
+    return (
+      !loading &&
+      searchTextOrError &&
+      !trackIds?.length && (
+        <CustomCard
+          color={songsError ? 'red' : 'grey'}
+          title={intl.formatMessage({ id: 'songs_list' })}
+        >
+          <T id={searchTextOrError} />
+        </CustomCard>
+      )
+    );
+  };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <CustomCard
@@ -102,6 +121,7 @@ function ItunesSongs({
         />
       </CustomCard>
       {renderSongList()}
+      {renderErrorState()}
     </Container>
   );
 }

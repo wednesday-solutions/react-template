@@ -32,7 +32,7 @@ describe('HomContainer reducer tests', () => {
     expect(
       homeContainerReducer(state, {
         type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
-        data
+        repoData: data
       })
     ).toEqual(expectedResult);
   });

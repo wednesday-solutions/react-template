@@ -5,6 +5,8 @@
   "get_repo_details": "Get details of repositories",
   "search_query": "Search query: {name}",
   "matching_repos": "Total number of matching repos: {totalCount}",
+  "songs_list": "Songs List",
+  "songs_search_default": "Search for a song by entering it's artist's name in the search box",
   "songs_search": "Songs Search",
   "get_song_details": "Get details of songs",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
