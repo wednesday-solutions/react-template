@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Input, Skeleton } from 'antd';
+import { Input, Skeleton, Card, Empty } from 'antd';
+import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import T from '@components/T';
@@ -11,15 +12,24 @@ import { CustomCard, Container } from '../HomeContainer/styles';
 import {
   selectArtistName,
   selectSongsData,
-  selectSongsCount,
+  selectTrackIds,
   selectSongsError
 } from '../HomeContainer/selectors';
 
 const { Search } = Input;
+const { Meta } = Card;
+
+const Image = styled.img`
+  && {
+    width: 30%;
+    height: 30%;
+    margin: 10px auto;
+  }
+`;
 
 function ItunesSongs({
   artistName,
-  songsCount,
+  allTrackIds: trackIds,
   songsData,
   songsError,
   intl,
@@ -49,12 +59,28 @@ function ItunesSongs({
 
   const renderSongList = () => {
     return (
-      (songsCount > 0 || loading) && (
+      (trackIds?.length > 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
             {artistName && (
               <T id="search_query" values={{ name: artistName }} />
             )}
+            {trackIds?.map(trackId => (
+              <CustomCard
+                key={trackId}
+                cover={
+                  <Image
+                    src={songsData[trackId]?.artworkUrl100}
+                    alt={<Empty />}
+                  />
+                }
+              >
+                <Meta
+                  title={songsData[trackId]?.artistName}
+                  description={songsData[trackId]?.trackName}
+                />
+              </CustomCard>
+            ))}
           </Skeleton>
         </CustomCard>
       )
@@ -82,9 +108,9 @@ function ItunesSongs({
 
 ItunesSongs.propTypes = {
   artistName: PropTypes.string,
-  songsCount: PropTypes.number,
+  allTrackIds: PropTypes.array,
   songsData: PropTypes.object,
-  songsError: PropTypes.object,
+  songsError: PropTypes.string,
   intl: PropTypes.object,
   maxwidth: PropTypes.number,
   padding: PropTypes.number,
@@ -95,7 +121,7 @@ ItunesSongs.propTypes = {
 const mapStateToProps = createStructuredSelector({
   artistName: selectArtistName(),
   songsData: selectSongsData(),
-  songsCount: selectSongsCount(),
+  allTrackIds: selectTrackIds(),
   songsError: selectSongsError()
 });
 

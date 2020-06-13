@@ -54,10 +54,10 @@ export const selectSongsData = () =>
     substate => _.get(substate, 'songsData', null)
   );
 
-export const selectSongsCount = () =>
+export const selectTrackIds = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => _.get(substate, 'songsCount', null)
+    substate => _.get(substate, 'allTrackIds', null)
   );
 
 export const selectSongsError = () =>

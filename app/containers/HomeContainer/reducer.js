@@ -45,15 +45,21 @@ export const homeContainerReducer = (state = initialState, action) =>
         return state.set('artistName', action.artistName);
       case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS: {
         const { results, resultCount } = action.data;
+        const filteredTrackIds = results?.map(
+          result => result.trackId || _.uniqueId()
+        );
         return state
           .set('songsData', _.keyBy(results, 'trackId'))
-          .set('songsCount', resultCount);
+          .set('songsCount', resultCount)
+          .set('allTrackIds', filteredTrackIds);
       }
       case homeContainerTypes.CLEAR_ARTIST_SONGS:
-        return state
-          .set('artistName', null)
-          .set('songsData', null)
-          .set('songsCount', null);
+        return state.merge({
+          artistName: null,
+          songsData: null,
+          songsCount: null,
+          allTrackIds: null
+        });
       case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
         return state.set(
           'songsError',
