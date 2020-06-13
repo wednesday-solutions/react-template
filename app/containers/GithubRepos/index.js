@@ -15,11 +15,12 @@ import {
   selectRepoName
 } from '../HomeContainer/selectors';
 import { homeContainerCreators } from '../HomeContainer/reducer';
-import { CustomCard } from '../HomeContainer/styles';
+import { CustomCard, Container } from '../HomeContainer/styles';
 
 const { Search } = Input;
 
 function GithubRepos({
+  padding,
   maxwidth,
   intl,
   repoName,
@@ -98,7 +99,7 @@ function GithubRepos({
   };
 
   return (
-    <>
+    <Container maxwidth={maxwidth} padding={padding}>
       <CustomCard
         title={intl.formatMessage({ id: 'repo_search' })}
         maxwidth={maxwidth}
@@ -114,7 +115,7 @@ function GithubRepos({
       </CustomCard>
       {renderRepoList()}
       {renderErrorState()}
-    </>
+    </Container>
   );
 }
 
@@ -139,6 +140,7 @@ const withConnect = connect(
 
 GithubRepos.propTypes = {
   maxwidth: PropTypes.number,
+  padding: PropTypes.number,
   dispatchGithubRepos: PropTypes.func,
   dispatchClearGithubRepos: PropTypes.func,
   intl: PropTypes.object,

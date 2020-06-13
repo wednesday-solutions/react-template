@@ -16,14 +16,11 @@ import ItunesSongsContainer from '../ItunesSongs/Loadable';
 const Container = styled.div`
   && {
     display: flex;
-    flex-direction: column;
-    max-width: ${props => props.maxwidth}px;
-    width: 100%;
-    margin: 0 30px;
-    padding: ${props => props.padding}px;
+    justify-content: space-evenly;
   }
 `;
-const RightContent = styled.div`
+
+const StorybookLink = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -37,14 +34,20 @@ export function HomeContainer({ maxwidth, padding, intl }) {
     window.location.reload();
   };
 
+  const subContainerProps = {
+    maxwidth,
+    intl,
+    padding
+  };
+
   return (
     <>
-      <RightContent>
+      <StorybookLink>
         <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent>
-      <Container maxwidth={maxwidth} padding={padding}>
-        <GithubReposContainer maxwidth={maxwidth} intl={intl} />
-        <ItunesSongsContainer maxwidth={maxwidth} intl={intl} />
+      </StorybookLink>
+      <Container>
+        <GithubReposContainer {...subContainerProps} />
+        <ItunesSongsContainer {...subContainerProps} />
       </Container>
     </>
   );
