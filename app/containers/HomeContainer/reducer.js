@@ -16,7 +16,7 @@ export const {
   failureGetGithubRepos: ['error'],
   clearGithubRepos: []
 });
-export const initialState = {};
+export const initialState = { repoName: null, reposData: [], reposError: null };
 
 /* eslint-disable default-case, no-param-reassign */
 export const homeContainerReducer = (state = initialState, action) =>
@@ -26,8 +26,7 @@ export const homeContainerReducer = (state = initialState, action) =>
         draft.repoName = action.repoName;
         break;
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        draft = initialState;
-        break;
+        return initialState;
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
         draft.reposData = action.data;
         break;
