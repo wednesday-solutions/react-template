@@ -41,4 +41,29 @@ export const selectRepoName = () =>
     substate => _.get(substate, 'repoName', null)
   );
 
+// itunes songs selectors
+export const selectArtistName = () =>
+  createSelector(
+    selectHomeContainerDomain,
+    substate => _.get(substate, 'artistName', null)
+  );
+
+export const selectSongsData = () =>
+  createSelector(
+    selectHomeContainerDomain,
+    substate => _.get(substate, 'songsData', null)
+  );
+
+export const selectSongsCount = () =>
+  createSelector(
+    selectHomeContainerDomain,
+    substate => _.get(substate, 'songsCount', null)
+  );
+
+export const selectSongsError = () =>
+  createSelector(
+    selectHomeContainerDomain,
+    substate => _.get(substate, 'songsError', null)
+  );
+
 export default selectHomeContainer;

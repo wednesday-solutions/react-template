@@ -3,7 +3,7 @@
   "repo_search": "Repository Search",
   "respo_search_default": "Search for a repository by entering it's name in the search box",
   "get_repo_details": "Get details of repositories",
-  "search_query": "Search query: {repoName}",
+  "search_query": "Search query: {name}",
   "matching_repos": "Total number of matching repos: {totalCount}",
   "songs_search": "Songs Search",
   "get_song_details": "Get details of songs",

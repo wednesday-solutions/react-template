@@ -57,7 +57,7 @@ function GithubRepos({
           <Skeleton loading={loading} active>
             {repoName && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ name: repoName }} />
               </div>
             )}
             {totalCount !== 0 && (

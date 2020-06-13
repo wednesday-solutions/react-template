@@ -56,7 +56,7 @@ export const homeContainerReducer = (state = initialState, action) =>
           .set('songsCount', null);
       case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
         return state.set(
-          'sonsgError',
+          'songsError',
           _.get(action.error, 'message', 'something_went_wrong')
         );
     }
