@@ -2,7 +2,7 @@ import NotFound from '@containers/NotFoundPage/Loadable';
 import HomeContainer from '@containers/HomeContainer/Loadable';
 
 export const routeConfig = {
-  repos: {
+  home: {
     component: HomeContainer,
     route: '/',
     // add props to pass to HomeContainer

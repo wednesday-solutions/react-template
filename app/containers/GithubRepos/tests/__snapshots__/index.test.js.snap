@@ -4,7 +4,7 @@ exports[`<GithubRepos /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="ant-card GithubRepos__CustomCard-exnz0-0 ebAnUZ ant-card-bordered"
+      class="ant-card styles__CustomCard-mjzhxg-0 elDprG ant-card-bordered"
     >
       <div
         class="ant-card-head"
@@ -66,7 +66,7 @@ exports[`<GithubRepos /> tests should render and match the snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-card GithubRepos__CustomCard-exnz0-0 hRSJBr ant-card-bordered"
+      class="ant-card styles__CustomCard-mjzhxg-0 cHbeLy ant-card-bordered"
       color="grey"
     >
       <div

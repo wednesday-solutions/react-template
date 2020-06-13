@@ -1,14 +1,13 @@
 import React, { memo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
-import { Card, Input, Skeleton } from 'antd';
+import { Input, Skeleton } from 'antd';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import T from '@components/T';
 import {
   selectReposData,
@@ -16,17 +15,9 @@ import {
   selectRepoName
 } from '../HomeContainer/selectors';
 import { homeContainerCreators } from '../HomeContainer/reducer';
+import { CustomCard } from '../HomeContainer/styles';
 
 const { Search } = Input;
-
-const CustomCard = styled(Card)`
-  && {
-    margin: 20px 0;
-    max-width: ${props => props.maxwidth};
-    color: ${props => props.color};
-    ${props => props.color && `color: ${props.color}`};
-  }
-`;
 
 function GithubRepos({
   maxwidth,
@@ -161,7 +152,6 @@ GithubRepos.propTypes = {
 };
 
 export default compose(
-  injectIntl,
   withConnect,
   memo
 )(GithubRepos);

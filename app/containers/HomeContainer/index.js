@@ -11,6 +11,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer } from './selectors';
 import saga from './saga';
 import GithubReposContainer from '../GithubRepos/Loadable';
+import ItunesSongsContainer from '../ItunesSongs/Loadable';
 
 const Container = styled.div`
   && {
@@ -27,7 +28,7 @@ const RightContent = styled.div`
   justify-content: center;
 `;
 
-export function HomeContainer({ maxwidth, padding }) {
+export function HomeContainer({ maxwidth, padding, intl }) {
   const history = useHistory();
   useInjectSaga({ key: 'homeContainer', saga });
 
@@ -42,7 +43,8 @@ export function HomeContainer({ maxwidth, padding }) {
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
       <Container maxwidth={maxwidth} padding={padding}>
-        <GithubReposContainer maxwidth={maxwidth} />
+        <GithubReposContainer maxwidth={maxwidth} intl={intl} />
+        <ItunesSongsContainer maxwidth={maxwidth} intl={intl} />
       </Container>
     </>
   );
@@ -51,7 +53,8 @@ export function HomeContainer({ maxwidth, padding }) {
 HomeContainer.propTypes = {
   history: PropTypes.object,
   maxwidth: PropTypes.number,
-  padding: PropTypes.number
+  padding: PropTypes.number,
+  intl: PropTypes.object
 };
 
 HomeContainer.defaultProps = {
@@ -66,6 +69,7 @@ const mapStateToProps = createStructuredSelector({
 const withConnect = connect(mapStateToProps);
 
 export default compose(
+  injectIntl,
   withConnect,
   memo
 )(HomeContainer);
