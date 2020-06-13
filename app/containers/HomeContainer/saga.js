@@ -1,9 +1,18 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { getRepos } from '@services/repoApi';
+import { getRepos, getSongs } from '@services/api';
 import { homeContainerTypes, homeContainerCreators } from './reducer';
 
-const { REQUEST_GET_GITHUB_REPOS } = homeContainerTypes;
-const { successGetGithubRepos, failureGetGithubRepos } = homeContainerCreators;
+const {
+  REQUEST_GET_GITHUB_REPOS,
+  REQUEST_GET_ARTIST_SONGS
+} = homeContainerTypes;
+const {
+  successGetGithubRepos,
+  failureGetGithubRepos,
+  successGetArtistSongs,
+  failureGetArtistSongs
+} = homeContainerCreators;
+
 export function* getGithubRepos(action) {
   const response = yield call(getRepos, action.repoName);
   const { data, ok } = response;
@@ -13,7 +22,19 @@ export function* getGithubRepos(action) {
     yield put(failureGetGithubRepos(data));
   }
 }
+
+export function* getArtistSongs(action) {
+  const response = yield call(getSongs, action.artistName);
+  const { data, ok } = response;
+  if (ok) {
+    yield put(successGetArtistSongs(data));
+  } else {
+    yield put(failureGetArtistSongs(data));
+  }
+}
+
 // Individual exports for testing
 export default function* homeContainerSaga() {
   yield takeLatest(REQUEST_GET_GITHUB_REPOS, getGithubRepos);
+  yield takeLatest(REQUEST_GET_ARTIST_SONGS, getArtistSongs);
 }

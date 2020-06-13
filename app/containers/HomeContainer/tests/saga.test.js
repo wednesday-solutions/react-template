@@ -4,7 +4,7 @@
 
 /* eslint-disable redux-saga/yield-effects */
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { getRepos } from '@services/repoApi';
+import { getRepos } from '@services/api';
 import { apiResponseGenerator } from '@utils/testUtils';
 import homeContainerSaga, { getGithubRepos } from '../saga';
 import { homeContainerTypes } from '../reducer';

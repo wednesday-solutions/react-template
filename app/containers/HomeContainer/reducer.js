@@ -15,7 +15,11 @@ export const {
   requestGetGithubRepos: ['repoName'],
   successGetGithubRepos: ['data'],
   failureGetGithubRepos: ['error'],
-  clearGithubRepos: []
+  clearGithubRepos: [],
+  requestGetArtistSongs: ['artistName'],
+  successGetArtistSongs: ['data'],
+  failureGetArtistSongs: ['error'],
+  clearArtistSongs: []
 });
 export const initialState = fromJS({});
 
@@ -23,6 +27,7 @@ export const initialState = fromJS({});
 export const homeContainerReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
+      // github
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
         return initialState.set('repoName', action.repoName);
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
@@ -32,6 +37,19 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
         return state.set(
           'reposError',
+          _.get(action.error, 'message', 'something_went_wrong')
+        );
+
+      // itunes songs
+      case homeContainerTypes.REQUEST_GET_ARTIST_SONGS:
+        return state.set('artistName', action.artistName);
+      case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS:
+        return state.set('songsData', action.data);
+      case homeContainerTypes.CLEAR_ARTIST_SONGS:
+        return initialState;
+      case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
+        return state.set(
+          'sonsgError',
           _.get(action.error, 'message', 'something_went_wrong')
         );
     }

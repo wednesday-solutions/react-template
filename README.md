@@ -13,7 +13,7 @@
   Take a look at the following files
 
   - [app/utils/apiUtils.js](app/utils/apiUtils.js)
-  - [app/services/repoApi.js](app/services/repoApi.js)
+  - [app/services/api.js](app/services/api.js)
   - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
 
 ## Side Effects
@@ -122,12 +122,12 @@ For documentation take a look at: [react-floki](https://github.com/wednesday-sol
 ## Gotchas
 
 - For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have a hack here [App/index.js](https://github.com/wednesday-solutions/react-template/blob/master/app/containers/App/index.js#L43)  
-   This should actually look like this 
-   ```
-   path={routeConfig[routeKey].route}
-   ```
+   This should actually look like this
+  ```
+  path={routeConfig[routeKey].route}
+  ```
 - Another hack for github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have a hack here [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L32)  
-   This should actually be 
-   ```
-   publicPath: '/'
-   ```
+   This should actually be
+  ```
+  publicPath: '/'
+  ```

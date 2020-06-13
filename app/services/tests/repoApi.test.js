@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import { getApiClient } from '@utils/apiUtils';
-import { getRepos } from '../repoApi';
+import { getRepos } from '../api';
 
 describe('RepoApi tests', () => {
   const repositoryName = 'mac';
