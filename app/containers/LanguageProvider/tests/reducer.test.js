@@ -17,7 +17,7 @@ describe('Tests for LanguageProvider actions', () => {
 
   it('changes the locale', () => {
     const locale = 'de';
-    mockedState = mockedState.set('locale', locale);
+    mockedState = { ...mockedState, locale };
     expect(
       languageProviderReducer(undefined, {
         type: languageProviderTypes.CHANGE_LOCALE,

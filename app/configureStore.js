@@ -12,6 +12,7 @@ import createReducer from './reducers';
 
 // redux persit configuration
 const persistConfig = {
+  version: 1,
   transforms: [immutableTransform()],
   key: 'root',
   blacklist: ['router'],

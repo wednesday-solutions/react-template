@@ -1,6 +1,7 @@
 import { create } from 'apisauce';
-import mapKeysDeep from 'deep-map-keys';
-import { camelCase, snakeCase } from 'lodash';
+import snakeCase from 'lodash/snakeCase';
+import camelCase from 'lodash/camelCase';
+import { mapKeysDeep } from './index';
 
 const { GITHUB_URL } = process.env;
 const apiClients = {

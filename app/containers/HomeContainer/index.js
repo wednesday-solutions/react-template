@@ -66,6 +66,13 @@ export function HomeContainer({
     }
   }, [reposData]);
 
+  useEffect(() => {
+    if (repoName && !reposData?.items?.length) {
+      dispatchGithubRepos(repoName);
+      setLoading(true);
+    }
+  }, []);
+
   const history = useHistory();
 
   const handleOnChange = rName => {

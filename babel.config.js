@@ -3,12 +3,15 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false
+        modules: false,
+        corejs: '3.6.5',
+        useBuiltIns: 'entry'
       }
     ],
     '@babel/preset-react'
   ],
   plugins: [
+    'lodash',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-optional-chaining',
     'styled-components',
@@ -23,7 +26,11 @@ module.exports = {
         'transform-react-remove-prop-types',
         '@babel/plugin-transform-react-inline-elements',
         '@babel/plugin-transform-react-constant-elements',
-        ['import', { libraryName: 'antd', style: true }]
+        [
+          'import',
+          { libraryName: 'antd', libraryDirectory: 'es' },
+          'import-antd'
+        ]
       ]
     },
     dev: {

@@ -1,5 +1,8 @@
 import invariant from 'invariant';
-import { isEmpty, isFunction, isString, conformsTo } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isFunction from 'lodash/isFunction';
+import isString from 'lodash/isString';
+import conformsTo from 'lodash/conformsTo';
 
 import checkStore from './checkStore';
 import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from './constants';

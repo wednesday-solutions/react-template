@@ -1,13 +1,12 @@
 import { createSelector } from 'reselect';
-import _ from 'lodash';
+import get from 'lodash/get';
 import { initialState } from './reducer';
 
 /**
  * Direct selector to the homeContainer state domain
  */
 
-const selectHomeContainerDomain = state =>
-  (state.homeContainer || initialState).toJS();
+const selectHomeContainerDomain = state => state.homeContainer || initialState;
 
 /**
  * Other specific selectors
@@ -26,19 +25,19 @@ export const selectHomeContainer = () =>
 export const selectReposData = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => _.get(substate, 'reposData', null)
+    substate => get(substate, 'reposData', null)
   );
 
 export const selectReposError = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => _.get(substate, 'reposError', null)
+    substate => get(substate, 'reposError', null)
   );
 
 export const selectRepoName = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => _.get(substate, 'repoName', null)
+    substate => get(substate, 'repoName', null)
   );
 
 export default selectHomeContainer;
