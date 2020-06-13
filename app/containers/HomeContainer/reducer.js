@@ -29,7 +29,7 @@ export const homeContainerReducer = (state = initialState, action) =>
     switch (action.type) {
       // github
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
-        return initialState.set('repoName', action.repoName);
+        return state.set('repoName', action.repoName);
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
         return state.merge({
           repoName: null,
