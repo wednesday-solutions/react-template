@@ -3,7 +3,7 @@
  */
 
 /* eslint-disable redux-saga/yield-effects */
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import { getRepos } from '@services/api';
 import { apiResponseGenerator } from '@utils/testUtils';
 import homeContainerSaga, { getGithubRepos } from '../saga';
@@ -16,7 +16,7 @@ describe('HomeContainer saga tests', () => {
 
   it('should start task to watch for REQUEST_GET_GITHUB_REPOS action', () => {
     expect(generator.next().value).toEqual(
-      takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos)
+      takeEvery(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos)
     );
   });
 

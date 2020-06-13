@@ -1,4 +1,4 @@
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 import { getRepos, getSongs } from '@services/api';
 import { homeContainerTypes, homeContainerCreators } from './reducer';
 
@@ -35,6 +35,6 @@ export function* getArtistSongs(action) {
 
 // Individual exports for testing
 export default function* homeContainerSaga() {
-  yield takeLatest(REQUEST_GET_GITHUB_REPOS, getGithubRepos);
-  yield takeLatest(REQUEST_GET_ARTIST_SONGS, getArtistSongs);
+  yield takeEvery(REQUEST_GET_GITHUB_REPOS, getGithubRepos);
+  yield takeEvery(REQUEST_GET_ARTIST_SONGS, getArtistSongs);
 }

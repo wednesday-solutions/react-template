@@ -31,7 +31,7 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
         return initialState.set('repoName', action.repoName);
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState;
+        return state.set('repoName', null).set('reposData', null);
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
         return state.set('reposData', action.data);
       case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
@@ -46,7 +46,7 @@ export const homeContainerReducer = (state = initialState, action) =>
       case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS:
         return state.set('songsData', action.data);
       case homeContainerTypes.CLEAR_ARTIST_SONGS:
-        return initialState;
+        return state.set('artistName', null).set('songsData', null);
       case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
         return state.set(
           'sonsgError',
