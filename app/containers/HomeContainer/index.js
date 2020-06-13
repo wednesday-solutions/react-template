@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 const RightContent = styled.div`
   display: flex;
-  align-self: flex-end;
+  justify-content: center;
 `;
 
 export function HomeContainer({ maxwidth, padding }) {
