@@ -3,7 +3,9 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false
+        modules: false,
+        corejs: '3.6.5',
+        useBuiltIns: 'entry'
       }
     ],
     '@babel/preset-react'
@@ -24,7 +26,11 @@ module.exports = {
         'transform-react-remove-prop-types',
         '@babel/plugin-transform-react-inline-elements',
         '@babel/plugin-transform-react-constant-elements',
-        ['import', { libraryName: 'antd', libraryDirectory: 'lib' }, 'ant']
+        [
+          'import',
+          { libraryName: 'antd', libraryDirectory: 'es' },
+          'import-antd'
+        ]
       ]
     },
     dev: {

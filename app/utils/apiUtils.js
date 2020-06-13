@@ -1,19 +1,8 @@
 import { create } from 'apisauce';
-// import mapKeysDeep from 'deep-map-keys';
 import snakeCase from 'lodash/snakeCase';
 import camelCase from 'lodash/camelCase';
-const mapKeysDeep = (obj, fn) =>
-  Array.isArray(obj)
-    ? obj.map(val => mapKeysDeep(val, fn))
-    : typeof obj === 'object'
-    ? Object.keys(obj).reduce((acc, current) => {
-        const key = fn(current);
-        const val = obj[current];
-        acc[key] =
-          val !== null && typeof val === 'object' ? mapKeysDeep(val, fn) : val;
-        return acc;
-      }, {})
-    : obj;
+import { mapKeysDeep } from './index';
+
 const { GITHUB_URL } = process.env;
 const apiClients = {
   github: null,

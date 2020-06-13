@@ -80,6 +80,7 @@
     "chalk": "2.4.2",
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
+    "core-js": "3.6.5",
     "cross-env": "5.2.0",
     "deep-map-keys": "^2.0.1",
     "dotenv": "^8.2.0",

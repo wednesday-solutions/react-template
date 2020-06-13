@@ -17,7 +17,7 @@ describe('HomContainer reducer tests', () => {
 
   it('should return the initial state when an action of type FETCH_USER is dispatched', () => {
     const repoName = 'Mohammed Ali Chherawalla';
-    const expectedResult = { ...state, repoName: repoName };
+    const expectedResult = { ...state, repoName };
     expect(
       homeContainerReducer(state, {
         type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS,

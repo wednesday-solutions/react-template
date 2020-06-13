@@ -36,11 +36,9 @@ LanguageProvider.propTypes = {
 
 const mapStateToProps = createSelector(
   makeSelectLocale(),
-  locale => {
-    return {
-      locale
-    };
-  }
+  locale => ({
+    locale
+  })
 );
 
 function mapDispatchToProps(dispatch) {
