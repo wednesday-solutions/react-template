@@ -15,5 +15,4 @@ export function appIntl() {
   return intl;
 }
 
-export const translate = (id, values = {}) =>
-  intl.formatMessage({ id }, values);
+export const translate = (id, values = {}) => intl.formatMessage({ id }, values);

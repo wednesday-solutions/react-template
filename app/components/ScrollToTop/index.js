@@ -16,10 +16,7 @@ class ScrollToTop extends React.Component {
 }
 
 ScrollToTop.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   location: PropTypes.object
 };
 export default compose(withRouter)(ScrollToTop);

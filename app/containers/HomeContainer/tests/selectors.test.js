@@ -1,9 +1,4 @@
-import {
-  selectHomeContainer,
-  selectRepoName,
-  selectReposData,
-  selectReposError
-} from '../selectors';
+import { selectHomeContainer, selectRepoName, selectReposData, selectReposError } from '../selectors';
 
 describe('HomeContainer selector tests', () => {
   let mockedState;
@@ -26,9 +21,7 @@ describe('HomeContainer selector tests', () => {
   });
   it('should select the homeContainer state', () => {
     const homeContainerSelector = selectHomeContainer();
-    expect(homeContainerSelector(mockedState)).toEqual(
-      mockedState.homeContainer
-    );
+    expect(homeContainerSelector(mockedState)).toEqual(mockedState.homeContainer);
   });
   it('should select the repoName', () => {
     const repoSelector = selectRepoName();

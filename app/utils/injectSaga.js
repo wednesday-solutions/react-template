@@ -22,9 +22,7 @@ export default ({ key, saga, mode }) => WrappedComponent => {
 
     static contextType = ReactReduxContext;
 
-    static displayName = `withSaga(${WrappedComponent.displayName ||
-      WrappedComponent.name ||
-      'Component'})`;
+    static displayName = `withSaga(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
     constructor(props, context) {
       super(props, context);

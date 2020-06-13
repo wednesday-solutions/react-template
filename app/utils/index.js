@@ -16,9 +16,7 @@ export const getCurrentRouteDetails = location => {
   }
   const route = find(
     Object.keys(routeConfig),
-    key =>
-      routeConfig[key].route === location.pathname ||
-      `${routeConfig[key].route}/` === location.pathname
+    key => routeConfig[key].route === location.pathname || `${routeConfig[key].route}/` === location.pathname
   );
   if (route) {
     return routeConfig[route];
@@ -32,8 +30,7 @@ export const mapKeysDeep = (obj, fn) =>
     ? Object.keys(obj).reduce((acc, current) => {
         const key = fn(current);
         const val = obj[current];
-        acc[key] =
-          val !== null && typeof val === 'object' ? mapKeysDeep(val, fn) : val;
+        acc[key] = val !== null && typeof val === 'object' ? mapKeysDeep(val, fn) : val;
         return acc;
       }, {})
     : obj;

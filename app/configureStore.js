@@ -51,11 +51,7 @@ export default function configureStore(initialState = {}, history) {
 
   const enhancers = [applyMiddleware(...middlewares)];
 
-  const store = createStore(
-    persistedReducer,
-    initialState,
-    composeEnhancers(...enhancers)
-  );
+  const store = createStore(persistedReducer, initialState, composeEnhancers(...enhancers));
 
   const persistor = persistStore(store);
 

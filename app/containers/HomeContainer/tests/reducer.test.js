@@ -1,8 +1,4 @@
-import {
-  homeContainerReducer,
-  initialState,
-  homeContainerTypes
-} from '../reducer';
+import { homeContainerReducer, initialState, homeContainerTypes } from '../reducer';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('HomContainer reducer tests', () => {

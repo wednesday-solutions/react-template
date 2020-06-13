@@ -6,8 +6,6 @@ describe('HomeContainer action tests', () => {
       type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS,
       repoName: 'repoName'
     };
-    expect(homeContainerCreators.requestGetGithubRepos('repoName')).toEqual(
-      expected
-    );
+    expect(homeContainerCreators.requestGetGithubRepos('repoName')).toEqual(expected);
   });
 });

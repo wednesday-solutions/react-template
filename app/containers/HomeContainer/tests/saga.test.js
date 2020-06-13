@@ -15,9 +15,7 @@ describe('HomeContainer saga tests', () => {
   let getGithubReposGenerator = getGithubRepos({ repoName });
 
   it('should start task to watch for REQUEST_GET_GITHUB_REPOS action', () => {
-    expect(generator.next().value).toEqual(
-      takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos)
-    );
+    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos));
   });
 
   it('should ensure that the action FAILURE_GET_GITHUB_REPOS is dispatched when the api call fails', () => {
@@ -26,10 +24,7 @@ describe('HomeContainer saga tests', () => {
     const errorResponse = {
       errorMessage: 'There was an error while fetching repo informations.'
     };
-    expect(
-      getGithubReposGenerator.next(apiResponseGenerator(false, errorResponse))
-        .value
-    ).toEqual(
+    expect(getGithubReposGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
       put({
         type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
         error: errorResponse
@@ -45,10 +40,7 @@ describe('HomeContainer saga tests', () => {
       totalCount: 1,
       items: [{ repositoryName: repoName }]
     };
-    expect(
-      getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse))
-        .value
-    ).toEqual(
+    expect(getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
       put({
         type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
         data: reposResponse
