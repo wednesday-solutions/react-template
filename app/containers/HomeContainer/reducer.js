@@ -43,10 +43,17 @@ export const homeContainerReducer = (state = initialState, action) =>
       // itunes songs
       case homeContainerTypes.REQUEST_GET_ARTIST_SONGS:
         return state.set('artistName', action.artistName);
-      case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS:
-        return state.set('songsData', action.data);
+      case homeContainerTypes.SUCCESS_GET_ARTIST_SONGS: {
+        const { results, resultCount } = action.data;
+        return state
+          .set('songsData', _.keyBy(results, 'trackId'))
+          .set('songsCount', resultCount);
+      }
       case homeContainerTypes.CLEAR_ARTIST_SONGS:
-        return state.set('artistName', null).set('songsData', null);
+        return state
+          .set('artistName', null)
+          .set('songsData', null)
+          .set('songsCount', null);
       case homeContainerTypes.FAILURE_GET_ARTIST_SONGS:
         return state.set(
           'sonsgError',
