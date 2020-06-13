@@ -72,7 +72,6 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "@babel/polyfill": "7.4.3",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "antd": "^4.2.0",
@@ -103,7 +102,7 @@
     "react-intl": "^4.5.1",
     "react-redux": "7.0.2",
     "react-router-dom": "^5.1.2",
-    "react-screentype-hook": "^1.0.13",
+    "react-screentype-hook": "^1.0.15",
     "redux": "4.0.1",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-immutable": "^5.0.0",
@@ -123,6 +122,7 @@
     "@babel/plugin-transform-modules-commonjs": "7.4.3",
     "@babel/plugin-transform-react-constant-elements": "7.2.0",
     "@babel/plugin-transform-react-inline-elements": "7.2.0",
+    "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.0",
