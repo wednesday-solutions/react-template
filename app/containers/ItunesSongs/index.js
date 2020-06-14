@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { Input, Skeleton, Card, Empty } from 'antd';
 import styled from 'styled-components';
+import { injectIntl } from 'react-intl';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import T from '@components/T';
@@ -76,6 +78,7 @@ function ItunesSongs({
                 }
               >
                 <Meta
+                  data-testid="songs-meta"
                   title={songsData[trackId]?.artistName}
                   description={songsData[trackId]?.trackName}
                 />
@@ -115,6 +118,7 @@ function ItunesSongs({
         <T marginBottom={10} id="get_song_details" />
         <Search
           type="text"
+          data-testid="songs-search-bar"
           defaultValue={artistName}
           onChange={e => debouncedHandleOnChange(e.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
@@ -147,10 +151,15 @@ const mapStateToProps = createStructuredSelector({
 
 const { requestGetArtistSongs, clearArtistSongs } = homeContainerCreators;
 
-export default connect(
-  mapStateToProps,
-  {
-    dispatchGetArtistSongs: requestGetArtistSongs,
-    dispatchClearArtistSongs: clearArtistSongs
-  }
+export default compose(
+  connect(
+    mapStateToProps,
+    {
+      dispatchGetArtistSongs: requestGetArtistSongs,
+      dispatchClearArtistSongs: clearArtistSongs
+    }
+  ),
+  memo
 )(ItunesSongs);
+
+export const ItunesSongsTest = compose(injectIntl)(ItunesSongs);

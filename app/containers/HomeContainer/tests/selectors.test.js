@@ -9,7 +9,7 @@ import {
   selectTrackIds,
   selectSongsError
 } from '../selectors';
-import { normalizedSongsData } from './__mocks__/songs.mocks';
+import { normalizedSongsState } from './__mocks__/songs.mocks';
 
 describe('HomeContainer selector tests', () => {
   let mockedState;
@@ -26,8 +26,8 @@ describe('HomeContainer selector tests', () => {
     reposData = { totalCount: 1, items: [{ repoName }] };
     reposError = 'There was some error while fetching the repository details';
     artistName = 'Coldplay';
-    songsData = normalizedSongsData.songsData;
-    allTrackIds = normalizedSongsData.allTrackIds;
+    songsData = normalizedSongsState.songsData;
+    allTrackIds = normalizedSongsState.allTrackIds;
     songsError = 'something_went_wrong';
 
     mockedState = {

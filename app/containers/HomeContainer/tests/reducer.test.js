@@ -7,7 +7,7 @@ import {
   successGetArtistSongsAction,
   failureGetArtistSongsAction,
   clearArtistSongsAction,
-  normalizedSongsData
+  normalizedSongsState
 } from './__mocks__/songs.mocks';
 
 /* eslint-disable default-case, no-param-reassign */
@@ -70,7 +70,7 @@ describe('HomeContainer reducer tests', () => {
     });
 
     it('should correctly set songs data when SUCCESS_GET_ARTIST_SONGS is dispatched', () => {
-      let expectedResult = normalizedSongsData;
+      let expectedResult = normalizedSongsState;
 
       const updatedState = homeContainerReducer(
         state,

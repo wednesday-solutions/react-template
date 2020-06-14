@@ -1,6 +1,6 @@
 import { homeContainerTypes } from '../../reducer';
 
-const artistName = 'Coldplay';
+export const artistName = 'Coldplay';
 
 // Actions
 export const successGetArtistSongsAction = {
@@ -33,7 +33,7 @@ export const clearArtistSongsAction = {
 };
 
 // Normalized state
-export const normalizedSongsData = {
+export const normalizedSongsState = {
   songsData: {
     '1': { trackId: 1, artistName },
     '2': { trackId: 2, artistName }
