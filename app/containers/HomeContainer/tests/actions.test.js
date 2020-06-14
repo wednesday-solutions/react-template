@@ -3,7 +3,7 @@ import {
   successGetArtistSongsAction,
   failureGetArtistSongsAction,
   clearArtistSongsAction
-} from './__mocks__/actions.mocks';
+} from './__mocks__/songs.mocks';
 
 describe('GithubRepos action tests', () => {
   it('has a type of REQUEST_GET_GITHUB_REPOS', () => {

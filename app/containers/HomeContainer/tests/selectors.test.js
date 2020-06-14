@@ -3,25 +3,42 @@ import {
   selectHomeContainer,
   selectRepoName,
   selectReposData,
-  selectReposError
+  selectReposError,
+  selectArtistName,
+  selectSongsData,
+  selectTrackIds,
+  selectSongsError
 } from '../selectors';
+import { normalizedSongsData } from './__mocks__/songs.mocks';
 
 describe('HomeContainer selector tests', () => {
   let mockedState;
   let repoName;
   let reposData;
   let reposError;
+  let artistName;
+  let songsData;
+  let allTrackIds;
+  let songsError;
 
   beforeEach(() => {
     repoName = 'mac';
     reposData = { totalCount: 1, items: [{ repoName }] };
     reposError = 'There was some error while fetching the repository details';
+    artistName = 'Coldplay';
+    songsData = normalizedSongsData.songsData;
+    allTrackIds = normalizedSongsData.allTrackIds;
+    songsError = 'something_went_wrong';
 
     mockedState = {
       homeContainer: fromJS({
         repoName,
         reposData,
-        reposError
+        reposError,
+        artistName,
+        songsData,
+        allTrackIds,
+        songsError
       })
     };
   });
@@ -31,18 +48,43 @@ describe('HomeContainer selector tests', () => {
       mockedState.homeContainer.toJS()
     );
   });
-  it('should select the repoName', () => {
-    const repoSelector = selectRepoName();
-    expect(repoSelector(mockedState)).toEqual(repoName);
+
+  describe('GithubRepos selector tests', () => {
+    it('should select the repoName', () => {
+      const repoSelector = selectRepoName();
+      expect(repoSelector(mockedState)).toEqual(repoName);
+    });
+
+    it('should select reposData', () => {
+      const reposDataSelector = selectReposData();
+      expect(reposDataSelector(mockedState)).toEqual(reposData);
+    });
+
+    it('should select the reposError', () => {
+      const reposErrorSelector = selectReposError();
+      expect(reposErrorSelector(mockedState)).toEqual(reposError);
+    });
   });
 
-  it('should select reposData', () => {
-    const reposDataSelector = selectReposData();
-    expect(reposDataSelector(mockedState)).toEqual(reposData);
-  });
+  describe('ItunesSongs selector tests', () => {
+    it('should select the artistName', () => {
+      const artistNameSelected = selectArtistName()(mockedState);
+      expect(artistNameSelected).toEqual(artistName);
+    });
 
-  it('should select the reposError', () => {
-    const reposErrorSelector = selectReposError();
-    expect(reposErrorSelector(mockedState)).toEqual(reposError);
+    it('should select songs data', () => {
+      const selectedSongsData = selectSongsData()(mockedState);
+      expect(selectedSongsData).toEqual(songsData);
+    });
+
+    it('should select all trackIds', () => {
+      const selectedTrackIds = selectTrackIds()(mockedState);
+      expect(selectedTrackIds).toEqual(allTrackIds);
+    });
+
+    it('should select songs error', () => {
+      const selectedSongsError = selectSongsError()(mockedState);
+      expect(selectedSongsError).toEqual(songsError);
+    });
   });
 });

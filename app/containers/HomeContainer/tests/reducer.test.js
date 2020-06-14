@@ -6,8 +6,9 @@ import {
 import {
   successGetArtistSongsAction,
   failureGetArtistSongsAction,
-  clearArtistSongsAction
-} from './__mocks__/actions.mocks';
+  clearArtistSongsAction,
+  normalizedSongsData
+} from './__mocks__/songs.mocks';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('HomeContainer reducer tests', () => {
@@ -69,14 +70,7 @@ describe('HomeContainer reducer tests', () => {
     });
 
     it('should correctly set songs data when SUCCESS_GET_ARTIST_SONGS is dispatched', () => {
-      let expectedResult = {
-        songsData: {
-          '1': { trackId: 1, artistName },
-          '2': { trackId: 2, artistName }
-        },
-        songsCount: 2,
-        allTrackIds: [1, 2]
-      };
+      let expectedResult = normalizedSongsData;
 
       const updatedState = homeContainerReducer(
         state,
