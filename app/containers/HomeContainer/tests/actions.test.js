@@ -1,4 +1,9 @@
 import { homeContainerTypes, homeContainerCreators } from '../reducer';
+import {
+  successGetArtistSongsAction,
+  failureGetArtistSongsAction,
+  clearArtistSongsAction
+} from './__mocks__/actions.mocks';
 
 describe('GithubRepos action tests', () => {
   it('has a type of REQUEST_GET_GITHUB_REPOS', () => {
@@ -26,56 +31,34 @@ describe('ItunesSongs action tests', () => {
   });
 
   it('should have a type of SUCCESS_GET_ARTIST_SONGS', () => {
-    const songsData = {
-      results: [
-        {
-          trackId: 1,
-          artistName
-        },
-        {
-          trackId: 2,
-          artistName
-        }
-      ],
-      resultCount: 2
-    };
+    expect(
+      homeContainerCreators.successGetArtistSongs(
+        successGetArtistSongsAction.songsData
+      )
+    ).toEqual(successGetArtistSongsAction);
 
-    let action = {
-      type: homeContainerTypes.SUCCESS_GET_ARTIST_SONGS,
-      songsData
+    const updatedAction = {
+      ...successGetArtistSongsAction,
+      data: successGetArtistSongsAction.songsData
     };
-    expect(homeContainerCreators.successGetArtistSongs(songsData)).toEqual(
-      action
-    );
-
-    action = {
-      type: homeContainerTypes.SUCCESS_GET_ARTIST_SONGS,
-      data: songsData
-    };
-    expect(homeContainerCreators.successGetArtistSongs(songsData)).not.toEqual(
-      action
-    );
+    expect(
+      homeContainerCreators.successGetArtistSongs(
+        successGetArtistSongsAction.songsData
+      )
+    ).not.toEqual(updatedAction);
   });
 
   it('should have a type of FAILURE_GET_ARTIST_SONGS', () => {
-    const error = {
-      message: 'something_went_wrong'
-    };
-    const expected = {
-      type: homeContainerTypes.FAILURE_GET_ARTIST_SONGS,
-      error
-    };
-
-    expect(homeContainerCreators.failureGetArtistSongs(error)).toEqual(
-      expected
-    );
+    expect(
+      homeContainerCreators.failureGetArtistSongs(
+        failureGetArtistSongsAction.error
+      )
+    ).toEqual(failureGetArtistSongsAction);
   });
 
   it('should have a type of CLEAR_ARTIST_SONGS', () => {
-    const expected = {
-      type: homeContainerTypes.CLEAR_ARTIST_SONGS
-    };
-
-    expect(homeContainerCreators.clearArtistSongs()).toEqual(expected);
+    expect(homeContainerCreators.clearArtistSongs()).toEqual(
+      clearArtistSongsAction
+    );
   });
 });
