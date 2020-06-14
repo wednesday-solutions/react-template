@@ -1,6 +1,6 @@
 import { homeContainerTypes, homeContainerCreators } from '../reducer';
 
-describe('HomeContainer action tests', () => {
+describe('GithubRepos action tests', () => {
   it('has a type of REQUEST_GET_GITHUB_REPOS', () => {
     const expected = {
       type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS,
@@ -10,8 +10,9 @@ describe('HomeContainer action tests', () => {
       expected
     );
   });
+});
 
-  // songs actions tests
+describe('ItunesSongs action tests', () => {
   const artistName = 'Coldplay';
 
   it('should have a type of REQUEST_GET_ARTIST_SONGS', () => {
