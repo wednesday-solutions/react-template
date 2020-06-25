@@ -7,5 +7,11 @@
   "matching_repos": "Total number of matching repos: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "itunes_list": "Songs List By Artist Name",
+  "itunes_search": "Itunes Artist Search",
+  "itunes_search_default": "Search for a song by entering it's name in the search box",
+  "get_itunes_details": "Get details of songs",
+  "search_itunes_query": "Search query: {artistName}",
+  "matching_itunes": "Total number of matching songs: {resultCount}"
 }
