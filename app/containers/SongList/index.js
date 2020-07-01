@@ -29,16 +29,17 @@ function SongList({ songs }) {
         <Row gutter={10}>
           {songs.map((songItem) => songItem && songItem.trackName &&
             <Col span={6}>
-              <CustomCard 
-                  style={{ width: 300 }}
+              <CustomCard
+                onClick={() => window.open(songItem.collectionViewUrl, '_blank')}
+                style={{ width: 300 }}
 
-              cover={
-                <img
-                  alt="example"
-                   class="songImg"
-                  src={songItem.artworkUrl100}
-                />
-              } title={songItem.trackName} bordered={true}>
+                cover={
+                  <img
+                    alt="example"
+                    class="songImg"
+                    src={songItem.artworkUrl100}
+                  />
+                } title={songItem.trackName} bordered={true}>
                 {songItem.trackName}
               </CustomCard>
             </Col>

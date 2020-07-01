@@ -20,11 +20,15 @@ const makeSelectItunesAppContainer = () =>
 export const selectSongsData = () =>
   createSelector(
     selectItunesAppContainerDomain,
-    substate => get(substate, 'songsData', null))
+    substate => {
+
+      const songData = get(substate, 'songsData', null)
+      return songData.filter((songItem) => songItem.kind === "song")
+    })
 
 export const selectShowLoader = () =>
   createSelector(selectItunesAppContainerDomain,
-   substate => get(substate, 'showLoader', false))
+    substate => get(substate, 'showLoader', false))
 
 
 export default makeSelectItunesAppContainer;
