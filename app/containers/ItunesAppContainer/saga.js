@@ -1,12 +1,12 @@
-import { takeLatest } from 'redux-saga/effects';
+import { takeLatest, call } from 'redux-saga/effects';
 import { itunesAppContainerTypes } from './reducer';
-// Individual exports for testing
-const { DEFAULT_ACTION } = itunesAppContainerTypes;
+import { getSongsApi } from '@services/ituneSongsApi';
+const { REQUEST_SEARCH_SONG } = itunesAppContainerTypes;
 
-export function* defaultFunction(/* action */) {
-  // console.log('Do something here')
+export function* requestSearchSong(action) {
+  yield call(getSongsApi, action.artistName);
 }
 
 export default function* itunesAppContainerSaga() {
-  yield takeLatest(DEFAULT_ACTION, defaultFunction);
+  yield takeLatest(REQUEST_SEARCH_SONG, requestSearchSong);
 }

@@ -10,7 +10,8 @@ export const initialState = { songs: [] };
 
 export const { Types: itunesAppContainerTypes, Creators: itunesAppContainerCreators } = createActions({
   defaultAction: ['somePayload'],
-  setSongs: ['songs']
+  setSongs: ['songs'],
+  requestSearchSong: ['artistName']
 });
 
 /* eslint-disable default-case, no-param-reassign */
