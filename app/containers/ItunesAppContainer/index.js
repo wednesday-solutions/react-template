@@ -7,7 +7,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { injectIntl, FormattedMessage as T } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Helmet } from 'react-helmet';
 
 import { createStructuredSelector } from 'reselect';
@@ -15,6 +15,8 @@ import { compose } from 'redux';
 import { useInjectSaga } from '@utils/injectSaga';
 import makeSelectItunesAppContainer from './selectors';
 import saga from './saga';
+import Header from './Header';
+import List from './List';
 
 export function ItunesAppContainer() {
   useInjectSaga({ key: 'itunesAppContainer', saga });
@@ -25,7 +27,8 @@ export function ItunesAppContainer() {
         <title>ItunesAppContainer</title>
         <meta name="description" content="Description of ItunesAppContainer" />
       </Helmet>
-      <T id={'ItunesAppContainer'} />
+      <Header />
+      <List />
     </div>
   );
 }
