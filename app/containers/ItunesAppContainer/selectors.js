@@ -21,7 +21,6 @@ export const selectSongsData = () =>
   createSelector(
     selectItunesAppContainerDomain,
     substate => {
-
       const songData = get(substate, 'songsData', null)
       return songData.filter((songItem) => songItem.kind === "song")
     })
