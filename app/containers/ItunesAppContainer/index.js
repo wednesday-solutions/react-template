@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useEffect, memo, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
@@ -40,24 +40,21 @@ const SearchBarLayout = styled.div`
 `;
 
 const SongListContainer = styled.div`
-&&
-{
-  margin:20px;
-  width:100%;
-}
-p{
-  color: gray;
-  text-align:center;
-}
-`
+  && {
+    margin: 20px;
+    width: 100%;
+  }
+  p {
+    color: gray;
+    text-align: center;
+  }
+`;
 export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showLoader }) {
   useInjectSaga({ key: 'itunesAppContainer', saga });
-  const [loading, setLoading] = useState(false);
 
-  const onSearchChange = (artistName) => dispatchRequestSearchSong(artistName)
+  const onSearchChange = artistName => dispatchRequestSearchSong(artistName);
 
-
-  const debounceHandler = debounce(onSearchChange, 200)
+  const debounceHandler = debounce(onSearchChange, 200);
 
   return (
     <div>
@@ -65,32 +62,25 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
         <title>ItunesAppContainer</title>
         <meta name="description" content="Description of ItunesAppContainer" />
       </Helmet>
-
       <Container>
-
-
-
-
         <SearchBarLayout>
           <Search
-            data-testid="search-bar"
+            data-testid="song-search-bar"
             type="text"
             onChange={e => debounceHandler(e.target.value)}
             onSearch={searchText => debounceHandler(searchText)}
             placeholder="Search By Artist Name"
           />
-
         </SearchBarLayout>
-        <Skeleton loading={showLoader || !songsData} active >
+        <Skeleton data-testid="skeleton" loading={showLoader || !songsData} active>
           <SongListContainer>
-            {songsData && !!songsData.length ? <SongList songs={songsData} />
-              : <p>
-                Search for a song by entering Artists name in the search box
-              </p>
-            }
+            {songsData && !!songsData.length ? (
+              <SongList songs={songsData} />
+            ) : (
+              <p>Search for a song by entering Artists name in the search box</p>
+            )}
           </SongListContainer>
         </Skeleton>
-
       </Container>
     </div>
   );
@@ -98,7 +88,8 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
 
 ItunesAppContainer.propTypes = {
   dispatchRequestSearchSong: PropTypes.func,
-  songs: PropTypes.array
+  songsData: PropTypes.array,
+  showLoader: PropTypes.bool
 };
 
 const mapStateToProps = createStructuredSelector({

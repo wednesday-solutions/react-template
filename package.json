@@ -186,7 +186,7 @@
     "prettier-standard": "15.0.1",
     "react-app-polyfill": "^1.0.6",
     "react-floki": "^1.0.70",
-    "react-test-renderer": "16.8.6",
+    "react-test-renderer": "^16.13.1",
     "react-testing-library": "6.1.2",
     "rimraf": "2.6.3",
     "shelljs": "0.8.3",

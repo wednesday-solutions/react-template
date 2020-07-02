@@ -8,6 +8,14 @@ import configureStore from '@app/configureStore';
 import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
 import ConnectedLanguageProvider from '@containers/LanguageProvider';
 import { IntlGlobalProvider } from '@components/IntlGlobalProvider';
+import { create } from 'react-test-renderer';
+
+export const renderWrappedComponent = component =>
+  create(
+    <Provider store={configureStore({}, browserHistory).store}>
+      <IntlProvider locale="en">{component}</IntlProvider>
+    </Provider>
+  );
 
 export const renderWithIntl = children =>
   render(
