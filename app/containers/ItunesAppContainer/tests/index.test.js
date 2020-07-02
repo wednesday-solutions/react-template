@@ -36,7 +36,9 @@ describe('<ItunesAppContainer /> container tests', () => {
 
   it('should show SongList component', () => {
     const rootComponent = renderWrappedComponent(
-      <ItunesAppContainer songsData={[{ collectionViewUrl: 'sampleUrl', trackName: 'sample track' }]} />
+      <ItunesAppContainer
+        songsData={[{ collectionId: 1, collectionViewUrl: 'sampleUrl', trackName: 'sample track' }]}
+      />
     ).root;
     expect(rootComponent.findByType(SongList)).toBeTruthy();
   });

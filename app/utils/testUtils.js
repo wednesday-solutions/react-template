@@ -13,7 +13,9 @@ import { create } from 'react-test-renderer';
 export const renderWrappedComponent = component =>
   create(
     <Provider store={configureStore({}, browserHistory).store}>
-      <IntlProvider locale="en">{component}</IntlProvider>
+      <IntlProvider locale={DEFAULT_LOCALE} messages={translationMessages[DEFAULT_LOCALE]}>
+        {component}
+      </IntlProvider>
     </Provider>
   );
 
