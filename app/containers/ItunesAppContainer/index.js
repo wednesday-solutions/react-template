@@ -6,20 +6,22 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
+
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Helmet } from 'react-helmet';
-import debounce from 'lodash/debounce';
 
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from '@utils/injectSaga';
-import makeSelectItunesAppContainer, { selectSongsData, selectShowLoader } from './selectors';
-import saga from './saga';
 import { itunesAppContainerCreators } from './reducer';
 import { Input, Skeleton } from 'antd';
+
 import styled from 'styled-components';
 import SongList from '../SongList/index';
+import saga from './saga';
+import makeSelectItunesAppContainer, { selectSongsData, selectShowLoader } from './selectors';
 
 const { Search } = Input;
 
@@ -52,9 +54,9 @@ const SongListContainer = styled.div`
 export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showLoader }) {
   useInjectSaga({ key: 'itunesAppContainer', saga });
 
-  const onSearchChange = artistName => dispatchRequestSearchSong(artistName);
+  const handleOnSearchChange = artistName => dispatchRequestSearchSong(artistName);
 
-  const debounceHandler = debounce(onSearchChange, 200);
+  const debounceHandler = debounce(handleOnSearchChange, 200);
 
   return (
     <div>
