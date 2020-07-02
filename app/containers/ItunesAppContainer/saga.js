@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { itunesAppContainerTypes, itunesAppContainerCreators } from './reducer';
 import { getSongsApi } from '@services/ituneSongsApi';
 const { REQUEST_SEARCH_SONG } = itunesAppContainerTypes;
-const { setSongs, setLoader } = itunesAppContainerCreators;
+const { setSongs, setLoader, setError } = itunesAppContainerCreators;
 
 export function* requestSearchSong(action) {
   try {
@@ -11,8 +11,9 @@ export function* requestSearchSong(action) {
     yield put(setLoader(false));
     yield put(setSongs(songs));
   } catch (err) {
+    yield put(setError(true));
     yield put(setLoader(false));
-    yield put(setSongs([]));
+    yield put(setSongs(null));
   }
 }
 

@@ -22,7 +22,9 @@ import T from '@components/T';
 import styled from 'styled-components';
 import SongList from '../SongList/index';
 import saga from './saga';
-import makeSelectItunesAppContainer, { selectSongsData, selectShowLoader } from './selectors';
+import makeSelectItunesAppContainer, { selectSongsData, selectShowLoader, selectShowError } from './selectors';
+import ErrorMessage from './ErrorMessage/index';
+import If from '@app/components/If/index';
 
 const { Search } = Input;
 
@@ -52,7 +54,7 @@ const SongListContainer = styled.div`
     text-align: center;
   }
 `;
-export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showLoader }) {
+export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showLoader, showError }) {
   useInjectSaga({ key: 'itunesAppContainer', saga });
 
   const handleOnSearchChange = artistName => dispatchRequestSearchSong(artistName);
@@ -77,13 +79,17 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
         </SearchBarLayout>
         <Skeleton data-testid="skeleton" loading={showLoader || !songsData} active>
           <SongListContainer>
-            {songsData?.length ? (
+            <If condition={!showError && songsData?.length}>
               <SongList songs={songsData} />
-            ) : (
+            </If>
+            <If condition={showError && !showLoader}>
+              <ErrorMessage />
+            </If>
+            <If condition={!songsData?.length}>
               <p>
                 <T marginBottom={10} id="itunes_empty_message" />
               </p>
-            )}
+            </If>
           </SongListContainer>
         </Skeleton>
       </Container>
@@ -94,13 +100,15 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
 ItunesAppContainer.propTypes = {
   dispatchRequestSearchSong: PropTypes.func,
   songsData: PropTypes.array,
-  showLoader: PropTypes.bool
+  showLoader: PropTypes.bool,
+  showError: PropTypes.bool
 };
 
 const mapStateToProps = createStructuredSelector({
   itunesAppContainer: makeSelectItunesAppContainer(),
   songsData: selectSongsData(),
-  showLoader: selectShowLoader()
+  showLoader: selectShowLoader(),
+  showError: selectShowLoader()
 });
 
 function mapDispatchToProps(dispatch) {

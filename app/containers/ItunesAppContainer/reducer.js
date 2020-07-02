@@ -7,12 +7,13 @@ import produce from 'immer';
 import { createActions } from 'reduxsauce';
 import { fromJS } from 'immutable';
 
-export const initialState = fromJS({ songsData: [], showLoader: false });
+export const initialState = fromJS({ songsData: [], showLoader: false, showError: false });
 
 export const { Types: itunesAppContainerTypes, Creators: itunesAppContainerCreators } = createActions({
   setSongs: ['songs'],
   requestSearchSong: ['artistName'],
-  setLoader: ['bool']
+  setLoader: ['bool'],
+  setError: ['bool']
 });
 
 /* eslint-disable default-case, no-param-reassign */
@@ -23,6 +24,8 @@ export const itunesAppContainerReducer = (state = initialState, action) =>
         return state.set('songsData', action.songs);
       case itunesAppContainerTypes.SET_LOADER:
         return state.set('showLoader', action.bool);
+      case itunesAppContainerTypes.SET_ERROR:
+        return state.set('showError', action.bool);
       default:
         return state;
     }

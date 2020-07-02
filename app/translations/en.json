@@ -8,5 +8,7 @@
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
   "wednesday_solutions": "Wednesday Solutions",
-  "itunes_empty_message": "Search for a song by entering Artists name in the search box"
+  "itunes_empty_message": "Search for a song by entering Artists name in the search box",
+  "reload": "Reload",
+  "error_message": "There are some problems with your operation."
 }
