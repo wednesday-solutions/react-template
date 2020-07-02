@@ -26,8 +26,8 @@ function SongList({ songs = [] }) {
     <div data-testid="song-list">
       <div className="site-card-wrapper">
         <Row gutter={10}>
-          {songs?.map((songItem, i) => (
-            <If condition={songItem?.trackName} key={i}>
+          {songs?.map(songItem => (
+            <If condition={songItem?.trackName} key={songItem?.collectionId}>
               <Col span={6}>
                 <CustomCard
                   onClick={() => window.open(songItem?.collectionViewUrl, '_blank')}
