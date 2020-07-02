@@ -1,16 +1,10 @@
-import { create } from 'apisauce';
+import { generateApiClient } from '@utils/apiUtils';
 
-const { ITUNES_URL = 'https://itunes.apple.com/' } = process.env;
+const songsApi = generateApiClient('itunes');
 
 export const getSongsApi = async artistName => {
-  const api = create({
-    ITUNES_URL,
-    headers: { 'Content-Type': 'application/json' }
-  });
+    const response = await songsApi.get(`/search/?term=${artistName}`)
 
-  const response = await api.get(`${ITUNES_URL}search/?term=${artistName}`);
-  
-  
-  return response.data.results
 
-};
+    return response.data.results
+}
