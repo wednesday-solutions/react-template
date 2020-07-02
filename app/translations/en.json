@@ -7,5 +7,6 @@
   "matching_repos": "Total number of matching repos: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "itunes_empty_message": "Search for a song by entering Artists name in the search box"
 }

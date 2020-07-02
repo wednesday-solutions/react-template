@@ -18,6 +18,7 @@ import { useInjectSaga } from '@utils/injectSaga';
 import { itunesAppContainerCreators } from './reducer';
 import { Input, Skeleton } from 'antd';
 
+import T from '@components/T';
 import styled from 'styled-components';
 import SongList from '../SongList/index';
 import saga from './saga';
@@ -79,7 +80,9 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
             {songsData?.length ? (
               <SongList songs={songsData} />
             ) : (
-              <p>Search for a song by entering Artists name in the search box</p>
+              <p>
+                <T marginBottom={10} id="itunes_empty_message" />
+              </p>
             )}
           </SongListContainer>
         </Skeleton>
