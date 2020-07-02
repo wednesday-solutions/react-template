@@ -76,7 +76,7 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
         </SearchBarLayout>
         <Skeleton data-testid="skeleton" loading={showLoader || !songsData} active>
           <SongListContainer>
-            {songsData && !!songsData.length ? (
+            {songsData?.length ? (
               <SongList songs={songsData} />
             ) : (
               <p>Search for a song by entering Artists name in the search box</p>

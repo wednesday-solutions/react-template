@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 // import styled from 'styled-components'
 import { Card, Col, Row } from 'antd';
+import If from '@app/components/If/index';
 const CustomCard = styled(Card)`
   .songImg {
     max-height: 200px;
@@ -25,23 +26,21 @@ function SongList({ songs = [] }) {
     <div data-testid="song-list">
       <div className="site-card-wrapper">
         <Row gutter={10}>
-          {songs.map(
-            songItem =>
-              songItem &&
-              songItem.trackName && (
-                <Col span={6}>
-                  <CustomCard
-                    onClick={() => window.open(songItem.collectionViewUrl, '_blank')}
-                    style={{ width: 300 }}
-                    cover={<img alt="example" className="songImg" src={songItem.artworkUrl100} />}
-                    title={songItem.trackName}
-                    bordered={true}
-                  >
-                    {songItem.trackName}
-                  </CustomCard>
-                </Col>
-              )
-          )}
+          {songs?.map((songItem, i) => (
+            <If condition={songItem?.trackName} key={i}>
+              <Col span={6}>
+                <CustomCard
+                  onClick={() => window.open(songItem?.collectionViewUrl, '_blank')}
+                  style={{ width: 300 }}
+                  cover={<img alt="example" className="songImg" src={songItem?.artworkUrl100} />}
+                  title={songItem?.trackName}
+                  bordered={true}
+                >
+                  {songItem?.trackName}
+                </CustomCard>
+              </Col>
+            </If>
+          ))}
         </Row>
       </div>
     </div>
