@@ -84,7 +84,7 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
           <If condition={showError && !showLoader}>
             <ErrorMessage />
           </If>
-          <If condition={!songsData?.length}>
+          <If condition={!showError && !songsData?.length}>
             <p>
               <T marginBottom={10} id="itunes_empty_message" />
             </p>

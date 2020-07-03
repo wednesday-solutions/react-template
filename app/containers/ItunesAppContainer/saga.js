@@ -10,6 +10,7 @@ export function* requestSearchSong(action) {
     const songs = yield call(getSongsApi, action.artistName);
     yield put(setLoader(false));
     yield put(setSongs(songs));
+    yield put(setError(false));
   } catch (err) {
     yield put(setError(true));
     yield put(setLoader(false));

@@ -20,7 +20,7 @@ export const selectSongsData = () =>
     substate => {
       const songData = get(substate, 'songsData', null);
 
-      return songData.filter(songItem => songItem.kind === 'song');
+      return songData?.filter(songItem => songItem.kind === 'song');
     }
   );
 
