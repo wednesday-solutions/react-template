@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 // import styled from 'styled-components'
 import { Card, Skeleton } from 'antd';
 import If from '@app/components/If/index';
-import { selectShowLoader } from '../ItunesAppContainer/selectors';
+import { selectShowLoader, selectPlayingSong } from '../ItunesAppContainer/selectors';
 import SongThumbNail from '../ItunesAppContainer/SongThumbNail/index';
 import { itunesAppContainerCreators } from '../ItunesAppContainer/reducer';
 
@@ -24,7 +24,7 @@ const CustomCard = styled(Card)`
   }
 `;
 
-export function SongList({ songs = [], showLoader, dispatchSelectedSong }) {
+export function SongList({ songs = [], showLoader, dispatchSelectedSong, playingSong ,dispatchPlayingSong}) {
   return (
     <div data-testid="song-list">
       <div className="site-card-wrapper">
@@ -40,7 +40,7 @@ export function SongList({ songs = [], showLoader, dispatchSelectedSong }) {
                 <If condition={!showLoader}>
                   <CustomCard
                     onClick={() => dispatchSelectedSong(songItem)}
-                    cover={<SongThumbNail song={songItem} />}
+                    cover={<SongThumbNail dispatchPlayingSong={dispatchPlayingSong} playingSong={playingSong} song={songItem} />}
                     title={songItem?.trackName}
                     bordered={true}
                   >
@@ -57,15 +57,18 @@ export function SongList({ songs = [], showLoader, dispatchSelectedSong }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  showLoader: selectShowLoader()
+  showLoader: selectShowLoader(),
+  playingSong: selectPlayingSong(),
 });
 
 const mapDispatchToProps = dispatch => {
-  const { setSelectedSong } = itunesAppContainerCreators;
+  const { setSelectedSong, setPlayingSong } = itunesAppContainerCreators;
   return {
-    dispatchSelectedSong: song => dispatch(setSelectedSong(song))
+    dispatchSelectedSong: song => dispatch(setSelectedSong(song)),
+    dispatchPlayingSong: song => dispatch(setPlayingSong(song))
   };
 };
+
 SongList.propTypes = { songs: PropTypes.array, showLoader: PropTypes.bool, dispatchSelectedSong: PropTypes.func };
 
 export default connect(

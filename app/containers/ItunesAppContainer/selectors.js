@@ -42,5 +42,10 @@ export const selectSelectedSong = () =>
     substate => get(substate, 'selectedSong', null)
   );
 
+export const selectPlayingSong = () =>
+  createSelector(
+    selectItunesAppContainerDomain,
+    substate => get(substate, 'playingSong', null)
+  );
 export default makeSelectItunesAppContainer;
 export { selectItunesAppContainerDomain };

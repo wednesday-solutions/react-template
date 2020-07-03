@@ -7,6 +7,8 @@ describe('ItunesAppContainer selector tests', () => {
   beforeEach(() => {
     mockedState = {
       itunesAppContainer: fromJS({
+        playingSong: null,
+        selectedSong: null,
         showError: false,
         showLoader: false,
         songsData: []
