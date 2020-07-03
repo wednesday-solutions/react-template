@@ -7,9 +7,9 @@
 
 import React from 'react';
 import { ItunesAppContainerTest as ItunesAppContainer } from '../index';
-import { Input, Skeleton } from 'antd';
+import { Input } from 'antd';
 import { timeout, renderWrappedComponent } from '@app/utils/testUtils';
-import SongList from '@app/containers/SongList/index';
+import { SongList } from '@app/containers/SongList/index';
 
 const { Search } = Input;
 
@@ -26,12 +26,6 @@ describe('<ItunesAppContainer /> container tests', () => {
     searchComponent.props.onSearch('searchedItem');
     await timeout(200);
     expect(mockOnSearchChange).toBeCalled();
-  });
-
-  it('should show skeleton component ', () => {
-    const rootComponent = renderWrappedComponent(<ItunesAppContainer showLoader={true} />).root;
-    const skeletonComponent = rootComponent.findByType(Skeleton);
-    expect(skeletonComponent).toBeTruthy();
   });
 
   it('should show SongList component', () => {

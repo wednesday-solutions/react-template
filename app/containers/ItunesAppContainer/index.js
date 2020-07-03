@@ -16,7 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from '@utils/injectSaga';
 import { itunesAppContainerCreators } from './reducer';
-import { Input, Skeleton } from 'antd';
+import { Input } from 'antd';
 
 import T from '@components/T';
 import styled from 'styled-components';
@@ -77,21 +77,19 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
             placeholder="Search By Artist Name"
           />
         </SearchBarLayout>
-        <Skeleton data-testid="skeleton" loading={showLoader || !songsData} active>
-          <SongListContainer>
-            <If condition={!showError && songsData?.length}>
-              <SongList songs={songsData} />
-            </If>
-            <If condition={showError && !showLoader}>
-              <ErrorMessage />
-            </If>
-            <If condition={!songsData?.length}>
-              <p>
-                <T marginBottom={10} id="itunes_empty_message" />
-              </p>
-            </If>
-          </SongListContainer>
-        </Skeleton>
+        <SongListContainer>
+          <If condition={!showError && songsData?.length}>
+            <SongList songs={songsData} />
+          </If>
+          <If condition={showError && !showLoader}>
+            <ErrorMessage />
+          </If>
+          <If condition={!songsData?.length}>
+            <p>
+              <T marginBottom={10} id="itunes_empty_message" />
+            </p>
+          </If>
+        </SongListContainer>
       </Container>
     </div>
   );
@@ -108,7 +106,7 @@ const mapStateToProps = createStructuredSelector({
   itunesAppContainer: makeSelectItunesAppContainer(),
   songsData: selectSongsData(),
   showLoader: selectShowLoader(),
-  showError: selectShowLoader()
+  showError: selectShowError()
 });
 
 function mapDispatchToProps(dispatch) {
