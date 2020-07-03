@@ -16,7 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from '@utils/injectSaga';
 import { itunesAppContainerCreators } from './reducer';
-import { Input, Modal } from 'antd';
+import { Input, Modal, Card } from 'antd';
 
 import T from '@components/T';
 import styled from 'styled-components';
@@ -26,14 +26,25 @@ import makeSelectItunesAppContainer, {
   selectSongsData,
   selectShowLoader,
   selectShowError,
-  selectSelectedSong
+  selectSelectedSong,
+  selectPlayingSong
 } from './selectors';
 import ErrorMessage from './ErrorMessage/index';
 import If from '@app/components/If/index';
 import SongDetailsComponent from './SongDetailsComponent/index';
+import PlayingSongBar from './PlayingSongBar/index';
 
 const { Search } = Input;
 
+
+const PlayingSongCard = styled(Card)`
+&&{
+  position:fixed;
+  width:100%;
+  bottom:0;
+  border: 1px solid;
+
+}`
 const Container = styled.div`
   && {
     display: flex;
@@ -42,6 +53,7 @@ const Container = styled.div`
     padding: 30px;
     margin: 0 auto;
   }
+   
 `;
 
 const SearchBarLayout = styled.div`
@@ -59,6 +71,7 @@ const SongListContainer = styled.div`
     color: gray;
     text-align: center;
   }
+   
 `;
 export function ItunesAppContainer({
   dispatchRequestSearchSong,
@@ -66,7 +79,9 @@ export function ItunesAppContainer({
   showLoader,
   showError,
   selectedSong,
-  dispatchSelectedSong
+  dispatchSelectedSong,
+  dispatchPlayingSong,
+  playingSong
 }) {
   useInjectSaga({ key: 'itunesAppContainer', saga });
 
@@ -115,6 +130,11 @@ export function ItunesAppContainer({
             </p>
           </If>
         </SongListContainer>
+        <If condition={playingSong}>
+          <PlayingSongCard borderd={true}>
+            <PlayingSongBar song={playingSong} dispatchPlayingSong={dispatchPlayingSong} />
+          </PlayingSongCard>
+        </If>
       </Container>
     </div>
   );
@@ -126,7 +146,8 @@ ItunesAppContainer.propTypes = {
   showLoader: PropTypes.bool,
   showError: PropTypes.bool,
   selectedSong: PropTypes.Object,
-  dispatchSelectedSong: PropTypes.func
+  dispatchSelectedSong: PropTypes.func,
+  playingSong: PropTypes.Object
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -134,15 +155,18 @@ const mapStateToProps = createStructuredSelector({
   songsData: selectSongsData(),
   showLoader: selectShowLoader(),
   showError: selectShowError(),
-  selectedSong: selectSelectedSong()
+  selectedSong: selectSelectedSong(),
+  playingSong: selectPlayingSong()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestSearchSong, setSelectedSong } = itunesAppContainerCreators;
+  const { requestSearchSong, setSelectedSong, setPlayingSong } = itunesAppContainerCreators;
   return {
     dispatchRequestSearchSong: artistName => dispatch(requestSearchSong(artistName)),
-    dispatchSelectedSong: song => dispatch(setSelectedSong(song))
+    dispatchSelectedSong: song => dispatch(setSelectedSong(song)),
+    dispatchPlayingSong: song => dispatch(setPlayingSong(song))
   };
+
 }
 
 const withConnect = connect(

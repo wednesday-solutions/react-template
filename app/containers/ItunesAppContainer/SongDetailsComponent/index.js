@@ -32,7 +32,6 @@ const Container = styled.div`
   }
   .tracktype{
     text-transform: uppercase;
-
   }
   && {
     display: flex;
