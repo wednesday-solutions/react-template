@@ -16,15 +16,21 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from '@utils/injectSaga';
 import { itunesAppContainerCreators } from './reducer';
-import { Input } from 'antd';
+import { Input, Modal } from 'antd';
 
 import T from '@components/T';
 import styled from 'styled-components';
 import SongList from '../SongList/index';
 import saga from './saga';
-import makeSelectItunesAppContainer, { selectSongsData, selectShowLoader, selectShowError } from './selectors';
+import makeSelectItunesAppContainer, {
+  selectSongsData,
+  selectShowLoader,
+  selectShowError,
+  selectSelectedSong
+} from './selectors';
 import ErrorMessage from './ErrorMessage/index';
 import If from '@app/components/If/index';
+import SongDetailsComponent from './SongDetailsComponent/index';
 
 const { Search } = Input;
 
@@ -54,7 +60,14 @@ const SongListContainer = styled.div`
     text-align: center;
   }
 `;
-export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showLoader, showError }) {
+export function ItunesAppContainer({
+  dispatchRequestSearchSong,
+  songsData,
+  showLoader,
+  showError,
+  selectedSong,
+  dispatchSelectedSong
+}) {
   useInjectSaga({ key: 'itunesAppContainer', saga });
 
   const handleOnSearchChange = artistName => dispatchRequestSearchSong(artistName);
@@ -63,6 +76,18 @@ export function ItunesAppContainer({ dispatchRequestSearchSong, songsData, showL
 
   return (
     <div>
+      <Modal
+        width="90%"
+        style={{ top: 10 }}
+        bodyStyle={{ height: '80vh' }}
+        title={selectedSong?.trackName}
+        visible={selectedSong}
+        onCancel={() => dispatchSelectedSong(null)}
+        closable
+        footer={null}
+      >
+        <SongDetailsComponent song={selectedSong} />
+      </Modal>
       <Helmet>
         <title>ItunesAppContainer</title>
         <meta name="description" content="Description of ItunesAppContainer" />
@@ -99,20 +124,24 @@ ItunesAppContainer.propTypes = {
   dispatchRequestSearchSong: PropTypes.func,
   songsData: PropTypes.array,
   showLoader: PropTypes.bool,
-  showError: PropTypes.bool
+  showError: PropTypes.bool,
+  selectedSong: PropTypes.Object,
+  dispatchSelectedSong: PropTypes.func
 };
 
 const mapStateToProps = createStructuredSelector({
   itunesAppContainer: makeSelectItunesAppContainer(),
   songsData: selectSongsData(),
   showLoader: selectShowLoader(),
-  showError: selectShowError()
+  showError: selectShowError(),
+  selectedSong: selectSelectedSong()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestSearchSong } = itunesAppContainerCreators;
+  const { requestSearchSong, setSelectedSong } = itunesAppContainerCreators;
   return {
-    dispatchRequestSearchSong: artistName => dispatch(requestSearchSong(artistName))
+    dispatchRequestSearchSong: artistName => dispatch(requestSearchSong(artistName)),
+    dispatchSelectedSong: song => dispatch(setSelectedSong(song))
   };
 }
 
