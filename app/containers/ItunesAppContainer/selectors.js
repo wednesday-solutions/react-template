@@ -6,7 +6,7 @@ import get from 'lodash/get';
  * Direct selector to the itunesAppContainer state domain
  */
 
-const selectItunesAppContainerDomain = state => (state.ituneAppContainer || initialState).toJS();
+const selectItunesAppContainerDomain = state => state.ituneAppContainer || initialState;
 
 const makeSelectItunesAppContainer = () =>
   createSelector(
