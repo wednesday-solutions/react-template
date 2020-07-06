@@ -16,43 +16,18 @@ const CustomPlayCircleOutlined = styled(PlayCircleOutlined)`
   && {
     font-size: 50px;
     color: red;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 `;
 const CustomPauseCircleOutlined = styled(PauseCircleOutlined)`
   && {
     font-size: 50px;
     color: red;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 `;
 
 export const StyledImage = styled.div`
-  .thumbNail {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display: none;
-  }
-  .thumbNailContainer {
-    width: 100%;
-    border-radius: ${props => props.borderRadius}px;
-    height: 100%;
-  }
-
-  .thumbNailContainer:hover .thumbNail {
-    display: block;
-    text-align: center;
-  }
-
-  .thumbNailContainer:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .thumbNailWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
   && {
     display: block;
     background: url(${props => props.url});
@@ -60,7 +35,25 @@ export const StyledImage = styled.div`
     height: ${props => props.height}px;
     background-size: 100%;
     background-repeat: no-repeat;
-    border-radius: ${props => props.borderRadius}px;
+  }
+`;
+
+const ThumbNailContainer = styled.div`
+  && {
+    width: 100%;
+    height: 100%;
+    div {
+      display: none;
+    }
+  }
+  &:hover {
+    div {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
 
@@ -80,34 +73,31 @@ export function SongThumbNail({ song, height, borderRadius = 0, playingSong, dis
 
   return (
     <StyledImage url={song?.artworkUrl100} height={height} borderRadius={borderRadius}>
-      <div className="thumbNailContainer" borderRadius={borderRadius}>
-        <div className="thumbNail">
-          <div className="thumbNailWrapper">
-            <div style={{ flex: 1 }} />
-            <div>
-              <If condition={playingSong?.trackId === song?.trackId}>
-                <CustomPauseCircleOutlined
-                  data-testid="pause_btn"
-                  onClick={e => {
-                    e.stopPropagation();
-                    dispatchPlayingSong(null);
-                  }}
-                />
-              </If>
-              <If condition={playingSong?.trackId !== song?.trackId}>
-                <CustomPlayCircleOutlined
-                  data-testid="play_btn"
-                  onClick={e => {
-                    e.stopPropagation();
-                    dispatchPlayingSong(song);
-                  }}
-                />
-              </If>
-            </div>
-            <div style={{ flex: 1 }} />
-          </div>
+      <ThumbNailContainer>
+        <div>
+          <div style={{ flex: 1 }} />
+          <If condition={playingSong?.trackId === song?.trackId}>
+            <CustomPauseCircleOutlined
+              data-testid="pause_btn"
+              onClick={e => {
+                e.stopPropagation();
+                dispatchPlayingSong(null);
+              }}
+            />
+          </If>
+          <If condition={playingSong?.trackId !== song?.trackId}>
+            <CustomPlayCircleOutlined
+              data-testid="play_btn"
+              onClick={e => {
+                e.stopPropagation();
+                dispatchPlayingSong(song);
+              }}
+            />
+          </If>
+          <div style={{ flex: 1 }} />
         </div>
-      </div>
+      </ThumbNailContainer>
+
       <audio ref={audioElementRef}>
         <source src={song?.previewUrl}></source>
       </audio>
