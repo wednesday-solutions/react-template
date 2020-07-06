@@ -65,7 +65,7 @@ exports[`<SongDetailsComponent /> should render and match the snapshot 1`] = `
           </div>
         </div>
         <div
-          class="SongDetailsComponent__Container-sc-1y90cvw-0 fBloXE"
+          class="SongDetailsComponent__Container-sc-1y90cvw-0 XognC"
         >
           <span
             style="font-size: 20px;"
@@ -73,8 +73,8 @@ exports[`<SongDetailsComponent /> should render and match the snapshot 1`] = `
           <span
             style="font-size: 10px;"
           />
-          <a
-            class="artistName"
+          <div
+            class="SongDetailsComponent__ArtistName-sc-1y90cvw-1 dBZBEX artistName"
           />
           <span
             style="text-transform: uppercase;"

@@ -7,29 +7,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
+import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
+
 import SongThumbNail from '../SongThumbNail/index';
 import { selectPlayingSong } from '../selectors';
 import { itunesAppContainerCreators } from '../reducer';
-import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
 
 const Container = styled.div`
-  .artistName {
-    font-size: 16px;
-    color: #007aff;
-    font-weight: bold;
-  }
-  .artistName:hover {
-    text-decoration: underline;
-  }
-
   && {
     display: flex;
     flex: 2;
     flex-direction: column;
+  }
+`;
+
+const ArtistName = styled.div`
+  && {
+    font-size: 16px;
+    color: #007aff;
+    font-weight: bold;
   }
 `;
 
@@ -49,11 +50,14 @@ export function SongDetailsComponent({ song, playingSong, dispatchPlayingSong })
         <Container>
           <span style={{ fontSize: 20 }}>{song?.collectionName}</span>
           <span style={{ fontSize: 10 }}>{song?.trackCensoredName}</span>
-          <a className="artistName" href={song?.artistViewUrl}>
+          <ArtistName className="artistName" href={song?.artistViewUrl}>
             {song?.artistName}
-          </a>
+          </ArtistName>
           <span style={{ textTransform: 'uppercase' }}>
-            {song?.primaryGenreName}:<span style={{ marginLeft: 10 }}>{new Date(song?.releaseDate).getFullYear()}</span>
+            {song?.primaryGenreName}:
+            <span style={{ marginLeft: 10 }}>
+              {moment(song?.releaseDate, 'DD/MM/YYYY').year() || new Date(song?.releaseDate).getFullYear()}
+            </span>
           </span>
         </Container>
       </div>

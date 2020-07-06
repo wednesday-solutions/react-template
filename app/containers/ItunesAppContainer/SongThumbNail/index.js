@@ -7,9 +7,10 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons';
-import If from '@app/components/If/index';
 import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
+import If from '@app/components/If/index';
 
 const CustomPlayCircleOutlined = styled(PlayCircleOutlined)`
   && {

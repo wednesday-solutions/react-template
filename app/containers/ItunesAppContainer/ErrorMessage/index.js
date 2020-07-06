@@ -6,9 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components'
 import { Result, Button } from 'antd';
-
 import { FormattedMessage as T, injectIntl } from 'react-intl';
 
 function ErrorMessage({ intl: { formatMessage } }) {

@@ -7,9 +7,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import moment from 'moment';
 import { PauseCircleOutlined } from '@ant-design/icons';
-import If from '@app/components/If/index';
+
+import { PAUSE_SONG } from '@app/utils/constants';
+import If from '@app/components/If';
 
 const CustomPauseButton = styled(PauseCircleOutlined)`
   && {
@@ -28,11 +30,14 @@ const Container = styled.div`
     flex-direction: column;
     margin-left: 10px;
   }
-  .song-name {
-    font-size: 20px;
-  }
-
   .tracktype {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+`;
+
+const TrackType = styled.div`
+  && {
     text-transform: uppercase;
     font-size: 12px;
   }
@@ -42,16 +47,19 @@ function PlayingSongBar({ song, dispatchPlayingSong }) {
     <Container data-testid="playing-song-bar">
       <div>
         <If condition={song}>
-          <CustomPauseButton onClick={() => dispatchPlayingSong(null)} />
+          <CustomPauseButton onClick={() => dispatchPlayingSong(PAUSE_SONG)} />
         </If>
       </div>
       <div className="song">
-        <span className="song-name">{song?.trackName}</span>
-
-        <span className="tracktype">
-          <span>{song?.primaryGenreName}</span>:
-          <span style={{ marginLeft: 10 }}>{new Date(song?.releaseDate).getFullYear()}</span>
-        </span>
+        <span style={{ fontSize: 20 }}>{song?.trackName}</span>
+        <If condition={song?.primaryGenreName}>
+          <TrackType>
+            <span>{song?.primaryGenreName}</span>:
+            <span style={{ marginLeft: 10 }}>
+              {moment(song?.releaseDate, 'DD/MM/YYYY').year() || new Date(song?.releaseDate).getFullYear()}
+            </span>
+          </TrackType>
+        </If>
       </div>
     </Container>
   );

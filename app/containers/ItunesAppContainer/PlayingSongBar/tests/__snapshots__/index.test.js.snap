@@ -4,7 +4,7 @@ exports[`<PlayingSongBar /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="PlayingSongBar__Container-sc-3br0fj-1 dsMBZY"
+      class="PlayingSongBar__Container-sc-3br0fj-1 kofZqC"
       data-testid="playing-song-bar"
     >
       <div />
@@ -12,19 +12,8 @@ exports[`<PlayingSongBar /> should render and match the snapshot 1`] = `
         class="song"
       >
         <span
-          class="song-name"
+          style="font-size: 20px;"
         />
-        <span
-          class="tracktype"
-        >
-          <span />
-          :
-          <span
-            style="margin-left: 10px;"
-          >
-            NaN
-          </span>
-        </span>
       </div>
     </div>
   </div>
