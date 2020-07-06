@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import SongThumbNail from '../SongThumbNail/index';
 import { selectPlayingSong } from '../selectors';
 import { itunesAppContainerCreators } from '../reducer';
+import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
 
 const Container = styled.div`
   .artistName {
@@ -41,7 +42,7 @@ export function SongDetailsComponent({ song, playingSong, dispatchPlayingSong })
             dispatchPlayingSong={dispatchPlayingSong}
             song={song}
             playingSong={playingSong}
-            height={280}
+            height={SONG_THUMBNAIL_HEIGHT}
             borderRadius={50}
           />
         </div>
@@ -72,8 +73,14 @@ const mapDispatchToProps = dispatch => {
 };
 
 SongDetailsComponent.propTypes = {
-  song: PropTypes.Object,
-  playingSong: PropTypes.Object,
+  song: PropTypes.shape({
+    trackId: PropTypes.Number,
+    previewUrl: PropTypes.string
+  }),
+  playingSong: PropTypes.shape({
+    trackId: PropTypes.Number,
+    previewUrl: PropTypes.string
+  }),
   dispatchPlayingSong: PropTypes.func
 };
 

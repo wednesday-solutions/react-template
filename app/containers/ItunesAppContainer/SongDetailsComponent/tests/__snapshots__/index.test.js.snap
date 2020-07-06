@@ -33,6 +33,7 @@ exports[`<SongDetailsComponent /> should render and match the snapshot 1`] = `
                     <span
                       aria-label="pause-circle"
                       class="anticon anticon-pause-circle SongThumbNail__CustomPauseCircleOutlined-vw8usd-1 fgSAZh"
+                      data-testid="pause_btn"
                       role="img"
                       tabindex="-1"
                     >

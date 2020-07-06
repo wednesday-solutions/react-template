@@ -68,7 +68,7 @@ SongThumbNail.defaultProps = {
   height: SONG_THUMBNAIL_HEIGHT
 };
 
-function SongThumbNail({ song, height, borderRadius = 0, playingSong, dispatchPlayingSong }) {
+export function SongThumbNail({ song, height, borderRadius = 0, playingSong, dispatchPlayingSong }) {
   const audioElementRef = useRef(null);
   useEffect(() => {
     (() =>
@@ -86,6 +86,7 @@ function SongThumbNail({ song, height, borderRadius = 0, playingSong, dispatchPl
             <div>
               <If condition={playingSong?.trackId === song?.trackId}>
                 <CustomPauseCircleOutlined
+                  data-testid="pause_btn"
                   onClick={e => {
                     e.stopPropagation();
                     dispatchPlayingSong(null);
@@ -94,6 +95,7 @@ function SongThumbNail({ song, height, borderRadius = 0, playingSong, dispatchPl
               </If>
               <If condition={playingSong?.trackId !== song?.trackId}>
                 <CustomPlayCircleOutlined
+                  data-testid="play_btn"
                   onClick={e => {
                     e.stopPropagation();
                     dispatchPlayingSong(song);
@@ -112,11 +114,17 @@ function SongThumbNail({ song, height, borderRadius = 0, playingSong, dispatchPl
   );
 }
 SongThumbNail.propTypes = {
-  song: PropTypes.Object,
+  song: PropTypes.shape({
+    trackId: PropTypes.Number,
+    previewUrl: PropTypes.string
+  }),
   height: PropTypes.Number,
   borderRadius: PropTypes.Number,
   dispatchPlayingSong: PropTypes.func,
-  playingSong: PropTypes.Object
+  playingSong: PropTypes.shape({
+    trackId: PropTypes.Number,
+    previewUrl: PropTypes.string
+  })
 };
 
 export default SongThumbNail;

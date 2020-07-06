@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 // import styled from 'styled-components'
 import { Result, Button } from 'antd';
 
@@ -18,7 +18,7 @@ function ErrorMessage({ intl: { formatMessage } }) {
         status="warning"
         title={formatMessage({ id: 'error_message' })}
         extra={
-          <Button type="primary" key="console">
+          <Button type="primary" key="console" onClick={() => location.reload()}>
             <T id="reload" />
           </Button>
         }
@@ -27,4 +27,9 @@ function ErrorMessage({ intl: { formatMessage } }) {
   );
 }
 
+ErrorMessage.propTypes = {
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func
+  })
+};
 export default injectIntl(ErrorMessage);
