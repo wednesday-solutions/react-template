@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-// import { fireEvent } from '@testing-library/dom'
 import { renderWithIntl } from '@utils/testUtils';
 import { SongDetailsComponent } from '../index';
 
