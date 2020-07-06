@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icons from '@app/icons';
 import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
-import If from '@app/components/If/index';
+import If from '@app/components/If';
 
 const CustomPlayCircleOutlined = styled(Icons.PlayIcon)`
   && {

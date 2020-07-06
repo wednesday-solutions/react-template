@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 // import styled from 'styled-components'
 import { Card, Skeleton } from 'antd';
-import If from '@app/components/If/index';
+import If from '@app/components/If';
 import { selectShowLoader, selectPlayingSong } from '../ItunesAppContainer/selectors';
 import SongThumbNail from '../ItunesAppContainer/SongThumbNail/index';
 import { itunesAppContainerCreators } from '../ItunesAppContainer/reducer';
@@ -24,7 +24,7 @@ const CustomCard = styled(Card)`
   }
 `;
 
-export function SongList({ songs = [], showLoader, dispatchSelectedSong, playingSong ,dispatchPlayingSong}) {
+export function SongList({ songs = [], showLoader, dispatchSelectedSong, playingSong, dispatchPlayingSong }) {
   return (
     <div data-testid="song-list">
       <div className="site-card-wrapper">
@@ -40,7 +40,13 @@ export function SongList({ songs = [], showLoader, dispatchSelectedSong, playing
                 <If condition={!showLoader}>
                   <CustomCard
                     onClick={() => dispatchSelectedSong(songItem)}
-                    cover={<SongThumbNail dispatchPlayingSong={dispatchPlayingSong} playingSong={playingSong} song={songItem} />}
+                    cover={
+                      <SongThumbNail
+                        dispatchPlayingSong={dispatchPlayingSong}
+                        playingSong={playingSong}
+                        song={songItem}
+                      />
+                    }
                     title={songItem?.trackName}
                     bordered={true}
                   >
@@ -58,7 +64,7 @@ export function SongList({ songs = [], showLoader, dispatchSelectedSong, playing
 
 const mapStateToProps = createStructuredSelector({
   showLoader: selectShowLoader(),
-  playingSong: selectPlayingSong(),
+  playingSong: selectPlayingSong()
 });
 
 const mapDispatchToProps = dispatch => {
@@ -69,7 +75,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-SongList.propTypes = { songs: PropTypes.array, showLoader: PropTypes.bool, dispatchSelectedSong: PropTypes.func };
+SongList.propTypes = {
+  songs: PropTypes.array,
+  showLoader: PropTypes.bool,
+  dispatchSelectedSong: PropTypes.func,
+  playingSong: PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired
+  }),
+  dispatchPlayingSong: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

@@ -18,7 +18,7 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from '@utils/injectSaga';
 import T from '@components/T';
-import If from '@app/components/If/index';
+import If from '@app/components/If';
 
 import { itunesAppContainerCreators } from './reducer';
 import SongList from '../SongList/index';
