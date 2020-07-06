@@ -78,14 +78,14 @@ const mapDispatchToProps = dispatch => {
 
 SongDetailsComponent.propTypes = {
   song: PropTypes.shape({
-    trackId: PropTypes.Number,
-    previewUrl: PropTypes.string
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired
   }),
   playingSong: PropTypes.shape({
-    trackId: PropTypes.Number,
-    previewUrl: PropTypes.string
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired
   }),
-  dispatchPlayingSong: PropTypes.func
+  dispatchPlayingSong: PropTypes.func.isRequired
 };
 
 export default connect(
