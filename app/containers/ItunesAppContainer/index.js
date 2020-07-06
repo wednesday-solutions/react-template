@@ -7,19 +7,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
+import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Helmet } from 'react-helmet';
-
+import { Input, Modal, Card } from 'antd';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { useInjectSaga } from '@utils/injectSaga';
-import { itunesAppContainerCreators } from './reducer';
-import { Input, Modal, Card } from 'antd';
 
+import { useInjectSaga } from '@utils/injectSaga';
 import T from '@components/T';
-import styled from 'styled-components';
+import If from '@app/components/If/index';
+
+import { itunesAppContainerCreators } from './reducer';
 import SongList from '../SongList/index';
 import saga from './saga';
 import makeSelectItunesAppContainer, {
@@ -29,22 +30,21 @@ import makeSelectItunesAppContainer, {
   selectSelectedSong,
   selectPlayingSong
 } from './selectors';
+
 import ErrorMessage from './ErrorMessage/index';
-import If from '@app/components/If/index';
 import SongDetailsComponent from './SongDetailsComponent/index';
 import PlayingSongBar from './PlayingSongBar/index';
 
 const { Search } = Input;
 
-
 const PlayingSongCard = styled(Card)`
-&&{
-  position:fixed;
-  width:100%;
-  bottom:0;
-  border: 1px solid;
-
-}`
+  && {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border: 1px solid;
+  }
+`;
 const Container = styled.div`
   && {
     display: flex;
@@ -53,7 +53,6 @@ const Container = styled.div`
     padding: 30px;
     margin: 0 auto;
   }
-   
 `;
 
 const SearchBarLayout = styled.div`
@@ -71,7 +70,6 @@ const SongListContainer = styled.div`
     color: gray;
     text-align: center;
   }
-   
 `;
 export function ItunesAppContainer({
   dispatchRequestSearchSong,
@@ -147,7 +145,8 @@ ItunesAppContainer.propTypes = {
   showError: PropTypes.bool,
   selectedSong: PropTypes.Object,
   dispatchSelectedSong: PropTypes.func,
-  playingSong: PropTypes.Object
+  playingSong: PropTypes.Object,
+  dispatchPlayingSong: PropTypes.func
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -166,7 +165,6 @@ function mapDispatchToProps(dispatch) {
     dispatchSelectedSong: song => dispatch(setSelectedSong(song)),
     dispatchPlayingSong: song => dispatch(setPlayingSong(song))
   };
-
 }
 
 const withConnect = connect(

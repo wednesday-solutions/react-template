@@ -27,10 +27,10 @@ const Container = styled.div`
   .artistName:hover {
     text-decoration: underline;
   }
-  .censor{
-    font-size:10px;
+  .censor {
+    font-size: 10px;
   }
-  .tracktype{
+  .tracktype {
     text-transform: uppercase;
   }
   && {
@@ -40,29 +40,28 @@ const Container = styled.div`
   }
 `;
 
-function SongDetailsComponent({ song, playingSong, dispatchPlayingSong }) {
-
+export function SongDetailsComponent({ song, playingSong, dispatchPlayingSong }) {
   return (
     <div data-testid="song-details-component">
       <div style={{ display: 'flex' }}>
         <div style={{ flex: 1, margin: 20 }}>
-          <SongThumbNail dispatchPlayingSong={dispatchPlayingSong} song={song} playingSong={playingSong} height={280} borderRadius={50} />
+          <SongThumbNail
+            dispatchPlayingSong={dispatchPlayingSong}
+            song={song}
+            playingSong={playingSong}
+            height={280}
+            borderRadius={50}
+          />
         </div>
         <Container>
           <span className="collectionName">{song?.collectionName}</span>
-          <span className="censor">
-            {song?.trackCensoredName}
-          </span>
-          <a className="artistName" href={song?.artistViewUrl} target="_blank">
+          <span className="censor">{song?.trackCensoredName}</span>
+          <a className="artistName" href={song?.artistViewUrl}>
             {song?.artistName}
           </a>
           <span className="tracktype">
-            {song?.primaryGenreName}:
-            <span style={{ marginLeft: 10 }}>
-              {new Date(song?.releaseDate).getFullYear()}
-            </span>
+            {song?.primaryGenreName}:<span style={{ marginLeft: 10 }}>{new Date(song?.releaseDate).getFullYear()}</span>
           </span>
-
         </Container>
       </div>
     </div>
@@ -70,7 +69,7 @@ function SongDetailsComponent({ song, playingSong, dispatchPlayingSong }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  playingSong: selectPlayingSong(),
+  playingSong: selectPlayingSong()
 });
 
 const mapDispatchToProps = dispatch => {
@@ -80,7 +79,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+SongDetailsComponent.propTypes = {
+  song: PropTypes.Object,
+  playingSong: PropTypes.Object,
+  dispatchPlayingSong: PropTypes.func
+};
 
-SongDetailsComponent.propTypes = { song: PropTypes.Object };
-
-export default connect(mapStateToProps, mapDispatchToProps)(SongDetailsComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SongDetailsComponent);

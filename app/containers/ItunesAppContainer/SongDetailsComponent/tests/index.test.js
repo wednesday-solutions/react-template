@@ -7,7 +7,7 @@
 import React from 'react';
 // import { fireEvent } from '@testing-library/dom'
 import { renderWithIntl } from '@utils/testUtils';
-import SongDetailsComponent from '../index';
+import { SongDetailsComponent } from '../index';
 
 describe('<SongDetailsComponent />', () => {
   it('should render and match the snapshot', () => {

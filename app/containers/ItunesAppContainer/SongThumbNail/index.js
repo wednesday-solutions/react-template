@@ -17,12 +17,11 @@ const CustomPlayCircleOutlined = styled(PlayCircleOutlined)`
   }
 `;
 const CustomPauseCircleOutlined = styled(PauseCircleOutlined)`
-&& {
-  font-size: 50px;
-  color: red;
-}
+  && {
+    font-size: 50px;
+    color: red;
+  }
 `;
-
 
 export const StyledImage = styled.div`
   .thumbNail {
@@ -66,8 +65,11 @@ export const StyledImage = styled.div`
 function SongThumbNail({ song, height = 280, borderRadius = 0, playingSong, dispatchPlayingSong }) {
   const audioElementRef = useRef(null);
   useEffect(() => {
-    (() => playingSong && song && playingSong?.trackId === song?.trackId ? audioElementRef.current.play() : audioElementRef.current.pause())()
-  })
+    (() =>
+      playingSong && song && playingSong?.trackId === song?.trackId
+        ? audioElementRef.current.play()
+        : audioElementRef?.current?.pause())();
+  });
 
   return (
     <StyledImage url={song?.artworkUrl100} height={height} borderRadius={borderRadius}>
@@ -80,7 +82,7 @@ function SongThumbNail({ song, height = 280, borderRadius = 0, playingSong, disp
                 <CustomPauseCircleOutlined
                   onClick={e => {
                     e.stopPropagation();
-                    dispatchPlayingSong(null)
+                    dispatchPlayingSong(null);
                   }}
                 />
               </If>
@@ -88,7 +90,7 @@ function SongThumbNail({ song, height = 280, borderRadius = 0, playingSong, disp
                 <CustomPlayCircleOutlined
                   onClick={e => {
                     e.stopPropagation();
-                    dispatchPlayingSong(song)
+                    dispatchPlayingSong(song);
                   }}
                 />
               </If>
@@ -103,6 +105,12 @@ function SongThumbNail({ song, height = 280, borderRadius = 0, playingSong, disp
     </StyledImage>
   );
 }
-SongThumbNail.propTypes = { song: PropTypes.Object, height: PropTypes.Number, borderRadius: PropTypes.Number };
+SongThumbNail.propTypes = {
+  song: PropTypes.Object,
+  height: PropTypes.Number,
+  borderRadius: PropTypes.Number,
+  dispatchPlayingSong: PropTypes.func,
+  playingSong: PropTypes.Object
+};
 
 export default SongThumbNail;
