@@ -64,19 +64,19 @@ exports[`<SongDetailsComponent /> should render and match the snapshot 1`] = `
           </div>
         </div>
         <div
-          class="SongDetailsComponent__Container-sc-1y90cvw-0 eJBWhj"
+          class="SongDetailsComponent__Container-sc-1y90cvw-0 fBloXE"
         >
           <span
-            class="collectionName"
+            style="font-size: 20px;"
           />
           <span
-            class="censor"
+            style="font-size: 10px;"
           />
           <a
             class="artistName"
           />
           <span
-            class="tracktype"
+            style="text-transform: uppercase;"
           >
             :
             <span

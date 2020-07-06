@@ -16,9 +16,6 @@ import { selectPlayingSong } from '../selectors';
 import { itunesAppContainerCreators } from '../reducer';
 
 const Container = styled.div`
-  .collectionName {
-    font-size: 20px;
-  }
   .artistName {
     font-size: 16px;
     color: #007aff;
@@ -27,12 +24,7 @@ const Container = styled.div`
   .artistName:hover {
     text-decoration: underline;
   }
-  .censor {
-    font-size: 10px;
-  }
-  .tracktype {
-    text-transform: uppercase;
-  }
+
   && {
     display: flex;
     flex: 2;
@@ -54,12 +46,12 @@ export function SongDetailsComponent({ song, playingSong, dispatchPlayingSong })
           />
         </div>
         <Container>
-          <span className="collectionName">{song?.collectionName}</span>
-          <span className="censor">{song?.trackCensoredName}</span>
+          <span style={{ fontSize: 20 }}>{song?.collectionName}</span>
+          <span style={{ fontSize: 10 }}>{song?.trackCensoredName}</span>
           <a className="artistName" href={song?.artistViewUrl}>
             {song?.artistName}
           </a>
-          <span className="tracktype">
+          <span style={{ textTransform: 'uppercase' }}>
             {song?.primaryGenreName}:<span style={{ marginLeft: 10 }}>{new Date(song?.releaseDate).getFullYear()}</span>
           </span>
         </Container>
