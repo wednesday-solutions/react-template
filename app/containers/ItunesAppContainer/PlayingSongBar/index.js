@@ -47,7 +47,7 @@ function PlayingSongBar({ song, dispatchPlayingSong }) {
     <Container data-testid="playing-song-bar">
       <div>
         <If condition={song}>
-          <CustomPauseButton onClick={() => dispatchPlayingSong(PAUSE_SONG)} />
+          <CustomPauseButton data-testid="pause_btn" onClick={() => dispatchPlayingSong(PAUSE_SONG)} />
         </If>
       </div>
       <div className="song">
@@ -65,6 +65,12 @@ function PlayingSongBar({ song, dispatchPlayingSong }) {
   );
 }
 
-PlayingSongBar.propTypes = { song: PropTypes.Object, dispatchPlayingSong: PropTypes.func };
+PlayingSongBar.propTypes = {
+  song: PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired
+  }),
+  dispatchPlayingSong: PropTypes.func.isRequired
+};
 
 export default PlayingSongBar;
