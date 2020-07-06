@@ -102,7 +102,7 @@ export function ItunesAppContainer({
         <SongDetailsComponent song={selectedSong} />
       </Modal>
       <Helmet>
-        <title>ItunesAppContainer</title>
+        <title>ItunesApp</title>
         <meta name="description" content="Description of ItunesAppContainer" />
       </Helmet>
       <Container>
