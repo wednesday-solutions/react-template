@@ -7,19 +7,18 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons';
+import Icons from '@app/icons';
 import { SONG_THUMBNAIL_HEIGHT } from '@app/utils/constants';
 import If from '@app/components/If/index';
 
-const CustomPlayCircleOutlined = styled(PlayCircleOutlined)`
+const CustomPlayCircleOutlined = styled(Icons.PlayIcon)`
   && {
     font-size: 50px;
     color: red;
     background-color: rgba(0, 0, 0, 0.5);
   }
 `;
-const CustomPauseCircleOutlined = styled(PauseCircleOutlined)`
+const CustomPauseCircleOutlined = styled(Icons.PauseIcon)`
   && {
     font-size: 50px;
     color: red;
