@@ -5,11 +5,12 @@ const { REQUEST_SEARCH_SONG } = itunesAppContainerTypes;
 const { setLoader, successGetSongs, failureGetSongs } = itunesAppContainerCreators;
 
 export function* requestSearchSong(action) {
-  try {
-    yield put(setLoader(true));
-    const songs = yield call(getSongsApi, action.artistName);
-    yield put(successGetSongs(songs, false, false));
-  } catch (err) {
+  yield put(setLoader(true));
+  const response = yield call(getSongsApi, action.artistName);
+  const { data, ok } = response;
+  if (ok) {
+    yield put(successGetSongs(data.results, false, false));
+  } else {
     yield put(failureGetSongs(true));
   }
 }
