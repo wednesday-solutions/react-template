@@ -74,7 +74,7 @@ exports[`<SongDetailsComponent /> should render and match the snapshot 1`] = `
             <span
               style="margin-left: 10px;"
             >
-              NaN
+              2020
             </span>
           </span>
         </div>

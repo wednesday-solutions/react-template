@@ -55,9 +55,7 @@ function PlayingSongBar({ song, dispatchPlayingSong }) {
         <If condition={song?.primaryGenreName}>
           <TrackType>
             <span>{song?.primaryGenreName}</span>:
-            <span style={{ marginLeft: 10 }}>
-              {moment(song?.releaseDate, 'DD/MM/YYYY').year() || new Date(song?.releaseDate).getFullYear()}
-            </span>
+            <span style={{ marginLeft: 10 }}>{moment(song?.releaseDate).year()}</span>
           </TrackType>
         </If>
       </div>

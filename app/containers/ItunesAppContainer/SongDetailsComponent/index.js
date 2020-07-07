@@ -54,10 +54,7 @@ export function SongDetailsComponent({ song, playingSong, dispatchPlayingSong })
             {song?.artistName}
           </ArtistName>
           <span style={{ textTransform: 'uppercase' }}>
-            {song?.primaryGenreName}:
-            <span style={{ marginLeft: 10 }}>
-              {moment(song?.releaseDate, 'DD/MM/YYYY').year() || new Date(song?.releaseDate).getFullYear()}
-            </span>
+            {song?.primaryGenreName}:<span style={{ marginLeft: 10 }}>{moment(song?.releaseDate).year()}</span>
           </span>
         </Container>
       </div>
