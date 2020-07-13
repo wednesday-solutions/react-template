@@ -7,5 +7,8 @@
   "matching_repos": "Total number of matching repos: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
+  "repository_name": "Repository Name: {name}",
+  "repository_full_name": "Repository full name: {fullName}",
+  "repository_stars": "Repository stars: {stars}",
   "wednesday_solutions": "Wednesday Solutions"
 }
