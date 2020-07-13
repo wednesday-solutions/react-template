@@ -99,9 +99,9 @@ export function HomeContainer({
             )}
             {items.map((item, index) => (
               <CustomCard key={index}>
-                <div>Repository Name: {item.name}</div>
-                <div>Repository Full Name: {item.fullName}</div>
-                <div>Repository stars: {item.stargazersCount}</div>
+                <T id="repository_name" values={{ name: item.name }} />
+                <T id="repository_full_name" values={{ fullName: item.fullName }} />
+                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
               </CustomCard>
             ))}
           </Skeleton>
