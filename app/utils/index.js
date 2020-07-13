@@ -1,6 +1,6 @@
 import find from 'lodash/find';
 import get from 'lodash/get';
-import routeConstants from './routeConstansts';
+import routeConstants from './routeConstants';
 
 /**
  * Get details of the current route from the route config.
