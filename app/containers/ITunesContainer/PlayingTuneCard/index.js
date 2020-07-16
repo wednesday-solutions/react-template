@@ -60,7 +60,10 @@ function PlayingTuneCard({ currentTune, dispatchCurrentTune }) {
 }
 
 PlayingTuneCard.propTypes = {
-  currentTune: PropTypes.object,
+  currentTune: PropTypes.shape({
+    trackName: PropTypes.string,
+    artistName: PropTypes.string
+  }).isRequired,
   dispatchCurrentTune: PropTypes.func
 };
 export default PlayingTuneCard;

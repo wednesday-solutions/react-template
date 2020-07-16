@@ -45,16 +45,17 @@ const CustomInfoButton = styled(InfoCircleOutlined)`
   margin-right: 5rem;
   cursor: pointer;
 `;
-function TuneCard({ song, currentTune, dispatchCurrentTune, dispatchSelectedTune }) {
+function TuneCard({ song, currentTuneId, dispatchCurrentTune, dispatchSelectedTune }) {
   const tuneRef = useRef(null);
   const history = useHistory();
 
   useEffect(() => {
-    (() =>
-      currentTune && song && currentTune?.trackId === song?.trackId
-        ? tuneRef.current.play()
-        : tuneRef?.current?.pause())();
-  }, [currentTune, song]);
+    if (song && currentTuneId === song?.trackId) {
+      tuneRef.current.play();
+    } else {
+      tuneRef.current.pause();
+    }
+  }, [currentTuneId, song]);
 
   const artistName = song.artistName;
   const trackName = song.trackName;
@@ -74,7 +75,7 @@ function TuneCard({ song, currentTune, dispatchCurrentTune, dispatchSelectedTune
           </div>
         </Col>
         <Col span={12}>
-          <If condition={currentTune?.trackId !== song?.trackId}>
+          <If condition={currentTuneId !== song?.trackId}>
             <CustomPlayButton
               data-testid="btn1"
               onClick={e => {
@@ -82,7 +83,7 @@ function TuneCard({ song, currentTune, dispatchCurrentTune, dispatchSelectedTune
               }}
             />
           </If>
-          <If condition={currentTune?.trackId === song?.trackId}>
+          <If condition={currentTuneId === song?.trackId}>
             <CustomPauseButton
               data-testid="btn2"
               onClick={e => {
@@ -108,8 +109,13 @@ function TuneCard({ song, currentTune, dispatchCurrentTune, dispatchSelectedTune
 }
 
 TuneCard.propTypes = {
-  song: PropTypes.object,
-  currentTune: PropTypes.object,
+  song: PropTypes.shape({
+    artistName: PropTypes.string,
+    trackId: PropTypes.number,
+    trackName: PropTypes.string,
+    releaseDate: PropTypes.string
+  }).isRequired,
+  currentTuneId: PropTypes.number,
   dispatchCurrentTune: PropTypes.func,
   dispatchSelectedTune: PropTypes.func
 };

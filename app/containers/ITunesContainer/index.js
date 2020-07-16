@@ -104,13 +104,25 @@ export function ITunesContainer({
             )}
             {songs.map((song, index) => {
               return (
-                <TuneCard
-                  key={index}
-                  song={song}
-                  currentTune={currentTune}
-                  dispatchCurrentTune={dispatchCurrentTune}
-                  dispatchSelectedTune={dispatchSelectedTune}
-                />
+                <>
+                  <If key={index} condition={currentTune !== null}>
+                    <TuneCard
+                      key={index}
+                      song={song}
+                      currentTuneId={currentTune?.trackId}
+                      dispatchCurrentTune={dispatchCurrentTune}
+                      dispatchSelectedTune={dispatchSelectedTune}
+                    />
+                  </If>
+                  <If key={index} condition={currentTune === null}>
+                    <TuneCard
+                      key={index}
+                      song={song}
+                      dispatchCurrentTune={dispatchCurrentTune}
+                      dispatchSelectedTune={dispatchSelectedTune}
+                    />
+                  </If>
+                </>
               );
             })}
           </Skeleton>

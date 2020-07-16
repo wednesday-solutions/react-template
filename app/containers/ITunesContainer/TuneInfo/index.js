@@ -45,7 +45,7 @@ export function TuneContainer({ selectedTune }) {
       <CustomInfoCard>
         <CustomCard>
           <CustomImg>
-            <img src={selectedTune.artworkUrl100} alt="" />
+            <img src={selectedTune?.artworkUrl100} alt="" />
           </CustomImg>
           <div>
             <T id="track_name" values={{ trackName }} />
@@ -64,7 +64,13 @@ export function TuneContainer({ selectedTune }) {
 }
 
 TuneContainer.propTypes = {
-  selectedTune: PropTypes.object
+  selectedTune: PropTypes.shape({
+    artistName: PropTypes.string,
+    trackId: PropTypes.number,
+    trackName: PropTypes.string,
+    releaseDate: PropTypes.string,
+    artworkUrl100: PropTypes.string
+  }).isRequired
 };
 
 const mapStateToProps = createStructuredSelector({

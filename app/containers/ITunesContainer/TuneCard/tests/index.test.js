@@ -33,13 +33,13 @@ describe('<TuneCard />', () => {
 
   it('should show play button', () => {
     const { getByTestId } = renderWithIntl(
-      <TuneCard song={mockSongData} currentTune={{ trackId: 2 }} dispatchCurrentTune={dispatchCurrentTuneSpy} />
+      <TuneCard song={mockSongData} currentTuneId="2" dispatchCurrentTune={dispatchCurrentTuneSpy} />
     );
     expect(getByTestId('btn1')).toBeTruthy();
   });
   it('should show pause button', () => {
     const { getByTestId } = renderWithIntl(
-      <TuneCard song={mockSongData} currentTune={{ trackId: 1 }} dispatchCurrentTune={dispatchCurrentTuneSpy} />
+      <TuneCard song={mockSongData} currentTuneId={1} dispatchCurrentTune={dispatchCurrentTuneSpy} />
     );
     expect(getByTestId('btn2')).toBeTruthy();
   });
