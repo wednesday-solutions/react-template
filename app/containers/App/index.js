@@ -27,6 +27,7 @@ const theme = {
 };
 
 export function App({ location }) {
+  const rootPath = process.env.NODE_ENV === 'development' ? '' : location.pathname;
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -40,7 +41,7 @@ export function App({ location }) {
               <Route
                 exact={routeConfig[routeKey].exact}
                 key={index}
-                path={`${location.pathname}${routeConfig[routeKey].route}`}
+                path={`${rootPath}${routeConfig[routeKey].route}`}
                 render={props => {
                   const updatedProps = {
                     ...props,

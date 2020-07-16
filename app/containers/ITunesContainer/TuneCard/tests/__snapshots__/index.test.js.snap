@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TuneCard /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="TuneCard__CustomTuneCard-kiui55-0 gZBdDs"
+      data-testid="tune-card"
+    >
+      <div
+        class="ant-row"
+      >
+        <div
+          class="ant-col ant-col-12"
+        >
+          <div
+            style="margin-top: 1.5rem;"
+          >
+            Tune: Perfect
+          </div>
+          <div>
+            Artist Name: Ed
+          </div>
+          <div>
+            Release Year: 2017
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-12"
+        >
+          <span
+            aria-label="play-circle"
+            class="anticon anticon-play-circle TuneCard__CustomPlayButton-kiui55-1 cuoJgz"
+            data-testid="btn1"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="play-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+              <path
+                d="M719.4 499.1l-296.1-215A15.9 15.9 0 00398 297v430c0 13.1 14.8 20.5 25.3 12.9l296.1-215a15.9 15.9 0 000-25.8zm-257.6 134V390.9L628.5 512 461.8 633.1z"
+              />
+            </svg>
+          </span>
+          <span
+            aria-label="info-circle"
+            class="anticon anticon-info-circle TuneCard__CustomInfoButton-kiui55-3 cUuXlk"
+            data-testid="info_btn"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="info-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+              <path
+                d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <audio>
+        <source />
+      </audio>
+    </div>
+  </div>
+</body>
+`;
