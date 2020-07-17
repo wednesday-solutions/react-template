@@ -12,7 +12,6 @@ import { ITunesContainerTest as ITunesContainer } from '../index';
 
 describe('<ITunesContainer /> container tests', () => {
   let submitSpy;
-
   beforeEach(() => {
     submitSpy = jest.fn();
   });

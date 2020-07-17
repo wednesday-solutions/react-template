@@ -50,5 +50,16 @@ export const selectSelectedTune = () =>
     selectITunesContainerDomain,
     substate => get(substate, 'selectedTune', null)
   );
+export const selectTuneData = () =>
+  createSelector(
+    selectITunesContainerDomain,
+    substate => get(substate, 'tuneData', null)
+  );
+
+export const selectTuneError = () =>
+  createSelector(
+    selectITunesContainerDomain,
+    substate => get(substate, 'tuneError', null)
+  );
 
 export default selectITunesContainer;

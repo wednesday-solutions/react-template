@@ -21,5 +21,6 @@
   "artist_name": "Artist Name: {artistName}",
   "track_name": "Tune: {trackName}",
   "released": "Release Year: {release}",
-  "tunes_logo": "Tunes.io"
+  "tunes_logo": "Tunes.io",
+  "loading": "Loading ..."
 }

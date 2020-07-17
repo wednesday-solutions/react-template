@@ -7,7 +7,7 @@ describe('ITunesContainer reducer tests', () => {
     state = initialState;
   });
 
-  it('should return the initial state when an action of type FETCH_USER is dispatched', () => {
+  it('should return the initial state when an action of type REQUEST_GET_I_TUNES is dispatched', () => {
     const iTuneName = 'perfect';
     const expectedResult = { ...state, iTuneName };
     expect(
@@ -18,7 +18,7 @@ describe('ITunesContainer reducer tests', () => {
     ).toEqual(expectedResult);
   });
 
-  it('should ensure that the user data is present and userLoading = false when FETCH_USER_SUCCESS is dispatched', () => {
+  it('should ensure that the tunes data is present  when SUCCESS_GET_I_TUNES is dispatched', () => {
     const data = { trackName: 'perfect' };
     const expectedResult = { ...state, iTunesData: data };
     expect(
@@ -29,7 +29,7 @@ describe('ITunesContainer reducer tests', () => {
     ).toEqual(expectedResult);
   });
 
-  it('should ensure that the userErrorMessage has some data and userLoading = false when FETCH_USER_FAILURE is dispatched', () => {
+  it('should ensure that it returns error message when FAILURE_GET_I_TUNES is dispatched', () => {
     const error = 'something_went_wrong';
     const expectedResult = { ...state, iTunesError: error };
     expect(
@@ -58,6 +58,39 @@ describe('ITunesContainer reducer tests', () => {
       iTunesContainerReducer(state, {
         type: iTunesContainerTypes.SET_SELECTED_TUNE,
         selectedTune
+      })
+    ).toEqual(expectedResult);
+  });
+
+  it('should return the initial state when an action of type REQUEST_TUNE_BY_ID is dispatched', () => {
+    const tuneId = 1193701400;
+    const expectedResult = { ...state, tuneId };
+    expect(
+      iTunesContainerReducer(state, {
+        type: iTunesContainerTypes.REQUEST_TUNE_BY_ID,
+        tuneId
+      })
+    ).toEqual(expectedResult);
+  });
+
+  it('should ensure that it returns data when SUCCESS_GET_TUNE_BY_ID is dispatched', () => {
+    const data = { trackName: 'perfect' };
+    const expectedResult = { ...state, tuneData: data };
+    expect(
+      iTunesContainerReducer(state, {
+        type: iTunesContainerTypes.SUCCESS_GET_TUNE_BY_ID,
+        data
+      })
+    ).toEqual(expectedResult);
+  });
+
+  it('should ensure that the userErrorMessage has some data and FAILURE_GET_TUNE_BY_ID is dispatched', () => {
+    const error = 'something_went_wrong';
+    const expectedResult = { ...state, tuneError: error };
+    expect(
+      iTunesContainerReducer(state, {
+        type: iTunesContainerTypes.FAILURE_GET_TUNE_BY_ID,
+        error
       })
     ).toEqual(expectedResult);
   });

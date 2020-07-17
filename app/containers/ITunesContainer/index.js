@@ -71,7 +71,7 @@ export function ITunesContainer({
   }, [iTunesData]);
 
   useEffect(() => {
-    if (iTuneName && !iTunesData.results.length) {
+    if (iTuneName && !iTunesData?.results.length) {
       dispatchITunes(iTuneName);
       setLoading(true);
     }
@@ -94,12 +94,12 @@ export function ITunesContainer({
           <Skeleton loading={loading} active>
             {iTuneName && (
               <div>
-                <T id="search_name" values={{ iTuneName }} />
+                <T id="search_name" data-testid="search_name" values={{ iTuneName }} />
               </div>
             )}
             {totalCount !== 0 && (
               <div>
-                <T id="matching_tunes" values={{ totalCount }} />
+                <T id="matching_tunes" data-testid="total_count" values={{ totalCount }} />
               </div>
             )}
             {songs.map((song, index) => {
