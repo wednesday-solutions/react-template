@@ -8,9 +8,9 @@ import React from 'react';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { fonts, images, colors } from '@themes';
+import { fonts, colors } from '@themes';
 import T from '@components/T';
-
+import logo from '@images/icon-512x512.png';
 const StyledHeader = styled(Layout.Header)`
   && {
     &.ant-layout-header {
@@ -38,7 +38,7 @@ const Title = styled(T)`
 function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
-      <Logo alt="logo" src={images.logo} />
+      <Logo alt="logo" src={logo} />
       <Title type="heading" id="wednesday_solutions" />
     </StyledHeader>
   );
