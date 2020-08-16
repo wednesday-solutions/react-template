@@ -126,6 +126,7 @@ export function ITunesContainer({
               );
             })}
           </Skeleton>
+          <T text={'testing the compression'} />
         </CustomCard>
       )
     );
