@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ITunesContainer /> container tests should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="ITunesContainer__Container-lb7bgf-1 keUrBv"
+    >
+      <div
+        class="ITunesContainer__Container-lb7bgf-1 keUrBv"
+      >
+        <input
+          class="ant-input"
+          data-testid="search-bar"
+          type="text"
+          value=""
+        />
+        <div
+          class="ant-card ITunesContainer__CustomCard-lb7bgf-0 cvJnJe ant-card-bordered"
+          color="grey"
+        >
+          <div
+            class="ant-card-body"
+          >
+            Search for a tune by entering it's name,
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

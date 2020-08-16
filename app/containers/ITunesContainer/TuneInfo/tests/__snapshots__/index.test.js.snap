@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TuneInfo /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="tune-info"
+    >
+      <div
+        class="TuneInfo__CustomInfoCard-sc-3vntfw-0 iwdbOp"
+      >
+        <div
+          class="TuneInfo__CustomCard-sc-3vntfw-1 hfgazm"
+        >
+          <div
+            class="TuneInfo__CustomImg-sc-3vntfw-2 KUsaJ"
+          >
+            <img
+              alt=""
+            />
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Tune: Perfect
+            </p>
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Artist Name: Ed
+            </p>
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Release Year: 2017
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<TuneInfo /> should render and match the snapshot when there is no redux store 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="tune-info"
+    >
+      <div
+        class="TuneInfo__CustomInfoCard-sc-3vntfw-0 iwdbOp"
+      >
+        <div
+          class="TuneInfo__CustomCard-sc-3vntfw-1 hfgazm"
+        >
+          <div
+            class="TuneInfo__CustomImg-sc-3vntfw-2 KUsaJ"
+          >
+            <img
+              alt=""
+            />
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Tune: 
+            </p>
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Artist Name: 
+            </p>
+          </div>
+          <div>
+            <p
+              class="T__StyledText-gjlic1-0 cbAvsY"
+              data-testid="t"
+            >
+              Release Year: 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

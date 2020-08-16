@@ -10,5 +10,17 @@
   "repository_name": "Repository Name: {name}",
   "repository_full_name": "Repository full name: {fullName}",
   "repository_stars": "Repository stars: {stars}",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "tunes_list": "Tunes List",
+  "tune_search": "Tunes Search",
+  "tune_search_default": "Search for a tune by entering it's name,",
+  "preview": "Play Preview",
+  "search_name": "Search by name: {iTuneName}",
+  "matching_tunes": "Total number of matching tunes: {totalCount}",
+  "tune_name": "Tune Name: {name}",
+  "artist_name": "Artist Name: {artistName}",
+  "track_name": "Tune: {trackName}",
+  "released": "Release Year: {release}",
+  "tunes_logo": "Tunes.io",
+  "loading": "Loading ..."
 }

@@ -10,7 +10,7 @@ const text = '#212529';
 const secondary = '#f8c49c';
 const success = '#28a745';
 const error = '#dc3545';
-
+const grey = '#dae0e2';
 const colors = {
   transparent: 'rgba(0,0,0,0)',
   // Example colors:
@@ -19,6 +19,7 @@ const colors = {
   secondary,
   success,
   error,
+  grey,
   theme: {
     lightMode: {
       primary,
