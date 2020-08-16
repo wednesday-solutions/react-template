@@ -1,0 +1,45 @@
+name: Continuous Deployment on Push to develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_DIR: './build/'
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      PATHS: '/*'
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get branch name
+        id: vars
+        run: echo ::set-output name=short_ref::${{github.event.pull_request.head.ref}}
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: AWS Deploy with content-encoding
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --exclude '*' --include '*.*.chunk.js --metadata-directive REPLACE --content-encoding gzip --expires 2034-01-01T00:00:00Z --cache-control max-age=31536000,public --acl public-read --follow-symlinks'
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      - name: AWS Deploy
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --include '*' --exclude '*.*.chunk.js' --metadata-directive REPLACE --expires 2034-01-01T00:00:00Z --cache-control max-age=31536000,public --acl public-read --follow-symlinks
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      - name: AWS Deploy index.html
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --exclude '*' --include 'index.html' --acl public-read --follow-symlinks
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
