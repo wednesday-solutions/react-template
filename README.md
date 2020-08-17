@@ -124,6 +124,7 @@ For documentation take a look at: [react-floki](https://github.com/wednesday-sol
 - For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have a couple of hacks
   1. [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
   This should actually be 	```publicPath: '/'	```
-
+  2. [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L85)
+  This should actually be 	```relativePaths: false,```
   2. [history.js](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
     This should actually be ```const history = createBrowserHistory();```
