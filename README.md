@@ -121,10 +121,11 @@ For documentation take a look at: [react-floki](https://github.com/wednesday-sol
 
 ## Gotchas	
 
-- For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have a couple of hacks
-  1. [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
-  This should actually be 	```publicPath: '/'	```
-  2. [webpack.base](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L85)
-  This should actually be 	```relativePaths: false,```
-  2. [history.js](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
-    This should actually be ```const history = createBrowserHistory();```
+- For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have the used some workarounds.
+For production builds deployed directly on `/` you need to make the following changes
+  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
+   should be: ```publicPath: '/'	```
+  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.prod.babel.js#L85)
+  should be: ```relativePaths: false,```
+  2. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
+  should be:  ```const history = createBrowserHistory();```
