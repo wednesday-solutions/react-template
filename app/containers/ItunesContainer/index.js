@@ -89,7 +89,7 @@ export function ItunesContainer({
           <Skeleton loading={loading} active>
             {songName && (
               <div>
-                <T id="search_query" values={{ songName }} />
+                <T id="search_query1" values={{ songName }} />
               </div>
             )}
             {resultCount !== 0 && (
