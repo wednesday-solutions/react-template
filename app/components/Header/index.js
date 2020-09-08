@@ -39,7 +39,7 @@ function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
       <Logo alt="logo" src={logo} />
-      <Title type="heading" id="itunesmusic" />
+      <Title type="heading" id="wednesday_solutions" />
     </StyledHeader>
   );
 }

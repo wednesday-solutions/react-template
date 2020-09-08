@@ -4,17 +4,17 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-sc-1oyjikn-1 kalouR"
+      class="HomeContainer__Container-l0s8pp-1 eLjtlX"
     >
       <div
-        class="HomeContainer__RightContent-sc-1oyjikn-2 lhHHWg"
+        class="HomeContainer__RightContent-l0s8pp-2 ktRuf"
       >
         <div
-          class="Clickable__StyledClickable-sc-1icxqe9-0 eHScZM"
+          class="Clickable__StyledClickable-sc-19lp5om-0 avquq"
           data-testid="clickable"
         >
           <p
-            class="T__StyledText-k7y7i4-0 duBKzh"
+            class="T__StyledText-gjlic1-0 cbAvsY"
             data-testid="t"
           >
             Go to Storybook
@@ -22,7 +22,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-sc-1oyjikn-0 hZjHdw"
+        class="ant-card HomeContainer__CustomCard-l0s8pp-0 etQjAO ant-card-bordered"
         maxwidth="500"
       >
         <div
@@ -42,13 +42,13 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-k7y7i4-0 jjgtLI"
+            class="T__StyledText-gjlic1-0 eEFXad"
             data-testid="t"
           >
             Get details of repositories
           </p>
           <span
-            class="ant-input-affix-wrapper ant-input-search"
+            class="ant-input-search ant-input-affix-wrapper"
           >
             <input
               class="ant-input"
@@ -85,7 +85,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-sc-1oyjikn-0 icAGCx"
+        class="ant-card HomeContainer__CustomCard-l0s8pp-0 lglBtv ant-card-bordered"
         color="grey"
       >
         <div
@@ -105,7 +105,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-k7y7i4-0 duBKzh"
+            class="T__StyledText-gjlic1-0 cbAvsY"
             data-testid="t"
           >
             Search for a repository by entering it's name in the search box

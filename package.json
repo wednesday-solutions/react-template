@@ -1,14 +1,17 @@
 {
-  "name": "itunesSongs",
+  "name": "react-template",
   "version": "1.0.0",
   "description": "A template react application",
-  "repository": "{}",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wednesday-solutions/react-template.git"
+  },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Mac",
+  "homepage": "http://wednesday-solutions.github.io/react-template",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
