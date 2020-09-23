@@ -1,4 +1,4 @@
-<img align="left" src="https://github.com/wednesday-solutions/serverless/blob/master/serverless_github.svg" width="480" height="460" />
+<img align="left" src="https://github.com/wednesday-solutions/react-template/blob/master/react_template_github.svg" width="480" height="460" />
 
 <div>
   <a href="https://www.wednesday.is?utm_source=gthb&utm_medium=repo&utm_campaign=serverless" align="left" style="margin-left: 0;">
@@ -35,8 +35,6 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   <span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring">We are hiring!</a></span>
 </div>
-
-# React Template
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
