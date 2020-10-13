@@ -72,7 +72,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   Take a look at the following files
 
-  - [app/containers/HomeContainer/selector.js](app/containers/HomeContainer/selector.js)
+  - [app/containers/HomeContainer/selector.js](app/containers/HomeContainer/selectors.js)
 
 ## Design and Style
 
