@@ -110,7 +110,7 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [app/routeConfig.js](app/routeConfig.js)
   - [app/containers/App/index.js](app/containers/App/index.js)
 
-## Creating and showcasing components individually and in isolation usingg Storybooks
+## Creating and showcasing components individually and in isolation using Storybooks
 
 - Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
 
