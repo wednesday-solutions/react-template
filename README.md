@@ -131,14 +131,14 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
   - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
 
-## Analyze the bundle size using webpack-bundle-analyzer
+## Analyzing the bundle size using webpack-bundle-analyzer
 
 - The size of the bundle is analyzed using the webpack-bundle-analyzer to make sure that the bundle is lean and optimized. 
 
   Take a look at the following files
   - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
 
-## Implementing a CI/CD pipeline using Github Actions
+## Implementing CI/CD pipelines using Github Actions
 
 - CI/CD using Github Actions. 
   The CI pipeline has the following phases
