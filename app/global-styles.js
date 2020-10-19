@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
+    margin-bottom: 0;
   }
 `;
 
