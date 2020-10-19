@@ -85,7 +85,7 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [app/components/T/index.js](app/components/T/index.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
-## Integrating a React UI component library, antd
+## Using antd as the component library
 
 - Reusing components from [Ant design](https://ant.design)
 
