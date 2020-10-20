@@ -10,9 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: setup git token
-        uses: fregante/setup-git-token@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: fregante/setup-git-user@v1
 
       - name: Install dependencies
         run: yarn
