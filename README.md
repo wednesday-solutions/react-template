@@ -55,7 +55,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   - [app/containers/HomeContainer/selectors.js](app/containers/HomeContainer/selectors.js)
 
-## Implementing a Redux middlware using redux-sagas
+## Implementing a Redux middleware using redux-sagas
 
 - Side effects using [Redux Saga](https://github.com/redux-saga/redux-saga)
 
