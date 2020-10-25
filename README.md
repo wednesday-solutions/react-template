@@ -147,16 +147,16 @@ An enterprise react template application showcasing - Testing strategies, Global
   - Lint
   - Test
   - Build
-
-  Take a look at the following files
-  - [.github/workflows/ci.yml](.github/workflows/ci.yml)
-  - [.github/workflows/cd.yml](.github/workflows/cd.yml)
     
   The CD pipeline has the following phases
   - Checkout
   - Install dependencies
   - Build
   - Deploy
+
+  Take a look at the following files
+  - [.github/workflows/ci.yml](.github/workflows/ci.yml)
+  - [.github/workflows/cd.yml](.github/workflows/cd.yml)
    
 ## Testing using @testing-library/react
 
