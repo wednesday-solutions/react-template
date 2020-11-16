@@ -14,12 +14,12 @@ import { withRouter } from 'react-router';
 import map from 'lodash/map';
 import { compose } from 'redux';
 import { Layout } from 'antd';
-import { routeConfig } from '@app/routeConfig';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
-import { colors } from '@themes';
 import Header from '@components/Header';
 import For from '@components/For';
+import { routeConfig } from '@app/routeConfig';
+import { colors } from '@themes';
 
 const theme = {
   fg: colors.primary,
