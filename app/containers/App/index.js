@@ -26,7 +26,7 @@ const theme = {
   bg: colors.secondary
 };
 
-export function App({ location }) {
+export function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
