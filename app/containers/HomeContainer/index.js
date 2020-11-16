@@ -85,7 +85,7 @@ export function HomeContainer({
     const items = get(reposData, 'items', []);
     const totalCount = get(reposData, 'totalCount', 0);
     return (
-      (items.length !== 0 || loading) && (
+      <If condition={items.length !== 0 || loading}>
         <CustomCard>
           <Skeleton loading={loading} active>
             <If condition={repoName}>
@@ -107,7 +107,7 @@ export function HomeContainer({
             ))}
           </Skeleton>
         </CustomCard>
-      )
+      </If>
     );
   };
   const renderErrorState = () => {
