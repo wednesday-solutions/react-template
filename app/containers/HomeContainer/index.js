@@ -16,6 +16,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
+import If from '@app/components/If/index';
 
 const { Search } = Input;
 
@@ -87,16 +88,16 @@ export function HomeContainer({
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            <If condition={repoName}>
               <div>
                 <T id="search_query" values={{ repoName }} />
               </div>
-            )}
-            {totalCount !== 0 && (
+            </If>
+            <If condition={totalCount !== 0}>
               <div>
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
-            )}
+            </If>
             {items.map((item, index) => (
               <CustomCard key={index}>
                 <T id="repository_name" values={{ name: item.name }} />
