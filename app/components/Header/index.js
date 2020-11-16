@@ -40,7 +40,7 @@ const Title = styled(T)`
 function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
-      <Logo alt="logo" src={props.logo || logo} />
+      <Logo data-testid="logo" alt="logo" src={props.logo || logo} />
       <Title type="heading" id={props.titleId || 'wednesday_solutions'} />
     </StyledHeader>
   );

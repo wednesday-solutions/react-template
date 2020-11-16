@@ -18,4 +18,9 @@ describe('<Header />', () => {
     const { getAllByAltText } = renderWithIntl(<Header />);
     expect(getAllByAltText('logo').length).toBe(1);
   });
+
+  it('should render logo from props', () => {
+    const { getByTestId } = renderWithIntl(<Header logo={'sample_logo'} />);
+    expect(getByTestId('logo').src).toEqual('http://localhost/sample_logo');
+  });
 });
