@@ -121,13 +121,13 @@ export function HomeContainer({
       </If>
     );
   };
-  const refreshPage = () => {
-    history.push('stories');
-  };
+
+  const goToStories = () => history.push('stories');
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
+        <Clickable textId="stories" onClick={goToStories} />
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />

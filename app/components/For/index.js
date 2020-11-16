@@ -30,7 +30,7 @@ export function For({
   return (
     <>
       <If condition={noParent} otherwise={<>{children()}</>}>
-        <If condition={(of || []).length}>{list()}</If>
+        <If condition={of.length}>{list()}</If>
       </If>
     </>
   );
@@ -46,6 +46,7 @@ For.propTypes = {
   ParentComponent: Proptypes.func
 };
 For.defaultProps = {
-  isRow: true
+  isRow: true,
+  of: []
 };
 export default For;
