@@ -128,7 +128,6 @@ export function HomeContainer({
   };
   const refreshPage = () => {
     history.push('stories');
-    window.location.reload();
   };
   return (
     <Container maxwidth={maxwidth} padding={padding}>
