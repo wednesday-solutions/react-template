@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import T from '@components/T';
+import If from '@components/If';
 
 const StyledClickable = styled.div`
   color: #1890ff;
@@ -18,7 +19,9 @@ const StyledClickable = styled.div`
 function Clickable({ onClick, textId }) {
   return (
     <StyledClickable data-testid="clickable" onClick={onClick}>
-      {textId && <T id={textId} />}
+      <If condition={textId}>
+        <T id={textId} />
+      </If>
     </StyledClickable>
   );
 }
