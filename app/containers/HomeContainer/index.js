@@ -118,12 +118,11 @@ export function HomeContainer({
       repoError = 'respo_search_default';
     }
     return (
-      !loading &&
-      repoError && (
+      <If condition={!loading && repoError}>
         <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
           <T id={repoError} />
         </CustomCard>
-      )
+      </If>
     );
   };
   const refreshPage = () => {
