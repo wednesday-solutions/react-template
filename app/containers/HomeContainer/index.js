@@ -111,12 +111,8 @@ export function HomeContainer({
     );
   };
   const renderErrorState = () => {
-    let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
-    }
+    const repoError = reposError || (!get(reposData, 'totalCount', 0) ? 'respo_search_default' : null);
+
     return (
       <If condition={!loading && repoError}>
         <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
