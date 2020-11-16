@@ -7,23 +7,33 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import styled from 'styled-components';
+import If from '@components/If/';
 
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: ${props => (props.isRow ? `row;` : `column;`)};
 `;
 
-export function For({ of, ParentComponent = props => <FlexContainer {...props} />, renderItem, noParent, ...props }) {
+export function For({
+  of = [],
+  ParentComponent = props => <FlexContainer {...props} />,
+  renderItem,
+  noParent,
+  ...props
+}) {
   const list = () => of.map((item, index) => ({ ...renderItem(item, index), key: index }));
   const children = () => (
     <ParentComponent {...props} data-testid="for">
       {list()}
     </ParentComponent>
   );
-  if (noParent) {
-    return (of || []).length ? list() : null;
-  }
-  return (of || []).length ? children() : null;
+  return (
+    <>
+      <If condition={noParent} otherwise={<>{children()}</>}>
+        <If condition={(of || []).length}>{list()}</If>
+      </If>
+    </>
+  );
 }
 
 For.propTypes = {
@@ -32,7 +42,8 @@ For.propTypes = {
   parent: Proptypes.object,
   iteratee: Proptypes.string,
   renderItem: Proptypes.func.isRequired,
-  noParent: Proptypes.bool
+  noParent: Proptypes.bool,
+  ParentComponent: Proptypes.func
 };
 For.defaultProps = {
   isRow: true
