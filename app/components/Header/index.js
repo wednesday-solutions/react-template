@@ -6,11 +6,13 @@
 
 import React from 'react';
 import { Layout } from 'antd';
+import Proptypes from 'prop-types';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { fonts, colors } from '@themes';
 import T from '@components/T';
 import logo from '@images/icon-512x512.png';
+
 const StyledHeader = styled(Layout.Header)`
   && {
     &.ant-layout-header {
@@ -38,10 +40,15 @@ const Title = styled(T)`
 function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
-      <Logo alt="logo" src={logo} />
-      <Title type="heading" id="wednesday_solutions" />
+      <Logo alt="logo" src={props.logo || logo} />
+      <Title type="heading" id={props.titleId || 'wednesday_solutions'} />
     </StyledHeader>
   );
 }
+
+Header.propTypes = {
+  logo: Proptypes.string,
+  titleId: Proptypes.string
+};
 
 export default injectIntl(Header);
