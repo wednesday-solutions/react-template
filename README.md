@@ -215,7 +215,7 @@ Take a look at the following files
 
 ## Gotchas	
 
-- For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have the used some workarounds.
+- For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have used some workarounds.
 For production builds deployed directly on `/` you need to make the following changes
   1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
    should be: ```publicPath: '/'	```
