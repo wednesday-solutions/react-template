@@ -38,7 +38,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
-![React Tempalate CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Tempalate%20CD/badge.svg)
+![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
 
 ## Global state management using reduxSauce
 
