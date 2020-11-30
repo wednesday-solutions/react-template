@@ -1,4 +1,4 @@
-name: React Tempalate CD
+name: React Template CD
 on:
   push:
     branches: [ master ]
