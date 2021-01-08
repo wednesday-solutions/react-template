@@ -11,11 +11,11 @@ import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
+import Clickable from '@components/Clickable';
 
 const { Search } = Input;
 

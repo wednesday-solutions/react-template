@@ -3,27 +3,27 @@ import snakeCase from 'lodash/snakeCase';
 import camelCase from 'lodash/camelCase';
 import { mapKeysDeep } from './index';
 
-const { GITHUB_URL } = process.env;
+// const { WEATHER_URL } = process.env;
 const apiClients = {
-  github: null,
+  weather: null,
   default: null
 };
-export const getApiClient = (type = 'github') => apiClients[type];
-export const generateApiClient = (type = 'github') => {
+export const getApiClient = (type = 'weather') => apiClients[type];
+export const generateApiClient = (type = 'weather') => {
   switch (type) {
-    case 'github':
-      apiClients[type] = createApiClientWithTransForm(GITHUB_URL);
+    case 'weather':
+      apiClients[type] = createApiClientWithTransForm('https://api.openweathermap.org/');
       return apiClients[type];
     default:
-      apiClients.default = createApiClientWithTransForm(GITHUB_URL);
+      apiClients.default = createApiClientWithTransForm('https://api.openweathermap.org/');
       return apiClients.default;
   }
 };
 
 export const createApiClientWithTransForm = baseURL => {
   const api = create({
-    baseURL,
-    headers: { 'Content-Type': 'application/json' }
+    baseURL
+    // headers: { 'Content-Type': 'application/json' }
   });
   api.addResponseTransform(response => {
     const { ok, data } = response;

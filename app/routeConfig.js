@@ -1,10 +1,10 @@
 import NotFound from '@containers/NotFoundPage/Loadable';
-import HomeContainer from '@containers/HomeContainer/Loadable';
+import WeatherContainer from '@containers/WeatherContainer/Loadable';
 import routeConstants from '@utils/routeConstants';
 export const routeConfig = {
-  repos: {
-    component: HomeContainer,
-    ...routeConstants.repos
+  city: {
+    component: WeatherContainer,
+    ...routeConstants.city
   },
   notFoundPage: {
     component: NotFound,

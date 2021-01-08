@@ -1,4 +1,5 @@
 import { generateApiClient } from '@utils/apiUtils';
-const repoApi = generateApiClient('github');
+const cityApi = generateApiClient('weather');
 
-export const getRepos = repoName => repoApi.get(`/search/repositories?q=${repoName}`);
+export const getCity = cityName =>
+  cityApi.get(`/data/2.5/weather?q=${cityName}&appid=33b7ce91927accbd6252f527f5f73890`);
