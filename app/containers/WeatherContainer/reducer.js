@@ -23,9 +23,11 @@ export const weatherContainerReducer = (state = initialState, action) =>
         break;
       case weatherContainerTypes.SUCCESS_GET_CITY_WEATHER:
         draft.cityData = action.cityData;
+        draft.cityError = null;
         break;
       case weatherContainerTypes.FAILURE_GET_CITY_WEATHER:
         draft.cityError = action.cityError;
+        draft.cityData = {};
         break;
     }
   });

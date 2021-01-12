@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { getCity } from '@services/repoApi';
+import { getCity } from '@app/services/cityApi';
 
 import { weatherContainerTypes, weatherContainerCreators } from './reducer';
 
