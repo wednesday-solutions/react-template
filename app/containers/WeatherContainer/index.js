@@ -106,7 +106,7 @@ export function WeatherContainer({ dispatchCityWeather, cityData = {}, cityError
   };
   const renderErrorState = () => {
     const error = () => {
-      message.error('This is wrong City Name, Please Enter Correct City Name');
+      message.error(intl.formatMessage({ id: 'city_error' }));
     };
     const name = get(cityData, 'name', null);
     if (cityError) {
@@ -176,6 +176,7 @@ const withConnect = connect(
 );
 
 export default compose(
+  injectIntl,
   withConnect,
   memo
 )(WeatherContainer);
