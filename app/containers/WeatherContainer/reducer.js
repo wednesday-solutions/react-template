@@ -1,8 +1,3 @@
-/*
- *
- * WeatherContainer reducer
- *
- */
 import produce from 'immer';
 import { createActions } from 'reduxsauce';
 
