@@ -2,10 +2,6 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 import get from 'lodash/get';
 
-/**
- * Direct selector to the weatherContainer state domain
- */
-
 const selectWeatherContainerDomain = state => state.weatherContainer || initialState;
 
 export const selectWeatherContainer = () =>

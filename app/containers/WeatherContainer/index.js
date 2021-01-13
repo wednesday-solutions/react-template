@@ -54,7 +54,7 @@ const RightContent = styled.div`
   align-self: flex-end;
 `;
 const CustomSpace = styled(Space)`
-  margin: 25px;
+  margin: ${props => props.margin}px;
 `;
 export function WeatherContainer({ dispatchCityWeather, cityData = {}, cityError = null, cityName, intl }) {
   useInjectSaga({ key: 'weatherContainer', saga });
