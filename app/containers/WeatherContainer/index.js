@@ -74,9 +74,7 @@ export function WeatherContainer({ dispatchCityWeather, cityData = {}, cityError
       setLoading(true);
     }
   }, []);
-  const error = () => {
-    message.error('This is wrong City Name, Please Enter Correct City Name');
-  };
+
   const handleOnChange = wName => {
     if (!isEmpty(wName)) {
       dispatchCityWeather(wName);
@@ -107,6 +105,9 @@ export function WeatherContainer({ dispatchCityWeather, cityData = {}, cityError
     );
   };
   const renderErrorState = () => {
+    const error = () => {
+      message.error('This is wrong City Name, Please Enter Correct City Name');
+    };
     const name = get(cityData, 'name', null);
     if (cityError) {
       return (
