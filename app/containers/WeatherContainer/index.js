@@ -62,7 +62,7 @@ export function WeatherContainer({ dispatchCityWeather, cityData = {}, cityError
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(cityData, 'name', null) || cityError;
+    const loaded = get(cityData, 'name', cityError);
     if (loading && loaded) {
       setLoading(false);
     }

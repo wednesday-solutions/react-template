@@ -1,7 +1,5 @@
-// import produce from 'immer'
 import { weatherContainerReducer, weatherContainerTypes, initialState } from '../reducer';
 
-/* eslint-disable default-case, no-param-reassign */
 describe('WeatherContainer reducer tests', () => {
   let state;
   beforeEach(() => {

@@ -18,7 +18,7 @@ export const selectCityName = () =>
 export const selectCityData = () =>
   createSelector(
     selectWeatherContainerDomain,
-    substate => get(substate, 'cityData', null)
+    substate => get(substate, 'cityData', {})
   );
 
 export const selectCityError = () =>
