@@ -8,7 +8,13 @@
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
   "repository_name": "Repository Name: {name}",
-  "repository_full_name": "Repository full name: {fullName}",
+  "repository_full_name": "Repository full name: {temp_names}",
   "repository_stars": "Repository stars: {stars}",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "city_name": "City Name: {name}",
+  "city_timezone": "City Timezone: {timezone}",
+  "city_temperature": "City Temperature: {temperature}",
+  "city_description": "City Description: {description}",
+  "get_weather_details": "Get details of City Weather",
+  "city_error": "This is wrong City Name, Please Enter Correct City Name"
 }
