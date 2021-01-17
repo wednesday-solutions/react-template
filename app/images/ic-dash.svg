@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+    <defs>
+        <style>
+            .cls-2{fill:#3164c6}
+        </style>
+    </defs>
+    <g id="ic_dash" transform="translate(13.754 13)">
+        <path id="Rectangle_955" fill="none" d="M0 0H56V56H0z" data-name="Rectangle 955" transform="translate(-13.754 -13)"/>
+        <g id="Group_1623" data-name="Group 1623" transform="translate(-3 -2)">
+            <rect id="Rectangle_426" width="16" height="12" class="cls-2" data-name="Rectangle 426" rx="3" transform="translate(.246)"/>
+            <rect id="Rectangle_427" width="16" height="12" class="cls-2" data-name="Rectangle 427" rx="3" transform="translate(19.246 23)"/>
+            <rect id="Rectangle_428" width="16" height="21" class="cls-2" data-name="Rectangle 428" rx="3" transform="translate(19.246)"/>
+            <rect id="Rectangle_429" width="16" height="21" class="cls-2" data-name="Rectangle 429" rx="3" transform="translate(.246 14)"/>
+        </g>
+        <rect id="Selected" width="56" height="56" fill="#3164c6" opacity="0.15" rx="8" transform="translate(-13.754 -13)"/>
+    </g>
+</svg>

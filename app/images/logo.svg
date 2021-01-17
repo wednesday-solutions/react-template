@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+    <defs>
+        <style>
+            .cls-2{fill:#3164c6}.cls-4{fill:#3576d8}
+        </style>
+    </defs>
+    <g id="Logo" transform="translate(6.041 6.309)">
+        <path id="Rectangle_953" fill="none" d="M0 0H56V56H0z" data-name="Rectangle 953" transform="translate(-6.041 -6.309)"/>
+        <g id="logo-2" data-name="logo" transform="translate(1.424 10.643)">
+            <g id="top" transform="translate(11.574 -8.951)">
+                <path id="Path_2" d="M525.067 321.641l-17.417 5.635-.566 14.379 14.884-2.581.724-2.47z" class="cls-2" data-name="Path 2" transform="translate(-507.085 -317.765)"/>
+                <path id="Path_1" fill="#2a46a6" d="M633.847 286.108l-3.26 15.249L644.9 299l3.779-17.691z" data-name="Path 1" transform="translate(-618.72 -281.309)"/>
+                <path id="Path_3" d="M603.453 456.971l14.275-2.166 3.169-14.833-16.811 5.441z" class="cls-2" data-name="Path 3" transform="translate(-594.193 -424.724)"/>
+            </g>
+            <g id="Bottom" transform="translate(-.001 -.312)">
+                <path id="Path_6" d="M480 505.976l11.865-3.837 2.606-12.2-11.871 3.844z" class="cls-4" data-name="Path 6" transform="translate(-471.025 -478.531)"/>
+                <path id="Path_5" d="M386.645 376.009l11.576 10.448 3.257-15.247z" class="cls-4" data-name="Path 5" transform="translate(-386.645 -371.21)"/>
+                <path id="Path_4" d="M603.5 571.7l11.576 10.447 3.257-15.247z" class="cls-4" data-name="Path 4" transform="translate(-582.656 -548.094)"/>
+            </g>
+        </g>
+    </g>
+</svg>

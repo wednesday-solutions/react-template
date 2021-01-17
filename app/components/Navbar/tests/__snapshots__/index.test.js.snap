@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="navbar"
+    >
+      <div
+        class="Navbar__HeadingDiv-i5nfb1-0 kGKHKN"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col"
+          >
+            <img
+              src="IMAGE_MOCK"
+            />
+          </div>
+           
+          <div
+            class="ant-col"
+          >
+            You have saved  by paying invoices in time. 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

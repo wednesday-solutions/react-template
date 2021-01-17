@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <g id="ic_error" transform="translate(11 15)">
+        <path id="Rectangle_1310" fill="#fff" d="M0 0H80V80H0z" data-name="Rectangle 1310" transform="translate(-11 -15)"/>
+        <g id="Polygon_88" fill="#ef0b45" stroke="none" stroke-linecap="round" stroke-linejoin="round" data-name="Polygon 88">
+            <path d="M56.246 48H1.754L29 1.963 56.246 48z"/>
+            <path fill="#db0038" d="M29 3.927L3.508 47h50.984L29 3.927m0-2.964c.333 0 .667.164.86.491l27.247 46.037c.394.666-.086 1.509-.86 1.509H1.753c-.775 0-1.255-.843-.86-1.51L28.138 1.455c.194-.327.528-.49.861-.49z"/>
+        </g>
+        <text id="_" fill="#fff" data-name="!" font-family="Inter" font-size="24px" font-weight="500" transform="translate(29 39)">
+            <tspan x="-3.524" y="0">!</tspan>
+        </text>
+    </g>
+</svg>

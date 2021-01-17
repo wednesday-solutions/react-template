@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <g id="bank_default" transform="translate(-695 -279)">
+        <path id="Rectangle_1331" fill="#fff" d="M0 0H80V80H0z" data-name="Rectangle 1331" transform="translate(695 279)"/>
+        <path id="ic_bank_account" fill="#3164c6" stroke="#3164c6" stroke-width="4px" d="M0 49.268zm1.666-3.4zm41.666-3.4zm-15 0zm-13.333 0zm-8.333 0zm25-20.386zm-13.333 0zm21.667 0zm-36.666 0zm45-1.7H1.662v-6.8L24.995 0l23.333 13.59v6.8zm-30.593-8.938A7.083 7.083 0 1 0 24.824 4.3a7.123 7.123 0 0 0-7.083 7.144z" transform="translate(710.006 294.547)"/>
+    </g>
+</svg>
