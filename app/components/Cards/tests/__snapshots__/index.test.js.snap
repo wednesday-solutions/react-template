@@ -4,19 +4,17 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="site-card-wrapper"
+      class="Cards__CardDiv-a1oo2v-0 LMebN site-card-wrapper"
       data-testid="cards"
     >
       <div
         class="ant-row"
-        style="margin-left: -10px; margin-right: -10px;"
       >
         <div
           class="ant-col ant-col-4"
-          style="padding-left: 10px; padding-right: 10px;"
         >
           <div
-            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+            class="ant-card ant-card-bordered IconCard"
           >
             <div
               class="ant-card-body"
@@ -34,23 +32,22 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
                 <div
                   class="ant-col"
                 >
-                  <h3
-                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  <div
+                    class="Number"
                   >
                     2345
-                  </h3>
-                  2345
-                  <h4
-                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  </div>
+                  <div
+                    class="Heading"
                   >
                     INVOICES ADDED
-                  </h4>
-                  <a
-                    class="Cards__Link-a1oo2v-3 bKZrrg"
-                    href="#"
+                  </div>
+                  <div
+                    class="Link"
                   >
-                    ADD INVOICE 
-                  </a>
+                    ADD INVOICE
+                     
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,15 +55,13 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-4"
-          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
         >
           <div
-            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+            class="ant-card ant-card-bordered IconCard"
           >
             <div
               class="ant-card-body"
             >
-               
               <div
                 class="ant-row"
               >
@@ -80,22 +75,22 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
                 <div
                   class="ant-col"
                 >
-                  <h3
-                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  <div
+                    class="Number"
                   >
                     05
-                  </h3>
-                  <h4
-                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  </div>
+                  <div
+                    class="Heading"
                   >
                     BANK ACCOUNT ADDED
-                  </h4>
-                  <a
-                    class="Cards__Link-a1oo2v-3 bKZrrg"
-                    href="#"
+                  </div>
+                  <div
+                    class="Link"
                   >
                     ADD BANK ACCOUNT
-                  </a>
+                     
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,15 +98,13 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-4"
-          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
         >
           <div
-            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+            class="ant-card ant-card-bordered IconCard"
           >
             <div
               class="ant-card-body"
             >
-               
               <div
                 class="ant-row"
               >
@@ -125,22 +118,22 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
                 <div
                   class="ant-col"
                 >
-                  <h3
-                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  <div
+                    class="Number"
                   >
                     15
-                  </h3>
-                  <h4
-                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  </div>
+                  <div
+                    class="Heading"
                   >
                     UNVERIFIED INVOICES
-                  </h4>
-                  <a
-                    class="Cards__Link-a1oo2v-3 bKZrrg"
-                    href="#"
+                  </div>
+                  <div
+                    class="Link"
                   >
-                    VERIFY INVOICE 
-                  </a>
+                    VERIFY INVOICE
+                     
+                  </div>
                 </div>
               </div>
             </div>
@@ -148,15 +141,13 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-4"
-          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
         >
           <div
-            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+            class="ant-card ant-card-bordered IconCard"
           >
             <div
               class="ant-card-body"
             >
-               
               <div
                 class="ant-row"
               >
@@ -170,22 +161,22 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
                 <div
                   class="ant-col"
                 >
-                  <h3
-                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  <div
+                    class="Number"
                   >
                     03
-                  </h3>
-                  <h4
-                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  </div>
+                  <div
+                    class="Heading"
                   >
-                    TRANSACTIONS FAILED
-                  </h4>
-                  <a
-                    class="Cards__Link-a1oo2v-3 bKZrrg"
-                    href="#"
+                    TRANSATIONS FAILED
+                  </div>
+                  <div
+                    class="Link"
                   >
                     VIEW DETAILS
-                  </a>
+                     
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,15 +184,13 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-4"
-          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
         >
           <div
-            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+            class="ant-card ant-card-bordered IconCard"
           >
             <div
               class="ant-card-body"
             >
-               
               <div
                 class="ant-row"
               >
@@ -215,22 +204,22 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
                 <div
                   class="ant-col"
                 >
-                  <h3
-                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  <div
+                    class="Number"
                   >
                     $2345.39
-                  </h3>
-                  <h4
-                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  </div>
+                  <div
+                    class="Heading"
                   >
                     UPCOMING PAYMENT
-                  </h4>
-                  <a
-                    class="Cards__Link-a1oo2v-3 bKZrrg"
-                    href="#"
+                  </div>
+                  <div
+                    class="Link"
                   >
-                    VIEW INVOICE 
-                  </a>
+                    VIEW INVOICE
+                     
+                  </div>
                 </div>
               </div>
             </div>

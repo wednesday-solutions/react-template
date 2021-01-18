@@ -14,107 +14,135 @@ import bank from '@images/bank-default.svg';
 import verified from '@images/ic-verified.svg';
 import error from '@images/ic-error.svg';
 import payments from '@images/ic-upcoming-payments.svg';
-const IconCard = styled(Card)`
-  width: 300px;
-  height: 120px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-`;
-const Title = styled.h3`
-  color: #1a2930;
-  font-family: Inter;
-  font-weight: 500;
-  font-style: normal;
-`;
-const Heading = styled.h4`
-  color: gray;
-`;
-const Link = styled.a`
-  font-size: 10px;
-  text-decoration: underline;
+const CardDiv = styled.div`
+  .IconCard {
+    width: 300px;
+    height: 120px;
+    border-radius: 4px;
+    margin-left: 50px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+    .Number {
+      color: #1a2930;
+      font-family: Inter;
+      font-weight: 500;
+      font-style: normal;
+    }
+    .Heading {
+      color: gray;
+    }
+    .Link {
+      font-size: 10px;
+      text-decoration: underline;
+    }
+  }
 `;
 
 function Cards() {
   return (
-    <div data-testid="cards" className="site-card-wrapper">
-      <Row gutter={20}>
+    <CardDiv data-testid="cards" className="site-card-wrapper">
+      <Row>
         <Col span={4}>
-          <IconCard>
+          <Card className="IconCard">
             <Row>
               <Col>
                 <img src={invoice} />
               </Col>
               <Col>
-                <Title>2345</Title>
-                <T id="2345" />
-                <Heading>INVOICES ADDED</Heading>
-                <Link href="#">ADD INVOICE </Link>
+                <div className="Number">
+                  <T id="2345" />
+                </div>
+                <div className="Heading">
+                  <T id="Invoices" />
+                </div>
+                <div className="Link">
+                  <T id="Add_invoices" />{' '}
+                </div>
               </Col>
             </Row>
-          </IconCard>
+          </Card>
         </Col>
-        <Col span={4} style={{ marginLeft: 50 }}>
-          <IconCard>
-            {' '}
+        <Col span={4}>
+          <Card className="IconCard">
             <Row>
               <Col>
                 <img src={bank} />
               </Col>
               <Col>
-                <Title>05</Title>
-                <Heading>BANK ACCOUNT ADDED</Heading>
-                <Link href="#">ADD BANK ACCOUNT</Link>
+                <div className="Number">
+                  <T id="05" />
+                </div>
+                <div className="Heading">
+                  <T id="Bank" />
+                </div>
+                <div className="Link">
+                  <T id="Add_bank" />{' '}
+                </div>
               </Col>
             </Row>
-          </IconCard>
+          </Card>
         </Col>
-        <Col span={4} style={{ marginLeft: 50 }}>
-          <IconCard>
-            {' '}
+        <Col span={4}>
+          <Card className="IconCard">
             <Row>
               <Col>
                 <img src={verified} />
               </Col>
               <Col>
-                <Title>15</Title>
-                <Heading>UNVERIFIED INVOICES</Heading>
-                <Link href="#">VERIFY INVOICE </Link>
+                <div className="Number">
+                  <T id="15" />
+                </div>
+                <div className="Heading">
+                  <T id="Unverified" />
+                </div>
+                <div className="Link">
+                  <T id="Verify" />{' '}
+                </div>
               </Col>
             </Row>
-          </IconCard>
+          </Card>
         </Col>
-        <Col span={4} style={{ marginLeft: 50 }}>
-          <IconCard>
-            {' '}
+        <Col span={4}>
+          <Card className="IconCard">
             <Row>
               <Col>
                 <img src={error} />
               </Col>
               <Col>
-                <Title>03</Title>
-                <Heading>TRANSACTIONS FAILED</Heading>
-                <Link href="#">VIEW DETAILS</Link>
+                <div className="Number">
+                  <T id="03" />
+                </div>
+                <div className="Heading">
+                  <T id="Transactions" />
+                </div>
+                <div className="Link">
+                  <T id="View" />{' '}
+                </div>
               </Col>
             </Row>
-          </IconCard>
+          </Card>
         </Col>
-        <Col span={4} style={{ marginLeft: 50 }}>
-          <IconCard>
-            {' '}
+        <Col span={4}>
+          <Card className="IconCard">
             <Row>
               <Col>
                 <img src={payments} />
               </Col>
               <Col>
-                <Title>$2345.39</Title>
-                <Heading>UPCOMING PAYMENT</Heading>
-                <Link href="#">VIEW INVOICE </Link>
+                <div className="Number">
+                  <T id="$2345" />
+                </div>
+                <div className="Heading">
+                  <T id="Upcoming" />
+                </div>
+                <div className="Link">
+                  <T id="View_invoice" />{' '}
+                </div>
               </Col>
             </Row>
-          </IconCard>
+          </Card>
         </Col>
       </Row>
-    </div>
+    </CardDiv>
   );
 }
 

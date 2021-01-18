@@ -17,6 +17,8 @@ import { frontendContainerCreators } from './reducer';
 import { Row, Col } from 'antd';
 import Menubar from '@components/MenubarJs';
 import Navbar from '@components/Navbar';
+import CalendarComponent from '@components/Calendar';
+import Datelist from '@components/Datelist';
 import saga from './saga';
 
 const Container = styled.div`
@@ -42,6 +44,9 @@ export function FrontendContainer({ dispatchDashboard, dashData = {}, dashError 
         </Col>
         <Col>
           <Navbar dashData={dashData} />
+
+          <CalendarComponent />
+          <Datelist />
         </Col>
       </Row>
     </Container>

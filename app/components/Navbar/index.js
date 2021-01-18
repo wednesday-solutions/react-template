@@ -14,7 +14,7 @@ import icon from '@images/icon-notification.svg';
 
 const MainDiv = styled.div`
   padding-top: 10px;
-  & .Dashboard {
+  .Dashboard {
     width: 188px;
     height: 20px;
     font-family: Inter;
@@ -25,7 +25,8 @@ const MainDiv = styled.div`
     line-height: 0.67;
     letter-spacing: normal;
     text-align: center;
-    margin: 25px;
+    margin-left: 5px;
+    margin-top: 15px;
     color: #1a2940;
   }
   .ModifiedCol {
@@ -35,7 +36,8 @@ const MainDiv = styled.div`
   .HeadingDiv {
     width: 1400px;
     height: 72px;
-    margin: 20px;
+    margin-left: 35px;
+    margin-top: 10px;
     padding: 19px 32.6px 19.4px 18px;
     border-radius: 4px;
     background-color: #e8f0fd;
@@ -55,7 +57,7 @@ const MainDiv = styled.div`
   }
 `;
 
-function Navbar() {
+function Navbar({ dashData }) {
   return (
     <MainDiv data-testid="navbar">
       <Row>
@@ -70,7 +72,7 @@ function Navbar() {
         <img src={star} />
         <span className="Title">
           {' '}
-          <T id="invoices-pay" />
+          <T id="invoices-pay" values={{ dollar: dashData.dollar }} />
         </span>
       </div>
     </MainDiv>
