@@ -13,36 +13,32 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
           class="ant-col"
         >
           <div
-            class="MenubarJs__MenuDiv-sc-9eruv1-0 lautxb"
+            class="MenubarJs__MenuDiv-sc-9eruv1-0 dnpzal"
             data-testid="menubar-js"
           >
             <ul
-              class="ant-menu ant-menu-light ant-menu-root ant-menu-vertical"
+              class="ant-menu ant-menu-light MenuBar ant-menu-root ant-menu-vertical"
               role="menu"
-              style="background-color: rgb(232, 240, 253); height: 600px;"
             >
               <li
-                class="ant-menu-item ant-menu-item-only-child"
+                class="ant-menu-item ant-menu-item-only-child MenuItem"
                 role="menuitem"
-                style="height: 70px; margin-left: 0px; margin-top: 20px; padding: 5px;"
               >
                 <img
                   src="IMAGE_MOCK"
                 />
               </li>
               <li
-                class="ant-menu-item ant-menu-item-only-child"
+                class="ant-menu-item ant-menu-item-only-child MenuItem"
                 role="menuitem"
-                style="height: 70px; margin-top: 80px; padding: 10px;"
               >
                 <img
                   src="IMAGE_MOCK"
                 />
               </li>
               <li
-                class="ant-menu-item ant-menu-item-only-child"
+                class="ant-menu-item ant-menu-item-only-child MenuItem"
                 role="menuitem"
-                style="height: 70px; margin-top: 60px; padding: 10px;"
               >
                 <img
                   src="IMAGE_MOCK"
@@ -56,28 +52,38 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
           class="ant-col"
         >
           <div
+            class="Navbar__MainDiv-i5nfb1-0 jRerJb"
             data-testid="navbar"
           >
             <div
-              class="Navbar__HeadingDiv-i5nfb1-0 kGKHKN"
+              class="ant-row"
             >
-              <div
-                class="ant-row"
+              <span
+                class="Dashboard"
               >
-                <div
-                  class="ant-col"
-                >
-                  <img
-                    src="IMAGE_MOCK"
-                  />
-                </div>
-                 
-                <div
-                  class="ant-col"
-                >
-                  You have saved  by paying invoices in time. 
-                </div>
+                DASHBOARD
+              </span>
+              <div
+                class="ant-col ModifiedCol"
+              >
+                <img
+                  height="30"
+                  src="IMAGE_MOCK"
+                />
               </div>
+            </div>
+            <div
+              class="HeadingDiv"
+            >
+              <img
+                src="IMAGE_MOCK"
+              />
+              <span
+                class="Title"
+              >
+                 
+                You have saved $345 by paying invoices in time. 
+              </span>
             </div>
           </div>
         </div>

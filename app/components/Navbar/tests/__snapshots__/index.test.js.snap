@@ -4,28 +4,38 @@ exports[`<Navbar /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
+      class="Navbar__MainDiv-i5nfb1-0 jRerJb"
       data-testid="navbar"
     >
       <div
-        class="Navbar__HeadingDiv-i5nfb1-0 kGKHKN"
+        class="ant-row"
       >
-        <div
-          class="ant-row"
+        <span
+          class="Dashboard"
         >
-          <div
-            class="ant-col"
-          >
-            <img
-              src="IMAGE_MOCK"
-            />
-          </div>
-           
-          <div
-            class="ant-col"
-          >
-            You have saved  by paying invoices in time. 
-          </div>
+          DASHBOARD
+        </span>
+        <div
+          class="ant-col ModifiedCol"
+        >
+          <img
+            height="30"
+            src="IMAGE_MOCK"
+          />
         </div>
+      </div>
+      <div
+        class="HeadingDiv"
+      >
+        <img
+          src="IMAGE_MOCK"
+        />
+        <span
+          class="Title"
+        >
+           
+          You have saved $345 by paying invoices in time. 
+        </span>
       </div>
     </div>
   </div>

@@ -17,6 +17,21 @@
   "city_description": "City Description: {description}",
   "get_weather_details": "Get details of City Weather",
   "city_error": "This is wrong City Name, Please Enter Correct City Name",
-  "invoices-pay": "You have saved {dollar} by paying invoices in time. ",
-  "dashboard": "Dashboard"
+  "invoices-pay": "You have saved $345 by paying invoices in time. ",
+  "Dashboard": "DASHBOARD",
+  "2345": "2345",
+  "Invoices": "INVOICES ADDED",
+  "Add_invoices": "ADD INVOICE",
+  "05": "05",
+  "Bank": "BANK ACCOUNT ADDED",
+  "Add_bank": "ADD BANK ACCOUNT",
+  "15": "15",
+  "Unverified": "UNVERIFIED INVOICES",
+  "Verify": "VERIFY INVOICE",
+  "03": "03",
+  "Transactions": "TRANSATIONS FAILED",
+  "View": "VIEW DETAILS",
+  "$2345": "$2345.39",
+  "Upcoming": "UPCOMING PAYMENT",
+  "View_invoice": "VIEW INVOICE"
 }

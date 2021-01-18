@@ -1,23 +1,26 @@
 {
-  "coord": { "lon": -112.074, "lat": 33.4484 },
-  "weather": [{ "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" }],
-  "base": "stations",
-  "main": {
-    "temp": 290.11,
-    "feels_like": 285.56,
-    "temp_min": 288.71,
-    "temp_max": 291.48,
-    "pressure": 1023,
-    "humidity": 14
+  "data": {
+    "dollar": 345.9,
+    "coord": { "lon": -112.074, "lat": 33.4484 },
+    "weather": [{ "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" }],
+    "base": "stations",
+    "main": {
+      "temp": 290.11,
+      "feels_like": 285.56,
+      "temp_min": 288.71,
+      "temp_max": 291.48,
+      "pressure": 1023,
+      "humidity": 14
+    },
+    "visibility": 20000,
+    "wind": { "speed": 2.06, "deg": 130 },
+    "clouds": { "all": 75 },
+    "dt": 1610569052,
+    "sys": { "type": 1, "id": 5347, "country": "US", "sunrise": 1610548349, "sunset": 1610584881 },
+    "timezone": -25200,
+    "id": 5308655,
+    "name": "Phoenix",
+    "cod": 200
   },
-  "visibility": 10000,
-  "wind": { "speed": 2.06, "deg": 130 },
-  "clouds": { "all": 75 },
-  "dt": 1610569052,
-  "sys": { "type": 1, "id": 5347, "country": "US", "sunrise": 1610548349, "sunset": 1610584881 },
-  "timezone": -25200,
-  "id": 5308655,
-  "name": "Phoenix",
-  "cod": 200,
-  "dollar": "$345.90"
+  "ok": "true"
 }

@@ -4,10 +4,239 @@ exports[`<Cards /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
+      class="site-card-wrapper"
       data-testid="cards"
     >
-      cards
-      cards.map 
+      <div
+        class="ant-row"
+        style="margin-left: -10px; margin-right: -10px;"
+      >
+        <div
+          class="ant-col ant-col-4"
+          style="padding-left: 10px; padding-right: 10px;"
+        >
+          <div
+            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <h3
+                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  >
+                    2345
+                  </h3>
+                  2345
+                  <h4
+                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  >
+                    INVOICES ADDED
+                  </h4>
+                  <a
+                    class="Cards__Link-a1oo2v-3 bKZrrg"
+                    href="#"
+                  >
+                    ADD INVOICE 
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
+        >
+          <div
+            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+          >
+            <div
+              class="ant-card-body"
+            >
+               
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <h3
+                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  >
+                    05
+                  </h3>
+                  <h4
+                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  >
+                    BANK ACCOUNT ADDED
+                  </h4>
+                  <a
+                    class="Cards__Link-a1oo2v-3 bKZrrg"
+                    href="#"
+                  >
+                    ADD BANK ACCOUNT
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
+        >
+          <div
+            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+          >
+            <div
+              class="ant-card-body"
+            >
+               
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <h3
+                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  >
+                    15
+                  </h3>
+                  <h4
+                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  >
+                    UNVERIFIED INVOICES
+                  </h4>
+                  <a
+                    class="Cards__Link-a1oo2v-3 bKZrrg"
+                    href="#"
+                  >
+                    VERIFY INVOICE 
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
+        >
+          <div
+            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+          >
+            <div
+              class="ant-card-body"
+            >
+               
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <h3
+                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  >
+                    03
+                  </h3>
+                  <h4
+                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  >
+                    TRANSACTIONS FAILED
+                  </h4>
+                  <a
+                    class="Cards__Link-a1oo2v-3 bKZrrg"
+                    href="#"
+                  >
+                    VIEW DETAILS
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+          style="padding-left: 10px; padding-right: 10px; margin-left: 50px;"
+        >
+          <div
+            class="ant-card ant-card-bordered Cards__IconCard-a1oo2v-0 hJopCh"
+          >
+            <div
+              class="ant-card-body"
+            >
+               
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <h3
+                    class="Cards__Title-a1oo2v-1 dzKJiK"
+                  >
+                    $2345.39
+                  </h3>
+                  <h4
+                    class="Cards__Heading-a1oo2v-2 kICSuH"
+                  >
+                    UPCOMING PAYMENT
+                  </h4>
+                  <a
+                    class="Cards__Link-a1oo2v-3 bKZrrg"
+                    href="#"
+                  >
+                    VIEW INVOICE 
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

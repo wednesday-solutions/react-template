@@ -4,36 +4,32 @@ exports[`<MenubarJs /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="MenubarJs__MenuDiv-sc-9eruv1-0 lautxb"
+      class="MenubarJs__MenuDiv-sc-9eruv1-0 dnpzal"
       data-testid="menubar-js"
     >
       <ul
-        class="ant-menu ant-menu-light ant-menu-root ant-menu-vertical"
+        class="ant-menu ant-menu-light MenuBar ant-menu-root ant-menu-vertical"
         role="menu"
-        style="background-color: rgb(232, 240, 253); height: 600px;"
       >
         <li
-          class="ant-menu-item ant-menu-item-only-child"
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
           role="menuitem"
-          style="height: 70px; margin-left: 0px; margin-top: 20px; padding: 5px;"
         >
           <img
             src="IMAGE_MOCK"
           />
         </li>
         <li
-          class="ant-menu-item ant-menu-item-only-child"
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
           role="menuitem"
-          style="height: 70px; margin-top: 80px; padding: 10px;"
         >
           <img
             src="IMAGE_MOCK"
           />
         </li>
         <li
-          class="ant-menu-item ant-menu-item-only-child"
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
           role="menuitem"
-          style="height: 70px; margin-top: 60px; padding: 10px;"
         >
           <img
             src="IMAGE_MOCK"

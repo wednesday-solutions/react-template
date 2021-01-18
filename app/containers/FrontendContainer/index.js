@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
@@ -31,6 +31,9 @@ const Container = styled.div`
 `;
 export function FrontendContainer({ dispatchDashboard, dashData = {}, dashError = null, dashName, intl }) {
   useInjectSaga({ key: 'frontendContainer', saga });
+  useEffect(() => {
+    dispatchDashboard(dashName);
+  }, []);
   return (
     <Container>
       <Row>
@@ -38,7 +41,7 @@ export function FrontendContainer({ dispatchDashboard, dashData = {}, dashError 
           <Menubar />
         </Col>
         <Col>
-          <Navbar />
+          <Navbar dashData={dashData} />
         </Col>
       </Row>
     </Container>
