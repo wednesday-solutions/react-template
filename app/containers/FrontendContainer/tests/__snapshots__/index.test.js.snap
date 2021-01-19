@@ -87,10 +87,11 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
             </div>
           </div>
           <div
+            class="Calendar__MainSection-sc-1tgrrkw-0 fozkwN"
             data-testid="calendar"
           >
             <div
-              class="Calendar__CalendarDiv-sc-1tgrrkw-0 OyXSp"
+              class="CalendarDiv"
             >
               <div
                 class="ant-picker-calendar ant-picker-calendar-full"
@@ -950,11 +951,11 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
                               </div>
                             </td>
                             <td
-                              class="ant-picker-cell ant-picker-cell-in-view ant-picker-cell-today ant-picker-cell-selected"
+                              class="ant-picker-cell ant-picker-cell-in-view"
                               title="2021-01-18"
                             >
                               <div
-                                class="ant-picker-cell-inner ant-picker-calendar-date ant-picker-calendar-date-today"
+                                class="ant-picker-cell-inner ant-picker-calendar-date"
                               >
                                 <div
                                   class="ant-picker-calendar-date-value"
@@ -971,11 +972,11 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
                               </div>
                             </td>
                             <td
-                              class="ant-picker-cell ant-picker-cell-in-view"
+                              class="ant-picker-cell ant-picker-cell-in-view ant-picker-cell-today ant-picker-cell-selected"
                               title="2021-01-19"
                             >
                               <div
-                                class="ant-picker-cell-inner ant-picker-calendar-date"
+                                class="ant-picker-cell-inner ant-picker-calendar-date ant-picker-calendar-date-today"
                               >
                                 <div
                                   class="ant-picker-calendar-date-value"
@@ -1381,10 +1382,140 @@ exports[`<FrontendContainer /> container tests should render and match the snaps
                 </div>
               </div>
             </div>
+            <div
+              class="ListDiv"
+            >
+              
+              <div
+                class="ant-row"
+              >
+                <span
+                  class="HeadingOne"
+                >
+                  Due Date
+                </span>
+                <span
+                  class="HeadingTwo"
+                >
+                  Recipient
+                </span>
+                <span
+                  class="HeadingThree"
+                >
+                  Amount
+                </span>
+                <span
+                  class="HeadingTwo"
+                >
+                  Status
+                </span>
+              </div>
+              <div
+                class="FirstList"
+              >
+                <div
+                  class="ant-row"
+                >
+                  <span
+                    class="DueDate"
+                  >
+                    
+                  </span>
+                  <span
+                    class="Electricity"
+                  >
+                    Electricity Bill
+                  </span>
+                  <span
+                    class="Amount"
+                  >
+                    $
+                  </span>
+                  <span
+                    class="Image"
+                  >
+                    <img
+                      src="IMAGE_MOCK"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div
+                class="FirstList"
+              >
+                <div
+                  class="ant-row"
+                >
+                  <span
+                    class="JuneDate"
+                  >
+                    
+                  </span>
+                  <span
+                    class="Electricity"
+                  >
+                    Electricity Bill
+                  </span>
+                  <span
+                    class="Amount"
+                  >
+                    $
+                  </span>
+                  <span
+                    class="Image"
+                  >
+                    <img
+                      src="IMAGE_MOCK"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div
+                class="FirstList"
+              >
+                <div
+                  class="ant-row"
+                >
+                  <span
+                    class="JulyDate"
+                  >
+                    
+                  </span>
+                  <span
+                    class="Electricity"
+                  >
+                    Electricity Bill
+                  </span>
+                  <span
+                    class="Amount"
+                  >
+                    $
+                  </span>
+                  <span
+                    class="Image"
+                  >
+                    <img
+                      src="IMAGE_MOCK"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div
+                class="FirstList"
+              >
+                <span
+                  class="TotalSpan"
+                >
+                  Total Amount
+                </span>
+                <span
+                  class="TotalAmount"
+                >
+                  $
+                </span>
+              </div>
+            </div>
           </div>
-          <div
-            data-testid="datelist"
-          />
         </div>
       </div>
     </div>

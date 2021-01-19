@@ -34,5 +34,15 @@
   "$2345": "$2345.39",
   "Upcoming": "UPCOMING PAYMENT",
   "View_invoice": "VIEW INVOICE",
-  "date": "{date}"
+  "date": "{date}",
+  "due_date": "Due Date",
+  "recipient": "Recipient",
+  "amount": "Amount",
+  "status": "Status",
+  "electricity_bill": "Electricity Bill",
+  "total_amount": "Total Amount",
+  "due": "{due}",
+  "june": "{june}",
+  "amount_money": "${amount}",
+  "total": "${total}"
 }

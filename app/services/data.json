@@ -1,6 +1,10 @@
 {
   "data": {
     "dollar": 345.9,
+    "due": "07 June",
+    "june": "12 June",
+    "amount": 245.09,
+    "total": 755.27,
     "date": "09 January 20",
     "coord": { "lon": -112.074, "lat": 33.4484 },
     "weather": [{ "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" }],
