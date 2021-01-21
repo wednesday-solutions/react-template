@@ -1,14 +1,14 @@
 {
-  "repo_list": "Repository List",
+  "artist_list": "Artist List",
   "repo_search": "Repository Search",
-  "respo_search_default": "Search for a repository by entering it's name in the search box",
-  "get_repo_details": "Get details of repositories",
+  "respo_search_default": "Search for an artist by entering it's name in the search box",
+  "get_artist_details": "Get details of artist",
   "search_query": "Search query: {repoName}",
-  "matching_repos": "Total number of matching repos: {totalCount}",
+  "matching_search": "Total number of matching search: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
-  "repository_name": "Repository Name: {name}",
-  "repository_full_name": "Repository full name: {fullName}",
-  "repository_stars": "Repository stars: {stars}",
+  "artist_name": "Artist Name: {artistName}",
+  "collection_name": "Collection full name: {collectionName}",
+  "track_name": "Track Name: {trackName}",
   "wednesday_solutions": "Wednesday Solutions"
 }

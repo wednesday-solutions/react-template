@@ -18,7 +18,7 @@ import { routeConfig } from '@app/routeConfig';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
-import Header from '@components/Header';
+// import Header from '@components/Header';
 import For from '@components/For';
 
 const theme = {
@@ -29,7 +29,7 @@ const theme = {
 export function App({ location }) {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+      {/* <Header /> */}
       <Layout.Content>
         <For
           ParentComponent={props => <Switch {...props} />}

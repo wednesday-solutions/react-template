@@ -9,9 +9,9 @@ import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
+// import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
@@ -37,10 +37,10 @@ const Container = styled.div`
     padding: ${props => props.padding}px;
   }
 `;
-const RightContent = styled.div`
-  display: flex;
-  align-self: flex-end;
-`;
+// const RightContent = styled.div`
+//   display: flex;
+//   align-self: flex-end;
+// `;
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
@@ -68,7 +68,7 @@ export function HomeContainer({
     }
   }, []);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
@@ -94,14 +94,14 @@ export function HomeContainer({
             )}
             {totalCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ totalCount }} />
+                <T id="matching_search" values={{ totalCount }} />
               </div>
             )}
             {items.map((item, index) => (
               <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
+                <T id="artist_name" values={{ artistName: item.name }} />
+                <T id="collection_name" values={{ collectionName: item.fullName }} />
+                <T id="track_name" values={{ trackName: item.stargazersCount }} />
               </CustomCard>
             ))}
           </Skeleton>
@@ -119,23 +119,23 @@ export function HomeContainer({
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'artist_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
     );
   };
-  const refreshPage = () => {
-    history.push('stories');
-    window.location.reload();
-  };
+  // const refreshPage = () => {
+  //   history.push('stories');
+  //   window.location.reload();
+  // };
   return (
     <Container maxwidth={maxwidth} padding={padding}>
-      <RightContent>
+      {/* <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-        <T marginBottom={10} id="get_repo_details" />
+      </RightContent> */}
+      <CustomCard maxwidth={maxwidth}>
+        <T marginBottom={10} id="get_artist_details" />
         <Search
           data-testid="search-bar"
           defaultValue={repoName}
