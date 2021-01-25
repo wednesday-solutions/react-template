@@ -16,30 +16,30 @@ describe('<HomeContainer /> tests', () => {
     submitSpy = jest.fn();
   });
   it('should render and match the snapshot', () => {
-    const { baseElement } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+    const { baseElement } = renderProvider(<HomeContainer dispatchArtist={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should call dispatchClearGithubRepos on empty change', async () => {
-    const getGithubReposSpy = jest.fn();
-    const clearGithubReposSpy = jest.fn();
+  it('should call dispatchClearAristSearch on empty change', async () => {
+    const getArtistSpy = jest.fn();
+    const clearArtistSearchSpy = jest.fn();
     const { getByTestId } = renderProvider(
-      <HomeContainer dispatchClearGithubRepos={clearGithubReposSpy} dispatchGithubRepos={getGithubReposSpy} />
+      <HomeContainer dispatchClearArtistSearch={clearArtistSearchSpy} dispatchArtist={getArtistSpy} />
     );
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'a' }
     });
     await timeout(500);
-    expect(getGithubReposSpy).toBeCalled();
+    expect(getArtistSpy).toBeCalled();
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: '' }
     });
     await timeout(500);
-    expect(clearGithubReposSpy).toBeCalled();
+    expect(clearArtistSearchSpy).toBeCalled();
   });
 
-  it('should call dispatchGithubRepos on change', async () => {
-    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+  it('should call dispatchArtist on change', async () => {
+    const { getByTestId } = renderProvider(<HomeContainer dispatchArtist={submitSpy} />);
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'some repo' }
     });

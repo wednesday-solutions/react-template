@@ -6,7 +6,6 @@ const { REQUEST_GET_ARTIST } = homeContainerTypes;
 const { successGetArtist, failureGetArtist } = homeContainerCreators;
 export function* getArtist(action) {
   const response = yield call(getArtistData, action.artistName);
-  // console.log(response);
   const { data, ok } = response;
   if (ok) {
     yield put(successGetArtist(data));

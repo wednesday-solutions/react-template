@@ -1,21 +1,21 @@
-import { selectHomeContainer, selectRepoName, selectReposData, selectReposError } from '../selectors';
+import { selectHomeContainer, selectArtistName, selectArtistData, selectArtistSearchError } from '../selectors';
 
 describe('HomeContainer selector tests', () => {
   let mockedState;
-  let repoName;
-  let reposData;
-  let reposError;
+  let artistName;
+  let artistData;
+  let artistSearchError;
 
   beforeEach(() => {
-    repoName = 'mac';
-    reposData = { totalCount: 1, items: [{ repoName }] };
-    reposError = 'There was some error while fetching the repository details';
+    artistName = 'mac';
+    artistData = { resultCount: 1, results: [{ artistName }] };
+    artistSearchError = 'There was some error while fetching the artist details';
 
     mockedState = {
       homeContainer: {
-        repoName,
-        reposData,
-        reposError
+        artistName,
+        artistData,
+        artistSearchError
       }
     };
   });
@@ -24,17 +24,17 @@ describe('HomeContainer selector tests', () => {
     expect(homeContainerSelector(mockedState)).toEqual(mockedState.homeContainer);
   });
   it('should select the repoName', () => {
-    const repoSelector = selectRepoName();
-    expect(repoSelector(mockedState)).toEqual(repoName);
+    const artistSelector = selectArtistName();
+    expect(artistSelector(mockedState)).toEqual(artistName);
   });
 
   it('should select reposData', () => {
-    const reposDataSelector = selectReposData();
-    expect(reposDataSelector(mockedState)).toEqual(reposData);
+    const artistDataSelector = selectArtistData();
+    expect(artistDataSelector(mockedState)).toEqual(artistData);
   });
 
   it('should select the reposError', () => {
-    const reposErrorSelector = selectReposError();
-    expect(reposErrorSelector(mockedState)).toEqual(reposError);
+    const artistErrorSelector = selectArtistSearchError();
+    expect(artistErrorSelector(mockedState)).toEqual(artistSearchError);
   });
 });

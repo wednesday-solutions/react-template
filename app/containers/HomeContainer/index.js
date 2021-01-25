@@ -9,9 +9,7 @@ import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-// import { useHistory } from 'react-router-dom';
 import T from '@components/T';
-// import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectArtistData, selectArtistSearchError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
@@ -37,10 +35,7 @@ const Container = styled.div`
     padding: ${props => props.padding}px;
   }
 `;
-// const RightContent = styled.div`
-//   display: flex;
-//   align-self: flex-end;
-// `;
+
 export function HomeContainer({
   dispatchArtist,
   dispatchClearArtistSearch,
@@ -67,8 +62,6 @@ export function HomeContainer({
       setLoading(true);
     }
   }, []);
-
-  // const history = useHistory();
 
   const handleOnChange = aName => {
     if (!isEmpty(aName)) {
@@ -125,15 +118,9 @@ export function HomeContainer({
       )
     );
   };
-  // const refreshPage = () => {
-  //   history.push('stories');
-  //   window.location.reload();
-  // };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
-      {/* <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent> */}
       <CustomCard maxwidth={maxwidth}>
         <T marginBottom={10} id="get_artist_details" />
         <Search
