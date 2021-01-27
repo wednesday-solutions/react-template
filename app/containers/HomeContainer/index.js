@@ -40,8 +40,8 @@ export function HomeContainer({
   dispatchArtist,
   dispatchClearArtistSearch,
   intl,
-  artistData = {},
-  artistSearchError = null,
+  artistData,
+  artistSearchError,
   artistName,
   maxwidth,
   padding
@@ -50,8 +50,8 @@ export function HomeContainer({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(artistData, 'results', null) || artistSearchError;
-    if (loading && loaded) {
+    const artistDataLoaded = get(artistData, 'results', artistSearchError);
+    if (loading && artistDataLoaded) {
       setLoading(false);
     }
   }, [artistData]);
@@ -153,6 +153,8 @@ HomeContainer.propTypes = {
 };
 
 HomeContainer.defaultProps = {
+  artistData: {},
+  artistSearchError: null,
   maxwidth: 500,
   padding: 20
 };
