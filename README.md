@@ -136,7 +136,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 - The size of the bundle is analyzed using the webpack-bundle-analyzer to make sure that the bundle is lean and optimized. 
 
   Take a look at the following files
-  - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
 
 ## Implementing CI/CD pipelines using Github Actions
 
