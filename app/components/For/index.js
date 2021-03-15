@@ -32,7 +32,8 @@ For.propTypes = {
   parent: Proptypes.object,
   iteratee: Proptypes.string,
   renderItem: Proptypes.func.isRequired,
-  noParent: Proptypes.bool
+  noParent: Proptypes.bool,
+  isRow: Proptypes.bool
 };
 For.defaultProps = {
   isRow: true
