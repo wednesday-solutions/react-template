@@ -1,4 +1,4 @@
 import { generateApiClient } from '@utils/apiUtils';
-const repoApi = generateApiClient('github');
+const itunesApi = generateApiClient('github');
 
-export const getRepos = repoName => repoApi.get(`/search/repositories?q=${repoName}`);
+export const getArtistData = artistName => itunesApi.get(`search?term=${artistName}`);

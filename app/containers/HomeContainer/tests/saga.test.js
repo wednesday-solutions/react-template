@@ -4,45 +4,45 @@
 
 /* eslint-disable redux-saga/yield-effects */
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { getRepos } from '@services/repoApi';
+import { getArtistData } from '@services/repoApi';
 import { apiResponseGenerator } from '@utils/testUtils';
-import homeContainerSaga, { getGithubRepos } from '../saga';
+import homeContainerSaga, { getArtistDatas } from '../saga';
 import { homeContainerTypes } from '../reducer';
 
 describe('HomeContainer saga tests', () => {
   const generator = homeContainerSaga();
-  const repoName = 'mac';
-  let getGithubReposGenerator = getGithubRepos({ repoName });
+  const artistName = 'mac';
+  let getArtistDatasGenerator = getArtistDatas({ artistName });
 
-  it('should start task to watch for REQUEST_GET_GITHUB_REPOS action', () => {
-    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos));
+  it('should start task to watch for REQUEST_GET_SONGS action', () => {
+    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_SONGS, getArtistDatas));
   });
 
-  it('should ensure that the action FAILURE_GET_GITHUB_REPOS is dispatched when the api call fails', () => {
-    const res = getGithubReposGenerator.next().value;
-    expect(res).toEqual(call(getRepos, repoName));
+  it('should ensure that the action FAILURE_GET_SONGS is dispatched when the api call fails', () => {
+    const res = getArtistDatasGenerator.next().value;
+    expect(res).toEqual(call(getArtistData, artistName));
     const errorResponse = {
       errorMessage: 'There was an error while fetching repo informations.'
     };
-    expect(getGithubReposGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
+    expect(getArtistDatasGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
+        type: homeContainerTypes.FAILURE_GET_SONGS,
         error: errorResponse
       })
     );
   });
 
-  it('should ensure that the action SUCCESS_GET_GITHUB_REPOS is dispatched when the api call succeeds', () => {
-    getGithubReposGenerator = getGithubRepos({ repoName });
-    const res = getGithubReposGenerator.next().value;
-    expect(res).toEqual(call(getRepos, repoName));
+  it('should ensure that the action SUCCESS_GET_SONGS is dispatched when the api call succeeds', () => {
+    getArtistDatasGenerator = getArtistDatas({ artistName });
+    const res = getArtistDatasGenerator.next().value;
+    expect(res).toEqual(call(getArtistData, artistName));
     const reposResponse = {
-      totalCount: 1,
-      items: [{ repositoryName: repoName }]
+      resultCount: 1,
+      results: [{ artistName: artistName }]
     };
-    expect(getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
+    expect(getArtistDatasGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
+        type: homeContainerTypes.SUCCESS_GET_SONGS,
         data: reposResponse
       })
     );

@@ -6,5 +6,8 @@ export default {
       padding: 20
     },
     exact: true
+  },
+  tune: {
+    route: '/tune/:tuneId'
   }
 };
