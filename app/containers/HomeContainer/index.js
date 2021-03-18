@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState, useCallback }  from 'react';
+import React, { useEffect, memo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input, Row, Col } from 'antd';
-import {PlayCircleFilled, PauseCircleFilled} from '@ant-design/icons'
+import { PlayCircleFilled, PauseCircleFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory, useParams } from 'react-router-dom';
@@ -17,8 +17,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectItunesData, selectItunesError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
-import { ifStatement } from '@app/../../../../../Library/Caches/typescript/4.2/node_modules/@babel/types/lib/index';
-let audio
+let audio;
 const { Search } = Input;
 const { Meta } = Card;
 const CustomCard = styled(Card)`
@@ -47,32 +46,31 @@ const Container = styled.div`
 `;
 
 const MetaCard = styled(Meta)`
-&& {
-  margin: 0.5rem !important;
-}
-`
-const TrackCardContainer=styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-`
-const CustomPlay =styled(PlayCircleFilled)`
-font-size: 2rem;
-padding: 1rem;
-cursor: pointer;
-`
-const CustomPause =styled(PauseCircleFilled)`
-font-size: 2rem;
-padding: 1rem;
-cursor: pointer;
-`
+  && {
+    margin: 0.5rem !important;
+  }
+`;
+const TrackCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const CustomPlay = styled(PlayCircleFilled)`
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+`;
+const CustomPause = styled(PauseCircleFilled)`
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+`;
 const ProgressBar = styled.progress`
-&&
-{
-  display: block;
-  font-size: 1rem;
-}`
-
+  && {
+    display: block;
+    font-size: 1rem;
+  }
+`;
 
 export function HomeContainer({
   dispatchSongs,
@@ -86,11 +84,9 @@ export function HomeContainer({
 }) {
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
- const [state,setState] = useState(false)
- const handleStateChange = useCallback(stateChange => {
-  setState(stateChange);
-}, [ifStatement]);
-
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [tuneId, setTuneId] = useState(null);
+  const [audio, setAudio] = useState(null);
 
   useEffect(() => {
     const loaded = get(itunesData, 'results', null) || itunesError;
@@ -99,22 +95,14 @@ export function HomeContainer({
     }
   }, [itunesData]);
 
-  useEffect(()=>{
-    if(tuneId){
-      setState(!state)
-    }
-  },[tuneId])
-
   useEffect(() => {
     if (artistName && !itunesData) {
       dispatchSongs(artistName);
-      console.log(dispatchSongs("abcd"))
+      console.log(dispatchSongs('abcd'));
       setLoading(true);
     }
   }, []);
   const history = useHistory();
-  let {tuneId} = useParams()
-
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
@@ -126,33 +114,38 @@ export function HomeContainer({
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const playAudio =(url,handleChange,trackId)=>{
-    handleChange(true)
-    history.push(`/tune/${trackId}`)
-   audio = new Audio(url).play()
-  
-  
-  }
-  const pauseAudio =(url,handleChange)=>{
-    handleChange(false)
-    audio = new Audio(url).pause()
-    }
-  
-  const TrackCard = (props)=>{
-    return (
-      <CustomCard 
-      cover={<img alt="artwork-url" src={props.item.artworkUrl100} />}>
-        <TrackCardContainer>
-        {( props.state===true || props.item.trackId === props.tuneId ) ? (<CustomPause onClick={()=>pauseAudio(props.item.previewUrl,props.handleChange)}></CustomPause>):(<CustomPlay onClick={()=>playAudio(props.item.previewUrl,props.handleChange,props.item.trackId)}></CustomPlay>) }
-        </TrackCardContainer>
-        <ProgressBar value="70" max ="100"></ProgressBar>
-      <MetaCard title={props.item.trackName} description={props.item.artistName}> </MetaCard>
-      </CustomCard>
-    )
-  }
-  
+  const playAudio = (url, trackId) => {
+    setIsPlaying(true);
+    setTuneId(trackId);
+    audio?.pause();
+    const curAudio = new Audio(url);
+    setAudio(curAudio);
+    curAudio.play();
+  };
+  const pauseAudio = url => {
+    setIsPlaying(false);
+    audio?.pause();
+  };
 
-  const RenderRepoList = ({state,handleChange,tuneId}) => {
+  const TrackCard = props => {
+    return (
+      <CustomCard cover={<img alt="artwork-url" src={props.item.artworkUrl100} />}>
+        <TrackCardContainer>
+          {isPlaying && props.item.trackId === tuneId ? (
+            <CustomPause onClick={() => pauseAudio(props.item.previewUrl)} />
+          ) : (
+            <CustomPlay onClick={() => playAudio(props.item.previewUrl, props.item.trackId)} />
+          )}
+        </TrackCardContainer>
+        <ProgressBar value="70" max="100"></ProgressBar>
+        <MetaCard title={props.item.trackName} description={props.item.artistName}>
+          {' '}
+        </MetaCard>
+      </CustomCard>
+    );
+  };
+
+  const RenderRepoList = () => {
     const items = get(itunesData, 'results', []);
     const resultCount = get(itunesData, 'resultCount', 0);
     return (
@@ -173,11 +166,10 @@ export function HomeContainer({
               {items.map((item, index) => {
                 return (
                   <Col key={index} className="gutter-row" span={6}>
-                    <TrackCard item={item} state={state} handleChange={handleChange} tuneId />
-                </Col>
-              )}
-                )
-              }  
+                    <TrackCard item={item} />
+                  </Col>
+                );
+              })}
             </Row>
           </Skeleton>
         </CustomCard>
@@ -218,7 +210,7 @@ export function HomeContainer({
           />
         </CustomCard>
       </Container>
-      <RenderRepoList state={state} handleChange={handleStateChange} tuneId />
+      <RenderRepoList />
       {renderErrorState()}
     </MainContainer>
   );
