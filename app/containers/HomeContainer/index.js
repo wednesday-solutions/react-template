@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState } from 'react';
+import React, { useEffect, memo, useState, useCallback }  from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -7,31 +7,33 @@ import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input, Row, Col } from 'antd';
-
+import {PlayCircleFilled, PauseCircleFilled} from '@ant-design/icons'
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectHomeContainer, selectitunesData, selectitunesError, selectartistName } from './selectors';
+import { selectHomeContainer, selectItunesData, selectItunesError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
-
+import { ifStatement } from '@app/../../../../../Library/Caches/typescript/4.2/node_modules/@babel/types/lib/index';
+let audio
 const { Search } = Input;
 const { Meta } = Card;
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    width=250pxcolor: ${props => props.color};
+    color: ${props => props.color};
+    max-height: 30rem;
     ${props => props.color && `color: ${props.color}`};
   }
 `;
 
 const MainContainer = styled.div`
-  max-width: 1300px;
+  max-width: 81.25rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem;
 `;
 const Container = styled.div`
   && {
@@ -43,10 +45,34 @@ const Container = styled.div`
     padding: ${props => props.padding}px;
   }
 `;
-const RightContent = styled.div`
-  display: flex;
-  align-self: flex-end;
-`;
+
+const MetaCard = styled(Meta)`
+&& {
+  margin: 0.5rem !important;
+}
+`
+const TrackCardContainer=styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+`
+const CustomPlay =styled(PlayCircleFilled)`
+font-size: 2rem;
+padding: 1rem;
+cursor: pointer;
+`
+const CustomPause =styled(PauseCircleFilled)`
+font-size: 2rem;
+padding: 1rem;
+cursor: pointer;
+`
+const ProgressBar = styled.progress`
+&&
+{
+  display: block;
+  font-size: 1rem;
+}`
+
 
 export function HomeContainer({
   dispatchSongs,
@@ -60,6 +86,11 @@ export function HomeContainer({
 }) {
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
+ const [state,setState] = useState(false)
+ const handleStateChange = useCallback(stateChange => {
+  setState(stateChange);
+}, [ifStatement]);
+
 
   useEffect(() => {
     const loaded = get(itunesData, 'results', null) || itunesError;
@@ -68,13 +99,22 @@ export function HomeContainer({
     }
   }, [itunesData]);
 
+  useEffect(()=>{
+    if(tuneId){
+      setState(!state)
+    }
+  },[tuneId])
+
   useEffect(() => {
-    if (artistName && !itunesData?.results?.length) {
+    if (artistName && !itunesData) {
       dispatchSongs(artistName);
+      console.log(dispatchSongs("abcd"))
       setLoading(true);
     }
   }, []);
   const history = useHistory();
+  let {tuneId} = useParams()
+
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
@@ -86,7 +126,33 @@ export function HomeContainer({
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const renderRepoList = () => {
+  const playAudio =(url,handleChange,trackId)=>{
+    handleChange(true)
+    history.push(`/tune/${trackId}`)
+   audio = new Audio(url).play()
+  
+  
+  }
+  const pauseAudio =(url,handleChange)=>{
+    handleChange(false)
+    audio = new Audio(url).pause()
+    }
+  
+  const TrackCard = (props)=>{
+    return (
+      <CustomCard 
+      cover={<img alt="artwork-url" src={props.item.artworkUrl100} />}>
+        <TrackCardContainer>
+        {( props.state===true || props.item.trackId === props.tuneId ) ? (<CustomPause onClick={()=>pauseAudio(props.item.previewUrl,props.handleChange)}></CustomPause>):(<CustomPlay onClick={()=>playAudio(props.item.previewUrl,props.handleChange,props.item.trackId)}></CustomPlay>) }
+        </TrackCardContainer>
+        <ProgressBar value="70" max ="100"></ProgressBar>
+      <MetaCard title={props.item.trackName} description={props.item.artistName}> </MetaCard>
+      </CustomCard>
+    )
+  }
+  
+
+  const RenderRepoList = ({state,handleChange,tuneId}) => {
     const items = get(itunesData, 'results', []);
     const resultCount = get(itunesData, 'resultCount', 0);
     return (
@@ -104,17 +170,14 @@ export function HomeContainer({
               </div>
             )}
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              {items.map((item, index) => (
-                <Col key={index} className="gutter-row" span={6}>
-                  <CustomCard
-                    onClick={() => history.push(`/tune/${item.trackId}`)}
-                    hoverable
-                    cover={<img alt="artwork-url" src={item.artworkUrl100} />}
-                  >
-                    <Meta title={item.trackName} description={item.artistName} />
-                  </CustomCard>
+              {items.map((item, index) => {
+                return (
+                  <Col key={index} className="gutter-row" span={6}>
+                    <TrackCard item={item} state={state} handleChange={handleChange} tuneId />
                 </Col>
-              ))}
+              )}
+                )
+              }  
             </Row>
           </Skeleton>
         </CustomCard>
@@ -144,9 +207,6 @@ export function HomeContainer({
   return (
     <MainContainer>
       <Container maxwidth={maxwidth} padding={padding}>
-        <RightContent>
-          <Clickable textId="stories" onClick={refreshPage} />
-        </RightContent>
         <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
           <T marginBottom={10} id="get_repo_details" />
           <Search
@@ -158,7 +218,7 @@ export function HomeContainer({
           />
         </CustomCard>
       </Container>
-      {renderRepoList()}
+      <RenderRepoList state={state} handleChange={handleStateChange} tuneId />
       {renderErrorState()}
     </MainContainer>
   );
@@ -188,9 +248,9 @@ HomeContainer.defaultProps = {
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
-  itunesData: selectitunesData(),
-  itunesError: selectitunesError(),
-  artistName: selectartistName()
+  itunesData: selectItunesData(),
+  itunesError: selectItunesError(),
+  artistName: selectArtistName()
 });
 
 function mapDispatchToProps(dispatch) {

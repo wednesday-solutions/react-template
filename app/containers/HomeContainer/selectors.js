@@ -22,19 +22,19 @@ export const selectHomeContainer = () =>
     substate => substate
   );
 
-export const selectitunesData = () =>
+export const selectItunesData = () =>
   createSelector(
     selectHomeContainerDomain,
     substate => get(substate, 'itunesData', null)
   );
 
-export const selectitunesError = () =>
+export const selectItunesError = () =>
   createSelector(
     selectHomeContainerDomain,
     substate => get(substate, 'itunesError', null)
   );
 
-export const selectartistName = () =>
+export const selectArtistName = () =>
   createSelector(
     selectHomeContainerDomain,
     substate => get(substate, 'artistName', null)

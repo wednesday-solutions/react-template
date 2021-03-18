@@ -1,4 +1,4 @@
-import { selectHomeContainer, selectartistName, selectitunesData, selectitunesError } from '../selectors';
+import { selectHomeContainer, selectArtistName, selectItunesData, selectItunesError } from '../selectors';
 
 describe('HomeContainer selector tests', () => {
   let mockedState;
@@ -24,17 +24,17 @@ describe('HomeContainer selector tests', () => {
     expect(homeContainerSelector(mockedState)).toEqual(mockedState.homeContainer);
   });
   it('should select the artistName', () => {
-    const repoSelector = selectartistName();
+    const repoSelector = selectArtistName();
     expect(repoSelector(mockedState)).toEqual(artistName);
   });
 
   it('should select itunesData', () => {
-    const itunesDataSelector = selectitunesData();
+    const itunesDataSelector = selectItunesData();
     expect(itunesDataSelector(mockedState)).toEqual(itunesData);
   });
 
   it('should select the itunesError', () => {
-    const itunesErrorSelector = selectitunesError();
+    const itunesErrorSelector = selectItunesError();
     expect(itunesErrorSelector(mockedState)).toEqual(itunesError);
   });
 });
