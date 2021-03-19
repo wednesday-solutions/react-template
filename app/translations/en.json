@@ -1,14 +1,14 @@
 {
-  "repo_list": "Track List",
-  "repo_search": "Itunes Api Search",
-  "respo_search_default": "Search for a track by entering it's artist name in the search box",
-  "get_repo_details": "Get details of tracks",
+  "track_list": "Track List",
+  "track_search": "Itunes Api Search",
+  "track_search_default": "Search for a track by entering it's artist name in the search box",
+  "get_track_details": "Get details of tracks",
   "search_query": "Search query: {artistName}",
-  "matching_repos": "Total number of matching repos: {resultCount}",
+  "matching_tracks": "Total number of matching repos: {resultCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
-  "repository_name": "Track Name: {trackName}",
-  "repository_full_name": "Artist Name: {artistName}",
-  "repository_stars": "Collection Name: {collectionName}",
+  "track_name": "Track Name: {trackName}",
+  "artist_name": "Artist Name: {artistName}",
+  "collection_name": "Collection Name: {collectionName}",
   "wednesday_solutions": "Wednesday Solutions"
 }

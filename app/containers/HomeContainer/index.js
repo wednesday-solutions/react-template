@@ -7,21 +7,16 @@ import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input, Row, Col } from 'antd';
-import { PlayCircleFilled, PauseCircleFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory, useParams } from 'react-router-dom';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
 import { selectHomeContainer, selectItunesData, selectItunesError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
-import TrackCard from '@components/TrackCard'
-import { set } from 'lodash';
-import If from '@app/components/If/index';
+import TrackCard from '@components/TrackCard';
 const { Search } = Input;
-const { Meta } = Card;
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
@@ -48,7 +43,7 @@ const Container = styled.div`
 `;
 
 export function HomeContainer({
-  dispatchSongs,
+  dispatchRequestSongs,
   dispatchClearSongs,
   intl,
   itunesData,
@@ -62,11 +57,12 @@ export function HomeContainer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [tuneId, setTuneId] = useState(null);
   const [audio, setAudio] = useState(null);
-  const [curTime,setCurTime] = useState(0)
-  const [trackUrl,setTrackUrl]=useState(null)
+  const [curTime, setCurTime] = useState(0);
+  const [trackUrl, setTrackUrl] = useState(null);
 
   useEffect(() => {
     const loaded = get(itunesData, 'results', null) || itunesError;
+    console.log(loaded);
     if (loading && loaded) {
       setLoading(false);
     }
@@ -74,8 +70,7 @@ export function HomeContainer({
 
   useEffect(() => {
     if (artistName && !itunesData) {
-      dispatchSongs(artistName);
-      console.log(dispatchSongs('abcd'));
+      dispatchRequestSongs(artistName);
       setLoading(true);
     }
   }, []);
@@ -83,7 +78,7 @@ export function HomeContainer({
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
-      dispatchSongs(rName);
+      dispatchRequestSongs(rName);
       setLoading(true);
     } else {
       dispatchClearSongs();
@@ -92,26 +87,25 @@ export function HomeContainer({
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const playAudio = (url, trackId) => {
-    
     setIsPlaying(true);
     setTuneId(trackId);
     audio?.pause();
-    let curAudio = new Audio(url);
+    const curAudio = new Audio(url);
     setAudio(curAudio);
-   if(curTime>0 && url===trackUrl){
-     curAudio.currentTime =curTime
-   }
-    setTrackUrl(url)
-    curAudio.play()
-    
+    if (curTime && url === trackUrl) {
+      curAudio.currentTime = curTime;
+    }
+    setTrackUrl(url);
+    curAudio.play();
   };
-  const pauseAudio = (url) => {
+  const pauseAudio = url => {
     setIsPlaying(false);
     audio?.pause();
-    setCurTime(audio?.currentTime)
+    setCurTime(audio?.currentTime);
   };
-  const RenderRepoList = () => {
+  const renderTrackList = () => {
     const items = get(itunesData, 'results', []);
+    console.log(items);
     const resultCount = get(itunesData, 'resultCount', 0);
     return (
       (items.length !== 0 || loading) && (
@@ -124,14 +118,21 @@ export function HomeContainer({
             )}
             {resultCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ resultCount }} />
+                <T id="matching_tracks" values={{ resultCount }} />
               </div>
             )}
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               {items.map((item, index) => {
                 return (
                   <Col key={index} className="gutter-row" span={6}>
-                    <TrackCard item={item} condition={isPlaying && item.trackId === tuneId} value={item.trackId === tuneId && audio.currentTime!==0 ?curTime:0} max={`${item.trackTimeMillis/10000}`} onPlay={playAudio} onPause={pauseAudio}></TrackCard>
+                    <TrackCard
+                      track={item}
+                      currentlyPlayingTrackId={tuneId}
+                      currentTrack={audio}
+                      isPlaying={isPlaying}
+                      onPlay={playAudio}
+                      onPause={pauseAudio}
+                    />
                   </Col>
                 );
               })}
@@ -142,17 +143,17 @@ export function HomeContainer({
     );
   };
   const renderErrorState = () => {
-    let repoError;
+    let trackError;
     if (itunesError) {
-      repoError = itunesError;
+      trackError = itunesError;
     } else if (!get(itunesData, 'resultCount', 0)) {
-      repoError = 'respo_search_default';
+      trackError = 'track_search_default';
     }
     return (
       !loading &&
-      repoError && (
-        <CustomCard color={itunesError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
-          <T id={repoError} />
+      trackError && (
+        <CustomCard color={itunesError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'track_list' })}>
+          <T id={trackError} />
         </CustomCard>
       )
     );
@@ -164,8 +165,8 @@ export function HomeContainer({
   return (
     <MainContainer>
       <Container maxwidth={maxwidth} padding={padding}>
-        <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-          <T marginBottom={10} id="get_repo_details" />
+        <CustomCard title={intl.formatMessage({ id: 'track_search' })} maxwidth={maxwidth}>
+          <T marginBottom={10} id="get_track_details" />
           <Search
             data-testid="search-bar"
             defaultValue={artistName}
@@ -175,14 +176,14 @@ export function HomeContainer({
           />
         </CustomCard>
       </Container>
-      <RenderRepoList />
+      {renderTrackList()}
       {renderErrorState()}
     </MainContainer>
   );
 }
 
 HomeContainer.propTypes = {
-  dispatchSongs: PropTypes.func,
+  dispatchRequestSongs: PropTypes.func,
   dispatchClearSongs: PropTypes.func,
   intl: PropTypes.object,
   itunesData: PropTypes.shape({
@@ -213,7 +214,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   const { requestGetSongs, clearSongs } = homeContainerCreators;
   return {
-    dispatchSongs: artistName => dispatch(requestGetSongs(artistName)),
+    dispatchRequestSongs: artistName => dispatch(requestGetSongs(artistName)),
     dispatchClearSongs: () => dispatch(clearSongs())
   };
 }
