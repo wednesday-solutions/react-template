@@ -18,6 +18,8 @@ import { selectHomeContainer, selectItunesData, selectItunesError, selectArtistN
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
 import TrackCard from '@components/TrackCard'
+import { set } from 'lodash';
+import If from '@app/components/If/index';
 const { Search } = Input;
 const { Meta } = Card;
 const CustomCard = styled(Card)`
@@ -45,33 +47,6 @@ const Container = styled.div`
   }
 `;
 
-// const MetaCard = styled(Meta)`
-//   && {
-//     margin: 0.5rem !important;
-//   }
-// `;
-// const TrackCardContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-// const CustomPlay = styled(PlayCircleFilled)`
-//   font-size: 2rem;
-//   padding: 1rem;
-//   cursor: pointer;
-// `;
-// const CustomPause = styled(PauseCircleFilled)`
-//   font-size: 2rem;
-//   padding: 1rem;
-//   cursor: pointer;
-// `;
-// const ProgressBar = styled.progress`
-//   && {
-//     display: block;
-//     font-size: 1rem;
-//   }
-// `;
-
 export function HomeContainer({
   dispatchSongs,
   dispatchClearSongs,
@@ -87,6 +62,8 @@ export function HomeContainer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [tuneId, setTuneId] = useState(null);
   const [audio, setAudio] = useState(null);
+  const [curTime,setCurTime] = useState(0)
+  const [trackUrl,setTrackUrl]=useState(null)
 
   useEffect(() => {
     const loaded = get(itunesData, 'results', null) || itunesError;
@@ -115,36 +92,24 @@ export function HomeContainer({
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const playAudio = (url, trackId) => {
+    
     setIsPlaying(true);
     setTuneId(trackId);
     audio?.pause();
-    const curAudio = new Audio(url);
+    let curAudio = new Audio(url);
     setAudio(curAudio);
-    curAudio.play();
+   if(curTime>0 && url===trackUrl){
+     curAudio.currentTime =curTime
+   }
+    setTrackUrl(url)
+    curAudio.play()
+    
   };
   const pauseAudio = (url) => {
     setIsPlaying(false);
     audio?.pause();
+    setCurTime(audio?.currentTime)
   };
-
-  // const TrackCard = props => {
-  //   return (
-  //     <CustomCard cover={<img alt="artwork-url" src={props.item.artworkUrl100} />}>
-  //       <TrackCardContainer>
-  //         {isPlaying && props.item.trackId === tuneId ? (
-  //           <CustomPause onClick={() => pauseAudio(props.item.previewUrl)} />
-  //         ) : (
-  //           <CustomPlay onClick={() => playAudio(props.item.previewUrl, props.item.trackId)} />
-  //         )}
-  //       </TrackCardContainer>
-  //       <ProgressBar value="70" max="100"></ProgressBar>
-  //       <MetaCard title={props.item.trackName} description={props.item.artistName}>
-  //         {' '}
-  //       </MetaCard>
-  //     </CustomCard>
-  //   );
-  // };
-
   const RenderRepoList = () => {
     const items = get(itunesData, 'results', []);
     const resultCount = get(itunesData, 'resultCount', 0);
@@ -166,7 +131,7 @@ export function HomeContainer({
               {items.map((item, index) => {
                 return (
                   <Col key={index} className="gutter-row" span={6}>
-                    <TrackCard item={item} condition={isPlaying && item.trackId === tuneId} value="70" max="100" onPlay={playAudio} onPause={pauseAudio}></TrackCard>
+                    <TrackCard item={item} condition={isPlaying && item.trackId === tuneId} value={item.trackId === tuneId && audio.currentTime!==0 ?curTime:0} max={`${item.trackTimeMillis/10000}`} onPlay={playAudio} onPause={pauseAudio}></TrackCard>
                   </Col>
                 );
               })}

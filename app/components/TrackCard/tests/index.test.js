@@ -11,6 +11,7 @@ import TrackCard from '../index';
 
 describe('<TrackCard />', () => {
   it('should render and match the snapshot', () => {
+    console.log("rendering TrackCard")
     const { baseElement } = renderWithIntl(<TrackCard />);
     expect(baseElement).toMatchSnapshot();
   });

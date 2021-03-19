@@ -13,10 +13,10 @@ describe('<HomeContainer /> tests', () => {
   let submitSpy;
 
   beforeEach(() => {
-    console.log = jest.fn();
+    submitSpy = jest.fn();
   });
   it('should render and match the snapshot', () => {
-    const { baseElement } = renderProvider(<HomeContainer dispatchSongs={console.log} />);
+    const { baseElement } = renderProvider(<HomeContainer dispatchSongs={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -44,15 +44,6 @@ describe('<HomeContainer /> tests', () => {
       target: { value: 'some' }
     });
     await timeout(500);
-    expect(console.log).toBeCalled();
+    expect(submitSpy).toBeCalled();
   });
 });
-// console.log(dispatchSongs)
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
-  useParams: () => ({
-    tuneId: 'tuneId'
-  }),
-  useRouteMatch: () => ({ url: '/tune/tuneId' }),
-}));

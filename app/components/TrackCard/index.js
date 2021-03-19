@@ -50,10 +50,8 @@ const ProgressBar = styled.progress`
 
 
 function TrackCard ({item,condition,onPause,onPlay,value,max}){
- console.log({item,condition,onPause,onPlay,value,max})
-
   return (
-    <CustomCard cover={<img alt="artwork-url" src={item.artworkUrl100} />}>
+    <CustomCard datatestid="track-card" cover={<img alt="artwork-url" src={item.artworkUrl100} />}>
       <TrackCardContainer>
     <If condition={condition}>
       <CustomPause onClick={(()=>onPause(item.previewUrl))} />
@@ -74,10 +72,8 @@ function TrackCard ({item,condition,onPause,onPlay,value,max}){
 TrackCard.propTypes= {
 onPause: PropTypes.func,
 onPlay: PropTypes.func,
-value: PropTypes.string,
-max: PropTypes.string,
 items: PropTypes.object,
 condition: PropTypes.bool, 
 }
 
-export default TrackCard
+export default injectIntl(TrackCard)
