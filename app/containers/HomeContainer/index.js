@@ -143,7 +143,9 @@ export function HomeContainer({
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
+       
       </CustomCard>
+
       {renderRepoList()}
       {renderErrorState()}
     </Container>
