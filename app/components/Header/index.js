@@ -40,6 +40,7 @@ function Header(props) {
     <StyledHeader {...props} data-testid="header">
       <Logo alt="logo" src={logo} />
       <Title type="heading" id="wednesday_solutions" />
+      <h1>hello from vivek</h1>
     </StyledHeader>
   );
 }
