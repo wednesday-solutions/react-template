@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenubarJs /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="MenubarJs__MenuDiv-sc-9eruv1-0 dnpzal"
+      data-testid="menubar-js"
+    >
+      <ul
+        class="ant-menu ant-menu-light MenuBar ant-menu-root ant-menu-vertical"
+        role="menu"
+      >
+        <li
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
+          role="menuitem"
+        >
+          <img
+            src="IMAGE_MOCK"
+          />
+        </li>
+        <li
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
+          role="menuitem"
+        >
+          <img
+            src="IMAGE_MOCK"
+          />
+        </li>
+        <li
+          class="ant-menu-item ant-menu-item-only-child MenuItem"
+          role="menuitem"
+        >
+          <img
+            src="IMAGE_MOCK"
+            width="50"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+`;

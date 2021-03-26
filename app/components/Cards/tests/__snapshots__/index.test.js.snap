@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cards /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="Cards__CardDiv-a1oo2v-0 LMebN site-card-wrapper"
+      data-testid="cards"
+    >
+      <div
+        class="ant-row"
+      >
+        <div
+          class="ant-col ant-col-4"
+        >
+          <div
+            class="ant-card ant-card-bordered IconCard"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <div
+                    class="Number"
+                  >
+                    2345
+                  </div>
+                  <div
+                    class="Heading"
+                  >
+                    INVOICES ADDED
+                  </div>
+                  <div
+                    class="Link"
+                  >
+                    ADD INVOICE
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+        >
+          <div
+            class="ant-card ant-card-bordered IconCard"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <div
+                    class="Number"
+                  >
+                    05
+                  </div>
+                  <div
+                    class="Heading"
+                  >
+                    BANK ACCOUNT ADDED
+                  </div>
+                  <div
+                    class="Link"
+                  >
+                    ADD BANK ACCOUNT
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+        >
+          <div
+            class="ant-card ant-card-bordered IconCard"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <div
+                    class="Number"
+                  >
+                    15
+                  </div>
+                  <div
+                    class="Heading"
+                  >
+                    UNVERIFIED INVOICES
+                  </div>
+                  <div
+                    class="Link"
+                  >
+                    VERIFY INVOICE
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+        >
+          <div
+            class="ant-card ant-card-bordered IconCard"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <div
+                    class="Number"
+                  >
+                    03
+                  </div>
+                  <div
+                    class="Heading"
+                  >
+                    TRANSATIONS FAILED
+                  </div>
+                  <div
+                    class="Link"
+                  >
+                    VIEW DETAILS
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-4"
+        >
+          <div
+            class="ant-card ant-card-bordered IconCard"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col"
+                >
+                  <img
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="ant-col"
+                >
+                  <div
+                    class="Number"
+                  >
+                    $2345.39
+                  </div>
+                  <div
+                    class="Heading"
+                  >
+                    UPCOMING PAYMENT
+                  </div>
+                  <div
+                    class="Link"
+                  >
+                    VIEW INVOICE
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
