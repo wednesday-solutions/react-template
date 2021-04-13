@@ -11,7 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import map from 'lodash/map';
+// import map from 'lodash/map';
 import { compose } from 'redux';
 import { Layout } from 'antd';
 import { routeConfig } from '@app/routeConfig';
@@ -33,7 +33,7 @@ export function App({ location }) {
       <Layout.Content>
         <For
           ParentComponent={props => <Switch {...props} />}
-          of={map(Object.keys(routeConfig))}
+          of={Object.keys(routeConfig)}
           renderItem={(routeKey, index) => {
             const Component = routeConfig[routeKey].component;
             return (

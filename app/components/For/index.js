@@ -15,6 +15,7 @@ const FlexContainer = styled.div`
 
 export function For({ of, ParentComponent = props => <FlexContainer {...props} />, renderItem, noParent, ...props }) {
   const list = () => of.map((item, index) => ({ ...renderItem(item, index), key: index }));
+
   const children = () => (
     <ParentComponent {...props} data-testid="for">
       {list()}

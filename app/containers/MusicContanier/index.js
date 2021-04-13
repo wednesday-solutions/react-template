@@ -13,8 +13,8 @@ import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
-import { homeContainerCreators } from './reducer';
+import { selectMusicContainer, selectMusicsData, selectMusicsError, selectMusicTitle } from './selectors';
+import { MusicContainerCreators } from './reducer';
 import saga from './saga';
 
 const { Search } = Input;
@@ -41,29 +41,29 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
-export function HomeContainer({
+export function MusicContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
   intl,
   reposData = {},
-  reposError = null,
-  repoName,
+  musicsError = null,
+  musicTitle,
   maxwidth,
   padding
 }) {
-  useInjectSaga({ key: 'homeContainer', saga });
+  useInjectSaga({ key: 'MusicContainer', saga });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    const loaded = get(reposData, 'items', null) || musicsError;
     if (loading && loaded) {
       setLoading(false);
     }
   }, [reposData]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (musicTitle && !reposData?.items?.length) {
+      dispatchGithubRepos(musicTitle);
       setLoading(true);
     }
   }, []);
@@ -87,9 +87,9 @@ export function HomeContainer({
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            {musicTitle && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ musicTitle }} />
               </div>
             )}
             {totalCount !== 0 && (
@@ -111,15 +111,15 @@ export function HomeContainer({
   };
   const renderErrorState = () => {
     let repoError;
-    if (reposError) {
-      repoError = reposError;
+    if (musicsError) {
+      repoError = musicsError;
     } else if (!get(reposData, 'totalCount', 0)) {
       repoError = 'respo_search_default';
     }
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={musicsError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
@@ -138,10 +138,11 @@ export function HomeContainer({
         <T marginBottom={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"
-          defaultValue={repoName}
+          defaultValue={musicTitle}
           type="text"
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
+          enterButton
         />
       </CustomCard>
       {renderRepoList()}
@@ -150,7 +151,7 @@ export function HomeContainer({
   );
 }
 
-HomeContainer.propTypes = {
+MusicContainer.propTypes = {
   dispatchGithubRepos: PropTypes.func,
   dispatchClearGithubRepos: PropTypes.func,
   intl: PropTypes.object,
@@ -159,30 +160,31 @@ HomeContainer.propTypes = {
     incompleteResults: PropTypes.bool,
     items: PropTypes.array
   }),
-  reposError: PropTypes.string,
-  repoName: PropTypes.string,
+  musicsError: PropTypes.string,
+  musicTitle: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
 };
 
-HomeContainer.defaultProps = {
+MusicContainer.defaultProps = {
   maxwidth: 500,
   padding: 20
 };
 
 const mapStateToProps = createStructuredSelector({
-  homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  MusicContainer: selectMusicContainer(),
+  musicsData: selectMusicsData(),
+  musicsError: selectMusicsError(),
+  musicTitle: selectMusicTitle()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
+  const { requestGetItunesMusics, clearItunesMusics } = MusicContainerCreators;
+
   return {
-    dispatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName)),
-    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
+    dispatchItunesMusics: musicTitle => dispatch(requestGetItunesMusics(musicTitle)),
+    dispatchClearItunesMusics: () => dispatch(clearItunesMusics())
   };
 }
 
@@ -195,6 +197,6 @@ export default compose(
   injectIntl,
   withConnect,
   memo
-)(HomeContainer);
+)(MusicContainer);
 
-export const HomeContainerTest = compose(injectIntl)(HomeContainer);
+export const MusicContainerTest = compose(injectIntl)(MusicContainer);

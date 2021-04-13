@@ -7,7 +7,7 @@ import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import immutableTransform from 'redux-persist-transform-immutable';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage'; // localstorage
 import createReducer from './reducers';
 
 // redux persit configuration

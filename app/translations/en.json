@@ -10,5 +10,10 @@
   "repository_name": "Repository Name: {name}",
   "repository_full_name": "Repository full name: {fullName}",
   "repository_stars": "Repository stars: {stars}",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "music_list": "Music List",
+  "music_search": "Music Search",
+  "muisc_search_default": "Search for a music by entering it's name in the search box",
+  "get_music_details": "Get details of musics",
+  "music_title": "Music Title: {title}"
 }
