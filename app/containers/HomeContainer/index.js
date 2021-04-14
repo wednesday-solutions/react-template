@@ -159,7 +159,7 @@ HomeContainer.propTypes = {
     incompleteResults: PropTypes.bool,
     items: PropTypes.array
   }),
-  reposError: PropTypes.object,
+  reposError: PropTypes.string,
   repoName: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
