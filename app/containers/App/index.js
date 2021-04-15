@@ -11,7 +11,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-// import map from 'lodash/map';
 import { compose } from 'redux';
 import { Layout } from 'antd';
 import { routeConfig } from '@app/routeConfig';
