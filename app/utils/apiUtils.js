@@ -2,20 +2,20 @@ import { create } from 'apisauce';
 import snakeCase from 'lodash/snakeCase';
 import camelCase from 'lodash/camelCase';
 import { mapKeysDeep } from './index';
+const ITUNES_URL = 'https://itunes.apple.com/';
 
-const { GITHUB_URL } = process.env;
 const apiClients = {
-  github: null,
+  itunes: null,
   default: null
 };
-export const getApiClient = (type = 'github') => apiClients[type];
-export const generateApiClient = (type = 'github') => {
+export const getApiClient = (type = 'itunes') => apiClients[type];
+export const generateApiClient = (type = 'itunes') => {
   switch (type) {
-    case 'github':
-      apiClients[type] = createApiClientWithTransForm(GITHUB_URL);
+    case 'itunes':
+      apiClients[type] = createApiClientWithTransForm(ITUNES_URL);
       return apiClients[type];
     default:
-      apiClients.default = createApiClientWithTransForm(GITHUB_URL);
+      apiClients.default = createApiClientWithTransForm(ITUNES_URL);
       return apiClients.default;
   }
 };
