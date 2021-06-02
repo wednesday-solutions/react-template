@@ -25,8 +25,7 @@ module.exports = {
     'prettier/prettier': ['error', prettierOptions],
     'import/no-webpack-loader-syntax': 0,
     'react/display-name': 0,
-    curly: ['error', 'all'],
-    'no-console': ['error', { allow: ['error'] }]
+    curly: ['error', 'all']
   },
   globals: {
     GLOBAL: false,

@@ -1,43 +1,30 @@
 import { createSelector } from 'reselect';
-import get from 'lodash/get';
 import { initialState } from './reducer';
+import get from 'lodash/get';
 
 /**
- * Direct selector to the homeContainer state domain
+ * Direct selector to the HomeContainer state domain
  */
 
 const selectHomeContainerDomain = state => state.homeContainer || initialState;
-
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by HomeContainer
- */
 
 export const selectHomeContainer = () =>
   createSelector(
     selectHomeContainerDomain,
     substate => substate
   );
-
-export const selectReposData = () =>
+export const selectSongsData = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'reposData', null)
+    substate => get(substate, 'songsData', null)
   );
-
-export const selectReposError = () =>
+export const selectSongName = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'reposError', null)
+    substate => get(substate, 'songName', null)
   );
-
-export const selectRepoName = () =>
+export const selectSongsError = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'repoName', null)
+    substate => get(substate, 'songsError', null)
   );
-
-export default selectHomeContainer;
