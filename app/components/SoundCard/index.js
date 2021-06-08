@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Card, Input } from 'antd';
 import { NavLink } from 'react-router-dom';
 import If from '@components/If';
-import For from '@components/For';
+import { For } from '@components/For';
 import { colors, fonts } from '@app/themes';
 
 const IfSongContainer = styled(Card)`
@@ -25,7 +25,7 @@ const SearchBox = styled(Input)`
     justify-content: center;
   }
 `;
-const HeaderBox = styled(NavLink)`
+const HeaderBox = styled.div`
   && {
     margin: 0 auto;
     display: flex;
@@ -65,40 +65,38 @@ const AudioBox = styled.audio`
 `;
 function SoundCard({ songs, complete }) {
   return (
-    <For
-      style={{ flexWrap: 'wrap' }}
-      of={songs}
-      renderItem={(song, index) => {
-        return (
-          <IfSongContainer condition={song.trackId && song.previewUrl} key={index}>
-            <HeaderBox to={`/track/${song.trackId}`}>
-              <AudioImg src={song.artworkUrl100} alt={song.trackName} />
-              <div style={{ flex: 4 }}>
-                <SongPrimary>{song.trackName}</SongPrimary>
-                <SongSecondary>{song.artistName}</SongSecondary>
-              </div>
-            </HeaderBox>
-            <If condition={complete}>
-              <div>{song.shortDescription}</div>
-            </If>
-            <AudioBox controls>
-              <source src={song.previewUrl} />
-            </AudioBox>
-          </IfSongContainer>
-        );
-      }}
-    />
+    <div data-testid="sound-card">
+      <For
+        type="array"
+        style={{ flexWrap: 'wrap' }}
+        of={songs}
+        renderItem={(song, index) => {
+          return (
+            <IfSongContainer condition={song.trackId && song.previewUrl} key={index}>
+              <NavLink to={`/track/${song.trackId}`}>
+                <HeaderBox>
+                  <AudioImg src={song.artworkUrl100} alt={song.trackName} />
+                  <div style={{ flex: 4 }}>
+                    <SongPrimary>{song.trackName}</SongPrimary>
+                    <SongSecondary>{song.artistName}</SongSecondary>
+                  </div>
+                </HeaderBox>
+              </NavLink>
+              <If condition={complete}>
+                <div>{song.shortDescription}</div>
+              </If>
+              <AudioBox controls>
+                <source src={song.previewUrl} />
+              </AudioBox>
+            </IfSongContainer>
+          );
+        }}
+      />
+    </div>
   );
 }
 SoundCard.propTypes = {
-  songs: PropTypes.shape({
-    trackId: PropTypes.number,
-    trackName: PropTypes.string,
-    artistName: PropTypes.string,
-    previewUrl: PropTypes.string,
-    shortDescription: PropTypes.string,
-    artworkUrl100: PropTypes.string
-  }),
+  songs: PropTypes.array,
   complete: PropTypes.bool
 };
 
