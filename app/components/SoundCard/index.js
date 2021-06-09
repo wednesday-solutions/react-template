@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Card, Input } from 'antd';
+import { Card, Input, Skeleton } from 'antd';
 import { NavLink } from 'react-router-dom';
 import If from '@components/If';
 import { For } from '@components/For';
@@ -63,7 +63,7 @@ const AudioBox = styled.audio`
     bottom: 1em;
   }
 `;
-function SoundCard({ songs, complete }) {
+function SoundCard({ songs, complete, loading }) {
   return (
     <div data-testid="sound-card">
       <For
@@ -73,21 +73,23 @@ function SoundCard({ songs, complete }) {
         renderItem={(song, index) => {
           return (
             <IfSongContainer condition={song.trackId && song.previewUrl} key={index}>
-              <NavLink to={`/track/${song.trackId}`}>
-                <HeaderBox>
-                  <AudioImg src={song.artworkUrl100} alt={song.trackName} />
-                  <div style={{ flex: 4 }}>
-                    <SongPrimary>{song.trackName}</SongPrimary>
-                    <SongSecondary>{song.artistName}</SongSecondary>
-                  </div>
-                </HeaderBox>
-              </NavLink>
-              <If condition={complete}>
-                <div>{song.shortDescription}</div>
-              </If>
-              <AudioBox controls>
-                <source src={song.previewUrl} />
-              </AudioBox>
+              <Skeleton loading={loading} active>
+                <NavLink to={`/track/${song.trackId}`}>
+                  <HeaderBox>
+                    <AudioImg src={song.artworkUrl100} alt={song.trackName} />
+                    <div style={{ flex: 4 }}>
+                      <SongPrimary>{song.trackName}</SongPrimary>
+                      <SongSecondary>{song.artistName}</SongSecondary>
+                    </div>
+                  </HeaderBox>
+                </NavLink>
+                <If condition={complete}>
+                  <div>{song.shortDescription}</div>
+                </If>
+                <AudioBox controls>
+                  <source src={song.previewUrl} />
+                </AudioBox>
+              </Skeleton>
             </IfSongContainer>
           );
         }}
@@ -97,7 +99,8 @@ function SoundCard({ songs, complete }) {
 }
 SoundCard.propTypes = {
   songs: PropTypes.array,
-  complete: PropTypes.bool
+  complete: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 export default SoundCard;

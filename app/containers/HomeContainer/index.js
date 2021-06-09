@@ -78,9 +78,7 @@ export function HomeContainer({ dispatchSongs, songsData, songName, intl }) {
         />
       </SearchBoxContainer>
       <MusicBoxContainer>
-        <Skeleton loading={loading} active>
-          <SoundCard songs={songsData} complete={false} />
-        </Skeleton>
+        <SoundCard songs={songsData} complete={false} loading={loading} />
       </MusicBoxContainer>
     </div>
   );
