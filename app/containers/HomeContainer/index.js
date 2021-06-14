@@ -9,11 +9,9 @@ import isEmpty from 'lodash/isEmpty';
 import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectHomeContainer, selectArtistData, selectArtistError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
 
@@ -37,17 +35,13 @@ const Container = styled.div`
     padding: ${props => props.padding}px;
   }
 `;
-const RightContent = styled.div`
-  display: flex;
-  align-self: flex-end;
-`;
 export function HomeContainer({
-  dispatchGithubRepos,
-  dispatchClearGithubRepos,
+  dispatchItunesRepos,
+  dispatchClearItunesRepos,
   intl,
-  reposData = {},
-  reposError = null,
-  repoName,
+  artistData = {},
+  artistError = null,
+  artistName,
   maxwidth,
   padding
 }) {
@@ -55,53 +49,51 @@ export function HomeContainer({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    const loaded = get(artistData, 'results', null) || artistError;
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [artistData]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (artistName && !artistData?.results?.length) {
+      dispatchItunesRepos(artistName);
       setLoading(true);
     }
   }, []);
 
-  const history = useHistory();
-
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
-      dispatchGithubRepos(rName);
+      dispatchItunesRepos(rName);
       setLoading(true);
     } else {
-      dispatchClearGithubRepos();
+      dispatchClearItunesRepos();
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
+    const items = get(artistData, 'results', []);
+    const totalCount = get(artistData, 'resultCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            {artistName && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ artistName }} />
               </div>
             )}
             {totalCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ totalCount }} />
+                <T id="matching_artists" values={{ totalCount }} />
               </div>
             )}
             {items.map((item, index) => (
               <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
+                <T id="artist_name" values={{ name: item.artistName }} />
+                <T id="collection_name" values={{ collectionName: item.collectionName }} />
+                <T id="track_count" values={{ trackCount: item.trackCount }} />
               </CustomCard>
             ))}
           </Skeleton>
@@ -111,34 +103,27 @@ export function HomeContainer({
   };
   const renderErrorState = () => {
     let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
+    if (artistError) {
+      repoError = artistError;
+    } else if (!get(artistData, 'resultCount', 0)) {
+      repoError = 'artist_search_default';
     }
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={artistError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'artist_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
     );
   };
-  const refreshPage = () => {
-    history.push('stories');
-    window.location.reload();
-  };
   return (
     <Container maxwidth={maxwidth} padding={padding}>
-      <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-        <T marginBottom={10} id="get_repo_details" />
+      <CustomCard title={intl.formatMessage({ id: 'artist_search' })} maxwidth={maxwidth}>
+        <T marginBottom={10} id="get_artist_details" />
         <Search
           data-testid="search-bar"
-          defaultValue={repoName}
+          defaultValue={artistName}
           type="text"
           onChange={evt => debouncedHandleOnChange(evt.target.value)}
           onSearch={searchText => debouncedHandleOnChange(searchText)}
@@ -151,17 +136,16 @@ export function HomeContainer({
 }
 
 HomeContainer.propTypes = {
-  dispatchGithubRepos: PropTypes.func,
-  dispatchClearGithubRepos: PropTypes.func,
+  dispatchItunesRepos: PropTypes.func,
+  dispatchClearItunesRepos: PropTypes.func,
   intl: PropTypes.object,
-  reposData: PropTypes.shape({
-    totalCount: PropTypes.number,
+  artistData: PropTypes.shape({
+    resultCount: PropTypes.number,
     incompleteResults: PropTypes.bool,
-    items: PropTypes.array
+    results: PropTypes.array
   }),
-  reposError: PropTypes.object,
-  repoName: PropTypes.string,
-  history: PropTypes.object,
+  artistError: PropTypes.object,
+  artistName: PropTypes.string,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
 };
@@ -173,16 +157,16 @@ HomeContainer.defaultProps = {
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  artistData: selectArtistData(),
+  artistError: selectArtistError(),
+  artistName: selectArtistName()
 });
 
 function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
-    dispatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName)),
-    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
+    dispatchItunesRepos: artistName => dispatch(requestGetGithubRepos(artistName)),
+    dispatchClearItunesRepos: () => dispatch(clearGithubRepos())
   };
 }
 
