@@ -74,7 +74,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
-    "antd": "^4.2.0",
+    "antd": "^4.9.3",
     "apisauce": "2.1.1",
     "chalk": "2.4.2",
     "compression": "1.7.4",
