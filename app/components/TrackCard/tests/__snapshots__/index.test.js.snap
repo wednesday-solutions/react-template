@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TrackCard /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="ant-card ant-card-bordered TrackCard__CustomCard-sc-10bk196-0 krtmBA"
+      data-testid="track-card"
+    >
+      <div
+        class="ant-card-cover"
+      >
+        <img
+          alt="artwork-url"
+          src="https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/88/3f/c8/883fc8f7-9174-5a86-1616-92fdd9030702/source/100x100bb.jpg"
+        />
+      </div>
+      <div
+        class="ant-card-body"
+      >
+        <div
+          class="TrackCard__TrackCardContainer-sc-10bk196-2 jILkkF"
+        >
+          <span
+            aria-label="play-circle"
+            class="anticon anticon-play-circle TrackCard__CustomPlay-sc-10bk196-3 ldNKvG"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="play-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 01-12.7-6.5V353.7a8 8 0 0112.7-6.5L656.1 506a7.9 7.9 0 010 12.9z"
+              />
+            </svg>
+          </span>
+        </div>
+        <progress
+          class="TrackCard__ProgressBar-sc-10bk196-5 eksdvV"
+          max="20.6538"
+          value="0"
+        />
+        <div
+          class="ant-card-meta TrackCard__MetaCard-sc-10bk196-1 pXxsN"
+        >
+          <div
+            class="ant-card-meta-detail"
+          >
+            <div
+              class="ant-card-meta-title"
+            >
+              Journey (feat. Y Des)
+            </div>
+            <div
+              class="ant-card-meta-description"
+            >
+              RIZE
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState } from 'react';
+import React, { useEffect, memo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -6,26 +6,30 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input } from 'antd';
+import { Card, Skeleton, Input, Row, Col } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectHomeContainer, selectItunesData, selectItunesError, selectArtistName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import saga from './saga';
-
+import TrackCard from '@components/TrackCard';
 const { Search } = Input;
-
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    max-width: ${props => props.maxwidth};
     color: ${props => props.color};
+    max-height: 30rem;
     ${props => props.color && `color: ${props.color}`};
   }
+`;
+
+const MainContainer = styled.div`
+  max-width: 81.25rem;
+  margin: 0 auto;
+  padding: 2rem;
 `;
 const Container = styled.div`
   && {
@@ -37,90 +41,119 @@ const Container = styled.div`
     padding: ${props => props.padding}px;
   }
 `;
-const RightContent = styled.div`
-  display: flex;
-  align-self: flex-end;
-`;
+
 export function HomeContainer({
-  dispatchGithubRepos,
-  dispatchClearGithubRepos,
+  dispatchRequestSongs,
+  dispatchClearSongs,
   intl,
-  reposData = {},
-  reposError = null,
-  repoName,
+  itunesData,
+  itunesError,
+  artistName,
   maxwidth,
   padding
 }) {
   useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [tuneId, setTuneId] = useState(null);
+  const [audio, setAudio] = useState(null);
+  const [curTime, setCurTime] = useState(0);
+  const [trackUrl, setTrackUrl] = useState(null);
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    const loaded = get(itunesData, 'results', null) || itunesError;
+    console.log(loaded);
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [itunesData]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (artistName && !itunesData) {
+      dispatchRequestSongs(artistName);
       setLoading(true);
     }
   }, []);
-
   const history = useHistory();
 
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
-      dispatchGithubRepos(rName);
+      dispatchRequestSongs(rName);
       setLoading(true);
     } else {
-      dispatchClearGithubRepos();
+      dispatchClearSongs();
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
+  const playAudio = (url, trackId) => {
+    setIsPlaying(true);
+    setTuneId(trackId);
+    audio?.pause();
+    const curAudio = new Audio(url);
+    setAudio(curAudio);
+    if (curTime && url === trackUrl) {
+      curAudio.currentTime = curTime;
+    }
+    setTrackUrl(url);
+    curAudio.play();
+  };
+  const pauseAudio = url => {
+    setIsPlaying(false);
+    audio?.pause();
+    setCurTime(audio?.currentTime);
+  };
+  const renderTrackList = () => {
+    const items = get(itunesData, 'results', []);
+    console.log(items);
+    const resultCount = get(itunesData, 'resultCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            {artistName && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ artistName }} />
               </div>
             )}
-            {totalCount !== 0 && (
+            {resultCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ totalCount }} />
+                <T id="matching_tracks" values={{ resultCount }} />
               </div>
             )}
-            {items.map((item, index) => (
-              <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
-              </CustomCard>
-            ))}
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              {items.map((item, index) => {
+                return (
+                  <Col key={index} className="gutter-row" span={6}>
+                    <TrackCard
+                      track={item}
+                      currentlyPlayingTrackId={tuneId}
+                      currentTrack={audio}
+                      isPlaying={isPlaying}
+                      onPlay={playAudio}
+                      onPause={pauseAudio}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
           </Skeleton>
         </CustomCard>
       )
     );
   };
   const renderErrorState = () => {
-    let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
+    let trackError;
+    if (itunesError) {
+      trackError = itunesError;
+    } else if (!get(itunesData, 'resultCount', 0)) {
+      trackError = 'track_search_default';
     }
     return (
       !loading &&
-      repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
-          <T id={repoError} />
+      trackError && (
+        <CustomCard color={itunesError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'track_list' })}>
+          <T id={trackError} />
         </CustomCard>
       )
     );
@@ -130,37 +163,35 @@ export function HomeContainer({
     window.location.reload();
   };
   return (
-    <Container maxwidth={maxwidth} padding={padding}>
-      <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-        <T marginBottom={10} id="get_repo_details" />
-        <Search
-          data-testid="search-bar"
-          defaultValue={repoName}
-          type="text"
-          onChange={evt => debouncedHandleOnChange(evt.target.value)}
-          onSearch={searchText => debouncedHandleOnChange(searchText)}
-        />
-      </CustomCard>
-      {renderRepoList()}
+    <MainContainer>
+      <Container maxwidth={maxwidth} padding={padding}>
+        <CustomCard title={intl.formatMessage({ id: 'track_search' })} maxwidth={maxwidth}>
+          <T marginBottom={10} id="get_track_details" />
+          <Search
+            data-testid="search-bar"
+            defaultValue={artistName}
+            type="text"
+            onChange={evt => debouncedHandleOnChange(evt.target.value)}
+            onSearch={searchText => debouncedHandleOnChange(searchText)}
+          />
+        </CustomCard>
+      </Container>
+      {renderTrackList()}
       {renderErrorState()}
-    </Container>
+    </MainContainer>
   );
 }
 
 HomeContainer.propTypes = {
-  dispatchGithubRepos: PropTypes.func,
-  dispatchClearGithubRepos: PropTypes.func,
+  dispatchRequestSongs: PropTypes.func,
+  dispatchClearSongs: PropTypes.func,
   intl: PropTypes.object,
-  reposData: PropTypes.shape({
-    totalCount: PropTypes.number,
-    incompleteResults: PropTypes.bool,
-    items: PropTypes.array
+  itunesData: PropTypes.shape({
+    resultCount: PropTypes.number,
+    results: PropTypes.array
   }),
-  reposError: PropTypes.object,
-  repoName: PropTypes.string,
+  itunesError: PropTypes.object,
+  artistName: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
@@ -168,21 +199,23 @@ HomeContainer.propTypes = {
 
 HomeContainer.defaultProps = {
   maxwidth: 500,
-  padding: 20
+  padding: 20,
+  itunesData: {},
+  itunesError: null
 };
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  itunesData: selectItunesData(),
+  itunesError: selectItunesError(),
+  artistName: selectArtistName()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
+  const { requestGetSongs, clearSongs } = homeContainerCreators;
   return {
-    dispatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName)),
-    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
+    dispatchRequestSongs: artistName => dispatch(requestGetSongs(artistName)),
+    dispatchClearSongs: () => dispatch(clearSongs())
   };
 }
 

@@ -22,22 +22,22 @@ export const selectHomeContainer = () =>
     substate => substate
   );
 
-export const selectReposData = () =>
+export const selectItunesData = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'reposData', null)
+    substate => get(substate, 'itunesData', null)
   );
 
-export const selectReposError = () =>
+export const selectItunesError = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'reposError', null)
+    substate => get(substate, 'itunesError', null)
   );
 
-export const selectRepoName = () =>
+export const selectArtistName = () =>
   createSelector(
     selectHomeContainerDomain,
-    substate => get(substate, 'repoName', null)
+    substate => get(substate, 'artistName', null)
   );
 
 export default selectHomeContainer;

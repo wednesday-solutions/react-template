@@ -6,6 +6,10 @@ export const routeConfig = {
     component: HomeContainer,
     ...routeConstants.repos
   },
+  tune: {
+    component: HomeContainer,
+    ...routeConstants.tune
+  },
   notFoundPage: {
     component: NotFound,
     route: '/'
