@@ -77,7 +77,7 @@
     "@testing-library/react": "^9.3.0",
     "antd": "^4.9.3",
     "apisauce": "2.1.1",
-    "chalk": "2.4.2",
+    "chalk": "4.1.1",
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
     "core-js": "3.6.5",
