@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = require('./webpack.base.babel')({
+module.exports = require('./webpack.config.base')({
   mode: 'development',
 
   // Add hot reloading in development
