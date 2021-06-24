@@ -2,8 +2,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const OfflinePlugin = require('offline-plugin');
-const { HashedModuleIdsPlugin } = require('webpack');
+const OfflinePlugin = require('@lcdp/offline-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -55,8 +54,7 @@ module.exports = require('./webpack.config.base')({
           }
         }
       }
-    },
-    moduleIds: 'hashed'
+    }
   },
 
   plugins: [
@@ -81,7 +79,6 @@ module.exports = require('./webpack.config.base')({
     // Put it in the end to capture all the HtmlWebpackPlugin's
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
     new OfflinePlugin({
-      relativePaths: process.env.NODE_ENV === 'production',
       publicPath: '/',
       appShell: '/',
 
@@ -127,12 +124,6 @@ module.exports = require('./webpack.config.base')({
           ios: true
         }
       ]
-    }),
-
-    new HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20
     })
   ],
 

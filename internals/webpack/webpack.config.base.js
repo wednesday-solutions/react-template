@@ -20,10 +20,6 @@ const envKeys = {
 };
 
 module.exports = options => ({
-  node: {
-    Buffer: false,
-    process: false
-  },
   mode: options.mode,
   entry: options.entry,
   output: Object.assign(
@@ -70,7 +66,8 @@ module.exports = options => ({
                 modifyVars: {
                   'primary-color': colors.secondary
                 }
-              }
+              },
+              implementation: require('less')
             }
           }
         ]
