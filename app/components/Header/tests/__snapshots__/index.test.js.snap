@@ -4,17 +4,17 @@ exports[`<Header /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <header
-      class="ant-layout-header Header__StyledHeader-wp2jxc-0 dogbdJ"
+      class="ant-layout-header Header__StyledHeader-wp2jxc-0 jpfWFm"
       data-testid="header"
       intl="[object Object]"
     >
       <img
         alt="logo"
-        class="Header__Logo-wp2jxc-1 krwYyt"
+        class="Header__Logo-wp2jxc-1 bDHyGP"
         src="IMAGE_MOCK"
       />
       <p
-        class="T__StyledText-gjlic1-0 fCtbeZ Header__Title-wp2jxc-2 fnXlwC"
+        class="T__StyledText-gjlic1-0 kYTaGb Header__Title-wp2jxc-2 dTrOKz"
         data-testid="t"
       >
         Wednesday Solutions
