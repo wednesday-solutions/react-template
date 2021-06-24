@@ -1,14 +1,14 @@
 name: React Template CI
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 jobs:
   build-and-test:
     name: Build & Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     steps:
       - uses: actions/checkout@v1
 
