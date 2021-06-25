@@ -2,12 +2,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const OfflinePlugin = require('offline-plugin');
-const webpack = require('webpack');
+const OfflinePlugin = require('@lcdp/offline-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-module.exports = require('./webpack.base.babel')({
+module.exports = require('./webpack.config.base')({
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
@@ -35,9 +34,7 @@ module.exports = require('./webpack.base.babel')({
             ascii_only: true
           }
         },
-        parallel: true,
-        cache: true,
-        sourceMap: true
+        parallel: true
       })
     ],
     nodeEnv: 'production',
@@ -73,8 +70,8 @@ module.exports = require('./webpack.base.babel')({
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
         minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
+        minifyCSS: true
+        // minifyURLs: true
       },
       inject: true
     }),
@@ -82,7 +79,6 @@ module.exports = require('./webpack.base.babel')({
     // Put it in the end to capture all the HtmlWebpackPlugin's
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
     new OfflinePlugin({
-      relativePaths: process.env.NODE_ENV === 'production',
       publicPath: '/',
       appShell: '/',
 
@@ -104,7 +100,6 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new CompressionPlugin({
-      algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8
@@ -129,12 +124,6 @@ module.exports = require('./webpack.base.babel')({
           ios: true
         }
       ]
-    }),
-
-    new webpack.ids.HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20
     })
   ],
 

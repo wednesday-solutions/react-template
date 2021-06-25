@@ -129,9 +129,9 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   Take a look at the following files
 
-  - [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
-  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
-  - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+  - [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
+  - [internals/webpack/webpack.config.dev.babel.js](internals/webpack/webpack.config.dev.babel.js)
+  - [internals/webpack/webpack.config.prod.babel.js](internals/webpack/webpack.config.prod.babel.js)
 
 ## Analyzing the bundle size using webpack-bundle-analyzer
 
@@ -139,7 +139,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   Take a look at the following files
 
-  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
+  - [internals/webpack/webpack.config.dev.babel.js](internals/webpack/webpack.config.dev.babel.js)
 
 ## Implementing CI/CD pipelines using Github Actions
 
@@ -196,7 +196,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 Take a look at the following files
 
-- [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
+- [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
 
 ### Chunkify and Lazy loading
 
@@ -217,7 +217,7 @@ Take a look at the following files
 Take a look at the following files
 
 - [app/app.js](app/app.js)
-- [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+- [internals/webpack/webpack.config.prod.babel.js](internals/webpack/webpack.config.prod.babel.js)
 
 ## Gotchas
 
