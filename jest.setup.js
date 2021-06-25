@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 jest.mock('react-router-dom', () => ({
   __esModule: true,
   useLocation: jest.fn().mockReturnValue({
