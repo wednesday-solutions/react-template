@@ -1,5 +1,5 @@
 const path = require('path');
-const genBaseConfig = require('../internals/webpack/webpack.base.babel.js');
+const genBaseConfig = require('../internals/webpack/webpack.config.base.js');
 module.exports = ({ config }) => {
   // hack cause smart knobs is not working on production
   process.env.NODE_ENV = 'development';
