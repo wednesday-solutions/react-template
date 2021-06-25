@@ -12,7 +12,7 @@ describe('<For />', () => {
   it('should render the number of elements passed as props', () => {
     const items = ['a', 'b'];
     const { getAllByTestId } = renderWithIntl(
-      <For of={items} renderItem={item => <div data-testid="child">{`item: ${item}`} </div>} />
+      <For of={items} renderItem={(item) => <div data-testid="child">{`item: ${item}`} </div>} />
     );
     expect(getAllByTestId('child').length).toEqual(items.length);
   });
@@ -22,8 +22,8 @@ describe('<For />', () => {
     const { getByTestId, getAllByTestId } = renderWithIntl(
       <For
         of={items}
-        ParentComponent={props => <span {...props} data-testid="parent-span" />}
-        renderItem={item => <div data-testid="child">{`item: ${item}`} </div>}
+        ParentComponent={(props) => <span {...props} data-testid="parent-span" />}
+        renderItem={(item) => <div data-testid="child">{`item: ${item}`} </div>}
       />
     );
 
@@ -39,8 +39,8 @@ describe('<For />', () => {
         of={items}
         noParent
         isRow={false}
-        ParentComponent={props => <span {...props} data-testid="parent-span" />}
-        renderItem={item => <div data-testid="child">{`item: ${item}`} </div>}
+        ParentComponent={(props) => <span {...props} data-testid="parent-span" />}
+        renderItem={(item) => <div data-testid="child">{`item: ${item}`} </div>}
       />
     );
 
@@ -52,8 +52,8 @@ describe('<For />', () => {
     const { findByTestId } = renderWithIntl(
       <For
         noParent
-        ParentComponent={props => <span {...props} data-testid="parent-span" />}
-        renderItem={item => <div data-testid="child">{`item: ${item}`} </div>}
+        ParentComponent={(props) => <span {...props} data-testid="parent-span" />}
+        renderItem={(item) => <div data-testid="child">{`item: ${item}`} </div>}
       />
     );
 
@@ -61,8 +61,8 @@ describe('<For />', () => {
 
     const rendered = renderWithIntl(
       <For
-        ParentComponent={props => <span {...props} data-testid="parent-span" />}
-        renderItem={item => <div data-testid="child">{`item: ${item}`} </div>}
+        ParentComponent={(props) => <span {...props} data-testid="parent-span" />}
+        renderItem={(item) => <div data-testid="child">{`item: ${item}`} </div>}
       />
     );
 

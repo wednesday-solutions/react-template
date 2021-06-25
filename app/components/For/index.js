@@ -10,10 +10,10 @@ import styled from 'styled-components';
 
 const FlexContainer = styled.div`
   display: flex;
-  flex-direction: ${props => (props.isRow ? `row;` : `column;`)};
+  flex-direction: ${(props) => (props.isRow ? `row;` : `column;`)};
 `;
 
-export function For({ of, ParentComponent = props => <FlexContainer {...props} />, renderItem, noParent, ...props }) {
+export function For({ of, ParentComponent = (props) => <FlexContainer {...props} />, renderItem, noParent, ...props }) {
   const list = () => of.map((item, index) => ({ ...renderItem(item, index), key: index }));
   const children = () => (
     <ParentComponent {...props} data-testid="for">

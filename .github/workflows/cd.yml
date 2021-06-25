@@ -1,7 +1,7 @@
 name: React Template CD
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
       - name: Deploy storybooks and gh-pages
         env:
           DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           eval "$(ssh-agent -s)"
           ssh-add - <<< "${DEPLOY_KEY}"

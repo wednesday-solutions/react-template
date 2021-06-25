@@ -1639,26 +1639,14 @@
       "id": "7kqo",
       "buildMeta": {
         "exportsType": "namespace",
-        "providedExports": [
-          "startsWith",
-          "pick",
-          "match",
-          "resolve",
-          "insertParams",
-          "validateRedirect"
-        ]
+        "providedExports": ["startsWith", "pick", "match", "resolve", "insertParams", "validateRedirect"]
       }
     },
     "./@reach/router/es/lib/history.js": {
       "id": "50Kn",
       "buildMeta": {
         "exportsType": "namespace",
-        "providedExports": [
-          "globalHistory",
-          "navigate",
-          "createHistory",
-          "createMemorySource"
-        ]
+        "providedExports": ["globalHistory", "navigate", "createHistory", "createMemorySource"]
       }
     },
     "../lib/router/dist/visibility.js": {

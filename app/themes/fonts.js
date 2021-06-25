@@ -5,22 +5,14 @@ import media from '@app/themes/media';
 const dynamicFontSize = (font, desktopDelta = 0, tabletDelta = 0) => css`
   ${font()}
   ${media.tablet.min(
-    `font-size: ${tabletDelta +
-      parseInt(
-        font()[0]
-          .replace('font-size:', '')
-          .replace('rem;', '')
-          .replace(/\s+/g, '')
-      )}rem;`
+    `font-size: ${
+      tabletDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))
+    }rem;`
   )};
   ${media.desktop.min(
-    `font-size: ${desktopDelta +
-      parseInt(
-        font()[0]
-          .replace('font-size:', '')
-          .replace('rem;', '')
-          .replace(/\s+/g, '')
-      )}rem;`
+    `font-size: ${
+      desktopDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))
+    }rem;`
   )};
 `;
 
