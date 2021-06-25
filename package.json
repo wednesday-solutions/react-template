@@ -206,5 +206,6 @@
     "webpack-hot-middleware": "2.25.0",
     "webpack-pwa-manifest": "4.3.0",
     "whatwg-fetch": "3.0.0"
-  }
+  },
+  "sideEffects": false
 }
