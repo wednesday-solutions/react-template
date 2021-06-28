@@ -1,5 +1,7 @@
 const path = require('path');
-const genBaseConfig = require('../internals/webpack/webpack.config.base.js');
+const genBaseConfig = require('../internals/webpack/webpack.config.base');
+const colors = require('../app/themes/colors');
+
 module.exports = ({ config }) => {
   // hack cause smart knobs is not working on production
   process.env.NODE_ENV = 'development';
@@ -10,7 +12,7 @@ module.exports = ({ config }) => {
     test: /\.less$/,
     use: [
       {
-        loader: 'style-loader' // creates style nodes from JS strings
+        loader: 'style-loader'
       },
       {
         loader: 'css-loader'
@@ -20,7 +22,9 @@ module.exports = ({ config }) => {
         options: {
           lessOptions: {
             javascriptEnabled: true,
-            modifyVars: {}
+            modifyVars: {
+              'primary-color': colors.secondary
+            }
           }
         }
       }

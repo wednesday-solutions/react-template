@@ -32,8 +32,6 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 ---
 
-<span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring">We are hiring!</a></span>
-
 </div>
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
@@ -130,8 +128,8 @@ An enterprise react template application showcasing - Testing strategies, Global
   Take a look at the following files
 
   - [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
-  - [internals/webpack/webpack.config.dev.babel.js](internals/webpack/webpack.config.dev.babel.js)
-  - [internals/webpack/webpack.config.prod.babel.js](internals/webpack/webpack.config.prod.babel.js)
+  - [internals/webpack/webpack.config.dev.js](internals/webpack/webpack.config.dev.js)
+  - [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
 
 ## Analyzing the bundle size using webpack-bundle-analyzer
 
@@ -139,7 +137,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   Take a look at the following files
 
-  - [internals/webpack/webpack.config.dev.babel.js](internals/webpack/webpack.config.dev.babel.js)
+  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
 
 ## Implementing CI/CD pipelines using Github Actions
 
@@ -196,7 +194,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 Take a look at the following files
 
-- [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
+- [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
 
 ### Chunkify and Lazy loading
 
@@ -217,15 +215,15 @@ Take a look at the following files
 Take a look at the following files
 
 - [app/app.js](app/app.js)
-- [internals/webpack/webpack.config.prod.babel.js](internals/webpack/webpack.config.prod.babel.js)
+- [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
 
 ## Gotchas
 
 - For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have used some workarounds.
   For production builds deployed directly on `/` you need to make the following changes
-  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
-     should be: `publicPath: '/' `
-  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.prod.babel.js#L85)
+  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.base.js#L29)
+     should be: `publicPath: '/'`
+  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.prod.js#L85)
      should be: `relativePaths: false,`
   3. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
      should be: `const history = createBrowserHistory();`
