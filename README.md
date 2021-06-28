@@ -13,8 +13,7 @@
 An enterprise react template application showcasing - Testing strategies, Global state management, middleware support, a network layer, component library integration, localization, PWA support, route configuration, lazy loading, and Continuous integration & deployment.
   </p>
 
-  ___
-
+---
 
   <p>
     <h4>
@@ -31,9 +30,8 @@ An enterprise react template application showcasing - Testing strategies, Global
     </a>
   </div>
 
-  ___
+---
 
-  <span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring">We are hiring!</a></span>
 </div>
 
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
@@ -117,6 +115,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 - Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
 
   Take a look at the following files
+
   - [.storybook/webpack.config.js](.storybook/webpack.config.js)
   - [.storybook/config.js](.storybook/config.js)
   - [.storybook/addons.js](.storybook/addons.js)
@@ -124,50 +123,56 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 ## Bundling your application using Webpack
 
-- We're using and configuring webpack to bundle our React application. 
+- We're using and configuring webpack to bundle our React application.
 
   Take a look at the following files
-  - [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
-  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
-  - [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+
+  - [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
+  - [internals/webpack/webpack.config.dev.js](internals/webpack/webpack.config.dev.js)
+  - [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
 
 ## Analyzing the bundle size using webpack-bundle-analyzer
 
-- The size of the bundle is analyzed using the webpack-bundle-analyzer to make sure that the bundle is lean and optimized. 
+- The size of the bundle is analyzed using the webpack-bundle-analyzer to make sure that the bundle is lean and optimized.
 
   Take a look at the following files
+
   - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
 
 ## Implementing CI/CD pipelines using Github Actions
 
-- CI/CD using Github Actions. 
+- CI/CD using Github Actions.
   The CI pipeline has the following phases
+
   - Checkout
   - Install dependencies
   - Lint
   - Test
   - Build
-    
+
   The CD pipeline has the following phases
+
   - Checkout
   - Install dependencies
   - Build
   - Deploy
 
   Take a look at the following files
+
   - [.github/workflows/ci.yml](.github/workflows/ci.yml)
   - [.github/workflows/cd.yml](.github/workflows/cd.yml)
-   
+
 ## Testing using @testing-library/react
 
-- Testing is done using the @testing-library/react. 
+- Testing is done using the @testing-library/react.
 
   Take a look at the following files
+
   - [jest.config.js](jest.config.js)
   - [jest.setup.js](jest.setup.js)
   - [app/containers/HomeContainer/tests](app/containers/HomeContainer/tests)
   - [app/services/tests/repoApi.test.js](app/services/tests/repoApi.test.js)
-  - [app/components/T/tests/index.test.js](app/components/T/tests/index.test.js) 
+  - [app/components/T/tests/index.test.js](app/components/T/tests/index.test.js)
 
 ## Scaffolding components/containers/tests using react-floki
 
@@ -210,16 +215,15 @@ Take a look at the following files
 Take a look at the following files
 
 - [app/app.js](app/app.js)
-- [internals/webpack/webpack.prod.babel.js](internals/webpack/webpack.prod.babel.js)
+- [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
 
-
-## Gotchas	
+## Gotchas
 
 - For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have used some workarounds.
-For production builds deployed directly on `/` you need to make the following changes
-  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.base.babel.js#L29)
-   should be: ```publicPath: '/'	```
-  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.prod.babel.js#L85)
-  should be: ```relativePaths: false,```
-  2. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
-  should be:  ```const history = createBrowserHistory();```
+  For production builds deployed directly on `/` you need to make the following changes
+  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.base.js#L29)
+     should be: `publicPath: '/'`
+  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.prod.js#L85)
+     should be: `relativePaths: false,`
+  3. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
+     should be: `const history = createBrowserHistory();`
