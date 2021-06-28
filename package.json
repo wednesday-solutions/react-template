@@ -172,7 +172,7 @@
     "jest-dom": "3.1.3",
     "jest-styled-components": "6.3.1",
     "less": "^4.1.1",
-    "less-loader": "^10.0.0",
+    "less-loader": "7",
     "lint-staged": "8.1.5",
     "ngrok": "3.1.1",
     "node-plop": "0.18.0",
