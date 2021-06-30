@@ -70,7 +70,7 @@ module.exports = require('./webpack.config.base')({
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
+        // minifyURLs: true
       },
       inject: true
     }),
@@ -128,6 +128,6 @@ module.exports = require('./webpack.config.base')({
   ],
 
   performance: {
-    assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
+    assetFilter: assetFilename => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
   }
 });

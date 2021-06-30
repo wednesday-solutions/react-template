@@ -32,7 +32,7 @@ export function App({ location }) {
       <Header />
       <Layout.Content>
         <For
-          ParentComponent={(props) => <Switch {...props} />}
+          ParentComponent={props => <Switch {...props} />}
           of={map(Object.keys(routeConfig))}
           renderItem={(routeKey, index) => {
             const Component = routeConfig[routeKey].component;
@@ -41,7 +41,7 @@ export function App({ location }) {
                 exact={routeConfig[routeKey].exact}
                 key={index}
                 path={routeConfig[routeKey].route}
-                render={(props) => {
+                render={props => {
                   const updatedProps = {
                     ...props,
                     ...routeConfig[routeKey].props

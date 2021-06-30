@@ -9,7 +9,7 @@ import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
 import ConnectedLanguageProvider from '@containers/LanguageProvider';
 import { IntlGlobalProvider } from '@components/IntlGlobalProvider';
 
-export const renderWithIntl = (children) =>
+export const renderWithIntl = children =>
   render(
     <IntlProvider locale={DEFAULT_LOCALE} messages={translationMessages[DEFAULT_LOCALE]}>
       <IntlGlobalProvider>{children}</IntlGlobalProvider>
@@ -24,7 +24,7 @@ export const getComponentStyles = (Component, props = {}) => {
   return window.getComputedStyle(componentRoots[0])._values;
 };
 
-export const renderProvider = (children) => {
+export const renderProvider = children => {
   const store = configureStore({}, browserHistory).store;
   return render(
     <Provider store={store}>
@@ -40,7 +40,7 @@ export const renderProvider = (children) => {
     </Provider>
   );
 };
-export const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+export const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const apiResponseGenerator = (ok, data) => ({
   ok,
   data

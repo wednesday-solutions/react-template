@@ -12,8 +12,8 @@ import routeConstants from '@utils/routeConstants';
 const ProtectedRoute = ({ isUserVerified, render: C, isLoggedIn, handleLogout, ...rest }) => {
   const isUnprotectedRoute =
     Object.keys(routeConstants)
-      .filter((key) => !routeConstants[key].isProtected)
-      .map((key) => routeConstants[key].route)
+      .filter(key => !routeConstants[key].isProtected)
+      .map(key => routeConstants[key].route)
       .includes(rest.path) && rest.exact;
 
   const guardedRedirection = (to, renderProps) => {
@@ -23,7 +23,7 @@ const ProtectedRoute = ({ isUserVerified, render: C, isLoggedIn, handleLogout, .
     return <Redirect to={to} />;
   };
 
-  const handleRedirection = (renderProps) => {
+  const handleRedirection = renderProps => {
     let to;
     if (!isLoggedIn) {
       // user is not logged in

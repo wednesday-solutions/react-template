@@ -20,23 +20,23 @@ export const generateApiClient = (type = 'github') => {
   }
 };
 
-export const createApiClientWithTransForm = (baseURL) => {
+export const createApiClientWithTransForm = baseURL => {
   const api = create({
     baseURL,
     headers: { 'Content-Type': 'application/json' }
   });
-  api.addResponseTransform((response) => {
+  api.addResponseTransform(response => {
     const { ok, data } = response;
     if (ok && data) {
-      response.data = mapKeysDeep(data, (keys) => camelCase(keys));
+      response.data = mapKeysDeep(data, keys => camelCase(keys));
     }
     return response;
   });
 
-  api.addRequestTransform((request) => {
+  api.addRequestTransform(request => {
     const { data } = request;
     if (data) {
-      request.data = mapKeysDeep(data, (keys) => snakeCase(keys));
+      request.data = mapKeysDeep(data, keys => snakeCase(keys));
     }
     return request;
   });

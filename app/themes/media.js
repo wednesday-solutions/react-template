@@ -12,7 +12,7 @@ const sizes = {
 // iterate through sizes and create a media template
 export default Object.keys(sizes).reduce((acc, label) => {
   acc[label] = {
-    min: (args) =>
+    min: args =>
       css`
         @media (min-width: ${sizes[label] / 16}em) {
           ${css([args])};
@@ -20,7 +20,7 @@ export default Object.keys(sizes).reduce((acc, label) => {
       `
         .join('')
         .replace(' ', ''),
-    max: (args) =>
+    max: args =>
       css`
         @media (max-width: ${sizes[label] / 16}em) {
           ${css([args])};

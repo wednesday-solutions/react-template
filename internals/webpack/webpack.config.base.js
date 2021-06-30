@@ -19,7 +19,7 @@ const envKeys = {
   }, {})
 };
 
-module.exports = (options) => ({
+module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
   output: Object.assign(

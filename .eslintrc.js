@@ -16,13 +16,13 @@ module.exports = {
 
   extends: ['prettier', 'prettier/react', 'prettier-standard', 'plugin:react/recommended', 'eslint:recommended'],
   rules: {
-    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
-    'prettier/prettier': ['error', prettierOptions],
+    'prettier/prettier': [prettierOptions],
     'import/no-webpack-loader-syntax': 0,
     'react/display-name': 0,
     curly: ['error', 'all'],
     'no-console': ['error', { allow: ['error'] }],
-    'key-spacing': [2, { beforeColon: false, afterColon: true }]
+    'key-spacing': [2, { beforeColon: false, afterColon: true }],
+    'arrow-parens': ['error', 'as-needed']
   },
   globals: {
     GLOBAL: false,

@@ -22,19 +22,19 @@ const { Search } = Input;
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    max-width: ${(props) => props.maxwidth};
-    color: ${(props) => props.color};
-    ${(props) => props.color && `color: ${props.color}`};
+    max-width: ${props => props.maxwidth};
+    color: ${props => props.color};
+    ${props => props.color && `color: ${props.color}`};
   }
 `;
 const Container = styled.div`
   && {
     display: flex;
     flex-direction: column;
-    max-width: ${(props) => props.maxwidth}px;
+    max-width: ${props => props.maxwidth}px;
     width: 100%;
     margin: 0 auto;
-    padding: ${(props) => props.padding}px;
+    padding: ${props => props.padding}px;
   }
 `;
 const RightContent = styled.div`
@@ -69,7 +69,7 @@ export function HomeContainer({
 
   const history = useHistory();
 
-  const handleOnChange = (rName) => {
+  const handleOnChange = rName => {
     if (!isEmpty(rName)) {
       dispatchGithubRepos(rName);
       setLoading(true);
@@ -139,8 +139,8 @@ export function HomeContainer({
           data-testid="search-bar"
           defaultValue={repoName}
           type="text"
-          onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-          onSearch={(searchText) => debouncedHandleOnChange(searchText)}
+          onChange={evt => debouncedHandleOnChange(evt.target.value)}
+          onSearch={searchText => debouncedHandleOnChange(searchText)}
         />
       </CustomCard>
       {renderRepoList()}
@@ -180,7 +180,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
-    dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),
+    dispatchGithubRepos: repoName => dispatch(requestGetGithubRepos(repoName)),
     dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
   };
 }

@@ -17,7 +17,7 @@ export const initialState = { repoName: null, reposData: [], reposError: null };
 
 /* eslint-disable default-case, no-param-reassign */
 export const homeContainerReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
+  produce(state, draft => {
     switch (action.type) {
       case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
         draft.repoName = action.repoName;
