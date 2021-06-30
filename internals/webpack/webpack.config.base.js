@@ -66,7 +66,8 @@ module.exports = options => ({
                 modifyVars: {
                   'primary-color': colors.secondary
                 }
-              }
+              },
+              implementation: require('less')
             }
           }
         ]
@@ -121,7 +122,7 @@ module.exports = options => ({
                 optimizationLevel: 7
               },
               pngquant: {
-                quality: '65-90',
+                quality: [0.65, 0.9],
                 speed: 4
               }
             }
