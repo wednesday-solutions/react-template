@@ -69,8 +69,8 @@ module.exports = require('./webpack.config.base')({
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
         minifyJS: true,
-        minifyCSS: true
-        // minifyURLs: true
+        minifyCSS: true,
+        minifyURLs: true
       },
       inject: true
     }),
