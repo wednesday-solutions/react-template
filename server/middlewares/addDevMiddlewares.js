@@ -11,12 +11,14 @@ function createWebpackMiddleware(compiler, publicPath) {
 }
 
 module.exports = function addDevMiddlewares(app, webpackConfig) {
-  const compiler = webpack(webpackConfig);
-  const middleware = createWebpackMiddleware(compiler, webpackConfig.output.publicPath);
+  const compiler = webpack(webpackConfig)
+  const middleware = createWebpackMiddleware(
+    compiler,
+    webpackConfig.output.publicPath
+  )
 
-  app.use(middleware);
-  app.use(webpackHotMiddleware(compiler));
-
+  app.use(middleware)
+  app.use(webpackHotMiddleware(compiler))
 
   // Since webpackDevMiddleware uses memory-fs internally to store build
   // artifacts, we use it instead
