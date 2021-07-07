@@ -6272,15 +6272,20 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
+date-fns@2.x:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
+  integrity sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==
+
 date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-date-fns@^2.15.0:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
-  integrity sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==
+dayjs@1.x:
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
@@ -14634,13 +14639,14 @@ rc-pagination@~3.1.6:
     classnames "^2.2.1"
 
 rc-picker@~2.5.10:
-  version "2.5.13"
-  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.5.13.tgz#a2f352ebe5e067d72ffd53cc2074f8dcacbbcc7d"
-  integrity sha512-FbEK5tKB5RVO/Pw3DHwYdL338oVH8TdfDU69fXjeStVeiaqDHf+VgpwI5qXo5vJltmmlNcM2oAbLPq7iIKDFRw==
+  version "2.5.14"
+  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.5.14.tgz#dfa919f7f7cc72496df45cb1cad9c82ad2fc019b"
+  integrity sha512-+tGDsrZQxwv1pLKYulaYqmTIXOdOCj2Lcl1mAt5C7Z6WYvWYYi9VF/tVgOznN7tMFUj65qgT+pue6RjRluVk1g==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
-    date-fns "^2.15.0"
+    date-fns "2.x"
+    dayjs "1.x"
     moment "^2.24.0"
     rc-trigger "^5.0.4"
     rc-util "^5.4.0"
@@ -18671,9 +18677,9 @@ write@1.0.3:
   dependencies:
     mkdirp "^0.5.1"
 
-"ws-react-sdk@git+https://github.com/wednesday-solutions/ws-react-sdk.git#master_upgrade":
+"ws-react-sdk@git+https://github.com/wednesday-solutions/ws-react-sdk.git#component_upgrade":
   version "0.0.3"
-  resolved "git+https://github.com/wednesday-solutions/ws-react-sdk.git#f5818cb112a2588f793136c08d170fd5a39fa55c"
+  resolved "git+https://github.com/wednesday-solutions/ws-react-sdk.git#fb7ea6e9d117c9f85eaa910ed4d90353378165af"
   dependencies:
     "@ant-design/icons" "4.6.2"
     "@rollup/plugin-image" "^2.0.6"

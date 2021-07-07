@@ -20,12 +20,11 @@ import App from 'containers/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
-import ScrollToTop from 'components/ScrollToTop';
-import ErrorBoundary from '@components/ErrorBoundary';
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
+import {ScrollToTop,ErrorBoundary} from 'ws-react-sdk'
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './configureStore';

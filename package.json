@@ -110,7 +110,7 @@
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
     "styled-components": "5.3.0",
-    "ws-react-sdk": "git+https://github.com/wednesday-solutions/ws-react-sdk.git#master_upgrade"
+    "ws-react-sdk": "git+https://github.com/wednesday-solutions/ws-react-sdk.git#component_upgrade"
   },
   "devDependencies": {
     "@babel/cli": "7.14.5",

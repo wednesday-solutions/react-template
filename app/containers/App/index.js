@@ -14,22 +14,31 @@ import { withRouter } from 'react-router';
 import map from 'lodash/map';
 import { compose } from 'redux';
 import { Layout } from 'antd';
+import styled,{ThemeProvider} from 'styled-components';
 import { routeConfig } from '@app/routeConfig';
-import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
-import Header from '@components/Header';
-import For from '@components/For';
+import {For,Header} from 'ws-react-sdk';
+import logo from '@images/icon-512x512.png';
 
 const theme = {
   fg: colors.primary,
   bg: colors.secondary
 };
-
+const HeaderStyled = styled(Header)`
+  &&{
+    background-color: ${colors.primary};
+    img{
+      height: 5em;
+      width: auto;
+      margin-right: 1em;
+    }
+  }
+`
 export function App({ location }) {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+        <HeaderStyled logo={logo} header='Wednesday Solution' />
       <Layout.Content>
         <For
           ParentComponent={props => <Switch {...props} />}
