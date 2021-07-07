@@ -10,12 +10,13 @@ import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-import T from '@components/T';
+// import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { injectSaga } from 'redux-injectors';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
+import {T,CustomInput} from 'ws-react-sdk'
 
 const { Search } = Input;
 
