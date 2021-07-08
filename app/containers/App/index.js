@@ -8,18 +8,15 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import map from 'lodash/map';
 import { compose } from 'redux';
 import { Layout } from 'antd';
-import { routeConfig } from '@app/routeConfig';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
 import Header from '@components/Header';
-import For from '@components/For';
+import ITunesSearch from '@containers/ITunesSearch';
 
 const theme = {
   fg: colors.primary,
@@ -31,27 +28,7 @@ export function App({ location }) {
     <ThemeProvider theme={theme}>
       <Header />
       <Layout.Content>
-        <For
-          ParentComponent={props => <Switch {...props} />}
-          of={map(Object.keys(routeConfig))}
-          renderItem={(routeKey, index) => {
-            const Component = routeConfig[routeKey].component;
-            return (
-              <Route
-                exact={routeConfig[routeKey].exact}
-                key={index}
-                path={routeConfig[routeKey].route}
-                render={props => {
-                  const updatedProps = {
-                    ...props,
-                    ...routeConfig[routeKey].props
-                  };
-                  return <Component {...updatedProps} />;
-                }}
-              />
-            );
-          }}
-        />
+        <ITunesSearch />
         <GlobalStyle />
       </Layout.Content>
     </ThemeProvider>
