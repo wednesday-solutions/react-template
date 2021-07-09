@@ -4,17 +4,17 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-l0s8pp-1 eLjtlX"
+      class="HomeContainer__Container-l0s8pp-1 haKSMo"
     >
       <div
-        class="HomeContainer__RightContent-l0s8pp-2 ktRuf"
+        class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
       >
         <div
-          class="Clickable__StyledClickable-sc-19lp5om-0 avquq"
+          class="Clickable__StyledClickable-sc-19lp5om-0 grlVIv"
           data-testid="clickable"
         >
           <p
-            class="T__StyledText-gjlic1-0 cbAvsY"
+            class="T__StyledText-gjlic1-0 kYcyRq"
             data-testid="t"
           >
             Go to Storybook
@@ -22,7 +22,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 etQjAO"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"
         maxwidth="500"
       >
         <div
@@ -42,7 +42,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 eEFXad"
+            class="T__StyledText-gjlic1-0 demndm"
             data-testid="t"
           >
             Get details of repositories
@@ -92,7 +92,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 lglBtv"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
         color="grey"
       >
         <div
@@ -112,7 +112,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 cbAvsY"
+            class="T__StyledText-gjlic1-0 kYcyRq"
             data-testid="t"
           >
             Search for a repository by entering it's name in the search box

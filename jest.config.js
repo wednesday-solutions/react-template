@@ -14,6 +14,7 @@ module.exports = {
     '!**/stories/**',
     '!**/themes/index.js'
   ],
+  testEnvironment: 'jsdom',
   coverageThreshold: {
     global: {
       statements: 50,

@@ -6,6 +6,8 @@ stats.json
 coverage/
 .vscode/
 switcher_backup.env
+yarn-error.log
+storybook-static
 
 # Cruft
 .DS_Store

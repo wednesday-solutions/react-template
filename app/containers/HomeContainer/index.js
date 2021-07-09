@@ -12,10 +12,10 @@ import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
-import { useInjectSaga } from 'utils/injectSaga';
+import { injectSaga } from 'redux-injectors';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
-import saga from './saga';
+import homeContainerSaga from './saga';
 
 const { Search } = Input;
 
@@ -51,7 +51,6 @@ export function HomeContainer({
   maxwidth,
   padding
 }) {
-  useInjectSaga({ key: 'homeContainer', saga });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -186,15 +185,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
   injectIntl,
   withConnect,
-  memo
+  memo,
+  injectSaga({ key: 'homeContainer', saga: homeContainerSaga })
 )(HomeContainer);
 
 export const HomeContainerTest = compose(injectIntl)(HomeContainer);
