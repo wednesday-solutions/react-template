@@ -91,7 +91,7 @@
     "ip": "1.1.5",
     "less": "^4.1.1",
     "less-loader": "7.3.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "minimist": "1.2.3",
     "prop-types": "15.7.2",
     "react": "17.0.2",
