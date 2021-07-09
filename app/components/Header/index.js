@@ -26,6 +26,7 @@ const Logo = styled.img`
   height: 5rem;
   width: auto;
   margin-top: 1rem;
+  margin-right: 1rem
 `;
 const Title = styled(T)`
   && {
@@ -39,7 +40,7 @@ function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
       <Logo alt="logo" src={logo} />
-      <Title type="heading" id="wednesday_solutions" />
+      <Title type="heading" id="itunes_music_search" />
     </StyledHeader>
   );
 }

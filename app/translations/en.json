@@ -1,14 +1,21 @@
 {
+  "itunes_music_search": "Itunes Music",
   "repo_list": "Repository List",
+  "result_list": "Results list",
   "repo_search": "Repository Search",
   "respo_search_default": "Search for a repository by entering it's name in the search box",
+  "result_search_default": "Search for a track, artist or album",
   "get_repo_details": "Get details of repositories",
-  "search_query": "Search query: {repoName}",
+  "search_query": "Search query: {query}",
   "matching_repos": "Total number of matching repos: {totalCount}",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
   "repository_name": "Repository Name: {name}",
   "repository_full_name": "Repository full name: {fullName}",
   "repository_stars": "Repository stars: {stars}",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "matching_results": "Total number of matching results: {totalCount}",
+  "track_name": "Track: {name}",
+  "artist_name": "Artist Name: {name}",
+  "search_itunes": "Search Itunes"
 }
