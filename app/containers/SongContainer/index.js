@@ -42,7 +42,9 @@ export function SongContainer({
         if (!isEmpty(rName)) {
             setLoading(true);
 
-        } 
+        } else {
+          setLoading(false)
+        }
     };
 
     const handleOnSearch = rName => {
