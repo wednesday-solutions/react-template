@@ -26,6 +26,7 @@ const Logo = styled.img`
   height: 5rem;
   width: auto;
   margin-top: 1rem;
+  margin-right: 1rem
 `;
 const Title = styled(T)`
   && {
