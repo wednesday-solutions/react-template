@@ -6,15 +6,13 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input, Row, Col, Divider } from 'antd';
+import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
 import { injectSaga } from 'redux-injectors';
 import { selectSongContainer, selectSongsData, selectSongsError, selectQuery } from './selectors';
 import { songContainerCreators } from './reducer';
 import songContainerSaga from './saga';
-import Clickable from '@components/Clickable';
 import T from '@components/T';
 
 
@@ -40,7 +38,8 @@ const SongCard = styled(Card)`
 
 const ImageArt = styled.img`
 && {
-    opacity: 0.8;
+    object-fit: cover;
+    height: 250px
 }
 `
 
@@ -67,6 +66,20 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+
+const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
+  const [src, setSrc] = React.useState(lowQualitySrc);
+  React.useEffect(() => {
+    setSrc(lowQualitySrc);
+    const img = new Image();
+    img.src = highQualitySrc;
+    img.onload = () => {
+      setSrc(highQualitySrc);
+    };
+  }, [lowQualitySrc, highQualitySrc]);
+  return [src, { blur: src === lowQualitySrc }];
+};
+
 export function SongContainer({
     dispatchSongs,
     dispatchClearSongs,
@@ -115,33 +128,33 @@ export function SongContainer({
         window.location.reload();
     };
 
-    const AlbumArt = (source) => {
-        const [loaded,setLoaded] = useState(false)
+    const AlbumArt = ({source}) => {
+        const [src, { blur }] = useProgressiveImg(`https://via.placeholder.com/250x250/ffffff/808080/?text=loading`, source);
         return (
-            <img 
-                src = {source}
-
-            />
-        )
-    } 
+          <ImageArt
+            src={src}
+            
+          />
+        );
+      };
     const renderResultList = () => {
         const items = get(songsData, 'results') 
         const totalCount = get(songsData, 'resultCount', 0);
         return (
             (items?.length !== 0 || loading) && (
                 <Skeleton loading={loading} active>
-                        {totalCount !== 0 && (
+                        {/* {totalCount !== 0 && (
                             <div>
                                 <T id="matching_results" values={{ totalCount }} />
                             </div>
-                        )}
+                        )} */}
                     <Container>
                            {items?.map((result, index) => (
                                     <SongCard
                                         hoverable
                                         key={index}
                                         style={{ width: 240 }}
-                                        cover={<ImageArt alt="example" src={result.artworkUrl100.replace('/100x100bb', '/250x250bb')} />}
+                                        cover={<AlbumArt source={result.artworkUrl100.replace('/100x100bb', '/250x250bb')} />}
                                     >
                                         <Meta title={intl.formatMessage({ id: 'track_name' }, { name: result.trackName })} description={intl.formatMessage({ id: 'artist_name' }, { name: result.artistName })} />
                                     </SongCard>
@@ -165,7 +178,7 @@ export function SongContainer({
         return (
             !loading &&
             songError && (
-                <CustomCard color={songsError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'result_list' })}>
+                <CustomCard color={songsError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'result_list' })} >
                     <T id={songError} />
                 </CustomCard>
             )
@@ -194,8 +207,8 @@ SongContainer.propTypes = {
     dispatchClearSongs: PropTypes.func,
     intl: PropTypes.object,
     songsData: PropTypes.shape({
-        songs: PropTypes.array,
-        songCount: PropTypes.number
+        results: PropTypes.array,
+        resultCount: PropTypes.number
     }),
     query: PropTypes.string,
     history: PropTypes.object,

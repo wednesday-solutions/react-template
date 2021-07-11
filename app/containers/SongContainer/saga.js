@@ -5,7 +5,6 @@ import { songContainerTypes, songContainerCreators } from './reducer';
 const { REQUEST_GET_SONGS } = songContainerTypes;
 const { successGetSongs, failureGetSongs } = songContainerCreators;
 export function* getSongResults(action) {
-console.log(action)
   const response = yield call(getSongs, action.query);
   const { data, ok } = response;
   if (ok) {
