@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { fonts, colors } from '@themes';
 import T from '@components/T';
-import logo from '@images/icon-512x512.png';
+import logo from '@images/logo.png';
 const StyledHeader = styled(Layout.Header)`
   && {
     &.ant-layout-header {

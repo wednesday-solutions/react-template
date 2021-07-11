@@ -8,7 +8,7 @@ import { createActions } from 'reduxsauce';
 import get from 'lodash/get';
 
 export const { Types: songContainerTypes, Creators: songContainerCreators } = createActions({
-  requestGetSongs: ['songName'],
+  requestGetSongs: ['query'],
   successGetSongs: ['data'],
   failureGetSongs: ['error'],
   clearSongs: []
@@ -26,8 +26,10 @@ export const songContainerReducer = (state = initialState, action) =>
         return initialState;
       case songContainerTypes.SUCCESS_GET_SONGS:
         draft.songsData = action.data;
+        draft.songsError = null
         break;
       case songContainerTypes.FAILURE_GET_SONGS:
+        draft.songsData = []
         draft.songsError = get(action.error, 'message', 'something_went_wrong');
         break;
     }
