@@ -38,5 +38,6 @@ module.exports = {
   ],
   setupFiles: ['raf/polyfill'],
   testRegex: 'tests/.*\\.test\\.js$',
-  snapshotSerializers: []
+  snapshotSerializers: [],
+  transformIgnorePatterns: ["!<rootDir>/node_modules/ws-react-sdk/*"]
 };

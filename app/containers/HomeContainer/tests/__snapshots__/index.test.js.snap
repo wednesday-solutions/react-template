@@ -10,11 +10,11 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
       >
         <div
-          class="Clickable__StyledClickable-sc-19lp5om-0 grlVIv"
+          class="Clickable__p-fki61g-0 bzveUc"
           data-testid="clickable"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__l-sc-12aqs62-0 ekBuYY"
             data-testid="t"
           >
             Go to Storybook
@@ -42,7 +42,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 demndm"
+            class="T__l-sc-12aqs62-0 cwAKds"
             data-testid="t"
           >
             Get details of repositories
@@ -112,7 +112,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__l-sc-12aqs62-0 ekBuYY"
             data-testid="t"
           >
             Search for a repository by entering it's name in the search box

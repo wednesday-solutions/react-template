@@ -37,6 +37,7 @@ module.exports = {
     },
     test: {
       plugins: [
+        ["@babel/transform-runtime"],
         '@babel/plugin-transform-modules-commonjs',
         'dynamic-import-node',
         ['import', { libraryName: 'antd', style: true }]
