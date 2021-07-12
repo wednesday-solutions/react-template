@@ -55,7 +55,6 @@ export function HomeContainer({
 
   useEffect(() => {
     const loaded = get(reposData, 'items', null) || reposError;
-    console.log(reposError)
     if (loading && loaded) {
       setLoading(false);
     }

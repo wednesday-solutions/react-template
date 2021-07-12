@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
 import React from 'react';
 
 const ImageArt = styled.img`
@@ -23,14 +22,13 @@ const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
   return [src, { blur: src === lowQualitySrc }];
 };
 
-const AlbumArt = ({ source }) => {
-  const [src, { blur }] = useProgressiveImg(`https://placeholder.pics/svg/250/DEDEDE/555555/loading...`, source);
+const LazyImage = ({ source }) => {
+  const [src] = useProgressiveImg(`https://placeholder.pics/svg/250/DEDEDE/555555/loading...`, source);
   return <ImageArt src={src} />;
 };
 
-AlbumArt.PropTypes = {
-  source: PropTypes.string.isRequired,
-  blur: PropTypes.string
+LazyImage.propTypes = {
+  source: PropTypes.string.isRequired
 };
 
-export default AlbumArt;
+export default LazyImage;
