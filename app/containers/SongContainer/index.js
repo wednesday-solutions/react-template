@@ -63,7 +63,7 @@ export function SongContainer({
   loading
 }) {
   useEffect(() => {
-    if (query != '' && songsData?.songs?.length) {
+    if (!isEmpty(query) && songsData?.songs?.length) {
       dispatchSongs(query);
     } else {
       dispatchClearSongs();
@@ -81,7 +81,7 @@ export function SongContainer({
   const renderResultList = () => {
     const items = get(songsData, 'results');
     return (
-      (items?.length !== 0 || loading) && (
+      (items?.length || loading) && (
         <Skeleton loading={loading} active>
           <For
             of={items}
