@@ -14,6 +14,7 @@ import songContainerSaga from './saga';
 import T from '@components/T';
 import LazyImage from '@app/components/LazyImage';
 import For from '@app/components/For';
+import AudioPlayer from '@app/components/AudioPlayer';
 
 const { Search } = Input;
 const { Meta } = Card;
@@ -31,6 +32,15 @@ const SongCard = styled(Card)`
     margin: 1em;
   }
 `;
+
+const Description = styled.div`
+  && {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
 const SongsContainer = styled.div`
   && {
     display: flex;
@@ -90,12 +100,22 @@ export function SongContainer({
                 <SongCard
                   hoverable
                   style={{ width: 240 }}
-                  cover={<LazyImage source={result.artworkUrl100.replace('/100x100bb', '/250x250bb')} />}
+                  cover={
+                    <LazyImage
+                      lowResUrl={result.artworkUrl100.replace('/100x100bb', '/30x30bb')}
+                      highResUrl={result.artworkUrl100.replace('/100x100bb', '/250x250bb')}
+                    />
+                  }
                 >
                   <Meta
                     title={intl.formatMessage({ id: 'track_name' }, { name: result.trackName })}
-                    description={intl.formatMessage({ id: 'artist_name' }, { name: result.artistName })}
+                    description={[
+                      <Description key={`${result.trackname}-description`}>
+                        {intl.formatMessage({ id: 'artist_name' }, { name: result.artistName })}
+                      </Description>
+                    ]}
                   />
+                  <AudioPlayer source={result.previewUrl} />
                 </SongCard>
               );
             }}
