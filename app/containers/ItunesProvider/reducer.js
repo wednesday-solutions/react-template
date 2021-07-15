@@ -11,6 +11,7 @@ export const { Types: songContainerTypes, Creators: songContainerCreators } = cr
   requestGetSongs: ['query'],
   successGetSongs: ['data'],
   failureGetSongs: ['error'],
+  requestGetTrack: ['id'],
   clearSongs: []
 });
 export const initialState = { query: null, songsData: [], songsError: null, loading: false };
@@ -23,8 +24,13 @@ export const songContainerReducer = (state = initialState, action) =>
         draft.loading = true;
         draft.query = action.query;
         break;
+      case songContainerTypes.REQUEST_GET_TRACK:
+        draft.loading = true;
+        break;
       case songContainerTypes.CLEAR_SONGS:
-        return initialState;
+        draft.loading = false;
+        draft.songsData = [];
+        break;
       case songContainerTypes.SUCCESS_GET_SONGS:
         draft.loading = false;
         draft.songsData = action.data;

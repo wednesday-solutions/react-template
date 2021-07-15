@@ -3,6 +3,8 @@ import { PlayCircleFilled, PauseCircleFilled } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
+import { compose } from 'redux';
 
 const PlayIcon = styled(PlayCircleFilled)`
   && {
@@ -50,7 +52,7 @@ const Controls = styled.div`
   }
 `;
 
-const AudioPlayer = ({ source }) => {
+const AudioPlayer = ({ source, intl }) => {
   const [playing, setPlaying] = useState(false);
   const audio = useRef(null);
   const timeline = useRef(null);
@@ -77,6 +79,7 @@ const AudioPlayer = ({ source }) => {
     const time = calculateCurrentValue(media.currentTime);
 
     function seek(e) {
+      e.stopPropagation();
       const percent = e.offsetX / timeline.current.offsetWidth;
       media.currentTime = percent * media.duration;
     }
@@ -93,12 +96,14 @@ const AudioPlayer = ({ source }) => {
     setPlaying(false);
   };
 
-  const play = () => {
+  const play = e => {
+    e.stopPropagation();
     setPlaying(true);
     audio.current.play();
   };
 
-  const pause = () => {
+  const pause = e => {
+    e.stopPropagation();
     setPlaying(false);
     audio.current.pause();
   };
@@ -107,12 +112,12 @@ const AudioPlayer = ({ source }) => {
     <div>
       <Controls ref={controls}>
         {playing ? (
-          <Tooltip title="pause">
-            <PauseIcon onClick={pause} />
+          <Tooltip title={intl.formatMessage({ id: 'pause' })}>
+            <PauseIcon onClick={e => pause(e)} />
           </Tooltip>
         ) : (
-          <Tooltip title="play">
-            <PlayIcon onClick={play} />
+          <Tooltip title={intl.formatMessage({ id: 'play' })}>
+            <PlayIcon onClick={e => play(e)} />
           </Tooltip>
         )}
         <TimelineContainer>
@@ -131,7 +136,8 @@ const AudioPlayer = ({ source }) => {
 };
 
 AudioPlayer.propTypes = {
-  source: PropTypes.string.isRequired
+  source: PropTypes.string.isRequired,
+  intl: PropTypes.object
 };
 
-export default AudioPlayer;
+export default compose(injectIntl)(AudioPlayer);

@@ -16,6 +16,11 @@
   "wednesday_solutions": "Wednesday Solutions",
   "matching_results": "Total number of matching results: {totalCount}",
   "track_name": "Track: {name}",
+  "collection_name": "Collection: {name}",
   "artist_name": "Artist Name: {name}",
-  "search_itunes": "Search Itunes"
+  "description": "{description}",
+  "search_itunes": "Search Itunes",
+  "track_details": "Track Details",
+  "play": "play",
+  "pause": "pause"
 }

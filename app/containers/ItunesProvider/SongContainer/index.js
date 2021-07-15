@@ -8,9 +8,10 @@ import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { injectSaga } from 'redux-injectors';
 import React, { useEffect } from 'react';
-import { selectSongContainer, selectSongsData, selectSongsError, selectQuery, selectLoading } from './selectors';
-import { songContainerCreators } from './reducer';
-import songContainerSaga from './saga';
+import { useHistory } from 'react-router-dom';
+import { selectSongContainer, selectSongsData, selectSongsError, selectQuery, selectLoading } from '../selectors';
+import { songContainerCreators } from '../reducer';
+import { songContainerSaga } from '../saga';
 import T from '@components/T';
 import LazyImage from '@app/components/LazyImage';
 import For from '@app/components/For';
@@ -73,12 +74,11 @@ export function SongContainer({
   loading
 }) {
   useEffect(() => {
-    if (!isEmpty(query) && songsData?.songs?.length) {
+    if (!isEmpty(query)) {
       dispatchSongs(query);
-    } else {
-      dispatchClearSongs();
     }
   }, []);
+
   const handleOnChange = rName => {
     if (!isEmpty(rName)) {
       dispatchSongs(rName);
@@ -86,6 +86,12 @@ export function SongContainer({
       dispatchClearSongs();
     }
   };
+  const history = useHistory();
+
+  const clickHandler = (e, trackId) => {
+    history.push(`/tracks/${trackId}`);
+  };
+
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const renderResultList = () => {
@@ -106,6 +112,7 @@ export function SongContainer({
                       highResUrl={result.artworkUrl100.replace('/100x100bb', '/250x250bb')}
                     />
                   }
+                  onClick={e => clickHandler(e, result.trackId)}
                 >
                   <Meta
                     title={intl.formatMessage({ id: 'track_name' }, { name: result.trackName })}
