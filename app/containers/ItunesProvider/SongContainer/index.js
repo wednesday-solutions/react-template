@@ -66,8 +66,8 @@ export function SongContainer({
   dispatchSongs,
   dispatchClearSongs,
   intl,
-  songsData = {},
-  songsError = null,
+  songsData,
+  songsError,
   query,
   maxwidth,
   padding,
@@ -167,10 +167,12 @@ SongContainer.propTypes = {
   dispatchSongs: PropTypes.func,
   dispatchClearSongs: PropTypes.func,
   intl: PropTypes.object,
-  songsData: PropTypes.shape({
-    results: PropTypes.array,
-    resultCount: PropTypes.number
-  }),
+  songsData: PropTypes.objectOf(
+    PropTypes.shape({
+      results: PropTypes.array,
+      resultCount: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
+    })
+  ),
   songsError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   query: PropTypes.string,
   history: PropTypes.object,
@@ -181,7 +183,9 @@ SongContainer.propTypes = {
 
 SongContainer.defaultProps = {
   maxwidth: 500,
-  padding: 20
+  padding: 20,
+  songsData: [],
+  songsError: null
 };
 
 const mapStateToProps = createStructuredSelector({

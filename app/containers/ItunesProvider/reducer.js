@@ -12,9 +12,19 @@ export const { Types: songContainerTypes, Creators: songContainerCreators } = cr
   successGetSongs: ['data'],
   failureGetSongs: ['error'],
   requestGetTrack: ['id'],
+  successGetTrack: ['data'],
+  failureGetTrack: ['error'],
+  clearTrack: [],
   clearSongs: []
 });
-export const initialState = { query: null, songsData: [], songsError: null, loading: false };
+export const initialState = {
+  query: null,
+  songsData: [],
+  songsError: null,
+  loading: false,
+  trackData: [],
+  trackError: null
+};
 
 /* eslint-disable default-case, no-param-reassign */
 export const songContainerReducer = (state = initialState, action) =>
@@ -23,9 +33,6 @@ export const songContainerReducer = (state = initialState, action) =>
       case songContainerTypes.REQUEST_GET_SONGS:
         draft.loading = true;
         draft.query = action.query;
-        break;
-      case songContainerTypes.REQUEST_GET_TRACK:
-        draft.loading = true;
         break;
       case songContainerTypes.CLEAR_SONGS:
         draft.loading = false;
@@ -40,6 +47,16 @@ export const songContainerReducer = (state = initialState, action) =>
         draft.loading = false;
         draft.songsData = [];
         draft.songsError = get(action.error, 'message', 'something_went_wrong');
+        break;
+      case songContainerTypes.REQUEST_GET_TRACK:
+        draft.loading = true;
+        break;
+      case songContainerTypes.SUCCESS_GET_TRACK:
+        draft.loading = false;
+        draft.trackData = action.data;
+        break;
+      case songContainerTypes.FAILURE_GET_TRACK:
+        draft.error = action.error;
         break;
     }
   });

@@ -22,5 +22,7 @@
   "search_itunes": "Search Itunes",
   "track_details": "Track Details",
   "play": "play",
-  "pause": "pause"
+  "pause": "pause",
+  "start_time": "00:00",
+  "apple_music": "Listen On Apple Music"
 }

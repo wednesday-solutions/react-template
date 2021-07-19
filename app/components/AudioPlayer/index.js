@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
+import If from '@components/If';
 
 const PlayIcon = styled(PlayCircleFilled)`
   && {
@@ -64,7 +65,7 @@ const AudioPlayer = ({ source, intl }) => {
     let percentPlayed = (audio.current.currentTime / audio.current.duration).toFixed(2) * 100;
     progress.current.style.width = `${percentPlayed}%`;
   };
-  const calculateCurrentValue = currentTime => {
+  const calculateCurrentValue = (currentTime) => {
     const currentMinute = parseInt(currentTime / 60) % 60;
     const currentSecondsLong = currentTime % 60;
     const currentSeconds = currentSecondsLong.toFixed();
@@ -96,30 +97,38 @@ const AudioPlayer = ({ source, intl }) => {
     setPlaying(false);
   };
 
-  const play = e => {
+  const play = (e) => {
     e.stopPropagation();
     setPlaying(true);
     audio.current.play();
   };
 
-  const pause = e => {
+  const pause = (e) => {
     e.stopPropagation();
     setPlaying(false);
     audio.current.pause();
   };
 
+  const Play = () => {
+    return (
+      <Tooltip title={intl.formatMessage({ id: 'play' })}>
+        <PlayIcon onClick={(e) => play(e)} />
+      </Tooltip>
+    );
+  };
+
+  const Pause = () => {
+    return (
+      <Tooltip title={intl.formatMessage({ id: 'pause' })}>
+        <PauseIcon onClick={(e) => pause(e)} />
+      </Tooltip>
+    );
+  };
+
   return (
     <div>
       <Controls ref={controls}>
-        {playing ? (
-          <Tooltip title={intl.formatMessage({ id: 'pause' })}>
-            <PauseIcon onClick={e => pause(e)} />
-          </Tooltip>
-        ) : (
-          <Tooltip title={intl.formatMessage({ id: 'play' })}>
-            <PlayIcon onClick={e => play(e)} />
-          </Tooltip>
-        )}
+        <If condition={playing} otherwise={<Play />} children={<Pause />} />
         <TimelineContainer>
           <Timeline ref={timeline}>
             <Progress ref={progress}></Progress>
@@ -127,7 +136,7 @@ const AudioPlayer = ({ source, intl }) => {
         </TimelineContainer>
 
         <small id="currentTime" ref={currentTime}>
-          00:00
+          {intl.formatMessage({ id: 'start_time' })}
         </small>
       </Controls>
       <audio ref={audio} src={source} onTimeUpdate={initProgressBar} onEnded={onEnded} />

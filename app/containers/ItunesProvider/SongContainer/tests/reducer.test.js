@@ -1,6 +1,6 @@
 // import produce from 'immer'
 import { fromJS } from 'immutable';
-import { songContainerReducer, songContainerTypes, initialState } from '../reducer';
+import { songContainerReducer, songContainerTypes, initialState } from '../../reducer';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('SongContainer reducer tests', () => {

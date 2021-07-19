@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ImageArt = styled.img`
   && {
@@ -10,8 +10,8 @@ const ImageArt = styled.img`
 `;
 
 const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
-  const [src, setSrc] = React.useState(lowQualitySrc);
-  React.useEffect(() => {
+  const [src, setSrc] = useState(lowQualitySrc);
+  useEffect(() => {
     setSrc(lowQualitySrc);
     const img = new Image();
     img.src = highQualitySrc;

@@ -29,4 +29,9 @@ export const selectQuery = () => createSelector(selectSongContainerDomain, subst
 export const selectLoading = () =>
   createSelector(selectSongContainerDomain, substate => get(substate, 'loading', null));
 
+export const selectTrackData = () =>
+  createSelector(selectSongContainerDomain, substate => get(substate, 'trackData', null));
+
+export const selectTrackError = () =>
+  createSelector(selectSongContainerDomain, substate => get(substate, 'trackError', null));
 export default selectSongContainer;

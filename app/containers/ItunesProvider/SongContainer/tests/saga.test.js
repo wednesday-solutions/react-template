@@ -5,7 +5,7 @@
 /* eslint-disable redux-saga/yield-effects */
 import { takeLatest } from 'redux-saga/effects';
 import songContainerSaga, { defaultFunction } from '../saga';
-import { songContainerTypes } from '../reducer';
+import { songContainerTypes } from '../../reducer';
 
 describe('SongContainer saga tests', () => {
   const generator = songContainerSaga();

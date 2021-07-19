@@ -1,9 +1,12 @@
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { get } from 'lodash';
+import { put, call, takeLatest, select } from 'redux-saga/effects';
 import { getSongs, getTrack } from '@services/songApi';
 import { songContainerTypes, songContainerCreators } from './reducer';
+import { selectSongsData } from './selectors';
 
 const { REQUEST_GET_SONGS, REQUEST_GET_TRACK } = songContainerTypes;
-const { successGetSongs, failureGetSongs } = songContainerCreators;
+const { successGetSongs, successGetTrack, failureGetTrack, failureGetSongs } = songContainerCreators;
+
 export function* getSongResults(action) {
   const response = yield call(getSongs, action.query);
   const { data, ok } = response;
@@ -14,12 +17,21 @@ export function* getSongResults(action) {
   }
 }
 export function* getTrackResults(action) {
-  const response = yield call(getTrack, action.id);
-  const { data, ok } = response;
-  if (ok) {
-    yield put(successGetSongs(data));
+  const tracksData = yield select(selectSongsData());
+  var track = get(tracksData, 'results').filter(obj => {
+    return obj.trackId == action.id;
+  })[0];
+  if (track) {
+    yield put(successGetTrack(track));
   } else {
-    yield put(failureGetSongs(data));
+    const response = yield call(getTrack, action.id);
+    const { data, ok } = response;
+    const track = get(data, 'results')[0];
+    if (ok) {
+      yield put(successGetTrack(track));
+    } else {
+      yield put(failureGetTrack(data));
+    }
   }
 }
 // Individual exports for testing
