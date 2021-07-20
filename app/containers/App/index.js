@@ -20,6 +20,7 @@ import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
 import {For,Header} from 'ws-react-sdk';
 import logo from '@images/icon-512x512.png';
+import { injectIntl } from 'react-intl';
 
 const theme = {
   fg: colors.primary,
@@ -35,10 +36,10 @@ const HeaderStyled = styled(Header)`
     }
   }
 `
-export function App({ location }) {
+export function App({ location,intl }) {
   return (
     <ThemeProvider theme={theme}>
-        <HeaderStyled logo={logo} header='Wednesday Solution' />
+        <HeaderStyled logo={logo} header={intl.formatMessage({ id: 'wednesday_solutions' })} />
       <Layout.Content>
         <For
           ParentComponent={props => <Switch {...props} />}
@@ -67,6 +68,7 @@ export function App({ location }) {
   );
 }
 App.propTypes = {
+  intl: PropTypes.object,
   location: PropTypes.object
 };
-export default compose(withRouter)(App);
+export default compose(withRouter,injectIntl)(App);

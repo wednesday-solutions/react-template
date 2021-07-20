@@ -12,7 +12,8 @@ module.exports = {
     '!**/apiUtils.js',
     '!**/testUtils.js',
     '!**/stories/**',
-    '!**/themes/index.js'
+    '!**/themes/index.js',
+    '!**/themes/styles.js'
   ],
   testEnvironment: 'jsdom',
   coverageThreshold: {
