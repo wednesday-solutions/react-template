@@ -22,13 +22,13 @@ export const initialState = {
   songsData: [],
   songsError: null,
   loading: false,
-  trackData: [],
+  trackData: {},
   trackError: null
 };
 
 /* eslint-disable default-case, no-param-reassign */
 export const songContainerReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case songContainerTypes.REQUEST_GET_SONGS:
         draft.loading = true;
@@ -54,10 +54,16 @@ export const songContainerReducer = (state = initialState, action) =>
       case songContainerTypes.SUCCESS_GET_TRACK:
         draft.loading = false;
         draft.trackData = action.data;
+        draft.trackError = null;
         break;
       case songContainerTypes.FAILURE_GET_TRACK:
-        draft.error = action.error;
+        draft.loading = false;
+
+        draft.trackError = get(action.error, 'message', 'something_went_wrong');
         break;
+      case songContainerTypes.CLEAR_TRACK:
+        draft.loading = false;
+        draft.trackData = {};
     }
   });
 

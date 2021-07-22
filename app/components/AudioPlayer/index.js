@@ -130,7 +130,7 @@ const AudioPlayer = ({ source, intl }) => {
       <Controls ref={controls}>
         <If condition={playing} otherwise={<Play />} children={<Pause />} />
         <TimelineContainer>
-          <Timeline ref={timeline}>
+          <Timeline onClick ref={timeline}>
             <Progress ref={progress}></Progress>
           </Timeline>
         </TimelineContainer>

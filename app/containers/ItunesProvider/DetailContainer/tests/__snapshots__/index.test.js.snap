@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DetailContainer /> container tests should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="DetailContainer__ResultContainer-luq84g-3 gwxbMM"
+    />
+  </div>
+</body>
+`;

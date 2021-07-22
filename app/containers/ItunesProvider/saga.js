@@ -1,11 +1,11 @@
-import { get } from 'lodash';
+import { get, isEmpty } from 'lodash';
 import { put, call, takeLatest, select } from 'redux-saga/effects';
 import { getSongs, getTrack } from '@services/songApi';
 import { songContainerTypes, songContainerCreators } from './reducer';
-import { selectSongsData } from './selectors';
+import { selectSongsData } from '@containers/ItunesProvider/selectors';
 
 const { REQUEST_GET_SONGS, REQUEST_GET_TRACK } = songContainerTypes;
-const { successGetSongs, successGetTrack, failureGetTrack, failureGetSongs } = songContainerCreators;
+const { successGetSongs, successGetTrack, failureGetTrack, failureGetSongs, clearTrack } = songContainerCreators;
 
 export function* getSongResults(action) {
   const response = yield call(getSongs, action.query);
@@ -16,18 +16,21 @@ export function* getSongResults(action) {
     yield put(failureGetSongs(data));
   }
 }
+
 export function* getTrackResults(action) {
   const tracksData = yield select(selectSongsData());
-  var track = get(tracksData, 'results').filter(obj => {
+  const track = get(tracksData, 'results')?.filter((obj) => {
     return obj.trackId == action.id;
   })[0];
-  if (track) {
+
+  if (!isEmpty(track)) {
     yield put(successGetTrack(track));
   } else {
     const response = yield call(getTrack, action.id);
     const { data, ok } = response;
-    const track = get(data, 'results')[0];
     if (ok) {
+      const track = get(data, 'results')[0];
+
       yield put(successGetTrack(track));
     } else {
       yield put(failureGetTrack(data));

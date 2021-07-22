@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import { useParams } from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
   __esModule: true,
@@ -17,7 +18,8 @@ jest.mock('react-router-dom', () => ({
       search: '',
       hash: ''
     }
-  })
+  }),
+  useParams: jest.fn().mockReturnValue({})
 }));
 
 Object.defineProperty(window, 'matchMedia', {
