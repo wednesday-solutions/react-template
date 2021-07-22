@@ -52,19 +52,4 @@ describe('DetailContainer saga tests', () => {
       })
     );
   });
-  // it('should ensure that the action SUCCESS_GET_GITHUB_REPOS is dispatched when the api call succeeds', () => {
-  //   getGithubReposGenerator = getGithubRepos({ repoName });
-  //   const res = getGithubReposGenerator.next().value;
-  //   expect(res).toEqual(call(getRepos, repoName));
-  //   const reposResponse = {
-  //     totalCount: 1,
-  //     items: [{ repositoryName: repoName }]
-  //   };
-  //   expect(getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
-  //     put({
-  //       type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
-  //       data: reposResponse
-  //     })
-  //   );
-  // });
 });
