@@ -5,15 +5,21 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: 14.x
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      - name: Setup node
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node }}
       - name: Install dependencies
         run: yarn
 
       - name: Build
-        run: yarn build:master
+        run: yarn build
         env:
           CI: true
 
@@ -22,7 +28,10 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_DEVELOP }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{secrets.AWS_REGION}}
           SOURCE_DIR: './build/'
+          DEST_DIR: './build/'
+
