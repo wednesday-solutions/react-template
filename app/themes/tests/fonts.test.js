@@ -14,6 +14,12 @@ describe('fonts', () => {
     expect(fonts.weights.normal()).toEqual(expect.arrayContaining([expect.stringContaining('font-weight:normal;')]));
   });
 
+  it('should have the correct font-family', () => {
+    expect(fonts.families.track()).toEqual(
+      expect.arrayContaining([expect.stringContaining('font-family:Helvetica,Arial,sans-serif;')])
+    );
+  });
+
   it('should have the correct font-weight and font-size', () => {
     expect(fonts.style.heading()).toEqual(expect.arrayContaining([expect.stringContaining('font-weight:bold;')]));
     expect(fonts.style.heading()).toEqual(expect.arrayContaining([expect.stringContaining('font-size:1.5rem;')]));
@@ -26,5 +32,16 @@ describe('fonts', () => {
 
     expect(fonts.style.subText()).toEqual(expect.arrayContaining([expect.stringContaining('font-size:0.875rem;')]));
     expect(fonts.style.subText()).toEqual(expect.arrayContaining([expect.stringContaining('font-weight:normal;')]));
+  });
+
+  it('should have the correct font-family and font-size', () => {
+    expect(fonts.style.title()).toEqual(expect.arrayContaining([expect.stringContaining('font-size:1rem;')]));
+    expect(fonts.style.title()).toEqual(
+      expect.arrayContaining([expect.stringContaining('font-family:Helvetica,Arial,sans-serif;')])
+    );
+    expect(fonts.style.description()).toEqual(expect.arrayContaining([expect.stringContaining('font-size:0.875rem;')]));
+    expect(fonts.style.description()).toEqual(
+      expect.arrayContaining([expect.stringContaining('font-family:Helvetica,Arial,sans-serif;')])
+    );
   });
 });

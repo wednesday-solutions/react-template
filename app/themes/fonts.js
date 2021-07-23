@@ -49,7 +49,7 @@ const normal = () => css`
 
 //families
 const track = () => css`
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 `;
 
 // styles
@@ -104,5 +104,8 @@ export default {
     light,
     bold,
     normal
+  },
+  families: {
+    track
   }
 };

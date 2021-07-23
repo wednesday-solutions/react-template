@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { injectSaga } from 'redux-injectors';
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory , Redirect } from 'react-router-dom';
 import { selectSongContainer, selectSongsData, selectSongsError, selectQuery, selectLoading } from '../selectors';
 import { songContainerCreators } from '../reducer';
 import { songContainerSaga } from '../saga';
@@ -16,6 +16,7 @@ import T from '@components/T';
 import LazyImage from '@app/components/LazyImage';
 import For from '@app/components/For';
 import AudioPlayer from '@app/components/AudioPlayer';
+
 
 const { Search } = Input;
 const { Meta } = Card;
@@ -62,6 +63,9 @@ const ResultContainer = styled.div`
   }
 `;
 
+export function HomeRoute() {
+  return <Redirect to="/tracks" />;
+}
 export function SongContainer({
   dispatchSongs,
   dispatchClearSongs,

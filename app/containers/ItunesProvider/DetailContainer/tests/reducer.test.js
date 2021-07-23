@@ -48,4 +48,13 @@ describe('DetailContainer reducer tests', () => {
       })
     ).toEqual(expectedResult);
   });
+
+  it('should ensure that the trackData has some data and loading = false when CLEAR_TRACK is dispatched', () => {
+    const expectedResult = { ...state, trackData: {}, loading: false };
+    expect(
+      songContainerReducer(state, {
+        type: songContainerTypes.CLEAR_TRACK
+      })
+    ).toEqual(expectedResult);
+  });
 });

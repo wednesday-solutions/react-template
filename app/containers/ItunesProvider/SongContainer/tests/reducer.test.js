@@ -46,4 +46,12 @@ describe('SongContainer reducer tests', () => {
       })
     ).toEqual(expectedResult);
   });
+  it('should ensure that the songsData has no data and loading = false when CLEAR_SONGS is dispatched', () => {
+    const expectedResult = { ...state, songsData: [], loading: false };
+    expect(
+      songContainerReducer(state, {
+        type: songContainerTypes.CLEAR_SONGS
+      })
+    ).toEqual(expectedResult);
+  });
 });
