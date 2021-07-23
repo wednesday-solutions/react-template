@@ -5,7 +5,7 @@ import { songContainerTypes, songContainerCreators } from './reducer';
 import { selectSongsData } from '@containers/ItunesProvider/selectors';
 
 const { REQUEST_GET_SONGS, REQUEST_GET_TRACK } = songContainerTypes;
-const { successGetSongs, successGetTrack, failureGetTrack, failureGetSongs, clearTrack } = songContainerCreators;
+const { successGetSongs, successGetTrack, failureGetTrack, failureGetSongs } = songContainerCreators;
 
 export function* getSongResults(action) {
   const response = yield call(getSongs, action.query);
@@ -19,7 +19,7 @@ export function* getSongResults(action) {
 
 export function* getTrackResults(action) {
   const tracksData = yield select(selectSongsData());
-  const track = get(tracksData, 'results')?.filter((obj) => {
+  const track = get(tracksData, 'results')?.filter(obj => {
     return obj.trackId == action.id;
   })[0];
 

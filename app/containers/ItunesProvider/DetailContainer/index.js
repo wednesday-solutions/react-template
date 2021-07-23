@@ -104,7 +104,7 @@ export function DetailContainer({
     const item = trackData;
     return (
       <Skeleton loading={loading} active>
-        <If condition={!isEmpty(item)} children={renderResult(item)} />
+        <If condition={!isEmpty(item)}>{renderResult(item)}</If>
       </Skeleton>
     );
   };

@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import { useParams } from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
   __esModule: true,

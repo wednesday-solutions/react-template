@@ -10,14 +10,14 @@ exports[`<Header /> should render and match the snapshot 1`] = `
     >
       <img
         alt="logo"
-        class="Header__Logo-wp2jxc-1 bDHyGP"
+        class="Header__Logo-wp2jxc-1 hWcWMZ"
         src="IMAGE_MOCK"
       />
       <p
         class="T__StyledText-gjlic1-0 kYTaGb Header__Title-wp2jxc-2 dTrOKz"
         data-testid="t"
       >
-        Wednesday Solutions
+        Itunes Music
       </p>
     </header>
   </div>

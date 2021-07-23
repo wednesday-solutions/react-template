@@ -24,7 +24,12 @@ describe('DetailContainer reducer tests', () => {
 
   it('should ensure that the user data is present and loading = false when SUCCESS_GET_TRACK is dispatched', () => {
     const data = { trackId: 1 };
-    const expectedResult = { ...state, trackData: data, loading: false };
+    const expectedResult = {
+      ...state,
+
+      trackData: data,
+      loading: false
+    };
     expect(
       songContainerReducer(state, {
         type: songContainerTypes.SUCCESS_GET_TRACK,

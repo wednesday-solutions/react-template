@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
-import If from '@components/If';
 import { colors } from '@app/themes/';
 
 const PlayIcon = styled(PlayCircleFilled)`
@@ -64,7 +63,7 @@ const AudioPlayer = ({ source, intl }) => {
   const calculatePercentPlayed = () => {
     setPercentPlayed((audio.current.currentTime / audio.current.duration).toFixed(2) * 100);
   };
-  const calculateCurrentValue = (currentTime) => {
+  const calculateCurrentValue = currentTime => {
     const currentMinute = parseInt(currentTime / 60) % 60;
     const currentSecondsLong = currentTime % 60;
     const currentSeconds = currentSecondsLong.toFixed();
@@ -94,13 +93,13 @@ const AudioPlayer = ({ source, intl }) => {
     setPlaying(false);
   };
 
-  const play = (e) => {
+  const play = e => {
     e.stopPropagation();
     setPlaying(true);
     audio.current.play();
   };
 
-  const pause = (e) => {
+  const pause = e => {
     e.stopPropagation();
     setPlaying(false);
     audio.current.pause();
@@ -109,7 +108,7 @@ const AudioPlayer = ({ source, intl }) => {
   const Play = () => {
     return (
       <Tooltip title={intl.formatMessage({ id: 'play' })}>
-        <PlayIcon onClick={(e) => play(e)} />
+        <PlayIcon onClick={e => play(e)} />
       </Tooltip>
     );
   };
@@ -117,7 +116,7 @@ const AudioPlayer = ({ source, intl }) => {
   const Pause = () => {
     return (
       <Tooltip title={intl.formatMessage({ id: 'pause' })}>
-        <PauseIcon onClick={(e) => pause(e)} />
+        <PauseIcon onClick={e => pause(e)} />
       </Tooltip>
     );
   };
@@ -125,7 +124,7 @@ const AudioPlayer = ({ source, intl }) => {
   return (
     <div>
       <Controls>
-        <If condition={playing} otherwise={<Play />} children={<Pause />} />
+        {playing ? <Pause /> : <Play />}
         <TimelineContainer>
           <Timeline ref={timeline}>
             <Progress style={{ width: `${percentPlayed}%` }}></Progress>

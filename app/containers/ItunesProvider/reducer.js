@@ -54,10 +54,7 @@ export const songContainerReducer = (state = initialState, action) =>
       case songContainerTypes.SUCCESS_GET_TRACK:
         draft.loading = false;
         draft.trackData = action.data;
-        draft.songsData = {
-          resultCount: state.songsData.resultCount,
-          results: [...state.songsData.results, action.data]
-        };
+
         draft.trackError = null;
         break;
       case songContainerTypes.FAILURE_GET_TRACK:
