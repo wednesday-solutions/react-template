@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LazyImage /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <img
+      class="LazyImage__ImageArt-sc-1wx4egn-0 jfApRO"
+      src="IMAGE_MOCK"
+    />
+  </div>
+</body>
+`;

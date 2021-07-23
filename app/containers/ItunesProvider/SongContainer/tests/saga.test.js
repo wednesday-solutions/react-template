@@ -18,7 +18,13 @@ describe('SongContainer saga tests', () => {
     expect(generator.next().value).toEqual(takeLatest(songContainerTypes.REQUEST_GET_SONGS, getSongResults));
   });
 
+  it('should make an api call using getSongs when invoked', () => {
+    const res = getSongResultsGenerator.next().value;
+    expect(res).toEqual(call(getSongs, query));
+  });
+
   it('should ensure that the action FAILURE_GET_SONGS is dispatched when the api call fails', () => {
+    getSongResultsGenerator = getSongResults({ query });
     const res = getSongResultsGenerator.next().value;
     expect(res).toEqual(call(getSongs, query));
     const error = {

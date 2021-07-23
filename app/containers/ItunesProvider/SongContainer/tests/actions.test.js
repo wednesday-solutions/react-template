@@ -15,4 +15,17 @@ describe('SongContainer action tests', () => {
     };
     expect(songContainerCreators.successGetSongs({ query: 'query' })).toEqual(expected);
   });
+  it('has a type of FAILURE_GET_SONGS', () => {
+    const expected = {
+      type: songContainerTypes.FAILURE_GET_SONGS,
+      error: 'error'
+    };
+    expect(songContainerCreators.failureGetSongs('error')).toEqual(expected);
+  });
+  it('has a type of CLEAR_SONGS', () => {
+    const expected = {
+      type: songContainerTypes.CLEAR_SONGS
+    };
+    expect(songContainerCreators.clearSongs('error')).toEqual(expected);
+  });
 });
