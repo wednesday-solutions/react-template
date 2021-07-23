@@ -6,15 +6,16 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
 import If from '@components/If';
+import { colors } from '@app/themes/';
 
 const PlayIcon = styled(PlayCircleFilled)`
   && {
-    font-size: 250%;
+    font-size: 2.5em;
   }
 `;
 const PauseIcon = styled(PauseCircleFilled)`
   && {
-    font-size: 250%;
+    font-size: 2.5em;
   }
 `;
 const Timeline = styled.div`
@@ -22,16 +23,16 @@ const Timeline = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #e3e3e3;
-    border: 1px solid black;
+    background-color: ${colors.background};
+    border: 1px solid ${colors.border};
   }
 `;
 const TimelineContainer = styled.div`
   && {
     position: relative;
     width: 100%;
-    margin: 1em 5px;
-    height: 5px;
+    margin: 1em 0em;
+    height: 0.4em;
   }
 `;
 
@@ -41,7 +42,7 @@ const Progress = styled.div`
     left: 0;
     top: 0;
     height: 100%;
-    background-color: coral;
+    background-color: ${colors.progress};
   }
 `;
 const Controls = styled.div`
@@ -55,15 +56,13 @@ const Controls = styled.div`
 
 const AudioPlayer = ({ source, intl }) => {
   const [playing, setPlaying] = useState(false);
+  const [percentPlayed, setPercentPlayed] = useState(0);
+  const [currentTime, setCurrentTime] = useState('00:00');
   const audio = useRef(null);
   const timeline = useRef(null);
-  const progress = useRef(null);
-  const controls = useRef(null);
-  const currentTime = useRef(null);
 
   const calculatePercentPlayed = () => {
-    let percentPlayed = (audio.current.currentTime / audio.current.duration).toFixed(2) * 100;
-    progress.current.style.width = `${percentPlayed}%`;
+    setPercentPlayed((audio.current.currentTime / audio.current.duration).toFixed(2) * 100);
   };
   const calculateCurrentValue = (currentTime) => {
     const currentMinute = parseInt(currentTime / 60) % 60;
@@ -84,16 +83,14 @@ const AudioPlayer = ({ source, intl }) => {
       const percent = e.offsetX / timeline.current.offsetWidth;
       media.currentTime = percent * media.duration;
     }
-
-    currentTime.current.innerHTML = time;
+    setCurrentTime(time);
     timeline.current.addEventListener('click', seek);
     calculatePercentPlayed();
   };
 
   const onEnded = () => {
-    progress.current.style.width = 0;
-    currentTime.current.innerHTML = '00:00';
-
+    setPercentPlayed(0);
+    setCurrentTime('00:00');
     setPlaying(false);
   };
 
@@ -127,17 +124,15 @@ const AudioPlayer = ({ source, intl }) => {
 
   return (
     <div>
-      <Controls ref={controls}>
+      <Controls>
         <If condition={playing} otherwise={<Play />} children={<Pause />} />
         <TimelineContainer>
-          <Timeline onClick ref={timeline}>
-            <Progress ref={progress}></Progress>
+          <Timeline ref={timeline}>
+            <Progress style={{ width: `${percentPlayed}%` }}></Progress>
           </Timeline>
         </TimelineContainer>
 
-        <small id="currentTime" ref={currentTime}>
-          {intl.formatMessage({ id: 'start_time' })}
-        </small>
+        <small id="currentTime">{currentTime}</small>
       </Controls>
       <audio ref={audio} src={source} onTimeUpdate={initProgressBar} onEnded={onEnded} />
     </div>
@@ -145,7 +140,7 @@ const AudioPlayer = ({ source, intl }) => {
 };
 
 AudioPlayer.propTypes = {
-  source: PropTypes.string.isRequired,
+  source: PropTypes.string,
   intl: PropTypes.object
 };
 

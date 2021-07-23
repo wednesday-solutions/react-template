@@ -7,9 +7,7 @@
 
 import React from 'react';
 import { renderProvider, timeout } from '@utils/testUtils';
-import { fireEvent } from '@testing-library/dom';
 import { DetailContainerTest as DetailContainer } from '../index';
-import { useParams } from 'react-router-dom';
 
 describe('<DetailContainer /> container tests', () => {
   let submitSpy;
@@ -21,7 +19,6 @@ describe('<DetailContainer /> container tests', () => {
     submitSpy = jest.fn();
   });
   it('should render and match the snapshot', () => {
-    console.log(useParams);
     const { baseElement } = renderProvider(<DetailContainer dispatchTrack={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });

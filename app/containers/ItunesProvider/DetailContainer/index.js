@@ -41,8 +41,8 @@ const ContentContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: ${(props) => props.maxwidth}px;
-    padding: ${(props) => props.padding}px;
+    max-width: ${props => props.maxwidth}px;
+    padding: ${props => props.padding}px;
   }
 `;
 const ResultContainer = styled.div`
@@ -52,7 +52,7 @@ const ResultContainer = styled.div`
     max-width: 80vw;
     width: 100%;
     margin: 20px auto;
-    padding: ${(props) => props.padding}px;
+    padding: ${props => props.padding}px;
   }
 `;
 
@@ -74,7 +74,7 @@ export function DetailContainer({
     };
   }, []);
 
-  const TrackDetail = ({ item }) => {
+  const renderResult = item => {
     return (
       <ContentContainer>
         <LazyImage
@@ -83,13 +83,12 @@ export function DetailContainer({
         />
         <TextContainer>
           <Meta
-            title={intl.formatMessage({ id: 'track_name' }, { name: item.trackName })}
+            title={<T id="track_name" type="title" values={{ name: item.trackName }} />}
             description={[
               <TextContainer key={`${item.trackId}`}>
-                <div>{intl.formatMessage({ id: 'artist_name' }, { name: item.artistName })}</div>
-                <div>{intl.formatMessage({ id: 'collection_name' }, { name: item.collectionName })}</div>
+                <T id="artist_name" type="description" values={{ name: item.artistName }} />
+                <T id="collection_name" type="description" values={{ name: item.collectionName }} />
                 <AudioPlayer source={item.previewUrl} />
-                <div>{intl.formatMessage({ id: 'description' }, { description: item.description })}</div>
                 <LinkButton href={item.trackViewUrl} target="_blank">
                   <T id="apple_music" />
                 </LinkButton>
@@ -100,11 +99,12 @@ export function DetailContainer({
       </ContentContainer>
     );
   };
+
   const renderResultList = () => {
     const item = trackData;
     return (
       <Skeleton loading={loading} active>
-        <If condition={!isEmpty(item)} children={<TrackDetail item={item} />} />
+        <If condition={!isEmpty(item)} children={renderResult(item)} />
       </Skeleton>
     );
   };
@@ -122,11 +122,14 @@ export function DetailContainer({
     </ResultContainer>
   );
 }
+
 DetailContainer.propTypes = {
   dispatchTrack: PropTypes.func,
+  dispatchClearTrack: PropTypes.func,
+  item: PropTypes.object,
   intl: PropTypes.object,
   trackData: PropTypes.object,
-  trackError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  trackError: PropTypes.string,
   maxwidth: PropTypes.number,
   padding: PropTypes.number,
   loading: PropTypes.bool
@@ -149,7 +152,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   const { requestGetTrack, clearTrack } = songContainerCreators;
   return {
-    dispatchTrack: (id) => dispatch(requestGetTrack(id)),
+    dispatchTrack: id => dispatch(requestGetTrack(id)),
     dispatchClearTrack: () => dispatch(clearTrack())
   };
 }

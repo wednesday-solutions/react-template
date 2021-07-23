@@ -10,7 +10,9 @@ const text = '#212529';
 const secondary = '#f8c49c';
 const success = '#28a745';
 const error = '#dc3545';
-const backGround = '#e3e3e3';
+const background = '#e3e3e3';
+const border = '#000';
+const progress = '#FF7F50';
 
 const colors = {
   transparent: 'rgba(0,0,0,0)',
@@ -20,6 +22,9 @@ const colors = {
   secondary,
   success,
   error,
+  background,
+  border,
+  progress,
   theme: {
     lightMode: {
       primary,

@@ -9,19 +9,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: setup git token
-        uses: fregante/setup-git-token@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install dependencies
         run: yarn
 
-      - name: Deploy storybooks and gh-pages
+      - name: Continuous deployment
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks
         env:
-          DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${DEPLOY_KEY}"
-          yarn deploy
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_DEVELOP }}
+          WS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: './build/'

@@ -25,7 +25,7 @@ const CustomCard = styled(Card)`
     width: ;
     display: flex;
     flex-wrap: wrap;
-    color: ${(props) => props.color};
+    color: ${props => props.color};
   }
 `;
 const SongCard = styled(Card)`
@@ -47,8 +47,8 @@ const SongsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: ${(props) => props.maxwidth}px;
-    padding: ${(props) => props.padding}px;
+    max-width: ${props => props.maxwidth}px;
+    padding: ${props => props.padding}px;
   }
 `;
 const ResultContainer = styled.div`
@@ -58,7 +58,7 @@ const ResultContainer = styled.div`
     max-width: 80vw;
     width: 100%;
     margin: 20px auto;
-    padding: ${(props) => props.padding}px;
+    padding: ${props => props.padding}px;
   }
 `;
 
@@ -79,7 +79,7 @@ export function SongContainer({
     }
   }, []);
 
-  const handleOnChange = (rName) => {
+  const handleOnChange = rName => {
     if (!isEmpty(rName)) {
       dispatchSongs(rName);
     } else {
@@ -101,7 +101,7 @@ export function SongContainer({
         <Skeleton loading={loading} active>
           <For
             of={items}
-            renderItem={(result) => {
+            renderItem={result => {
               return (
                 <SongCard
                   hoverable
@@ -112,7 +112,7 @@ export function SongContainer({
                       highResUrl={result.artworkUrl100.replace('/100x100bb', '/250x250bb')}
                     />
                   }
-                  onClick={(e) => clickHandler(e, result.trackId)}
+                  onClick={e => clickHandler(e, result.trackId)}
                 >
                   <Meta
                     title={intl.formatMessage({ id: 'track_name' }, { name: result.trackName })}
@@ -126,7 +126,7 @@ export function SongContainer({
                 </SongCard>
               );
             }}
-            ParentComponent={(props) => <SongsContainer {...props} />}
+            ParentComponent={props => <SongsContainer {...props} />}
           />
         </Skeleton>
       )
@@ -155,8 +155,8 @@ export function SongContainer({
         data-testid="search-bar"
         defaultValue={query}
         type="text"
-        onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-        onSearch={(searchText) => debouncedHandleOnChange(searchText)}
+        onChange={evt => debouncedHandleOnChange(evt.target.value)}
+        onSearch={searchText => debouncedHandleOnChange(searchText)}
       />
       {renderErrorState()}
       {renderResultList()}
@@ -167,13 +167,13 @@ SongContainer.propTypes = {
   dispatchSongs: PropTypes.func,
   dispatchClearSongs: PropTypes.func,
   intl: PropTypes.object,
-  songsData: PropTypes.arrayOf(
+  songsData: PropTypes.objectOf(
     PropTypes.shape({
       results: PropTypes.array,
       resultCount: PropTypes.number
     })
   ),
-  songsError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  songsError: PropTypes.string,
   query: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
@@ -199,7 +199,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   const { requestGetSongs, clearSongs } = songContainerCreators;
   return {
-    dispatchSongs: (query) => dispatch(requestGetSongs(query)),
+    dispatchSongs: query => dispatch(requestGetSongs(query)),
     dispatchClearSongs: () => dispatch(clearSongs())
   };
 }

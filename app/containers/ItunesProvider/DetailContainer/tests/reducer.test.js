@@ -1,5 +1,4 @@
-// import produce from 'immer'
-import { songContainerReducer, songContainerTypes, initialState } from '../../reducer';
+import { songContainerReducer, songContainerTypes, initialState } from '@containers/ItunesProvider/reducer';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('DetailContainer reducer tests', () => {
