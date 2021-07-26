@@ -130,7 +130,6 @@ const AudioPlayer = ({ source, intl }) => {
             <Progress style={{ width: `${percentPlayed}%` }}></Progress>
           </Timeline>
         </TimelineContainer>
-
         <small id="currentTime">{currentTime}</small>
       </Controls>
       <audio ref={audio} src={source} onTimeUpdate={initProgressBar} onEnded={onEnded} />
