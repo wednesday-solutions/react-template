@@ -44,7 +44,9 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks
 
-      - name: Update pr with link
-        uses: gr2m/create-or-update-pull-request-action@v1
+      - name: update-pull-request
+        uses: kt3k/update-pr-description@v1.0.1
         with:
-          body: http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
+          pr_body: http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
+          destination_branch: master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
