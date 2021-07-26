@@ -45,7 +45,13 @@ jobs:
           args: --acl public-read --follow-symlinks
 
       - name: update-pull-request
-        uses: kt3k/update-pr-description@v1.0.1
+      - uses: tzkhan/pr-update-action@v2
         with:
-          pr_body: http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: '${{ secrets.GITHUB_TOKEN }}'
+        base-branch-regex: '[a-z\d-_.\\/]+'
+        head-branch-regex: '[a-z\d-_.\\/]+'
+        title-template: '[%headbranch%] '
+        body-template: |
+          http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
+        body-update-action: 'suffix'
+        body-uppercase-base-match: false
