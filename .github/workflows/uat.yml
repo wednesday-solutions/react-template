@@ -48,5 +48,4 @@ jobs:
         uses: kt3k/update-pr-description@v1.0.1
         with:
           pr_body: http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
-          destination_branch: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
