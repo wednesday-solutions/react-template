@@ -37,10 +37,7 @@ import { translationMessages } from './i18n';
 const initialState = {};
 const { store, persistor } = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
-const path = (/#!(\/.*)$/.exec(location.hash) || [])[1];
-if (path) {
-  history.replace(path);
-}
+
 const render = messages => {
   ReactDOM.render(
     <ErrorBoundary>

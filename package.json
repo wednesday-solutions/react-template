@@ -41,7 +41,7 @@
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
     "test:clean": "rimraf ./coverage",
-    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test": "cross-env NODE_ENV=test jest",
     "test:staged": "jest --findRelatedTests",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
