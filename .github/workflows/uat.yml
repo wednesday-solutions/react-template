@@ -48,9 +48,6 @@ jobs:
       - uses: tzkhan/pr-update-action@v2
         with:
         repo-token: '${{ secrets.GITHUB_TOKEN }}'
-        base-branch-regex: '[a-z\d-_.\\/]+'
-        head-branch-regex: '[a-z\d-_.\\/]+'
-        title-template: '[%headbranch%] '
         body-template: |
           http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
         body-update-action: 'suffix'
