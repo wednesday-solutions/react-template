@@ -8,15 +8,31 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      DEST_DIR: 'saumya-mohinani/react-template'
+      SOURCE_DIR: './build/'
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Setup node
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
+
       - name: Install dependencies
         run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Build
         run: yarn build
@@ -27,10 +43,8 @@ jobs:
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{secrets.AWS_REGION}}
-          SOURCE_DIR: './build/'
-          DEST_DIR: 'saumya-mohinani/react-template-preview'
+
+      - name: Update pr with link
+        uses: gr2m/create-or-update-pull-request-action@v1
+        with:
+          body: http://${{env.AWS_S3_BUCKET}}.s3-website.${{env.AWS_REGION}}.amazonaws.com/${{env.DEST_DIR}}/
