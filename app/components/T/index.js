@@ -13,11 +13,11 @@ import { fonts } from '@app/themes';
 
 const StyledText = styled.p`
   && {
-    ${props => props.marginBottom && `margin-bottom: ${props.marginBottom}px;`};
-    ${props => props.font()};
+    ${(props) => props.marginBottom && `margin-bottom: ${props.marginBottom}px;`};
+    ${(props) => props.font()};
   }
 `;
-const getFontStyle = type => (fonts.style[type] ? fonts.style[type] : () => {});
+const getFontStyle = (type) => (fonts.style[type] ? fonts.style[type] : () => {});
 export const T = ({ type, text, id, marginBottom, values, ...otherProps }) => (
   <StyledText data-testid="t" font={getFontStyle(type)} marginBottom={marginBottom} {...otherProps}>
     <If condition={id} otherwise={text}>
