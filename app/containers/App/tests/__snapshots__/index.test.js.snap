@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> container tests should render and match the snapshot 1`] = `<div />`;
+exports[`<App /> container tests should render and match the snapshot 1`] = `
+<div>
+  <header
+    class="ant-layout-header Header__StyledHeader-wp2jxc-0 eSANqT"
+    data-testid="header"
+    intl="[object Object]"
+  >
+    <img
+      alt="logo"
+      class="Header__Logo-wp2jxc-1 kLZEyb"
+      src="https://img.icons8.com/ios-filled/50/000000/itunes--v2.png"
+    />
+    <p
+      class="T__StyledText-gjlic1-0 kYTaGb Header__Title-wp2jxc-2 dTrOKz"
+      data-testid="t"
+    >
+      iTunes Scraper
+    </p>
+  </header>
+  <main
+    class="ant-layout-content"
+  />
+</div>
+`;
