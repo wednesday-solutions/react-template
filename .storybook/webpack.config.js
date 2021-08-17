@@ -33,5 +33,6 @@ module.exports = ({ config }) => {
   });
   config.resolve.modules.push('app');
   config.resolve.extensions.push('.js', '.jsx', '.react.js');
+  config.module.rules[0].use[0].options.plugins = [require.resolve('babel-plugin-react-docgen')];
   return config;
 };

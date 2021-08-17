@@ -15,7 +15,7 @@ const StyledClickable = styled.div`
     cursor: pointer;
   }
 `;
-function Clickable({ onClick, textId }) {
+export function Clickable({ onClick, textId }) {
   return (
     <StyledClickable data-testid="clickable" onClick={onClick}>
       {textId && <T id={textId} />}
