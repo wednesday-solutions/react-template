@@ -69,6 +69,7 @@
   },
   "pre-commit": "lint:staged",
   "dependencies": {
+    "@babel/helper-regex": "^7.10.5",
     "@formatjs/intl-relativetimeformat": "^9.1.6",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "12.0.0",
