@@ -34,3 +34,14 @@ export const mapKeysDeep = (obj, fn) =>
         return acc;
       }, {})
     : obj;
+
+export const isLocal = () => {
+  try {
+    if (JSON.parse(process.env.IS_LOCAL)) {
+      return true;
+    }
+  } catch {
+    // continue regardless of error
+  }
+  return false;
+};
