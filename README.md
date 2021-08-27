@@ -1,4 +1,3 @@
-
 <img align="left" src="https://github.com/wednesday-solutions/react-template/blob/master/react_template_github.svg" width="480" height="540" />
 
 <div>
