@@ -38,6 +38,14 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 ![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
 
+## Getting Started
+
+- Install dependencies using `yarn install`
+
+- Start the dev server using `yarn start`.
+
+- Go through the other scripts in `package.json`
+
 ## Global state management using reduxSauce
 
 - Global state management using [Redux Sauce](https://github.com/infinitered/reduxsauce)
