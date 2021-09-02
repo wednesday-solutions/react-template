@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { injectSaga } from 'redux-injectors';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectHomeContainer, selectSearchData, selectSearchError, selectSearchTerm } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
 
@@ -42,27 +42,28 @@ const RightContent = styled.div`
   align-self: flex-end;
 `;
 export function HomeContainer({
-  dispatchGithubRepos,
-  dispatchClearGithubRepos,
+  dispatchItunesSearch,
+  dispatchClearItunesSearch,
   intl,
-  reposData = {},
-  reposError = null,
-  repoName,
+  itunesSearchData = {},
+  itunesSearchError = null,
+  itunesSearchTerm,
   maxwidth,
   padding
 }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    // second param is the key. Here we will look for results.
+    const loaded = get(itunesSearchData, 'results', null) || itunesSearchError;
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [itunesSearchData]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (itunesSearchTerm && !itunesSearchData?.items?.length) {
+      dispatchItunesSearch(itunesSearchTerm);
       setLoading(true);
     }
   }, []);
@@ -71,36 +72,51 @@ export function HomeContainer({
 
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
-      dispatchGithubRepos(rName);
+      dispatchItunesSearch(rName);
       setLoading(true);
     } else {
-      dispatchClearGithubRepos();
+      dispatchClearItunesSearch();
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
+  const getSecondValue = (item) => {
+    if (item.wrapperType === 'track') {
+      return item.trackName;
+    } else {
+      return item.collectionName;
+    }
+  };
+
+  const capitalize = (s) => {
+    if (typeof s !== 'string') {
+      return '';
+    }
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
+  const renderSearchResult = () => {
+    const items = get(itunesSearchData, 'results', []);
+    const totalCount = get(itunesSearchData, 'resultCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            {itunesSearchTerm && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ itunesSearchTerm }} />
               </div>
             )}
             {totalCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ totalCount }} />
+                <T id="matching_results" values={{ totalCount }} />
               </div>
             )}
             {items.map((item, index) => (
               <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
+                <T id="artist_name" values={{ artistName: item.artistName }} />
+                <T id="second_value" values={{ value: getSecondValue(item) }} />
+                <T id="track_audiobook" values={{ trackOrAudioBook: capitalize(item.wrapperType) }} />
               </CustomCard>
             ))}
           </Skeleton>
@@ -110,56 +126,57 @@ export function HomeContainer({
   };
   const renderErrorState = () => {
     let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
+    if (itunesSearchError) {
+      repoError = itunesSearchError;
+    } else if (!get(itunesSearchData, 'resultCount', 0)) {
+      repoError = 'itunes_search_default';
     }
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={itunesSearchError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'itunes_search_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
     );
   };
+
   const refreshPage = () => {
     history.push('stories');
     window.location.reload();
   };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
         <Clickable textId="stories" onClick={refreshPage} />
       </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-        <T marginBottom={10} id="get_repo_details" />
+      <CustomCard title={intl.formatMessage({ id: 'itunes_search' })} maxwidth={maxwidth}>
+        <T marginBottom={10} id="get_itunes_details" />
         <Search
           data-testid="search-bar"
-          defaultValue={repoName}
+          defaultValue={itunesSearchTerm}
           type="text"
           onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
           onSearch={(searchText) => debouncedHandleOnChange(searchText)}
         />
       </CustomCard>
-      {renderRepoList()}
+      {renderSearchResult()}
       {renderErrorState()}
     </Container>
   );
 }
 
 HomeContainer.propTypes = {
-  dispatchGithubRepos: PropTypes.func,
-  dispatchClearGithubRepos: PropTypes.func,
+  dispatchItunesSearch: PropTypes.func,
+  dispatchClearItunesSearch: PropTypes.func,
   intl: PropTypes.object,
-  reposData: PropTypes.shape({
-    totalCount: PropTypes.number,
-    incompleteResults: PropTypes.bool,
-    items: PropTypes.array
+  itunesSearchData: PropTypes.shape({
+    resultCount: PropTypes.number,
+    results: PropTypes.array
   }),
-  reposError: PropTypes.object,
-  repoName: PropTypes.string,
+  itunesSearchError: PropTypes.object,
+  itunesSearchTerm: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
@@ -172,16 +189,16 @@ HomeContainer.defaultProps = {
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  itunesSearchData: selectSearchData(),
+  itunesSearchError: selectSearchError(),
+  itunesSearchTerm: selectSearchTerm()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
+  const { requestGetTracks, clearTracks } = homeContainerCreators;
   return {
-    dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),
-    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
+    dispatchItunesSearch: (searchTerm) => dispatch(requestGetTracks(searchTerm)),
+    dispatchClearItunesSearch: () => dispatch(clearTracks())
   };
 }
 

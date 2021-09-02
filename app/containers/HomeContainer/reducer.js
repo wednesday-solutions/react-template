@@ -5,32 +5,40 @@
  */
 import produce from 'immer';
 import { createActions } from 'reduxsauce';
-import get from 'lodash/get';
 
 export const { Types: homeContainerTypes, Creators: homeContainerCreators } = createActions({
-  requestGetGithubRepos: ['repoName'],
-  successGetGithubRepos: ['data'],
-  failureGetGithubRepos: ['error'],
-  clearGithubRepos: []
+  requestGetTracks: ['searchTerm'],
+  successGetTracks: ['data'],
+  failureGetTracks: ['error'],
+  clearTracks: []
 });
+
+// the data keys that becomes the props?
 export const initialState = { repoName: null, reposData: [], reposError: null };
 
-/* eslint-disable default-case, no-param-reassign */
-export const homeContainerReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
-    switch (action.type) {
-      case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
-        draft.repoName = action.repoName;
-        break;
-      case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState;
-      case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
-        draft.reposData = action.data;
-        break;
-      case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
-        draft.reposError = get(action.error, 'message', 'something_went_wrong');
-        break;
-    }
-  });
+export const iTunesServiceInitialState = { searchTerm: null, searchData: {}, searchError: null };
+
+export const homeContainerReducer = produce((draft, action) => {
+  switch (action.type) {
+    case homeContainerTypes.REQUEST_GET_TRACKS:
+      draft.searchTerm = action.searchTerm;
+      break;
+
+    case homeContainerTypes.SUCCESS_GET_TRACKS:
+      draft.searchData = action.data;
+      break;
+
+    case homeContainerTypes.FAILURE_GET_TRACKS:
+      // handle error better
+      draft.searchError = action.error;
+      break;
+
+    case homeContainerTypes.CLEAR_TRACKS:
+      return iTunesServiceInitialState;
+
+    default:
+      break;
+  }
+}, iTunesServiceInitialState);
 
 export default homeContainerReducer;
