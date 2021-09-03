@@ -15,6 +15,7 @@ const StyledText = styled.p`
   && {
     ${(props) => props.marginBottom && `margin-bottom: ${props.marginBottom}px;`};
     ${(props) => props.font()};
+    ${(props) => props.clearFloat && `clear: both`}
   }
 `;
 const getFontStyle = (type) => (fonts.style[type] ? fonts.style[type] : () => {});
@@ -31,12 +32,14 @@ T.propTypes = {
   marginBottom: PropTypes.number,
   values: PropTypes.object,
   text: PropTypes.string,
-  type: PropTypes.oneOfType(Object.keys(fonts.style))
+  type: PropTypes.oneOf(Object.keys(fonts.style)),
+  clearFloat: PropTypes.bool
 };
 
 T.defaultProps = {
   values: {},
-  type: 'standard'
+  type: 'standard',
+  clearFloat: false
 };
 
 const TextComponent = memo(T);

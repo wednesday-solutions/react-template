@@ -14,7 +14,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           data-testid="clickable"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__StyledText-gjlic1-0 jbStwN"
             data-testid="t"
           >
             Go to Storybook
@@ -34,7 +34,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             <div
               class="ant-card-head-title"
             >
-              Repository Search
+              iTunes Search
             </div>
           </div>
         </div>
@@ -42,10 +42,10 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 demndm"
+            class="T__StyledText-gjlic1-0 HvYQt"
             data-testid="t"
           >
-            Get details of repositories
+            Search iTunes content
           </p>
           <span
             class="ant-input-group-wrapper ant-input-search"
@@ -104,7 +104,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             <div
               class="ant-card-head-title"
             >
-              Repository List
+              iTunes Search Result
             </div>
           </div>
         </div>
@@ -112,10 +112,10 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__StyledText-gjlic1-0 jbStwN"
             data-testid="t"
           >
-            Search for a repository by entering it's name in the search box
+            Search iTunes in it's entirety(?)
           </p>
         </div>
       </div>

@@ -16,32 +16,35 @@ describe('<HomeContainer /> tests', () => {
     submitSpy = jest.fn();
   });
   it('should render and match the snapshot', () => {
-    const { baseElement } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+    const { baseElement } = renderProvider(<HomeContainer dispatchItunesSearch={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should call dispatchClearGithubRepos on empty change', async () => {
-    const getGithubReposSpy = jest.fn();
-    const clearGithubReposSpy = jest.fn();
+  it('should call dispatchClearItunesSearch on empty change', async () => {
+    const getItunesSearchSpy = jest.fn();
+    const clearItunesSearchSpy = jest.fn();
     const { getByTestId } = renderProvider(
-      <HomeContainer dispatchClearGithubRepos={clearGithubReposSpy} dispatchGithubRepos={getGithubReposSpy} />
+      <HomeContainer dispatchClearItunesSearch={clearItunesSearchSpy} dispatchItunesSearch={getItunesSearchSpy} />
     );
+    // renderProvider renders the tree. It wires up everything and renders the children you pass it in.
+    // note that it uses the react testing library render function.
+    // getByTestId is a shortcut to container.querySelector(`[data-testid="${yourId}"]`)
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: 'a' }
     });
     await timeout(500);
-    expect(getGithubReposSpy).toBeCalled();
+    expect(getItunesSearchSpy).toBeCalled();
     fireEvent.change(getByTestId('search-bar'), {
       target: { value: '' }
     });
     await timeout(500);
-    expect(clearGithubReposSpy).toBeCalled();
+    expect(clearItunesSearchSpy).toBeCalled();
   });
 
-  it('should call dispatchGithubRepos on change', async () => {
-    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+  it('should call dispatchItunesSearch on change', async () => {
+    const { getByTestId } = renderProvider(<HomeContainer dispatchItunesSearch={submitSpy} />);
     fireEvent.change(getByTestId('search-bar'), {
-      target: { value: 'some repo' }
+      target: { value: 'rihana' }
     });
     await timeout(500);
     expect(submitSpy).toBeCalled();

@@ -5,9 +5,6 @@ import { iTunesServiceInitialState } from './reducer';
 /**
  * Direct selector to the homeContainer state domain
  */
-
-const selectHomeContainerDomain = (state) => state.homeContainer || iTunesServiceInitialState;
-
 /**
  * Other specific selectors
  */
@@ -15,18 +12,18 @@ const selectHomeContainerDomain = (state) => state.homeContainer || iTunesServic
 /**
  * Default selector used by HomeContainer
  */
-// is this wrong? https://redux.js.org/usage/deriving-data-selectors#createselector-overview Read the Warning
-
-export const selectHomeContainer = () => createSelector(selectHomeContainerDomain, (substate) => substate);
-//export const selectHomeContainer = () => selectHomeContainerDomain()
+// is this wrong? https://redux.js.org/usage/deriving-data-selectors#createselector-overview. Read the Warning
+// we have DRY breakage here...
+//export const selectHomeContainer = () => createSelector(selectHomeContainerDomain, (substate) => substate);
+export const selectHomeContainer = (state) => state.homeContainer || iTunesServiceInitialState;
 
 export const selectSearchData = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'searchData', null));
+  createSelector(selectHomeContainer, (substate) => get(substate, 'searchData', null));
 
 export const selectSearchError = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'searchError', null));
+  createSelector(selectHomeContainer, (substate) => get(substate, 'searchError', null));
 
 export const selectSearchTerm = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'searchTerm', null));
+  createSelector(selectHomeContainer, (substate) => get(substate, 'searchTerm', null));
 
 export default selectHomeContainer;

@@ -10,5 +10,6 @@
   "artist_name": "Artist Name: {artistName}",
   "second_value": "Track Name/Collection : {value}",
   "track_audiobook": "Track Or AudioBook: {trackOrAudioBook}",
+  "listen_to_it": "Listen to it!",
   "wednesday_solutions": "Wednesday Solutions"
 }

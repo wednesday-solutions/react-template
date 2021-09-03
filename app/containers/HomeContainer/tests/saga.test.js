@@ -4,45 +4,47 @@
 
 /* eslint-disable redux-saga/yield-effects */
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { getRepos } from '@services/repoApi';
+import { getTracks } from '@services/repoApi';
 import { apiResponseGenerator } from '@utils/testUtils';
-import homeContainerSaga, { getGithubRepos } from '../saga';
+import homeContainerSaga, { getItunesResults } from '../saga';
 import { homeContainerTypes } from '../reducer';
 
 describe('HomeContainer saga tests', () => {
   const generator = homeContainerSaga();
-  const repoName = 'mac';
-  let getGithubReposGenerator = getGithubRepos({ repoName });
+  const searchTerm = 'rihana';
+  // let getGithubReposGenerator = getItunesResGenerator({ searchTerm });
+  let getItunesResGenerator = getItunesResults({ searchTerm });
 
-  it('should start task to watch for REQUEST_GET_GITHUB_REPOS action', () => {
-    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos));
+  it('should start task to watch for REQUEST_GET_TRACKS action', () => {
+    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_TRACKS, getItunesResults));
   });
 
-  it('should ensure that the action FAILURE_GET_GITHUB_REPOS is dispatched when the api call fails', () => {
-    const res = getGithubReposGenerator.next().value;
-    expect(res).toEqual(call(getRepos, repoName));
+  it('should ensure that the action FAILURE_GET_TRACKS is dispatched when the api call fails', () => {
+    const res = getItunesResGenerator.next().value;
+    expect(res).toEqual(call(getTracks, searchTerm));
     const errorResponse = {
       errorMessage: 'There was an error while fetching repo informations.'
     };
-    expect(getGithubReposGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
+    expect(getItunesResGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
+        type: homeContainerTypes.FAILURE_GET_TRACKS,
         error: errorResponse
       })
     );
   });
 
-  it('should ensure that the action SUCCESS_GET_GITHUB_REPOS is dispatched when the api call succeeds', () => {
-    getGithubReposGenerator = getGithubRepos({ repoName });
-    const res = getGithubReposGenerator.next().value;
-    expect(res).toEqual(call(getRepos, repoName));
+  it('should ensure that the action SUCCESS_GET_TRACKS is dispatched when the api call succeeds', () => {
+    // DRYed?
+    getItunesResGenerator = getItunesResults({ searchTerm });
+    const res = getItunesResGenerator.next().value;
+    expect(res).toEqual(call(getTracks, searchTerm));
     const reposResponse = {
-      totalCount: 1,
-      items: [{ repositoryName: repoName }]
+      resultCount: 1,
+      results: [{ trackInfo: searchTerm }]
     };
-    expect(getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
+    expect(getItunesResGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
+        type: homeContainerTypes.SUCCESS_GET_TRACKS,
         data: reposResponse
       })
     );

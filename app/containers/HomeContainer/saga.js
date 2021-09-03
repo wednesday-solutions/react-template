@@ -1,5 +1,4 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
-// import { getRepos } from '@services/repoApi';
 import { getTracks } from '@services/repoApi';
 import { homeContainerTypes, homeContainerCreators } from './reducer';
 
@@ -15,7 +14,6 @@ export function* getItunesResults(action) {
     yield put(failureGetTracks(data));
   }
 }
-
 // Individual exports for testing
 export default function* homeContainerSaga() {
   yield takeLatest(REQUEST_GET_TRACKS, getItunesResults);

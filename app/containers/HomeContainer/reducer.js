@@ -4,6 +4,7 @@
  *
  */
 import produce from 'immer';
+import { get } from 'lodash';
 import { createActions } from 'reduxsauce';
 
 export const { Types: homeContainerTypes, Creators: homeContainerCreators } = createActions({
@@ -30,7 +31,7 @@ export const homeContainerReducer = produce((draft, action) => {
 
     case homeContainerTypes.FAILURE_GET_TRACKS:
       // handle error better
-      draft.searchError = action.error;
+      draft.searchError = get(action.error, 'message', 'something_went_wrong');
       break;
 
     case homeContainerTypes.CLEAR_TRACKS:

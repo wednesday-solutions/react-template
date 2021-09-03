@@ -4,7 +4,7 @@ exports[`<T /> component tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <p
-      class="T__StyledText-gjlic1-0 kYcyRq"
+      class="T__StyledText-gjlic1-0 jbStwN"
       data-testid="t"
     />
   </div>

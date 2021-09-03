@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input } from 'antd';
+import { Card, Skeleton, Input, Avatar } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
@@ -16,8 +16,10 @@ import { injectSaga } from 'redux-injectors';
 import { selectHomeContainer, selectSearchData, selectSearchError, selectSearchTerm } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
+import For from '@app/components/For/index';
 
 const { Search } = Input;
+const { Meta } = Card;
 
 const CustomCard = styled(Card)`
   && {
@@ -40,6 +42,9 @@ const Container = styled.div`
 const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
+`;
+const Audio = styled.audio`
+  width: 100%;
 `;
 export function HomeContainer({
   dispatchItunesSearch,
@@ -70,6 +75,14 @@ export function HomeContainer({
 
   const history = useHistory();
 
+  const getSecondValue = (item) => {
+    if (item.wrapperType === 'track') {
+      return item.trackName;
+    } else {
+      return item.collectionName;
+    }
+  };
+
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
       dispatchItunesSearch(rName);
@@ -79,21 +92,6 @@ export function HomeContainer({
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
-
-  const getSecondValue = (item) => {
-    if (item.wrapperType === 'track') {
-      return item.trackName;
-    } else {
-      return item.collectionName;
-    }
-  };
-
-  const capitalize = (s) => {
-    if (typeof s !== 'string') {
-      return '';
-    }
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
 
   const renderSearchResult = () => {
     const items = get(itunesSearchData, 'results', []);
@@ -112,13 +110,50 @@ export function HomeContainer({
                 <T id="matching_results" values={{ totalCount }} />
               </div>
             )}
-            {items.map((item, index) => (
+            {/* {items.map((item, index) => (
               <CustomCard key={index}>
                 <T id="artist_name" values={{ artistName: item.artistName }} />
                 <T id="second_value" values={{ value: getSecondValue(item) }} />
                 <T id="track_audiobook" values={{ trackOrAudioBook: capitalize(item.wrapperType) }} />
               </CustomCard>
-            ))}
+            ))} */}
+            {/* Using the for component */}
+            <For
+              of={items}
+              renderItem={(item, index) => {
+                return (
+                  <CustomCard key={index}>
+                    <Meta
+                      avatar={
+                        <Avatar
+                          size={{
+                            xs: 24,
+                            sm: 32,
+                            md: 40,
+                            lg: 64,
+                            xl: 80,
+                            xxl: 100
+                          }}
+                          src={item.artworkUrl100}
+                        />
+                      }
+                      description={
+                        <figure>
+                          <figcaption>{intl.formatMessage({ id: 'listen_to_it' })}</figcaption>
+                          <Audio controls src={item.previewUrl}>
+                            Your browser does not support the
+                            <code>audio</code> element.
+                          </Audio>
+                        </figure>
+                      }
+                    />
+                    <T id="artist_name" values={{ artistName: item.artistName }} clearFloat={true} />
+                    <T id="second_value" values={{ value: getSecondValue(item) }} />
+                  </CustomCard>
+                );
+              }}
+              noParent={true}
+            />
           </Skeleton>
         </CustomCard>
       )
@@ -188,7 +223,7 @@ HomeContainer.defaultProps = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  homeContainer: selectHomeContainer(),
+  homeContainer: selectHomeContainer,
   itunesSearchData: selectSearchData(),
   itunesSearchError: selectSearchError(),
   itunesSearchTerm: selectSearchTerm()
