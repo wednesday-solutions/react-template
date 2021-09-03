@@ -49,4 +49,19 @@ describe('<HomeContainer /> tests', () => {
     await timeout(500);
     expect(submitSpy).toBeCalled();
   });
+
+  it('should call dispatchItunesSearch when a search term is present and data is empty', async () => {
+    const { getByTestId } = renderProvider(
+      <HomeContainer
+        dispatchItunesSearch={submitSpy}
+        itunesSearchTerm="rihana"
+        itunesSearchData={{
+          items: []
+        }}
+      />
+    );
+    getByTestId('search-bar').value = 'rihana';
+    await timeout(500);
+    expect(submitSpy).toBeCalled();
+  });
 });

@@ -11,5 +11,6 @@
   "second_value": "Track Name/Collection : {value}",
   "track_audiobook": "Track Or AudioBook: {trackOrAudioBook}",
   "listen_to_it": "Listen to it!",
-  "wednesday_solutions": "Wednesday Solutions"
+  "wednesday_solutions": "Wednesday Solutions",
+  "audio_no_support": "Your browser doesn't support <code>audio</code> HTML element"
 }

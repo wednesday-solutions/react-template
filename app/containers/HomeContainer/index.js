@@ -68,6 +68,7 @@ export function HomeContainer({
 
   useEffect(() => {
     if (itunesSearchTerm && !itunesSearchData?.items?.length) {
+      // eslint-disable-next-line no-console
       dispatchItunesSearch(itunesSearchTerm);
       setLoading(true);
     }
@@ -141,8 +142,7 @@ export function HomeContainer({
                         <figure>
                           <figcaption>{intl.formatMessage({ id: 'listen_to_it' })}</figcaption>
                           <Audio controls src={item.previewUrl}>
-                            Your browser does not support the
-                            <code>audio</code> element.
+                            <T id="no_audio_support" values={{ code: (chunks) => <code>{chunks}</code> }} />
                           </Audio>
                         </figure>
                       }
