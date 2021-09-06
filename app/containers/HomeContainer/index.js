@@ -45,8 +45,8 @@ export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
   intl,
-  reposData = {},
-  reposError = null,
+  reposData,
+  reposError,
   repoName,
   maxwidth,
   padding
@@ -167,7 +167,9 @@ HomeContainer.propTypes = {
 
 HomeContainer.defaultProps = {
   maxwidth: 500,
-  padding: 20
+  padding: 20,
+  reposData: {},
+  reposError: null
 };
 
 const mapStateToProps = createStructuredSelector({
