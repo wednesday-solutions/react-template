@@ -20,10 +20,15 @@ import homeContainerSaga from './saga';
 const { Search } = Input;
 const { Meta } = Card;
 
+const OuterContainer = styled.div`
+   max-width: 2000px,
+   padding: 20px;
+ `;
+
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    max-width: 600px;
+    width: 800px;
     color: ${(props) => props.color};
     ${(props) => props.color && `color: ${props.color}`};
   }
@@ -32,8 +37,8 @@ const Container = styled.div`
   && {
     display: flex;
     flex-direction: column;
-    max-width: ${(props) => props.maxwidth}px;
-    width: 100%;
+
+    width: 800px;
     margin: 0 auto;
     padding: ${(props) => props.padding}px;
   }
@@ -97,11 +102,11 @@ export function HomeContainer({
                 <T id="matching_repos" values={{ resultCount }} />
               </div>
             )}
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Row gutter={[16, 16]}>
               {items.map((item, index) => (
-                <Col key={index} span={5}>
-                  <Card hoverable style={{ width: 115 }} cover={<img alt="example" src={item.artworkUrl60} />}>
-                    <Meta title="Europe Street beat" description="www.instagram.com" />
+                <Col key={index} span={8}>
+                  <Card hoverable style={{ width: '90%' }} cover={<img alt="example" src={item.artworkUrl100} />}>
+                    <Meta title={item.artistName} description={item.trackName} />
                   </Card>
                 </Col>
               ))}
@@ -132,23 +137,25 @@ export function HomeContainer({
     window.location.reload();
   };
   return (
-    <Container maxwidth={maxwidth} padding={padding}>
-      <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
-      </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
-        <T marginBottom={10} id="get_repo_details" />
-        <Search
-          data-testid="search-bar"
-          defaultValue={artistName}
-          type="text"
-          onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-          onSearch={(searchText) => debouncedHandleOnChange(searchText)}
-        />
-      </CustomCard>
-      {renderArtistList()}
-      {renderErrorState()}
-    </Container>
+    <OuterContainer>
+      <Container maxwidth={maxwidth} padding={padding}>
+        <RightContent>
+          <Clickable textId="stories" onClick={refreshPage} />
+        </RightContent>
+        <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
+          <T marginBottom={10} id="get_repo_details" />
+          <Search
+            data-testid="search-bar"
+            defaultValue={artistName}
+            type="text"
+            onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
+            onSearch={(searchText) => debouncedHandleOnChange(searchText)}
+          />
+        </CustomCard>
+        {renderArtistList()}
+        {renderErrorState()}
+      </Container>
+    </OuterContainer>
   );
 }
 

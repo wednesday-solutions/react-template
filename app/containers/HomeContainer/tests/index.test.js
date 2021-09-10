@@ -15,7 +15,7 @@ describe('<HomeContainer /> tests', () => {
   beforeEach(() => {
     submitSpy = jest.fn();
   });
-  it('should render and match the snapshot', () => {
+  it.only('should render and match the snapshot', () => {
     const { baseElement } = renderProvider(<HomeContainer dispatchArtistData={submitSpy} />);
     expect(baseElement).toMatchSnapshot();
   });
