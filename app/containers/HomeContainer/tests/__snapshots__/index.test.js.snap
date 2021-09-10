@@ -22,7 +22,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 deCTIZ"
         maxwidth="500"
       >
         <div
@@ -34,7 +34,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             <div
               class="ant-card-head-title"
             >
-              Repository Search
+              Search for Track by Artist's Name
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             class="T__StyledText-gjlic1-0 demndm"
             data-testid="t"
           >
-            Get details of repositories
+            Get details of Track
           </p>
           <span
             class="ant-input-group-wrapper ant-input-search"
@@ -92,7 +92,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 efgiuC"
         color="grey"
       >
         <div
@@ -104,7 +104,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             <div
               class="ant-card-head-title"
             >
-              Repository List
+              Track List
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
             class="T__StyledText-gjlic1-0 kYcyRq"
             data-testid="t"
           >
-            Search for a repository by entering it's name in the search box
+            Search for a artists
           </p>
         </div>
       </div>

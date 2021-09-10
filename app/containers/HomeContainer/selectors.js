@@ -18,12 +18,12 @@ const selectHomeContainerDomain = (state) => state.homeContainer || initialState
 
 export const selectHomeContainer = () => createSelector(selectHomeContainerDomain, (substate) => substate);
 
-export const selectReposData = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposData'));
+export const selectItunesData = () =>
+  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'itunesData'));
 
-export const selectReposError = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposError'));
+export const selectItunesError = () =>
+  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'itunesError'));
 
-export const selectRepoName = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repoName'));
+export const selectItunesName = () =>
+  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'artistName'));
 export default selectHomeContainer;

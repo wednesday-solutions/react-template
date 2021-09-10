@@ -6,23 +6,24 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input } from 'antd';
+import { Card, Skeleton, Input, Row, Col } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import { injectSaga } from 'redux-injectors';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectHomeContainer, selectItunesData, selectItunesError, selectItunesName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
 
 const { Search } = Input;
+const { Meta } = Card;
 
 const CustomCard = styled(Card)`
   && {
     margin: 20px 0;
-    max-width: ${(props) => props.maxwidth};
+    max-width: 600px;
     color: ${(props) => props.color};
     ${(props) => props.color && `color: ${props.color}`};
   }
@@ -42,27 +43,27 @@ const RightContent = styled.div`
   align-self: flex-end;
 `;
 export function HomeContainer({
-  dispatchGithubRepos,
-  dispatchClearGithubRepos,
+  dispatchArtistData,
+  dispatchClearArtistData,
   intl,
-  reposData,
-  reposError,
-  repoName,
+  itunesData,
+  itunesError,
+  artistName,
   maxwidth,
   padding
 }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    const loaded = get(itunesData, 'results', null) || itunesError;
     if (loading && loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [itunesData]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (artistName && !itunesData?.results?.length) {
+      dispatchArtistData(artistName);
       setLoading(true);
     }
   }, []);
@@ -71,38 +72,40 @@ export function HomeContainer({
 
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
-      dispatchGithubRepos(rName);
+      dispatchArtistData(rName);
       setLoading(true);
     } else {
-      dispatchClearGithubRepos();
+      dispatchClearArtistData();
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
+  const renderArtistList = () => {
+    const items = get(itunesData, 'results', []);
+    const resultCount = get(itunesData, 'resultCount', 0);
     return (
       (items.length !== 0 || loading) && (
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            {artistName && (
               <div>
-                <T id="search_query" values={{ repoName }} />
+                <T id="search_query" values={{ artistName }} />
               </div>
             )}
-            {totalCount !== 0 && (
+            {resultCount !== 0 && (
               <div>
-                <T id="matching_repos" values={{ totalCount }} />
+                <T id="matching_repos" values={{ resultCount }} />
               </div>
             )}
-            {items.map((item, index) => (
-              <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
-              </CustomCard>
-            ))}
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              {items.map((item, index) => (
+                <Col key={index} span={5}>
+                  <Card hoverable style={{ width: 115 }} cover={<img alt="example" src={item.artworkUrl60} />}>
+                    <Meta title="Europe Street beat" description="www.instagram.com" />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
           </Skeleton>
         </CustomCard>
       )
@@ -110,15 +113,15 @@ export function HomeContainer({
   };
   const renderErrorState = () => {
     let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
+    if (itunesError) {
+      repoError = itunesError;
+    } else if (!get(itunesData, 'resultCount', 0)) {
       repoError = 'respo_search_default';
     }
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={itunesError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
           <T id={repoError} />
         </CustomCard>
       )
@@ -137,29 +140,29 @@ export function HomeContainer({
         <T marginBottom={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"
-          defaultValue={repoName}
+          defaultValue={artistName}
           type="text"
           onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
           onSearch={(searchText) => debouncedHandleOnChange(searchText)}
         />
       </CustomCard>
-      {renderRepoList()}
+      {renderArtistList()}
       {renderErrorState()}
     </Container>
   );
 }
 
 HomeContainer.propTypes = {
-  dispatchGithubRepos: PropTypes.func,
-  dispatchClearGithubRepos: PropTypes.func,
+  dispatchArtistData: PropTypes.func,
+  dispatchClearArtistData: PropTypes.func,
   intl: PropTypes.object,
-  reposData: PropTypes.shape({
-    totalCount: PropTypes.number,
+  itunesData: PropTypes.shape({
+    resultCount: PropTypes.number,
     incompleteResults: PropTypes.bool,
-    items: PropTypes.array
+    results: PropTypes.array
   }),
-  reposError: PropTypes.object,
-  repoName: PropTypes.string,
+  itunesError: PropTypes.object,
+  artistName: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
@@ -168,22 +171,22 @@ HomeContainer.propTypes = {
 HomeContainer.defaultProps = {
   maxwidth: 500,
   padding: 20,
-  reposData: {},
-  reposError: null
+  itunesData: {},
+  itunesError: null
 };
 
 const mapStateToProps = createStructuredSelector({
   homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  itunesData: selectItunesData(),
+  itunesError: selectItunesError(),
+  artistName: selectItunesName()
 });
 
 function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
+  const { requestGetArtist, clearArtist } = homeContainerCreators;
   return {
-    dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),
-    dispatchClearGithubRepos: () => dispatch(clearGithubRepos())
+    dispatchArtistData: (artistName) => dispatch(requestGetArtist(artistName)),
+    dispatchClearArtistData: () => dispatch(clearArtist())
   };
 }
 
