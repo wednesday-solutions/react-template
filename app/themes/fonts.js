@@ -1,19 +1,16 @@
 import { css } from 'styled-components';
-import media from '@app/themes/media';
+import { media } from '@app/themes';
 
 // sizes
+
 const dynamicFontSize = (font, desktopDelta = 0, tabletDelta = 0) => css`
   ${font()}
-  ${media.tablet.min(
-    `font-size: ${
-      tabletDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))
-    }rem;`
-  )};
-  ${media.desktop.min(
-    `font-size: ${
-      desktopDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))
-    }rem;`
-  )};
+  ${media.greaterThan('tablet')`   
+  font-size: ${tabletDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
+  `}
+  ${media.greaterThan('desktop')`   
+  font-size: ${desktopDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
+  `}
 `;
 const regular = () => css`
   font-size: 1rem;

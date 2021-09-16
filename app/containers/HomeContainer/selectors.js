@@ -24,6 +24,5 @@ export const selectReposData = () =>
 export const selectReposError = () =>
   createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposError'));
 
-export const selectRepoName = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repoName'));
+export const selectRepoName = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repoName'));
 export default selectHomeContainer;

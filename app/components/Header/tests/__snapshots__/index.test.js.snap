@@ -14,7 +14,7 @@ exports[`<Header /> should render and match the snapshot 1`] = `
         src="IMAGE_MOCK"
       />
       <p
-        class="T__StyledText-gjlic1-0 kYTaGb Header__Title-wp2jxc-2 dTrOKz"
+        class="T__StyledText-gjlic1-0 kYTaGb Header__Title-wp2jxc-2 bOVGFv"
         data-testid="t"
       >
         Wednesday Solutions
