@@ -2,13 +2,13 @@ import { css } from 'styled-components';
 import { media } from '@app/themes';
 
 // sizes
+
 const dynamicFontSize = (font, desktopDelta = 0, tabletDelta = 0) => css`
   ${font()}
-  ${media.greaterThan('lg')`   
+  ${media.greaterThan('md')`   
   font-size: ${tabletDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
   `}
-
-  ${media.greaterThan('md')`   
+  ${media.greaterThan('lg')`   
   font-size: ${desktopDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
   `}
 `;
