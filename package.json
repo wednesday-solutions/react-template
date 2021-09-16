@@ -110,7 +110,8 @@
     "reduxsauce": "^1.1.0",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
-    "styled-components": "5.3.0"
+    "styled-components": "5.3.0",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@babel/cli": "7.14.5",
