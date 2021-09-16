@@ -1,33 +1,21 @@
-import { css } from 'styled-components';
-const ScreenSizes = {
-  DESKTOP: 992,
-  TABLET: 768,
-  PHONE: 320
+import { generateMedia } from 'styled-media-query';
+
+const ScreenBreakPoints = {
+  XS: 480,
+  SM: 576,
+  MD: 768,
+  LG: 992,
+  XL: 1366,
+  XXL: 1600
 };
-const sizes = {
-  desktop: ScreenSizes.DESKTOP,
-  tablet: ScreenSizes.TABLET,
-  mobile: ScreenSizes.PHONE
-};
-// iterate through sizes and create a media template
-export default Object.keys(sizes).reduce((acc, label) => {
-  acc[label] = {
-    min: (args) =>
-      css`
-        @media (min-width: ${sizes[label] / 16}em) {
-          ${css([args])};
-        }
-      `
-        .join('')
-        .replace(' ', ''),
-    max: (args) =>
-      css`
-        @media (max-width: ${sizes[label] / 16}em) {
-          ${css([args])};
-        }
-      `
-        .join('')
-        .replace(' ', '')
-  };
-  return acc;
-}, {});
+
+const media = generateMedia({
+  xs: `${ScreenBreakPoints.XS / 16}em`,
+  sm: `${ScreenBreakPoints.SM / 16}em`,
+  md: `${ScreenBreakPoints.MD / 16}em`,
+  lg: `${ScreenBreakPoints.LG / 16}em`,
+  xl: `${ScreenBreakPoints.XL / 16}em`,
+  xxl: `${ScreenBreakPoints.XXL / 16}em`
+});
+
+export default media;
