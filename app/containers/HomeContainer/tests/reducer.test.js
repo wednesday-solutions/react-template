@@ -43,4 +43,12 @@ describe('HomContainer reducer tests', () => {
       })
     ).toEqual(expectedResult);
   });
+
+  it('should return the initial state when CLEAR_GITHUB_REPOS is dispatched', () => {
+    expect(
+      homeContainerReducer(state, {
+        type: homeContainerReducer.CLEAR_GITHUB_REPOS
+      })
+    ).toEqual(state);
+  });
 });

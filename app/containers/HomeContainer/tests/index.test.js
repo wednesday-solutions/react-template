@@ -46,4 +46,12 @@ describe('<HomeContainer /> tests', () => {
     await timeout(500);
     expect(submitSpy).toBeCalled();
   });
+
+  it('should  dispatchGithubRepos on update on mount if repoName is already persisted', async () => {
+    const repoName = 'some repo';
+    renderProvider(<HomeContainer repoName={repoName} reposData={null} dispatchGithubRepos={submitSpy} />);
+
+    await timeout(500);
+    expect(submitSpy).toBeCalled();
+  });
 });
