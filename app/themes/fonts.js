@@ -5,10 +5,10 @@ import { media } from '@app/themes';
 
 const dynamicFontSize = (font, desktopDelta = 0, tabletDelta = 0) => css`
   ${font()}
-  ${media.greaterThan('md')`   
+  ${media.greaterThan('tablet')`   
   font-size: ${tabletDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
   `}
-  ${media.greaterThan('lg')`   
+  ${media.greaterThan('desktop')`   
   font-size: ${desktopDelta + parseInt(font()[0].replace('font-size:', '').replace('rem;', '').replace(/\s+/g, ''))}rem;
   `}
 `;
