@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 const FlexContainer = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.isRow ? `row;` : `column;`)};
+  flex-direction: ${(props) => props.orientation};
 `;
 
 export function For({ of, ParentComponent = (props) => <FlexContainer {...props} />, renderItem, noParent, ...props }) {
@@ -30,11 +30,12 @@ For.propTypes = {
   of: Proptypes.array,
   type: Proptypes.node,
   parent: Proptypes.object,
-  iteratee: Proptypes.string,
   renderItem: Proptypes.func.isRequired,
-  noParent: Proptypes.bool
+  noParent: Proptypes.bool,
+  orientation: Proptypes.oneOf(['row', 'column'])
 };
+
 For.defaultProps = {
-  isRow: true
+  orientation: 'row'
 };
 export default For;

@@ -31,7 +31,7 @@ T.propTypes = {
   marginBottom: PropTypes.number,
   values: PropTypes.object,
   text: PropTypes.string,
-  type: PropTypes.oneOfType(Object.keys(fonts.style))
+  type: PropTypes.oneOf(Object.keys(fonts.style))
 };
 
 T.defaultProps = {
