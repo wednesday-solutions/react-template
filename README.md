@@ -66,9 +66,6 @@ An enterprise react template application showcasing - Testing strategies, Global
 - Side effects using [Redux Saga](https://github.com/redux-saga/redux-saga)
 
   Take a look at the following files
-
-  - [app/utils/injectSaga.js](app/utils/injectSaga.js)
-  - [app/utils/sagaInjectors.js](app/utils/sagaInjectors.js)
   - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
