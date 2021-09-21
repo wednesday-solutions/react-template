@@ -12,6 +12,7 @@ import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
+import If from '@components/If';
 import { injectSaga } from 'redux-injectors';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
@@ -97,7 +98,7 @@ export function HomeContainer({
               </div>
             )}
             {items.map((item, index) => (
-              <CustomCard key={index}>
+              <CustomCard data-testid="repos-data" key={index}>
                 <T id="repository_name" values={{ name: item.name }} />
                 <T id="repository_full_name" values={{ fullName: item.fullName }} />
                 <T id="repository_stars" values={{ stars: item.stargazersCount }} />
@@ -113,13 +114,15 @@ export function HomeContainer({
     if (reposError) {
       repoError = reposError;
     } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
+      repoError = 'repo_search_default';
     }
     return (
       !loading &&
       repoError && (
         <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
-          <T id={repoError} />
+          <If condition={reposError} otherwise={<T data-testid="default-message" id={repoError} />}>
+            <T data-testid="error-message" text={reposError} />
+          </If>
         </CustomCard>
       )
     );
@@ -131,7 +134,7 @@ export function HomeContainer({
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
+        <Clickable data-testid="refresh-page" textId="stories" onClick={refreshPage} />
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
@@ -179,7 +182,7 @@ const mapStateToProps = createStructuredSelector({
   repoName: selectRepoName()
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
     dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),

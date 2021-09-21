@@ -7,10 +7,16 @@
 import React from 'react';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { fireEvent } from '@testing-library/dom';
-import { HomeContainerTest as HomeContainer } from '../index';
+import getIntl from '@utils/getIntl';
+import { setIntl, translate } from '@app/components/IntlGlobalProvider';
+import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
+
+  beforeAll(() => {
+    setIntl(getIntl());
+  });
 
   beforeEach(() => {
     submitSpy = jest.fn();
@@ -53,5 +59,42 @@ describe('<HomeContainer /> tests', () => {
 
     await timeout(500);
     expect(submitSpy).toBeCalled();
+  });
+
+  it('should validate mapDispatchToProps actions', async () => {
+    const dispatchReposSearchSpy = jest.fn();
+    const repoName = 'react-template';
+    const actions = {
+      dispatchGithubRepos: { repoName, type: 'REQUEST_GET_GITHUB_REPOS' },
+      dispatchClearGithubRepos: { type: 'CLEAR_GITHUB_REPOS' }
+    };
+
+    const props = mapDispatchToProps(dispatchReposSearchSpy);
+    props.dispatchGithubRepos(repoName);
+    expect(dispatchReposSearchSpy).toHaveBeenCalledWith(actions.dispatchGithubRepos);
+
+    await timeout(500);
+    props.dispatchClearGithubRepos();
+    expect(dispatchReposSearchSpy).toHaveBeenCalledWith(actions.dispatchClearGithubRepos);
+  });
+
+  it('should render default error message when search goes wrong', () => {
+    const defaultError = translate('something_went_wrong');
+    const { getByTestId } = renderProvider(<HomeContainer reposError={defaultError} />);
+    expect(getByTestId('error-message')).toBeInTheDocument();
+    expect(getByTestId('error-message').textContent).toBe(defaultError);
+  });
+
+  it('should render the default message when searchBox is empty and reposError is null', () => {
+    const defaultMessage = translate('repo_search_default');
+    const { getByTestId } = renderProvider(<HomeContainer />);
+    expect(getByTestId('default-message')).toBeInTheDocument();
+    expect(getByTestId('default-message').textContent).toBe(defaultMessage);
+  });
+
+  it('should render the data when loading becomes false', () => {
+    const reposData = { items: [{ repoOne: 'react-template' }] };
+    const { getByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
+    expect(getByTestId('repos-data')).toBeInTheDocument();
   });
 });
