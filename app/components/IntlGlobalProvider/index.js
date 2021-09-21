@@ -10,13 +10,9 @@ export function IntlGlobalProvider({ children }) {
   return children;
 }
 
+// setter function to set intl value inside tests
 export const setIntl = (intlValue) => {
   intl = intlValue;
 };
-
-// Getter function to expose the read-only 'intl' service
-export function appIntl() {
-  return intl;
-}
 
 export const translate = (id, values = {}) => intl.formatMessage({ id }, values);
