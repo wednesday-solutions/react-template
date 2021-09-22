@@ -9,6 +9,7 @@ import { timeout, renderProvider } from '@utils/testUtils';
 import { fireEvent } from '@testing-library/dom';
 import { translate } from '@app/components/IntlGlobalProvider';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
+import { homeContainerTypes } from '../reducer';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
@@ -60,8 +61,8 @@ describe('<HomeContainer /> tests', () => {
     const dispatchReposSearchSpy = jest.fn();
     const repoName = 'react-template';
     const actions = {
-      dispatchGithubRepos: { repoName, type: 'REQUEST_GET_GITHUB_REPOS' },
-      dispatchClearGithubRepos: { type: 'CLEAR_GITHUB_REPOS' }
+      dispatchGithubRepos: { repoName, type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS },
+      dispatchClearGithubRepos: { type: homeContainerTypes.CLEAR_GITHUB_REPOS }
     };
 
     const props = mapDispatchToProps(dispatchReposSearchSpy);
