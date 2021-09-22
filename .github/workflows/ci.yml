@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn
-        cache: 'yarn'
 
       - name: Lint
         run: yarn lint
