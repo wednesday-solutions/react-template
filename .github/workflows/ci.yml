@@ -19,12 +19,17 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+        cache: 'yarn'
 
       - name: Lint
         run: yarn lint
 
-      - name: Test
-        run: yarn test
+      - name: Test and Check total line coverage
+        uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-manager: yarn
+          threshold: 90
 
       - name: Build
         run: yarn build
