@@ -19,18 +19,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Lint
-        run: yarn lint
-
       - name: Test and Check total line coverage
         uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
           threshold: 90
+
+      - name: Lint
+        run: yarn lint
 
       - name: Build
         run: yarn build
