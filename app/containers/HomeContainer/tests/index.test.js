@@ -5,11 +5,13 @@
  */
 
 import React from 'react';
-import { timeout, renderProvider } from '@utils/testUtils';
+import { Router } from 'react-router';
 import { fireEvent } from '@testing-library/dom';
+import { timeout, renderProvider } from '@utils/testUtils';
 import { translate } from '@app/components/IntlGlobalProvider';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 import { homeContainerTypes } from '../reducer';
+import { createBrowserHistory } from 'history';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
@@ -118,5 +120,37 @@ describe('<HomeContainer /> tests', () => {
     };
     const { getAllByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
     expect(getAllByTestId('repo-card').length).toBe(totalCount);
+  });
+
+  it('should redirect to /stories when clicked on Clickable component', () => {
+    const history = createBrowserHistory();
+    const { getByTestId } = renderProvider(
+      <Router history={history}>
+        <HomeContainer />
+      </Router>
+    );
+    fireEvent.click(getByTestId('redirect'));
+    expect(history.location.pathname).toBe('/stories');
+  });
+
+  // it('should call dispatchGithubRepos on submit', async () => {
+  //   const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+  //   fireEvent.submit(getByTestId('search-bar'), {
+  //     target: { value: 'some repo' }
+  //   });
+  //   await timeout(500);
+  //   expect(submitSpy).toBeCalled();
+  // });
+
+  it('should render Skeleton Comp when "loading" is true', async () => {
+    const repoName = 'some repo';
+
+    const { getByTestId, baseElement } = renderProvider(
+      <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
+    );
+
+    fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
+    await timeout(500);
+    expect(baseElement.getElementsByClassName('ant-skeleton').length).toBe(1);
   });
 });

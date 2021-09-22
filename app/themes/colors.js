@@ -10,6 +10,7 @@ const text = '#212529';
 const secondary = '#f8c49c';
 const success = '#28a745';
 const error = '#dc3545';
+const gotoStories = '#1890ff';
 
 const colors = {
   transparent: 'rgba(0,0,0,0)',
@@ -19,6 +20,7 @@ const colors = {
   secondary,
   success,
   error,
+  gotoStories,
   theme: {
     lightMode: {
       primary,

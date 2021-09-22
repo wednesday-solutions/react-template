@@ -8,17 +8,17 @@ import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
 import { injectSaga } from 'redux-injectors';
 import { Card, Skeleton, Input } from 'antd';
 import T from '@components/T';
-import Clickable from '@components/Clickable';
 import If from '@components/If';
+import For from '@app/components/For';
+import * as colors from '@app/themes/colors';
 import RepoCard from '@app/components/RepoCard';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
-import For from '@app/components/For/index';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -44,6 +44,12 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+
+const StyledT = styled(T)`
+  && {
+    color: ${colors.gotoStories};
+  }
+`;
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
@@ -58,7 +64,7 @@ export function HomeContainer({
 
   useEffect(() => {
     const loaded = get(reposData, 'items', null) || reposError;
-    if (loading && loaded) {
+    if (loaded) {
       setLoading(false);
     }
   }, [reposData]);
@@ -69,8 +75,6 @@ export function HomeContainer({
       setLoading(true);
     }
   }, []);
-
-  const history = useHistory();
 
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
@@ -127,14 +131,13 @@ export function HomeContainer({
       )
     );
   };
-  const refreshPage = () => {
-    history.push('stories');
-    window.location.reload();
-  };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <Clickable data-testid="refresh-page" textId="stories" onClick={refreshPage} />
+        <Link data-testid="redirect" to="/stories">
+          <StyledT id="stories" />
+        </Link>
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
