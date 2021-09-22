@@ -37,7 +37,7 @@ describe('<ProtectedRoute />', () => {
     const { getByTestId } = renderProvider(
       <ProtectedRoute isLoggedIn={true} render={HomeContainer} exact={true} path="/" />
     );
-    expect(getByTestId('clickable')).toBeTruthy();
+    expect(getByTestId('redirect')).toBeTruthy();
   });
 
   it('should not render component if user is not logged in', () => {
