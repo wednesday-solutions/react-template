@@ -7,16 +7,11 @@
 import React from 'react';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { fireEvent } from '@testing-library/dom';
-import getIntl from '@utils/getIntl';
-import { setIntl, translate } from '@app/components/IntlGlobalProvider';
+import { translate } from '@app/components/IntlGlobalProvider';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
-
-  beforeAll(() => {
-    setIntl(getIntl());
-  });
 
   beforeEach(() => {
     submitSpy = jest.fn();
@@ -58,7 +53,7 @@ describe('<HomeContainer /> tests', () => {
     renderProvider(<HomeContainer repoName={repoName} reposData={null} dispatchGithubRepos={submitSpy} />);
 
     await timeout(500);
-    expect(submitSpy).toBeCalled();
+    expect(submitSpy).toBeCalledWith(repoName);
   });
 
   it('should validate mapDispatchToProps actions', async () => {
