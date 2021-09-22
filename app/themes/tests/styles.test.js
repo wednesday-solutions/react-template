@@ -126,6 +126,24 @@ describe('Tests for styles', () => {
     expect(styles.margin.right(marginRight)).toEqual(expectedResult);
   });
 
+  it('should return the vertical margin styilngs according to the verticalMargin value passed', () => {
+    const verticalMargin = 10;
+    const expectedResult = css`
+      margin-top: ${verticalMargin}rem;
+      margin-bottom: ${verticalMargin}rem;
+    `;
+    expect(styles.margin.vertical(verticalMargin)).toEqual(expectedResult);
+  });
+
+  it('should return the horizontal margin styilngs according to the horizontalMargin value passed', () => {
+    const horizontalMargin = 10;
+    const expectedResult = css`
+      margin-left: ${horizontalMargin}rem;
+      margin-right: ${horizontalMargin}rem;
+    `;
+    expect(styles.margin.horizontal(horizontalMargin)).toEqual(expectedResult);
+  });
+
   it('should return the row stylings', () => {
     expect(styles.flexConfig.row()).toEqual(css`
       display: flex;
