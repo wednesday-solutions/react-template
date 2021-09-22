@@ -91,6 +91,32 @@ describe('<HomeContainer /> tests', () => {
   it('should render the data when loading becomes false', () => {
     const reposData = { items: [{ repoOne: 'react-template' }] };
     const { getByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
-    expect(getByTestId('repos-data')).toBeInTheDocument();
+    expect(getByTestId('for')).toBeInTheDocument();
+  });
+
+  it('should render exact number of RepoCards as per totalCount in result', () => {
+    const totalCount = 3;
+    const reposData = {
+      totalCount,
+      items: [
+        {
+          name: 'react-tempalte',
+          fullName: 'wednesday-solutions/react-template',
+          stargazersCount: 200
+        },
+        {
+          name: 'react',
+          fullName: 'wednesday-solutions/react',
+          stargazersCount: 100
+        },
+        {
+          name: 'react-tempalte2',
+          fullName: 'wednesday-solutions/react-template2',
+          stargazersCount: 300
+        }
+      ]
+    };
+    const { getAllByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
+    expect(getAllByTestId('repo-card').length).toBe(totalCount);
   });
 });

@@ -6,17 +6,19 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
+import { injectSaga } from 'redux-injectors';
+import { Card, Skeleton, Input } from 'antd';
 import T from '@components/T';
 import Clickable from '@components/Clickable';
 import If from '@components/If';
-import { injectSaga } from 'redux-injectors';
+import RepoCard from '@app/components/RepoCard';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
+import For from '@app/components/For/index';
 
 const { Search } = Input;
 
@@ -84,29 +86,27 @@ export function HomeContainer({
     const items = get(reposData, 'items', []);
     const totalCount = get(reposData, 'totalCount', 0);
     return (
-      (items.length !== 0 || loading) && (
+      <If condition={!isEmpty(items) || loading}>
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            <If condition={!isEmpty(repoName)}>
               <div>
                 <T id="search_query" values={{ repoName }} />
               </div>
-            )}
-            {totalCount !== 0 && (
+            </If>
+            <If condition={totalCount !== 0}>
               <div>
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
-            )}
-            {items.map((item, index) => (
-              <CustomCard data-testid="repos-data" key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
-              </CustomCard>
-            ))}
+            </If>
+            <For
+              of={items}
+              ParentComponent={Container}
+              renderItem={(item, index) => <RepoCard key={index} {...item} />}
+            />
           </Skeleton>
         </CustomCard>
-      )
+      </If>
     );
   };
   const renderErrorState = () => {
