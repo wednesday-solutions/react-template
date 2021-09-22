@@ -26,9 +26,9 @@ jobs:
 
       - name: Test and Check total line coverage
         uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        skip-step: install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-step: install
           package-manager: yarn
           threshold: 90
 
