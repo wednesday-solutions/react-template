@@ -47,7 +47,7 @@ describe('HomContainer reducer tests', () => {
   it('should return the initial state when CLEAR_GITHUB_REPOS is dispatched', () => {
     expect(
       homeContainerReducer(state, {
-        type: homeContainerReducer.CLEAR_GITHUB_REPOS
+        type: homeContainerTypes.CLEAR_GITHUB_REPOS
       })
     ).toEqual(state);
   });

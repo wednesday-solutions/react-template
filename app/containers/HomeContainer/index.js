@@ -97,7 +97,7 @@ export function HomeContainer({
               </div>
             )}
             {items.map((item, index) => (
-              <CustomCard key={index}>
+              <CustomCard key={index} data-testid="item-card">
                 <T id="repository_name" values={{ name: item.name }} />
                 <T id="repository_full_name" values={{ fullName: item.fullName }} />
                 <T id="repository_stars" values={{ stars: item.stargazersCount }} />
@@ -118,7 +118,11 @@ export function HomeContainer({
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard
+          color={reposError ? 'red' : 'grey'}
+          title={intl.formatMessage({ id: 'repo_list' })}
+          data-testid="error-card"
+        >
           <T id={repoError} />
         </CustomCard>
       )
@@ -140,7 +144,6 @@ export function HomeContainer({
           defaultValue={repoName}
           type="text"
           onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-          onSearch={(searchText) => debouncedHandleOnChange(searchText)}
         />
       </CustomCard>
       {renderRepoList()}
@@ -179,7 +182,7 @@ const mapStateToProps = createStructuredSelector({
   repoName: selectRepoName()
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
     dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),

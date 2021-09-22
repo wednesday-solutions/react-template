@@ -94,6 +94,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
       <div
         class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
         color="grey"
+        data-testid="error-card"
       >
         <div
           class="ant-card-head"
