@@ -23,7 +23,10 @@ export const homeContainerReducer = (state = initialState, action) =>
         draft.repoName = action.repoName;
         break;
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState;
+        draft.repoName = null;
+        draft.reposError = null;
+        draft.reposData = {};
+        break;
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
         draft.reposData = action.data;
         break;
