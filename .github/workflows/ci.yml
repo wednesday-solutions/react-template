@@ -19,25 +19,23 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: Test and Check total line coverage
-        uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          package-manager: yarn
-          threshold: 90
+      - name: Install Dependencies
+        run: yarn
 
       - name: Lint
         run: yarn lint
 
+      - name: Test and Check total line coverage
+        uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-step: install
+          package-manager: yarn
+          test-script: yarn test --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
+          threshold: 90
+
       - name: Build
         run: yarn build
 
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORG}}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
