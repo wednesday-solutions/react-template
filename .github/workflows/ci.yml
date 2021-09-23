@@ -24,14 +24,14 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         with:
           path: 'jest.config.json'
-          prop_path: 'coverageThreshold'
+          prop_path: 'coverageThreshold.statements'
 
       - name: Test and Check total line coverage
         uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
-          threshold: ${{steps.threshold.statements}}
+          threshold: ${{steps.threshold.outputs.prop}}
 
       - name: Lint
         run: yarn lint
