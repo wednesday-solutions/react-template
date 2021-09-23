@@ -42,17 +42,26 @@ describe('<HomeContainer /> tests', () => {
     expect(clearGithubReposSpy).toBeCalled();
   });
 
-  it('should call dispatchGithubRepos on change', async () => {
+  it('should call dispatchGithubRepos on change or on enter', async () => {
+    const repoName = 'react-template';
     const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
-    fireEvent.change(getByTestId('search-bar'), {
-      target: { value: 'some repo' }
+    const searchBar = getByTestId('search-bar');
+    fireEvent.change(searchBar, {
+      target: { value: repoName }
     });
     await timeout(500);
-    expect(submitSpy).toBeCalled();
+    expect(submitSpy).toBeCalledWith(repoName);
+
+    fireEvent.keyDown(searchBar, {
+      key: 'Enter',
+      code: 13,
+      charCode: 13
+    });
+    expect(submitSpy).toBeCalledWith(repoName);
   });
 
   it('should  dispatchGithubRepos on update on mount if repoName is already persisted', async () => {
-    const repoName = 'some repo';
+    const repoName = 'react-template';
     renderProvider(<HomeContainer repoName={repoName} reposData={null} dispatchGithubRepos={submitSpy} />);
 
     await timeout(500);
@@ -133,22 +142,11 @@ describe('<HomeContainer /> tests', () => {
     expect(history.location.pathname).toBe('/stories');
   });
 
-  // it('should call dispatchGithubRepos on submit', async () => {
-  //   const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
-  //   fireEvent.submit(getByTestId('search-bar'), {
-  //     target: { value: 'some repo' }
-  //   });
-  //   await timeout(500);
-  //   expect(submitSpy).toBeCalled();
-  // });
-
   it('should render Skeleton Comp when "loading" is true', async () => {
     const repoName = 'some repo';
-
     const { getByTestId, baseElement } = renderProvider(
       <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
     );
-
     fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
     await timeout(500);
     expect(baseElement.getElementsByClassName('ant-skeleton').length).toBe(1);
