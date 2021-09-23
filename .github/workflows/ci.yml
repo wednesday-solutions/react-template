@@ -24,7 +24,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
-          threshold: 90
+          threshold: jest.coverageThreshold.global.statements
 
       - name: Lint
         run: yarn lint

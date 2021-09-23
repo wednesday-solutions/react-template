@@ -17,10 +17,10 @@ module.exports = {
   testEnvironment: 'jsdom',
   coverageThreshold: {
     global: {
-      statements: 50,
-      branches: 50,
-      functions: 50,
-      lines: 50
+      statements: 90,
+      branches: 90,
+      functions: 90,
+      lines: 90
     }
   },
   moduleDirectories: ['node_modules', 'app'],
