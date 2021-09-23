@@ -16,10 +16,7 @@ const ProtectedRoute = ({ isUserVerified, render: C, isLoggedIn, handleLogout, .
       .map((key) => routeConstants[key].route)
       .includes(rest.path) && rest.exact;
 
-  const guardedRedirection = (to, renderProps) => {
-    if (rest.path === to) {
-      return <C {...renderProps} />;
-    }
+  const guardedRedirection = (to) => {
     return <Redirect to={to} />;
   };
 
@@ -43,7 +40,7 @@ const ProtectedRoute = ({ isUserVerified, render: C, isLoggedIn, handleLogout, .
         return <C {...renderProps} />;
       }
     }
-    return guardedRedirection(to, renderProps);
+    return guardedRedirection(to);
   };
   return <Route {...rest} render={handleRedirection} />;
 };

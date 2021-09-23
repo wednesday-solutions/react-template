@@ -19,12 +19,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
+      - name: Get Threshold
+          id: threshold
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+           path: 'jest.config.json'
+           prop_path: 'coverageThreshold'     
+
       - name: Test and Check total line coverage
         uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
-          threshold: jest.coverageThreshold.global.statements
+          threshold: ${{steps.coverageThreshold.statements}} 
 
       - name: Lint
         run: yarn lint

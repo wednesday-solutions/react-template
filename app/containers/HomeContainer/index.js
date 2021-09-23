@@ -117,7 +117,7 @@ export function HomeContainer({
     let repoError;
     if (reposError) {
       repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0) || isEmpty(repoName)) {
+    } else if (isEmpty(repoName)) {
       repoError = 'repo_search_default';
     }
     return (
