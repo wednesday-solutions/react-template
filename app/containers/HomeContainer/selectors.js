@@ -6,7 +6,7 @@ import { initialState } from './reducer';
  * Direct selector to the homeContainer state domain
  */
 
-const selectHomeContainerDomain = (state) => state.homeContainer || initialState;
+export const selectHomeContainerDomain = (state) => state.homeContainer || initialState;
 
 /**
  * Other specific selectors
