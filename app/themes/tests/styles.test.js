@@ -277,6 +277,25 @@ describe('Tests for styles', () => {
     `;
     expect(styles.boxShadow()).toEqual(expectedResult);
   });
+
+  it('should return default z-index stylings', () => {
+    const z = 1;
+    expectedResult = css`
+      z-index: ${z};
+    `;
+    expect(styles.zIndex()).toEqual(expectedResult);
+  });
+
+  it('should return default textEllipsis stylings', () => {
+    const width = '200px';
+    expectedResult = css`
+      white-space: nowrap;
+      overflow: hidden;
+      width: ${width};
+      text-overflow: ellipsis;
+    `;
+    expect(styles.textEllipsis()).toEqual(expectedResult);
+  });
 });
 
 describe('Tests for ConfigureFlex method', () => {
