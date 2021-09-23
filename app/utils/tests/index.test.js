@@ -1,4 +1,5 @@
-import { getCurrentRouteDetails, isLocal } from '@utils/index';
+import camelCase from 'lodash/camelCase';
+import { getCurrentRouteDetails, isLocal, mapKeysDeep } from '@utils/index';
 import routeConstants from '@utils/routeConstants';
 
 describe('Tests for getCurrentRouteDetails method', () => {
@@ -36,5 +37,29 @@ describe('Tests for isLocal method', () => {
   });
   it('should return false if when process.env.IS_LOCAL is not present', () => {
     expect(isLocal()).toBe(false);
+  });
+});
+
+describe('Tests for mapKeysDeep method', () => {
+  let fn;
+  beforeAll(() => {
+    fn = (keys) => camelCase(keys);
+  });
+  it('should return something objet', () => {
+    const obj = {
+      locationone: '/route1',
+      locationtwo: '/route2',
+      locationthree: { locationone: '/route1', locationtwo: '/route2' }
+    };
+    expect(mapKeysDeep(obj, fn)).toEqual(obj);
+  });
+
+  it('should operate array accordingly', () => {
+    const arr = [{ locationone: '/route1', locationtwo: '/route2' }];
+    expect(mapKeysDeep(arr, fn)).toEqual(arr);
+  });
+
+  it('should return the passed value if its not an array or object', () => {
+    expect(mapKeysDeep(10, fn)).toEqual(10);
   });
 });
