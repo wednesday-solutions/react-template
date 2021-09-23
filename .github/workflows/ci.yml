@@ -24,7 +24,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         with:
           path: 'jest.config.json'
-          prop_path: 'coverageThreshold.statements'
+          prop_path: 'coverageThreshold.global.statements'
 
       - name: Test and Check total line coverage
         uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
