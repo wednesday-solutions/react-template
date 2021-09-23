@@ -31,7 +31,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
-          threshold: ${{steps.coverageThreshold.statements}}
+          threshold: ${{steps.threshold.statements}}
 
       - name: Lint
         run: yarn lint
