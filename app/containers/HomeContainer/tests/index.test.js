@@ -42,7 +42,7 @@ describe('<HomeContainer /> tests', () => {
     expect(clearGithubReposSpy).toBeCalled();
   });
 
-  it('should call dispatchGithubRepos on change or on enter', async () => {
+  it('should call dispatchGithubRepos on change and after enter', async () => {
     const repoName = 'react-template';
     const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
     const searchBar = getByTestId('search-bar');
@@ -57,6 +57,15 @@ describe('<HomeContainer /> tests', () => {
       code: 13,
       charCode: 13
     });
+    expect(submitSpy).toBeCalledWith(repoName);
+  });
+
+  it('should call dispatchGithubRepos on submit', async () => {
+    const repoName = 'react-template';
+    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
+    fireEvent.keyDown(getByTestId('search-bar'), { keyCode: 13, target: { value: repoName } });
+
+    await timeout(500);
     expect(submitSpy).toBeCalledWith(repoName);
   });
 
