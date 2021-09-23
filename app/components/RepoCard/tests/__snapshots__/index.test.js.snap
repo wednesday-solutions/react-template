@@ -12,21 +12,21 @@ exports[`<RepoCard /> should render and match the snapshot 1`] = `
       >
         <p
           class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="t"
+          data-testid="name-unavailable"
         >
-          Repository Name: 
+          Repository name is unavailable
         </p>
         <p
           class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="t"
+          data-testid="fullName-unavailable"
         >
-          Repository full name: 
+          Repository full name unavaiable
         </p>
         <p
           class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="t"
+          data-testid="stargazers-unavaiable"
         >
-          Repository stars: 
+          Repository stars are unavaiable
         </p>
       </div>
     </div>

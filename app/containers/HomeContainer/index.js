@@ -13,7 +13,7 @@ import { Card, Skeleton, Input } from 'antd';
 import T from '@components/T';
 import If from '@components/If';
 import For from '@app/components/For';
-import * as colors from '@app/themes/colors';
+import colors from '@app/themes/colors';
 import RepoCard from '@app/components/RepoCard';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
