@@ -39,12 +39,12 @@ An enterprise react template application showcasing - Testing strategies, Global
 ![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
 
 <div>
-<img src='./badges/badge-statements.svg' width="250" height="40"/>
-<img src='./badges/badge-branches.svg' width="250" height="40"/>
+<img src='./badges/badge-statements.svg' height="40"/>
+<img src='./badges/badge-branches.svg' height="40"/>
 </div>
 <div>
-<img src='./badges/badge-lines.svg' width=250" height="40"/>
-<img src='./badges/badge-functions.svg' width="250" height="40"/>
+<img src='./badges/badge-lines.svg'  height="40"/>
+<img src='./badges/badge-functions.svg' height="40"/>
 </div>
 
 ## Getting Started
