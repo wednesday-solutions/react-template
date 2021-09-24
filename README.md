@@ -34,15 +34,9 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 </div>
 
-<div>
-
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
 ![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
-
-</div>
-
-## Getting Started
 
 <div>
 <img src='./badges/badge-statements.svg' width="250" height="40"/>
@@ -52,6 +46,8 @@ An enterprise react template application showcasing - Testing strategies, Global
 <img src='./badges/badge-lines.svg' width=250" height="40"/>
 <img src='./badges/badge-functions.svg' width="250" height="40"/>
 </div>
+
+## Getting Started
 
 - Install dependencies using `yarn install`
 
