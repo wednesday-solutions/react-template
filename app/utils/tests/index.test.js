@@ -38,6 +38,10 @@ describe('Tests for isLocal method', () => {
   it('should return false if when process.env.IS_LOCAL is not present', () => {
     expect(isLocal()).toBe(false);
   });
+  it('should return false if process.env.IS_LOCAL has exceptional value', () => {
+    process.env.IS_LOCAL = 'trusae';
+    expect(isLocal()).toBe(false);
+  });
 });
 
 describe('Tests for mapKeysDeep method', () => {

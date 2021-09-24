@@ -37,9 +37,8 @@ export const mapKeysDeep = (obj, fn) =>
 
 export const isLocal = () => {
   try {
-    if (JSON.parse(process.env.IS_LOCAL)) {
-      return true;
-    }
+    const local = JSON.parse(process.env.IS_LOCAL);
+    return typeof local === 'boolean' && local;
   } catch {
     // continue regardless of error
   }
