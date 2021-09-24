@@ -38,6 +38,15 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 ![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
 
+<div>
+<img src='./coverage/badge-statements.svg' width="250" height="40"/>
+<img src='./coverage/badge-branches.svg' width="250" height="40"/>
+</div>
+<div>
+<img src='./coverage/badge-lines.svg' width=250" height="40"/>
+<img src='./coverage/badge-functions.svg' width="250" height="40"/>
+</div>
+
 ## Getting Started
 
 - Install dependencies using `yarn install`
@@ -66,6 +75,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 - Side effects using [Redux Saga](https://github.com/redux-saga/redux-saga)
 
   Take a look at the following files
+
   - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 

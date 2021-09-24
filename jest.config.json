@@ -23,6 +23,7 @@
       "lines": 90
     }
   },
+  "coverageReporters": ["json-summary", "text", "lcov"],
   "moduleDirectories": ["node_modules", "app"],
   "moduleNameMapper": {
     "@app(.*)$": "<rootDir>/app/$1",
