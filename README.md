@@ -42,6 +42,8 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 </div>
 
+## Getting Started
+
 <div>
 <img src='./badges/badge-statements.svg' width="250" height="40"/>
 <img src='./badges/badge-branches.svg' width="250" height="40"/>
@@ -50,8 +52,6 @@ An enterprise react template application showcasing - Testing strategies, Global
 <img src='./badges/badge-lines.svg' width=250" height="40"/>
 <img src='./badges/badge-functions.svg' width="250" height="40"/>
 </div>
-
-## Getting Started
 
 - Install dependencies using `yarn install`
 
