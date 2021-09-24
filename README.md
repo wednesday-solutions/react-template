@@ -34,9 +34,13 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 </div>
 
+<div>
+
 ### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
 
 ![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
+
+</div>
 
 <div>
 <img src='./badges/badge-statements.svg' width="250" height="40"/>
