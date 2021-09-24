@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
+exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div

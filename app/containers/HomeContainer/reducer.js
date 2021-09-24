@@ -11,9 +11,9 @@ export const { Types: homeContainerTypes, Creators: homeContainerCreators } = cr
   requestGetGithubRepos: ['repoName'],
   successGetGithubRepos: ['data'],
   failureGetGithubRepos: ['error'],
-  clearGithubRepos: []
+  clearGithubRepos: {}
 });
-export const initialState = { repoName: null, reposData: [], reposError: null };
+export const initialState = { repoName: null, reposData: {}, reposError: null };
 
 /* eslint-disable default-case, no-param-reassign */
 export const homeContainerReducer = (state = initialState, action) =>
@@ -23,7 +23,10 @@ export const homeContainerReducer = (state = initialState, action) =>
         draft.repoName = action.repoName;
         break;
       case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        return initialState;
+        draft.repoName = null;
+        draft.reposError = null;
+        draft.reposData = {};
+        break;
       case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
         draft.reposData = action.data;
         break;

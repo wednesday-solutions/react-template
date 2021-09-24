@@ -1,5 +1,11 @@
-import { selectHomeContainer, selectRepoName, selectReposData, selectReposError } from '../selectors';
-
+import {
+  selectHomeContainer,
+  selectHomeContainerDomain,
+  selectRepoName,
+  selectReposData,
+  selectReposError
+} from '../selectors';
+import { initialState } from '../reducer';
 describe('HomeContainer selector tests', () => {
   let mockedState;
   let repoName;
@@ -36,5 +42,10 @@ describe('HomeContainer selector tests', () => {
   it('should select the reposError', () => {
     const reposErrorSelector = selectReposError();
     expect(reposErrorSelector(mockedState)).toEqual(reposError);
+  });
+
+  it('should select the global state', () => {
+    const selector = selectHomeContainerDomain(initialState);
+    expect(selector).toEqual(initialState);
   });
 });

@@ -6,16 +6,19 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import { Card, Skeleton, Input } from 'antd';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
-import T from '@components/T';
-import Clickable from '@components/Clickable';
 import { injectSaga } from 'redux-injectors';
+import { Card, Skeleton, Input } from 'antd';
+import T from '@components/T';
+import If from '@components/If';
+import For from '@app/components/For';
+import colors from '@app/themes/colors';
+import RepoCard from '@app/components/RepoCard';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -41,6 +44,12 @@ const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+
+const StyledT = styled(T)`
+  && {
+    color: ${colors.gotoStories};
+  }
+`;
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
@@ -55,7 +64,7 @@ export function HomeContainer({
 
   useEffect(() => {
     const loaded = get(reposData, 'items', null) || reposError;
-    if (loading && loaded) {
+    if (loaded) {
       setLoading(false);
     }
   }, [reposData]);
@@ -66,8 +75,6 @@ export function HomeContainer({
       setLoading(true);
     }
   }, []);
-
-  const history = useHistory();
 
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
@@ -83,55 +90,54 @@ export function HomeContainer({
     const items = get(reposData, 'items', []);
     const totalCount = get(reposData, 'totalCount', 0);
     return (
-      (items.length !== 0 || loading) && (
+      <If condition={!isEmpty(items) || loading}>
         <CustomCard>
           <Skeleton loading={loading} active>
-            {repoName && (
+            <If condition={!isEmpty(repoName)}>
               <div>
                 <T id="search_query" values={{ repoName }} />
               </div>
-            )}
-            {totalCount !== 0 && (
+            </If>
+            <If condition={totalCount !== 0}>
               <div>
                 <T id="matching_repos" values={{ totalCount }} />
               </div>
-            )}
-            {items.map((item, index) => (
-              <CustomCard key={index}>
-                <T id="repository_name" values={{ name: item.name }} />
-                <T id="repository_full_name" values={{ fullName: item.fullName }} />
-                <T id="repository_stars" values={{ stars: item.stargazersCount }} />
-              </CustomCard>
-            ))}
+            </If>
+            <For
+              of={items}
+              ParentComponent={Container}
+              renderItem={(item, index) => <RepoCard key={index} {...item} />}
+            />
           </Skeleton>
         </CustomCard>
-      )
+      </If>
     );
   };
   const renderErrorState = () => {
     let repoError;
     if (reposError) {
       repoError = reposError;
-    } else if (!get(reposData, 'totalCount', 0)) {
-      repoError = 'respo_search_default';
+    } else if (isEmpty(repoName)) {
+      repoError = 'repo_search_default';
     }
     return (
       !loading &&
       repoError && (
         <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
-          <T id={repoError} />
+          <If condition={reposError} otherwise={<T data-testid="default-message" id={repoError} />}>
+            <T data-testid="error-message" text={reposError} />
+          </If>
         </CustomCard>
       )
     );
   };
-  const refreshPage = () => {
-    history.push('stories');
-    window.location.reload();
-  };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <Clickable textId="stories" onClick={refreshPage} />
+        <Link data-testid="redirect" to="/stories">
+          <StyledT id="stories" />
+        </Link>
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
@@ -158,7 +164,7 @@ HomeContainer.propTypes = {
     incompleteResults: PropTypes.bool,
     items: PropTypes.array
   }),
-  reposError: PropTypes.object,
+  reposError: PropTypes.string,
   repoName: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
@@ -179,7 +185,7 @@ const mapStateToProps = createStructuredSelector({
   repoName: selectRepoName()
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
     dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),

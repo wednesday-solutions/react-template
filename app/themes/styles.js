@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { colors } from '@app/themes';
 
-const configureFlex = (
+export const configureFlex = (
   direction = 'row',
   justifyContent = 'center',
   alignItems = 'center',
@@ -104,11 +104,10 @@ const primaryBackgroundColor = () =>
     background-color: ${colors.accent};
   `;
 
-const zIndex = (z = 1) => {
-  css`
-    z-index: ${z};
-  `;
-};
+const zIndex = (z = 1) => css`
+  z-index: ${z};
+`;
+
 const textEllipsis = (width = '200px') => css`
   white-space: nowrap;
   overflow: hidden;
