@@ -25,33 +25,38 @@ jobs:
           threshold: ${{steps.threshold.outputs.prop}}
           package-manager: yarn
           custom-title: Jest Coverage Report
-          
+
   create_badges:
-    name: Create Badges
-    runs-on: ubuntu-latest
-    strategy:
-        matrix:
-            node-version: [14.x]
-    steps:
-        - uses: actions/checkout@v2
-        - name: Setup environment
-          uses: actions/setup-node@v2
-          with:
+      name: Create Badges
+      runs-on: ubuntu-latest
+      strategy:
+          matrix:
+              node-version: [14.x]
+      steps:
+          - uses: actions/checkout@v2
+          - name: Setup environment
+            uses: actions/setup-node@v2
+            with:
               cache: 'yarn'
               node-version: ${{ matrix.node-version }}
-        - name: Install dependencies
-          run: yarn install
-        - name: Create badges
-          run: yarn run test:badges
-        - name: Commit badges
-          uses: EndBug/add-and-commit@v7
-          with:
+         - name: Set branch name
+            id: vars
+            run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
+          - name: Install dependencies
+             run: yarn install
+          - name: Create badges
+             run: yarn run test:badges
+          - name: Commit badges
+            uses: EndBug/add-and-commit@v7
+            with:
               author_name: Gitflow
               author_email: git@wednesday.is
               message: 'Update badges'
               add: 'badges/'
-        - name: Push changes
-          uses: ad-m/github-push-action@master
-          with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              branch: ${{ github.ref }}
+              push: false
+          - name: Pushing to a protected branch
+            uses: CasperWA/push-protected@v2
+            with:
+              token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
+              branch: ${{ steps.vars.outputs.stage }}
+              unprotect_reviews: true
