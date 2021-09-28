@@ -11,30 +11,20 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
-
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: Get Threshold
-        id: threshold
-        uses: notiz-dev/github-action-json-property@release
-        with:
-          path: 'jest.config.json'
-          prop_path: 'coverageThreshold.global.statements'
-
-      - name: Test and Check total line coverage
-        uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          package-manager: yarn
-          threshold: ${{steps.threshold.outputs.prop}}
-
+      - name: Install dependencies
+        run: yarn
       - name: Lint
         run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Build
         run: yarn build
