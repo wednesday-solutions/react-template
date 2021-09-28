@@ -45,7 +45,7 @@
     "test:staged": "jest --findRelatedTests",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "test:coverage": "npm test -- --coverage",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges --output './badges'",
+    "test:badges": "npm run test  && jest-coverage-badges --output './badges'",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
     "storybook": "start-storybook -p 6006",
