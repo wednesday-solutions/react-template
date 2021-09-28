@@ -15,6 +15,18 @@
     "!**/themes/index.js"
   ],
   "testEnvironment": "jsdom",
+  "reporters": [
+    "default",
+    [
+      "jest-sonar",
+      {
+        "outputDirectory": "reports",
+        "outputName": "test-report.xml",
+        "relativeRootDir": "./",
+        "reportedFilePath": "relative"
+      }
+    ]
+  ],
   "coverageThreshold": {
     "global": {
       "statements": 90,
