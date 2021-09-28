@@ -59,4 +59,4 @@ jobs:
         with:
           token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
           branch: ${{ steps.vars.outputs.stage }}
-          unprotect_reviews: true
+          unprotect_reviews: true 
