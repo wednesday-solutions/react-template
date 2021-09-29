@@ -46,6 +46,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test  && jest-coverage-badges --output './badges'",
+    "create:badges": "jest-coverage-badges --output './badges'",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
     "storybook": "export ENVIRONMENT_NAME=development && start-storybook -p 6006",
