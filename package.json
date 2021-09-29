@@ -45,10 +45,11 @@
     "test:staged": "jest --findRelatedTests",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "test:coverage": "npm test -- --coverage",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges --output './badges'",
+    "test:badges": "npm run test  && jest-coverage-badges --output './badges'",
+    "create:badges": "jest-coverage-badges --output './badges'",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "export ENVIRONMENT_NAME=development && start-storybook -p 6006",
     "build-storybook": "export ENVIRONMENT_NAME=production && build-storybook",
     "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master",
     "generate": "react-generate"
