@@ -242,3 +242,4 @@ Take a look at the following files
      should be: `relativePaths: false,`
   3. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
      should be: `const history = createBrowserHistory();`
+-
