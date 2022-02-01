@@ -9,17 +9,12 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
       <div
         class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
       >
-        <a
+        <p
+          class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-3 fYCmLU"
           data-testid="redirect"
-          href="/stories"
         >
-          <p
-            class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-3 fYCmLU"
-            data-testid="t"
-          >
-            Go to Storybook
-          </p>
-        </a>
+          Go to Storybook
+        </p>
       </div>
       <div
         class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"

@@ -8,7 +8,7 @@ coverage/
 switcher_backup.env
 yarn-error.log
 storybook-static
-
+reports/
 # Cruft
 .DS_Store
 npm-debug.log
