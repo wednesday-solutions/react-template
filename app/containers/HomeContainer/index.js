@@ -18,7 +18,7 @@ import RepoCard from '@app/components/RepoCard';
 import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -61,6 +61,7 @@ export function HomeContainer({
   padding
 }) {
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const loaded = get(reposData, 'items', null) || reposError;
@@ -132,12 +133,15 @@ export function HomeContainer({
     );
   };
 
+  const handleStoriesClick = () => {
+    history.push('/stories');
+    window.location.reload();
+  };
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <Link data-testid="redirect" to="/stories">
-          <StyledT id="stories" />
-        </Link>
+        <StyledT onClick={handleStoriesClick} data-testid="redirect" id="stories" />
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />

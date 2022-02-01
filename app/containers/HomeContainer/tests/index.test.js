@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Router } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { fireEvent } from '@testing-library/dom';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { translate } from '@app/components/IntlGlobalProvider';
@@ -140,15 +141,18 @@ describe('<HomeContainer /> tests', () => {
     expect(getAllByTestId('repo-card').length).toBe(totalCount);
   });
 
-  it('should redirect to /stories when clicked on Clickable component', () => {
+  it('should redirect to /stories when clicked on Clickable component', async () => {
     const history = createBrowserHistory();
     const { getByTestId } = renderProvider(
       <Router history={history}>
         <HomeContainer />
       </Router>
     );
+    const h = useHistory();
+    const historySpy = jest.spyOn(h, 'push');
     fireEvent.click(getByTestId('redirect'));
-    expect(history.location.pathname).toBe('/stories');
+    await timeout(500);
+    expect(historySpy).toHaveBeenCalledWith('/stories');
   });
 
   it('should render Skeleton Comp when "loading" is true', async () => {
