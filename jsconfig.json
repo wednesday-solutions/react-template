@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "allowJs": true,
+    "target": "esnext",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "moduleResolution": "node",
+    "baseUrl": "app",
+    "module": "esnext",
+    "paths": {
+      "app/*": ["/*"],
+      "@utils": ["utils"],
+      "@utils/*": ["utils/*"],
+      "@services/*": ["services/*"],
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["app", "./"]
+}

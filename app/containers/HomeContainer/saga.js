@@ -1,11 +1,9 @@
-import { put, call, takeLatest } from 'redux-saga/effects';
 import { getRepos } from '@services/repoApi';
-import { homeContainerTypes, homeContainerCreators } from './reducer';
+import { put, call, takeLatest } from 'redux-saga/effects';
+import { requestGetGithubRepos, successGetGithubRepos, failureGetGithubRepos } from './reducer';
 
-const { REQUEST_GET_GITHUB_REPOS } = homeContainerTypes;
-const { successGetGithubRepos, failureGetGithubRepos } = homeContainerCreators;
 export function* getGithubRepos(action) {
-  const response = yield call(getRepos, action.repoName);
+  const response = yield call(getRepos, action.payload);
   const { data, ok } = response;
   if (ok) {
     yield put(successGetGithubRepos(data));
@@ -13,7 +11,8 @@ export function* getGithubRepos(action) {
     yield put(failureGetGithubRepos(data));
   }
 }
+
 // Individual exports for testing
 export default function* homeContainerSaga() {
-  yield takeLatest(REQUEST_GET_GITHUB_REPOS, getGithubRepos);
+  yield takeLatest(requestGetGithubRepos.toString(), getGithubRepos);
 }

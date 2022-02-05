@@ -2,6 +2,8 @@ import find from 'lodash/find';
 import get from 'lodash/get';
 import routeConstants from './routeConstants';
 
+import PropTypes from 'prop-types';
+
 /**
  * Get details of the current route from the route config.
  * If location.pathname doesn't match any entry in the routeConstants it will return null
@@ -44,3 +46,5 @@ export const isLocal = () => {
   }
   return false;
 };
+
+export const IntlShape = PropTypes.shape({ formatMessage: PropTypes.func.isRequired });

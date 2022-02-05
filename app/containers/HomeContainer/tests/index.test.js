@@ -8,10 +8,11 @@ import React from 'react';
 import { Router } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { fireEvent } from '@testing-library/dom';
+import { waitFor } from '@testing-library/react';
 import { timeout, renderProvider } from '@utils/testUtils';
 import { translate } from '@app/components/IntlGlobalProvider';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
-import { homeContainerTypes } from '../reducer';
+import { clearGithubRepos, requestGetGithubRepos } from '../reducer';
 import { createBrowserHistory } from 'history';
 
 describe('<HomeContainer /> tests', () => {
@@ -72,18 +73,17 @@ describe('<HomeContainer /> tests', () => {
 
   it('should  dispatchGithubRepos on update on mount if repoName is already persisted', async () => {
     const repoName = 'react-template';
-    renderProvider(<HomeContainer repoName={repoName} reposData={null} dispatchGithubRepos={submitSpy} />);
+    renderProvider(<HomeContainer repo={repoName} data={null} dispatchGithubRepos={submitSpy} />);
 
-    await timeout(500);
-    expect(submitSpy).toBeCalledWith(repoName);
+    await waitFor(() => expect(submitSpy).not.toBeCalledWith(repoName));
   });
 
   it('should validate mapDispatchToProps actions', async () => {
     const dispatchReposSearchSpy = jest.fn();
     const repoName = 'react-template';
     const actions = {
-      dispatchGithubRepos: { repoName, type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS },
-      dispatchClearGithubRepos: { type: homeContainerTypes.CLEAR_GITHUB_REPOS }
+      dispatchGithubRepos: { payload: repoName, type: requestGetGithubRepos.toString() },
+      dispatchClearGithubRepos: { type: clearGithubRepos.toString() }
     };
 
     const props = mapDispatchToProps(dispatchReposSearchSpy);
@@ -97,21 +97,21 @@ describe('<HomeContainer /> tests', () => {
 
   it('should render default error message when search goes wrong', () => {
     const defaultError = translate('something_went_wrong');
-    const { getByTestId } = renderProvider(<HomeContainer reposError={defaultError} />);
+    const { getByTestId } = renderProvider(<HomeContainer error={defaultError} />);
     expect(getByTestId('error-message')).toBeInTheDocument();
     expect(getByTestId('error-message').textContent).toBe(defaultError);
   });
 
   it('should render the default message when searchBox is empty and reposError is null', () => {
-    const defaultMessage = translate('repo_search_default');
     const { getByTestId } = renderProvider(<HomeContainer />);
+    const defaultMessage = translate('repo_search_default');
     expect(getByTestId('default-message')).toBeInTheDocument();
     expect(getByTestId('default-message').textContent).toBe(defaultMessage);
   });
 
   it('should render the data when loading becomes false', () => {
     const reposData = { items: [{ repoOne: 'react-template' }] };
-    const { getByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
+    const { getByTestId } = renderProvider(<HomeContainer data={reposData} dispatchGithubRepos={submitSpy} />);
     expect(getByTestId('for')).toBeInTheDocument();
   });
 
@@ -137,7 +137,7 @@ describe('<HomeContainer /> tests', () => {
         }
       ]
     };
-    const { getAllByTestId } = renderProvider(<HomeContainer reposData={reposData} dispatchGithubRepos={submitSpy} />);
+    const { getAllByTestId } = renderProvider(<HomeContainer data={reposData} dispatchGithubRepos={submitSpy} />);
     expect(getAllByTestId('repo-card').length).toBe(totalCount);
   });
 
@@ -158,7 +158,7 @@ describe('<HomeContainer /> tests', () => {
   it('should render Skeleton Comp when "loading" is true', async () => {
     const repoName = 'some repo';
     const { getByTestId, baseElement } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
+      <HomeContainer dispatchGithubRepos={submitSpy} repo={repoName} />
     );
     fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
     await timeout(500);

@@ -7,18 +7,18 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { getRepos } from '@services/repoApi';
 import { apiResponseGenerator } from '@utils/testUtils';
 import homeContainerSaga, { getGithubRepos } from '../saga';
-import { homeContainerTypes } from '../reducer';
+import { requestGetGithubRepos, successGetGithubRepos, failureGetGithubRepos } from '../reducer';
 
 describe('HomeContainer saga tests', () => {
   const generator = homeContainerSaga();
   const repoName = 'mac';
-  let getGithubReposGenerator = getGithubRepos({ repoName });
+  let getGithubReposGenerator = getGithubRepos({ payload: repoName });
 
-  it('should start task to watch for REQUEST_GET_GITHUB_REPOS action', () => {
-    expect(generator.next().value).toEqual(takeLatest(homeContainerTypes.REQUEST_GET_GITHUB_REPOS, getGithubRepos));
+  it('should start task to watch for requestGetGithubRepos action', () => {
+    expect(generator.next().value).toEqual(takeLatest(requestGetGithubRepos.toString(), getGithubRepos));
   });
 
-  it('should ensure that the action FAILURE_GET_GITHUB_REPOS is dispatched when the api call fails', () => {
+  it('should ensure that the action failureGetGithubRepos is dispatched when the api call fails', () => {
     const res = getGithubReposGenerator.next().value;
     expect(res).toEqual(call(getRepos, repoName));
     const errorResponse = {
@@ -26,14 +26,14 @@ describe('HomeContainer saga tests', () => {
     };
     expect(getGithubReposGenerator.next(apiResponseGenerator(false, errorResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
-        error: errorResponse
+        type: failureGetGithubRepos.toString(),
+        payload: errorResponse
       })
     );
   });
 
-  it('should ensure that the action SUCCESS_GET_GITHUB_REPOS is dispatched when the api call succeeds', () => {
-    getGithubReposGenerator = getGithubRepos({ repoName });
+  it('should ensure that the action successGetGithubRepos is dispatched when the api call succeeds', () => {
+    getGithubReposGenerator = getGithubRepos({ payload: repoName });
     const res = getGithubReposGenerator.next().value;
     expect(res).toEqual(call(getRepos, repoName));
     const reposResponse = {
@@ -42,8 +42,8 @@ describe('HomeContainer saga tests', () => {
     };
     expect(getGithubReposGenerator.next(apiResponseGenerator(true, reposResponse)).value).toEqual(
       put({
-        type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
-        data: reposResponse
+        type: successGetGithubRepos.toString(),
+        payload: reposResponse
       })
     );
   });

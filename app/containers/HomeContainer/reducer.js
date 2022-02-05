@@ -1,39 +1,84 @@
-/*
+/**
+ * refer to https://jsdoc.app/index.html
  *
- * HomeContainer reducer
- *
+ * @typedef HomeState
+ * @type {object}
+ * @property {string} repo - search key.
+ * @property {string} data - repos fetched from the api.
+ * @property {string} error - api error.
  */
-import produce from 'immer';
-import { createActions } from 'reduxsauce';
+
+import { createSlice } from '@reduxjs/toolkit';
 import get from 'lodash/get';
 
-export const { Types: homeContainerTypes, Creators: homeContainerCreators } = createActions({
-  requestGetGithubRepos: ['repoName'],
-  successGetGithubRepos: ['data'],
-  failureGetGithubRepos: ['error'],
-  clearGithubRepos: {}
-});
-export const initialState = { repoName: null, reposData: {}, reposError: null };
+/** @type {HomeState} */
+export const initialState = { repo: null, data: null, error: null };
 
-/* eslint-disable default-case, no-param-reassign */
-export const homeContainerReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
-    switch (action.type) {
-      case homeContainerTypes.REQUEST_GET_GITHUB_REPOS:
-        draft.repoName = action.repoName;
-        break;
-      case homeContainerTypes.CLEAR_GITHUB_REPOS:
-        draft.repoName = null;
-        draft.reposError = null;
-        draft.reposData = {};
-        break;
-      case homeContainerTypes.SUCCESS_GET_GITHUB_REPOS:
-        draft.reposData = action.data;
-        break;
-      case homeContainerTypes.FAILURE_GET_GITHUB_REPOS:
-        draft.reposError = get(action.error, 'message', 'something_went_wrong');
-        break;
+/**
+ *
+ * @abstract redux slice for the Home container
+ * @description creates a slice to be used on the Home container.
+ *
+ *
+ */
+const homeSlice = createSlice({
+  name: 'home',
+  initialState,
+  reducers: {
+    /**
+     * @param {HomeState} state
+     * @param {object} action
+     * @abstract search key to be used as the repositories= query parameter
+     */
+    requestGetGithubRepos(state, action) {
+      state.repo = action.payload;
+    },
+    /**
+     *
+     * @param {HomeState} state
+     * @param {object} action
+     * @abstract action to save the repos fetched from the api
+     */
+    successGetGithubRepos(state, action) {
+      state.data = action.payload;
+    },
+    /**
+     *
+     * @param {HomeState} state
+     * @param {object} action
+     * @abstract action to save the error returned by the api
+     * @description Incase the action is dispatched without a message,
+     * an translation id for "Something Went Wrong" is stored.
+     */
+    failureGetGithubRepos(state, action) {
+      state.error = get(action.payload, 'message', 'something_went_wrong');
+    },
+    /**
+     *
+     * @returns {HomeState}
+     * @abstract Clear the stored github Repos
+     * @description initialState is returned.
+     */
+    clearGithubRepos() {
+      return initialState;
     }
-  });
+  }
+});
 
-export default homeContainerReducer;
+/**
+ * @description
+ * actionsCreators are functions to construct an object
+ * that can be passed to the store dispathcer.
+ * The type string will be the slice name + function name.
+ *
+ * @example
+ * requestGetGithubRepos() will return {type: "home/requestGetGithubRepos", payload: undefined}
+ *
+ * @tutorial
+ * actionCreators implement a toString function to access the type of the action.
+ */
+
+export const { requestGetGithubRepos, successGetGithubRepos, failureGetGithubRepos, clearGithubRepos } =
+  homeSlice.actions;
+
+export default homeSlice.reducer;

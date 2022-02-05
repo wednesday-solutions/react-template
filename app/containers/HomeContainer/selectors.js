@@ -6,11 +6,7 @@ import { initialState } from './reducer';
  * Direct selector to the homeContainer state domain
  */
 
-export const selectHomeContainerDomain = (state) => state.homeContainer || initialState;
-
-/**
- * Other specific selectors
- */
+export const selectHomeContainerDomain = (state) => state.home || initialState;
 
 /**
  * Default selector used by HomeContainer
@@ -18,11 +14,14 @@ export const selectHomeContainerDomain = (state) => state.homeContainer || initi
 
 export const selectHomeContainer = () => createSelector(selectHomeContainerDomain, (substate) => substate);
 
-export const selectReposData = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposData'));
+/**
+ * Other specific selectors
+ */
 
-export const selectReposError = () =>
-  createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposError'));
+export const selectReposData = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'data'));
 
-export const selectRepoName = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repoName'));
+export const selectReposError = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'error'));
+
+export const selectRepoName = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repo'));
+
 export default selectHomeContainer;

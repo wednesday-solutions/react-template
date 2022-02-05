@@ -3,33 +3,38 @@
 exports[`<RepoCard /> should render and match the snapshot 1`] = `
 <body>
   <div>
-    <div
-      class="ant-card ant-card-bordered RepoCard__CustomCard-sc-3wf6pv-0 iiVuom"
-      data-testid="repo-card"
-    >
+    <label>
       <div
-        class="ant-card-body"
+        class="ant-card ant-card-bordered RepoCard__CustomCard-sc-3wf6pv-0 iiVuom"
+        data-testid="repo-card"
       >
-        <p
-          class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="name-unavailable"
+        <div
+          class="ant-card-body"
         >
-          Repository name is unavailable
-        </p>
-        <p
-          class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="fullName-unavailable"
-        >
-          Repository full name unavaiable
-        </p>
-        <p
-          class="T__StyledText-gjlic1-0 kYcyRq"
-          data-testid="stargazers-unavaiable"
-        >
-          Repository stars are unavaiable
-        </p>
+          <p
+            class="T__StyledText-gjlic1-0 kYcyRq"
+            data-testid="name-unavailable"
+          >
+            Repository name is unavailable
+          </p>
+          <p
+            class="T__StyledText-gjlic1-0 kYcyRq"
+            data-testid="fullName-unavailable"
+          >
+            Repository full name unavaiable
+          </p>
+          <p
+            class="T__StyledText-gjlic1-0 kYcyRq"
+            data-testid="stargazers-unavaiable"
+          >
+            Repository stars are unavaiable
+          </p>
+          <input
+            type="radio"
+          />
+        </div>
       </div>
-    </div>
+    </label>
   </div>
 </body>
 `;

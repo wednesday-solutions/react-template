@@ -1,6 +1,11 @@
-import { homeContainerReducer, initialState, homeContainerTypes } from '../reducer';
+import home, {
+  initialState,
+  requestGetGithubRepos,
+  successGetGithubRepos,
+  failureGetGithubRepos,
+  clearGithubRepos
+} from '../reducer';
 
-/* eslint-disable default-case, no-param-reassign */
 describe('HomContainer reducer tests', () => {
   let state;
   beforeEach(() => {
@@ -8,46 +13,46 @@ describe('HomContainer reducer tests', () => {
   });
 
   it('should return the initial state', () => {
-    expect(homeContainerReducer(undefined, {})).toEqual(state);
+    expect(home(undefined, {})).toEqual(state);
   });
 
   it('should return the initial state when an action of type FETCH_USER is dispatched', () => {
-    const repoName = 'Mohammed Ali Chherawalla';
-    const expectedResult = { ...state, repoName };
+    const repo = 'Mohammed Ali Chherawalla';
+    const expectedResult = { ...state, repo };
     expect(
-      homeContainerReducer(state, {
-        type: homeContainerTypes.REQUEST_GET_GITHUB_REPOS,
-        repoName
+      home(state, {
+        type: requestGetGithubRepos.toString(),
+        payload: repo
       })
     ).toEqual(expectedResult);
   });
 
   it('should ensure that the user data is present and userLoading = false when FETCH_USER_SUCCESS is dispatched', () => {
     const data = { name: 'Mohammed Ali Chherawalla' };
-    const expectedResult = { ...state, reposData: data };
+    const expectedResult = { ...state, data };
     expect(
-      homeContainerReducer(state, {
-        type: homeContainerTypes.SUCCESS_GET_GITHUB_REPOS,
-        data
+      home(state, {
+        type: successGetGithubRepos.toString(),
+        payload: data
       })
     ).toEqual(expectedResult);
   });
 
   it('should ensure that the userErrorMessage has some data and userLoading = false when FETCH_USER_FAILURE is dispatched', () => {
     const error = 'something_went_wrong';
-    const expectedResult = { ...state, reposError: error };
+    const expectedResult = { ...state, error };
     expect(
-      homeContainerReducer(state, {
-        type: homeContainerTypes.FAILURE_GET_GITHUB_REPOS,
-        error
+      home(state, {
+        type: failureGetGithubRepos.toString(),
+        payload: error
       })
     ).toEqual(expectedResult);
   });
 
-  it('should return the initial state when CLEAR_GITHUB_REPOS is dispatched', () => {
+  it('should return the initial state when home/clearGithubRepos is dispatched', () => {
     expect(
-      homeContainerReducer(state, {
-        type: homeContainerTypes.CLEAR_GITHUB_REPOS
+      home(state, {
+        type: clearGithubRepos.toString()
       })
     ).toEqual(initialState);
   });

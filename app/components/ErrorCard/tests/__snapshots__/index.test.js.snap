@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorCard /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 gYsQUy"
+      color="grey"
+      data-testid="error-card"
+    >
+      <div
+        class="ant-card-head"
+      >
+        <div
+          class="ant-card-head-wrapper"
+        >
+          <div
+            class="ant-card-head-title"
+          >
+            Repository List
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-card-body"
+      >
+        <p
+          class="T__StyledText-gjlic1-0 kYcyRq"
+          data-testid="default-message"
+        >
+          Search for a repository by entering it's name in the search box
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+`;

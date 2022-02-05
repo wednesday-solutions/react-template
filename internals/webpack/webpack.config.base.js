@@ -27,7 +27,7 @@ module.exports = (options) => ({
       // Compile into js/build.js
       path: path.resolve(process.cwd(), 'build'),
       // to run prod build locally, set public path to '/' instead of '/react-template/'
-      publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'
+      publicPath: process.env.NODE_ENV === 'production' ? '/' : '/'
     },
     options.output
   ), // Merge with env dependent settings

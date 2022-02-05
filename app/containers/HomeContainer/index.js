@@ -1,35 +1,28 @@
-import React, { useEffect, memo, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import React, { useEffect, memo, useState, useMemo } from 'react';
 import get from 'lodash/get';
-import debounce from 'lodash/debounce';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import { connect } from 'react-redux';
+import debounce from 'lodash/debounce';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
+import { Input } from 'antd';
 import { injectSaga } from 'redux-injectors';
-import { Card, Skeleton, Input } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 import T from '@components/T';
 import If from '@components/If';
-import For from '@app/components/For';
 import colors from '@app/themes/colors';
-import RepoCard from '@app/components/RepoCard';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
-import { homeContainerCreators } from './reducer';
+import { selectReposData, selectReposError, selectRepoName } from './selectors';
+import { requestGetGithubRepos, clearGithubRepos } from './reducer';
 import homeContainerSaga from './saga';
-import { useHistory } from 'react-router-dom';
+import Repos from '@components/Repos';
+import ErrorCard from '@components/ErrorCard';
+import Card from '@components/Card';
 
 const { Search } = Input;
 
-const CustomCard = styled(Card)`
-  && {
-    margin: 20px 0;
-    max-width: ${(props) => props.maxwidth};
-    color: ${(props) => props.color};
-    ${(props) => props.color && `color: ${props.color}`};
-  }
-`;
 const Container = styled.div`
   && {
     display: flex;
@@ -40,6 +33,7 @@ const Container = styled.div`
     padding: ${(props) => props.padding}px;
   }
 `;
+
 const RightContent = styled.div`
   display: flex;
   align-self: flex-end;
@@ -50,13 +44,14 @@ const StyledT = styled(T)`
     color: ${colors.gotoStories};
   }
 `;
+
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
   intl,
-  reposData,
-  reposError,
-  repoName,
+  data,
+  error,
+  repo,
   maxwidth,
   padding
 }) {
@@ -64,15 +59,15 @@ export function HomeContainer({
   const history = useHistory();
 
   useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
+    const loaded = get(data, 'items', null) || error;
     if (loaded) {
       setLoading(false);
     }
-  }, [reposData]);
+  }, [data]);
 
   useEffect(() => {
-    if (repoName && !reposData?.items?.length) {
-      dispatchGithubRepos(repoName);
+    if (repo && !data?.items?.length) {
+      dispatchGithubRepos(repo);
       setLoading(true);
     }
   }, []);
@@ -85,92 +80,53 @@ export function HomeContainer({
       dispatchClearGithubRepos();
     }
   };
-  const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
-    return (
-      <If condition={!isEmpty(items) || loading}>
-        <CustomCard>
-          <Skeleton loading={loading} active>
-            <If condition={!isEmpty(repoName)}>
-              <div>
-                <T id="search_query" values={{ repoName }} />
-              </div>
-            </If>
-            <If condition={totalCount !== 0}>
-              <div>
-                <T id="matching_repos" values={{ totalCount }} />
-              </div>
-            </If>
-            <For
-              of={items}
-              ParentComponent={Container}
-              renderItem={(item, index) => <RepoCard key={index} {...item} />}
-            />
-          </Skeleton>
-        </CustomCard>
-      </If>
-    );
-  };
-  const renderErrorState = () => {
-    let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (isEmpty(repoName)) {
-      repoError = 'repo_search_default';
-    }
-    return (
-      !loading &&
-      repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
-          <If condition={reposError} otherwise={<T data-testid="default-message" id={repoError} />}>
-            <T data-testid="error-message" text={reposError} />
-          </If>
-        </CustomCard>
-      )
-    );
-  };
+  const debouncedHandleOnChange = useMemo(() => debounce(handleOnChange, 200), []);
 
   const handleStoriesClick = () => {
     history.push('/stories');
     window.location.reload();
   };
 
+  const handleChange = (event) => debouncedHandleOnChange(event.target.value);
+  const handleSearch = (searchText) => debouncedHandleOnChange(searchText);
+
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
         <StyledT onClick={handleStoriesClick} data-testid="redirect" id="stories" />
       </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
+      <Card title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
         <Search
           data-testid="search-bar"
-          defaultValue={repoName}
+          defaultValue={repo}
           type="text"
-          onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-          onSearch={(searchText) => debouncedHandleOnChange(searchText)}
+          onChange={handleChange}
+          onSearch={handleSearch}
         />
-      </CustomCard>
-      {renderRepoList()}
-      {renderErrorState()}
+      </Card>
+      <Repos loading={loading} data={data} repo={repo} />
+      <If condition={!loading}>
+        <ErrorCard error={error} />
+      </If>
     </Container>
   );
 }
+
+const ReposShape = PropTypes.shape({
+  totalCount: PropTypes.number,
+  incompleteResults: PropTypes.bool,
+  items: PropTypes.array
+});
 
 HomeContainer.propTypes = {
   dispatchGithubRepos: PropTypes.func,
   dispatchClearGithubRepos: PropTypes.func,
   intl: PropTypes.object,
-  reposData: PropTypes.shape({
-    totalCount: PropTypes.number,
-    incompleteResults: PropTypes.bool,
-    items: PropTypes.array
-  }),
-  reposError: PropTypes.string,
-  repoName: PropTypes.string,
-  history: PropTypes.object,
+  data: ReposShape,
+  error: PropTypes.string,
+  repo: PropTypes.string,
   maxwidth: PropTypes.number,
   padding: PropTypes.number
 };
@@ -178,19 +134,17 @@ HomeContainer.propTypes = {
 HomeContainer.defaultProps = {
   maxwidth: 500,
   padding: 20,
-  reposData: {},
-  reposError: null
+  data: null,
+  error: null
 };
 
 const mapStateToProps = createStructuredSelector({
-  homeContainer: selectHomeContainer(),
-  reposData: selectReposData(),
-  reposError: selectReposError(),
-  repoName: selectRepoName()
+  repo: selectRepoName(),
+  data: selectReposData(),
+  error: selectReposError()
 });
 
 export function mapDispatchToProps(dispatch) {
-  const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {
     dispatchGithubRepos: (repoName) => dispatch(requestGetGithubRepos(repoName)),
     dispatchClearGithubRepos: () => dispatch(clearGithubRepos())

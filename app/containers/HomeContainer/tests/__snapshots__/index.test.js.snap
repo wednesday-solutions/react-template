@@ -4,20 +4,21 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-l0s8pp-1 haKSMo"
+      class="HomeContainer__Container-l0s8pp-0 dhBFax"
     >
       <div
-        class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
+        class="HomeContainer__RightContent-l0s8pp-1 gwKeJK"
       >
         <p
-          class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-3 fYCmLU"
+          class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-2 cZjYnp"
           data-testid="redirect"
         >
           Go to Storybook
         </p>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"
+        class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 jjYSUQ"
+        data-testid="card"
         maxwidth="500"
       >
         <div
@@ -87,8 +88,9 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
+        class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 gYsQUy"
         color="grey"
+        data-testid="error-card"
       >
         <div
           class="ant-card-head"
