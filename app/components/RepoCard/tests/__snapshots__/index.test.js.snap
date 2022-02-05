@@ -5,7 +5,7 @@ exports[`<RepoCard /> should render and match the snapshot 1`] = `
   <div>
     <label>
       <div
-        class="ant-card ant-card-bordered RepoCard__CustomCard-sc-3wf6pv-0 iiVuom"
+        class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 hWoWqx"
         data-testid="repo-card"
       >
         <div

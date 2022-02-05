@@ -5,8 +5,8 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import history from 'utils/history';
-import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import history from '@utils/history';
+import languageProviderReducer from '@containers/LanguageProvider/reducer';
 import home from '@containers/HomeContainer/reducer';
 
 /**

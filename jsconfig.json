@@ -10,7 +10,7 @@
     "baseUrl": "app",
     "module": "esnext",
     "paths": {
-      "app/*": ["/*"],
+      "@app/*": ["*"],
       "@utils": ["utils"],
       "@utils/*": ["utils/*"],
       "@services/*": ["services/*"],

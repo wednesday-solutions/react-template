@@ -1,5 +1,5 @@
 /**
- * refer to https://jsdoc.app/index.html
+ * https://jsdoc.app/index.html
  *
  * @typedef HomeState
  * @type {object}
@@ -26,8 +26,6 @@ const homeSlice = createSlice({
   initialState,
   reducers: {
     /**
-     * @param {HomeState} state
-     * @param {object} action
      * @abstract search key to be used as the repositories= query parameter
      */
     requestGetGithubRepos(state, action) {
@@ -35,8 +33,6 @@ const homeSlice = createSlice({
     },
     /**
      *
-     * @param {HomeState} state
-     * @param {object} action
      * @abstract action to save the repos fetched from the api
      */
     successGetGithubRepos(state, action) {
@@ -44,8 +40,6 @@ const homeSlice = createSlice({
     },
     /**
      *
-     * @param {HomeState} state
-     * @param {object} action
      * @abstract action to save the error returned by the api
      * @description Incase the action is dispatched without a message,
      * an translation id for "Something Went Wrong" is stored.
@@ -55,7 +49,6 @@ const homeSlice = createSlice({
     },
     /**
      *
-     * @returns {HomeState}
      * @abstract Clear the stored github Repos
      * @description initialState is returned.
      */

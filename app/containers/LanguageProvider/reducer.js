@@ -1,28 +1,39 @@
-/*
+/**
  *
- * LanguageProvider reducer
- *
+ * @typedef LanguageProviderState
+ * @type {object}
+ * @property {string} locale - locale to be used for internationalization.
  */
-import { createActions } from 'reduxsauce';
-import produce from 'immer';
+import { createSlice } from '@reduxjs/toolkit';
 import { DEFAULT_LOCALE } from '@app/i18n';
 
-export const { Types: languageProviderTypes, Creators: languageProviderActions } = createActions({
-  changeLocale: ['locale']
-});
-
+/** @type {LanguageProviderState} */
 export const initialState = {
   locale: DEFAULT_LOCALE
 };
 
-/* eslint-disable default-case, no-param-reassign */
-export const languageProviderReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
-    switch (action.type) {
-      case languageProviderTypes.CHANGE_LOCALE:
-        draft.locale = action.locale;
-        break;
-    }
-  });
+/**
+ *
+ * @abstract redux slice for LanguageProvider
+ * @description creates a slice to be used as the LanguaeProvider.
+ * Can be used for toggling languages on the client.
+ *
+ *
+ **/
 
-export default languageProviderReducer;
+const languageProviderSlice = createSlice({
+  name: 'language',
+  initialState,
+  reducers: {
+    /**
+     * @abstract change the locale of the application
+     */
+    changeLocale(state, action) {
+      state.locale = action.payload;
+    }
+  }
+});
+
+export const { changeLocale } = languageProviderSlice.actions;
+
+export default languageProviderSlice.reducer;

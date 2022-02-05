@@ -6,7 +6,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
-import immutableTransform from 'redux-persist-transform-immutable';
 import storage from 'redux-persist/lib/storage';
 import createReducer from './reducers';
 import { createInjectorsEnhancer } from 'redux-injectors';
@@ -14,7 +13,6 @@ import { createInjectorsEnhancer } from 'redux-injectors';
 // redux persit configuration
 const persistConfig = {
   version: 1,
-  transforms: [immutableTransform()],
   key: 'root',
   blacklist: ['router'],
   storage
