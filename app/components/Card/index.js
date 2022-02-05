@@ -5,7 +5,7 @@
  */
 
 import { Card as AntCard } from 'antd';
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const CustomCard = styled(AntCard)`
@@ -21,4 +21,4 @@ const Card = (props) => <CustomCard data-testid="card" {...props} />;
 
 Card.propTypes = {};
 
-export default memo(Card);
+export default Card;

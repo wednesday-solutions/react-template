@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import If from '@components/If';
@@ -24,4 +24,4 @@ const ErrorCard = ({ error, intl }) => {
 
 ErrorCard.propTypes = { error: PropTypes.string, intl: IntlShape };
 
-export default memo(injectIntl(ErrorCard));
+export default injectIntl(ErrorCard);

@@ -11,7 +11,7 @@ import RepoCard from '@components/RepoCard';
 import { Skeleton } from 'antd';
 import { get, isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
-import React, { memo } from 'react';
+import React from 'react';
 import { FormattedMessage as T } from 'react-intl';
 import styled from 'styled-components';
 
@@ -69,4 +69,4 @@ Repos.propTypes = {
   loading: PropTypes.bool
 };
 
-export default memo(Repos);
+export default Repos;
