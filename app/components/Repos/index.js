@@ -4,15 +4,15 @@
  *
  */
 
-import React, { memo, useState, useCallback } from 'react';
-import { get, isEmpty } from 'lodash';
-import PropTypes from 'prop-types';
-import { FormattedMessage as T } from 'react-intl';
-import { Skeleton } from 'antd';
-import If from '@components/If';
-import RepoCard from '@components/RepoCard';
 import Card from '@components/Card';
 import For from '@components/For';
+import If from '@components/If';
+import RepoCard from '@components/RepoCard';
+import { Skeleton } from 'antd';
+import { get, isEmpty } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { memo } from 'react';
+import { FormattedMessage as T } from 'react-intl';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -27,12 +27,8 @@ const Container = styled.div`
 `;
 
 const Repos = ({ data, loading, repo }) => {
-  const [checked, setChecked] = useState();
   const items = get(data, 'items', []);
   const totalCount = get(data, 'totalCount', 0);
-  const handleChange = useCallback((e) => {
-    setChecked(e.target.id);
-  }, []);
 
   return (
     <If condition={!isEmpty(items) || loading}>
@@ -52,9 +48,7 @@ const Repos = ({ data, loading, repo }) => {
             <For
               of={items}
               ParentComponent={Container}
-              renderItem={(item, index) => (
-                <RepoCard key={index} name={item.name} checked={checked === item.name} handleChange={handleChange} />
-              )}
+              renderItem={(item, index) => <RepoCard key={index} name={item.name} />}
             />
           </>
         </Skeleton>

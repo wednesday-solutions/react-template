@@ -18,7 +18,7 @@ const CustomCard = styled(Card)`
   }
 `;
 
-export function RepoCard({ name, fullName, stargazersCount, checked, handleChange }) {
+export function RepoCard({ name, fullName, stargazersCount }) {
   return (
     <label htmlFor={name}>
       <CustomCard data-testid="repo-card">
@@ -37,17 +37,14 @@ export function RepoCard({ name, fullName, stargazersCount, checked, handleChang
         >
           <T data-testid="stargazers" id="repository_stars" values={{ stars: stargazersCount }} />
         </If>
-        <input type="radio" checked={checked} id={name} onChange={handleChange} />
       </CustomCard>
     </label>
   );
 }
 
 RepoCard.propTypes = {
-  checked: PropTypes.bool,
   name: PropTypes.string,
   fullName: PropTypes.string,
-  handleChange: PropTypes.func,
   stargazersCount: PropTypes.number
 };
 

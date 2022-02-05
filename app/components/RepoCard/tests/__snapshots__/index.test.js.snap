@@ -29,9 +29,6 @@ exports[`<RepoCard /> should render and match the snapshot 1`] = `
           >
             Repository stars are unavaiable
           </p>
-          <input
-            type="radio"
-          />
         </div>
       </div>
     </label>
