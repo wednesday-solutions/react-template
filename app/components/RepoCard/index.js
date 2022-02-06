@@ -13,25 +13,20 @@ import React from 'react';
 
 export function RepoCard({ name, fullName, stargazersCount }) {
   return (
-    <label htmlFor={name}>
-      <Card data-testid="repo-card">
-        <If condition={!isEmpty(name)} otherwise={<T data-testid="name-unavailable" id="repo_name_unavailable" />}>
-          <T data-testid="name" id="repository_name" values={{ name: name }} />
-        </If>
-        <If
-          condition={!isEmpty(fullName)}
-          otherwise={<T data-testid="fullName-unavailable" id="repo_full_name_unavailable" />}
-        >
-          <T data-testid="fullName" id="repository_full_name" values={{ fullName: fullName }} />
-        </If>
-        <If
-          condition={stargazersCount}
-          otherwise={<T data-testid="stargazers-unavaiable" id="repo_stars_unavailable" />}
-        >
-          <T data-testid="stargazers" id="repository_stars" values={{ stars: stargazersCount }} />
-        </If>
-      </Card>
-    </label>
+    <Card data-testid="repo-card">
+      <If condition={!isEmpty(name)} otherwise={<T data-testid="name-unavailable" id="repo_name_unavailable" />}>
+        <T data-testid="name" id="repository_name" values={{ name: name }} />
+      </If>
+      <If
+        condition={!isEmpty(fullName)}
+        otherwise={<T data-testid="fullName-unavailable" id="repo_full_name_unavailable" />}
+      >
+        <T data-testid="fullName" id="repository_full_name" values={{ fullName: fullName }} />
+      </If>
+      <If condition={stargazersCount} otherwise={<T data-testid="stargazers-unavaiable" id="repo_stars_unavailable" />}>
+        <T data-testid="stargazers" id="repository_stars" values={{ stars: stargazersCount }} />
+      </If>
+    </Card>
   );
 }
 

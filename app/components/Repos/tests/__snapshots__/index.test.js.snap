@@ -15,37 +15,33 @@ exports[`<Repos /> should render and match the snapshot 1`] = `
           data-testid="for"
           orientation="row"
         >
-          <label
-            for="kuntham"
+          <div
+            class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 hWoWqx"
+            data-testid="repo-card"
           >
             <div
-              class="ant-card ant-card-bordered Card__CustomCard-sc-7y2i64-0 hWoWqx"
-              data-testid="repo-card"
+              class="ant-card-body"
             >
-              <div
-                class="ant-card-body"
+              <p
+                class="T__StyledText-gjlic1-0 kYcyRq"
+                data-testid="name"
               >
-                <p
-                  class="T__StyledText-gjlic1-0 kYcyRq"
-                  data-testid="name"
-                >
-                  Repository Name: kuntham
-                </p>
-                <p
-                  class="T__StyledText-gjlic1-0 kYcyRq"
-                  data-testid="fullName-unavailable"
-                >
-                  Repository full name unavaiable
-                </p>
-                <p
-                  class="T__StyledText-gjlic1-0 kYcyRq"
-                  data-testid="stargazers-unavaiable"
-                >
-                  Repository stars are unavaiable
-                </p>
-              </div>
+                Repository Name: kuntham
+              </p>
+              <p
+                class="T__StyledText-gjlic1-0 kYcyRq"
+                data-testid="fullName-unavailable"
+              >
+                Repository full name unavaiable
+              </p>
+              <p
+                class="T__StyledText-gjlic1-0 kYcyRq"
+                data-testid="stargazers-unavaiable"
+              >
+                Repository stars are unavaiable
+              </p>
             </div>
-          </label>
+          </div>
         </div>
       </div>
     </div>
