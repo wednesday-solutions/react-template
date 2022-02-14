@@ -9,8 +9,8 @@
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
 import { PersistGate } from 'redux-persist/integration/react';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
@@ -44,11 +44,11 @@ const render = (messages) => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <LanguageProvider messages={messages}>
-            <ConnectedRouter history={history}>
+            <BrowserRouter>
               <ScrollToTop>
                 <App />
               </ScrollToTop>
-            </ConnectedRouter>
+            </BrowserRouter>
           </LanguageProvider>
         </PersistGate>
       </Provider>

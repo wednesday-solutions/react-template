@@ -5726,15 +5726,6 @@ confusing-browser-globals@^1.0.5:
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.10.tgz#30d1e7f3d1b882b25ec4933d1d1adac353d20a59"
   integrity sha512-gNld/3lySHwuhaVluJUKLePYirM3QNCKzVxqAdhJII9/WXKVX5PURzMVJspS1jTslSqjeuG4KMVTSouit5YPHA==
 
-connected-react-router@6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/connected-react-router/-/connected-react-router-6.4.0.tgz#c382a9e70fdd1247c09c7ece7854622db4d46234"
-  integrity sha512-RZRLD7qUz9OdmCn0JkW7pOiUsR7v9NtqnYKfqrxXsfO2ozMLR2/MjHaSPpdbMr4VE5TY6MwzAXUSkheN2ldqug==
-  dependencies:
-    immutable "^3.8.1"
-    prop-types "^15.7.2"
-    seamless-immutable "^7.1.3"
-
 console-browserify@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/console-browserify/-/console-browserify-1.2.0.tgz#67063cef57ceb6cf4993a2ab3a55840ae8c49336"
@@ -15902,11 +15893,6 @@ scroll-into-view-if-needed@^2.2.25:
   integrity sha512-8LuxJSuFVc92+0AdNv4QOxRL4Abeo1DgLnGNkn1XlaujPH/3cCFz3QI60r2VNu4obJJROzgnIUw5TKQkZvZI1w==
   dependencies:
     compute-scroll-into-view "^1.0.17"
-
-seamless-immutable@^7.1.3:
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/seamless-immutable/-/seamless-immutable-7.1.4.tgz#6e9536def083ddc4dea0207d722e0e80d0f372f8"
-  integrity sha512-XiUO1QP4ki4E2PHegiGAlu6r82o5A+6tRh7IkGGTVg/h+UoeX4nFBeCGPOhb4CYjvkqsfm/TUtvOMYC1xmV30A==
 
 seek-bzip@^1.0.5:
   version "1.0.6"

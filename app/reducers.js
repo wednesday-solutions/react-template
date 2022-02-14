@@ -3,9 +3,6 @@
  */
 
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
-
-import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import homeContainerReducer from 'containers/HomeContainer/reducer';
 
@@ -16,7 +13,6 @@ export default function createReducer(injectedReducer = {}) {
   const rootReducer = combineReducers({
     ...injectedReducer,
     language: languageProviderReducer,
-    router: connectRouter(history),
     homeContainer: homeContainerReducer
   });
 

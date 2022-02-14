@@ -15,7 +15,7 @@ import If from '@components/If';
 import For from '@app/components/For';
 import colors from '@app/themes/colors';
 import RepoCard from '@app/components/RepoCard';
-import { selectHomeContainer, selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
 import { useHistory } from 'react-router-dom';
@@ -183,7 +183,6 @@ HomeContainer.defaultProps = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  homeContainer: selectHomeContainer(),
   reposData: selectReposData(),
   reposError: selectReposError(),
   repoName: selectRepoName()
