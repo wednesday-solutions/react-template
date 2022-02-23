@@ -20,6 +20,7 @@ module.exports = {
     'react/display-name': 0,
     curly: ['error', 'all'],
     'no-console': ['error', { allow: ['error'] }],
+    'max-lines': ['error', { max: 300, skipBlankLines: true, skipComments: true }],
     'prettier/prettier': ['error', prettierOptions]
   },
   globals: {
