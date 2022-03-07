@@ -22,6 +22,7 @@
     "preinstall": "npm run npmcheckversion",
     "prebuild": "npm run build:clean",
     "build": "export ENVIRONMENT_NAME=production && cross-env NODE_ENV=production webpack --config internals/webpack/webpack.config.prod.js --color --progress --stats-children --stats-error-details",
+    "build:uat": "export ENVIRONMENT_NAME=uat && cross-env NODE_ENV=production webpack --config internals/webpack/webpack.config.prod.js --color --progress",
     "build:dev": "export ENVIRONMENT_NAME=development && cross-env NODE_ENV=production webpack --config internals/webpack/webpack.config.dev.js --color --progress",
     "build:clean": "rimraf ./build",
     "predeploy": "yarn build && yarn build-storybook -o build/stories",
