@@ -11,7 +11,7 @@ function getBranchName() {
 }
 
 function getBasePublicPath() {
-  return isUAT() ? getBranchName() : isProd() ? '/react-template' : '/';
+  return isUAT() ? getBranchName() : isProd() ? '/react-template/' : '/';
 }
 
 module.exports = { getBasePublicPath, isUAT, isProd };
