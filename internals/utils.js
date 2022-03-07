@@ -1,9 +1,9 @@
 function isUAT() {
-  return process.env.ENVIRONMENT_NAME === 'uat';
+  return process.env.ENVIRONMENT_NAME === 'development' && process.env.NODE_ENV === 'production';
 }
 
 function isProd() {
-  return process.env.ENVIRONMENT_NAME === 'production';
+  return process.env.ENVIRONMENT_NAME === 'production' && process.env.NODE_ENV === 'production';
 }
 
 function getBranchName() {
