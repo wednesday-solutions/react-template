@@ -1,32 +1,39 @@
-import { findCommonRoutePrefix, getBaseUrl } from '../history';
+import { getBaseUrl } from '../history';
 
 jest.mock('../routeConstants', () => ({
+  home: {
+    route: '/'
+  },
   repos: {
-    route: '/repos',
-    exact: true
+    route: '/repos'
+  },
+  tracks: {
+    route: '/tracks'
   },
   track: {
-    route: '/tracks/:trackId',
-    exact: true
+    route: '/tracks/:trackId'
   },
-  trackGrid: {
-    route: '/',
-    exact: true
+  artist: {
+    route: '/artists/:artistId'
+  },
+  artistTrack: {
+    route: '/artists/:artistId/tracks/:trackId'
   }
 }));
 
 describe('history tests', () => {
   beforeEach(() => {
-    process.env.ENVIRONMENT_NAME = 'uat';
+    process.env.ENVIRONMENT_NAME = 'development';
+    process.env.NODE_ENV = 'production';
   });
 
-  it("should return getBaseUrl '/' if process.env.ENVIRONMENT_NAME is undefined", () => {
-    process.env.ENVIRONMENT_NAME = undefined;
+  it("should return getBaseUrl '/' if process.env.NODE_ENV is development", () => {
+    process.env.NODE_ENV = 'development';
     const pathname = '/tracks/321';
     expect(getBaseUrl(pathname)).toBe('');
   });
 
-  it("should return baseURL '/test-relative-path' if process.env.ENVIRONMENT_NAME is 'uat' ", () => {
+  it("should return baseURL '/test-relative-path' if process.env.ENVIRONMENT_NAME is 'development' ", () => {
     const pathname = '/test-relative-path';
     expect(getBaseUrl(pathname)).toBe(pathname);
   });
@@ -46,22 +53,27 @@ describe('history tests', () => {
     expect(getBaseUrl(pathname)).toBe('/test-relative-path');
   });
 
-  it('should return baseURL same as if pathname is /test-relative-path/tracks/123/tracks', () => {
+  it('should return baseURL /test-relative-path/tracks/123 if pathname is /test-relative-path/tracks/123/tracks', () => {
     const pathname = '/test-relative-path/tracks/123/tracks';
-    expect(getBaseUrl(pathname)).toBe('/test-relative-path/tracks/123/tracks');
+    expect(getBaseUrl(pathname)).toBe('/test-relative-path/tracks/123');
   });
 
-  it('should get the common prefix if passed in arrays of string in findCommonRoutePrefix', () => {
-    const routeArr = [
-      '/feat/auth/artist/jarvis/tracks',
-      '/feat/auth/artist',
-      '/feat/auth/artist/jarvis',
-      '/feat/auth/art1st'
-    ];
-    expect(findCommonRoutePrefix(routeArr)).toBe('/feat/auth/art');
+  it('should return baseURL /test-relative-path if pathname is /test-relative-path/artists/123/tracks/321', () => {
+    const pathname = '/test-relative-path/artists/123/tracks/321';
+    expect(getBaseUrl(pathname)).toBe('/test-relative-path');
   });
 
-  it('should return baseUrl /react-template if ENVINRONMENT_NAME is production', () => {
+  it('should return baseURL /test-relative-path if pathname is /test-relative-path/artists/123/tracks/321/', () => {
+    const pathname = '/test-relative-path/artists/123/tracks/321/';
+    expect(getBaseUrl(pathname)).toBe('/test-relative-path');
+  });
+
+  it('should return baseURL same as pathname if pathname is /test-relative-path/artists/123/track2/321', () => {
+    const pathname = '/test-relative-path/artists/123/track2/321';
+    expect(pathname).toBe(pathname);
+  });
+
+  it('should return baseUrl /react-template if NODE_ENV and ENVIRONMENT_NAME is production', () => {
     process.env.ENVIRONMENT_NAME = 'production';
     const pathname = '/test-relative-path';
     expect(getBaseUrl(pathname)).toBe('/react-template');

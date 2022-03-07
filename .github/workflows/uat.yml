@@ -13,7 +13,7 @@ jobs:
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }} # optional: defaults to us-east-1
+      AWS_REGION: ${{ secrets.AWS_REGION }}
       PATHS: '/*'
 
     steps:
@@ -51,6 +51,3 @@ jobs:
         env:
           SOURCE_DIR: './uat/'
           DEST_DIR: ''
-
-      # - name: Clear Cloudfront Cache
-      #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
