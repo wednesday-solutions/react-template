@@ -11,10 +11,6 @@ export async function redirect() {
   const pathnames = pathname.split('/').filter((val) => val !== '');
   let loopCount = pathnames.length;
 
-  // /feat/uat/tracks/123
-
-  // 4 => 3,2,1
-
   for (let k = loopCount - 1; k > 0; k--) {
     // remove empty strings in the edges after split
     let newPathname = '';
