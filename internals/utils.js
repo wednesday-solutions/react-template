@@ -10,8 +10,12 @@ function getBranchName() {
   return process.env.BRANCH_NAME ? `/${process.env.BRANCH_NAME}/` : './';
 }
 
+function getDefaultPublicPath() {
+  return isProd() ? '/react-template' : '/';
+}
+
 function getBasePublicPath() {
-  return isUAT() ? getBranchName() : isProd() ? '/react-template' : '/';
+  return isUAT() ? getBranchName() : getDefaultPublicPath();
 }
 
 module.exports = { getBasePublicPath, isUAT, isProd };

@@ -1,52 +1,54 @@
 import { createBrowserHistory } from 'history';
 import { matchPath } from 'react-router';
+import { isProd, isUAT } from './index';
 import routeConstants from './routeConstants';
 
 const routes = Object.keys(routeConstants);
 
 /** @param {string} pathname */
 export function getBaseUrl(pathname) {
+  if (process.env.NODE_ENV === 'development') {
+    return '';
+  }
+
+  if (isProd()) {
+    // GH Pages
+    return '/react-template';
+  }
+
   let baseURL = '';
 
-  if (process.env.NODE_ENV === 'production') {
+  if (isUAT()) {
     let isMatchedOnce = false;
-    switch (process.env.ENVIRONMENT_NAME) {
-      case 'development':
-        routes.forEach((routeKey) => {
-          /** @type {string} */
-          const route = routeConstants[routeKey].route;
+    routes.forEach((routeKey) => {
+      /** @type {string} */
+      const route = routeConstants[routeKey].route;
 
-          if (pathname.includes(route)) {
-            if (pathname.substring(pathname.length - route.length, pathname.length) === route) {
-              baseURL = pathname.substring(0, pathname.length - route.length);
-              isMatchedOnce = true;
-            }
-            if (pathname.substring(pathname.length - route.length - 1, pathname.length) === `${route}/`) {
-              baseURL = pathname.substring(0, pathname.length - route.length - 1);
-              isMatchedOnce = true;
-            }
-          } else if (route.includes(':')) {
-            const routeSplitArr = route.split('/').filter((val) => val !== '');
-            const match = '/' + routeSplitArr[0];
-            const matchLastIndex = pathname.lastIndexOf(match);
-            const pathToMatch = pathname.substring(matchLastIndex);
-            const isMatch = matchPath(pathToMatch, {
-              path: route,
-              exact: true
-            });
-            if (isMatch) {
-              baseURL = pathname.substring(0, matchLastIndex);
-              isMatchedOnce = true;
-            }
-          }
-        });
-        if (!isMatchedOnce) {
-          baseURL = pathname;
+      if (pathname.includes(route)) {
+        if (pathname.endsWith(route)) {
+          baseURL = pathname.substring(0, pathname.length - route.length);
+          isMatchedOnce = true;
+        } else if (pathname.endsWith(`${route}/`)) {
+          baseURL = pathname.substring(0, pathname.length - route.length - 1);
+          isMatchedOnce = true;
         }
-        break;
-      case 'production':
-        baseURL = '/react-template';
-        break;
+      } else if (route.includes(':')) {
+        const routeSplitArr = route.split('/').filter((val) => val !== '');
+        const match = '/' + routeSplitArr[0];
+        const matchLastIndex = pathname.lastIndexOf(match);
+        const pathToMatch = pathname.substring(matchLastIndex);
+        const isMatch = matchPath(pathToMatch, {
+          path: route,
+          exact: true
+        });
+        if (isMatch) {
+          baseURL = pathname.substring(0, matchLastIndex);
+          isMatchedOnce = true;
+        }
+      }
+    });
+    if (!isMatchedOnce) {
+      baseURL = pathname;
     }
   }
 

@@ -1,39 +1,40 @@
+async function getSPAHTML(pathname) {
+  const pathnames = pathname.split('/').filter((val) => val !== '');
+  let loopCount = pathnames.length;
+
+  // /feat/uat/tracks/123
+
+  // 4 => 3,2,1
+
+  for (let k = loopCount - 1; k > 0; k--) {
+    // remove empty strings in the edges after split
+    let newPathname = '';
+    for (let i = 0; i < k; i++) {
+      newPathname += `/${pathnames[i]}`;
+    }
+
+    let updatedUrl = window.location.origin + newPathname;
+    const res = await fetch(updatedUrl);
+    if (res.ok) {
+      window.location.assign(updatedUrl + '/index.html' + `?redirect_uri=${pathname.replace(newPathname, '')}`);
+      return;
+    }
+  }
+
+  window.location.assign(window.location.origin + '/index.html');
+  return;
+}
+
 export async function detectRedirect() {
   let pathname = window.location.pathname;
 
-  if (!['', '/'].includes(pathname)) {
-    if (pathname.includes('/index.html')) {
-      pathname = pathname.replace('/index.html', '');
-    }
-    await getSPAHTML();
-  } else {
+  if (['', '/', '/index.html'].includes(pathname)) {
     return;
   }
-
-  async function getSPAHTML() {
-    let newPathname = pathname;
-
-    while (newPathname) {
-      // remove empty strings in the edges after split
-      let pathnames = newPathname.split('/').filter((val) => val !== '');
-      let updatedPathname = '';
-      for (let i = 0; i < pathnames.length - 1; i++) {
-        updatedPathname += `/${pathnames[i]}`;
-      }
-      if (!updatedPathname) {
-        window.location.assign(window.location.origin + '/index.html');
-        return;
-      }
-      let updatedUrl = window.location.origin + updatedPathname;
-      const res = await fetch(updatedUrl);
-      if (res.ok) {
-        window.location.assign(updatedUrl + '/index.html' + `?redirect_uri=${pathname.replace(updatedPathname, '')}`);
-        return;
-      } else {
-        newPathname = updatedPathname;
-      }
-    }
+  if (pathname.includes('/index.html')) {
+    pathname = pathname.replace('/index.html', '');
   }
+  await getSPAHTML(pathname);
 }
 
 detectRedirect();

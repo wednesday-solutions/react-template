@@ -32,6 +32,17 @@ describe('UAT script tests', () => {
     expect(window.location.pathname).toBe('/');
   });
 
+  it("should not redirect if pathname is ''", async () => {
+    window.location.pathname = '';
+    await detectRedirect();
+    expect(window.location.pathname).toBe('');
+  });
+  it("should not redirect if pathname is '/index.html'", async () => {
+    window.location.pathname = '/index.html';
+    await detectRedirect();
+    expect(window.location.pathname).toBe('/index.html');
+  });
+
   it("should redirect back to index.html if path couldn't spa file in other route", async () => {
     window.location.pathname = '/some/random/place';
     await detectRedirect();
