@@ -22,7 +22,6 @@ async function getSPAHTML(pathname) {
   }
 
   window.location.assign(window.location.origin + '/index.html');
-  return;
 }
 
 export async function detectRedirect() {
