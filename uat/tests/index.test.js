@@ -1,4 +1,4 @@
-import { redirect } from '..';
+import { redirect } from '../index';
 
 describe('UAT script tests', () => {
   beforeAll(() => {
