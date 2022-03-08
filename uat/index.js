@@ -1,4 +1,13 @@
-async function getSPAHTML(pathname) {
+export async function redirect() {
+  let pathname = window.location.pathname;
+
+  if (['', '/', '/index.html'].includes(pathname)) {
+    return;
+  }
+  if (pathname.includes('/index.html')) {
+    pathname = pathname.replace('/index.html', '');
+  }
+
   const pathnames = pathname.split('/').filter((val) => val !== '');
   let loopCount = pathnames.length;
 
@@ -24,16 +33,4 @@ async function getSPAHTML(pathname) {
   window.location.assign(window.location.origin + '/index.html');
 }
 
-export async function detectRedirect() {
-  let pathname = window.location.pathname;
-
-  if (['', '/', '/index.html'].includes(pathname)) {
-    return;
-  }
-  if (pathname.includes('/index.html')) {
-    pathname = pathname.replace('/index.html', '');
-  }
-  await getSPAHTML(pathname);
-}
-
-detectRedirect();
+redirect();
