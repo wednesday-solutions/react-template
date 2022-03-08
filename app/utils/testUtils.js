@@ -2,7 +2,7 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { browserHistory, BrowserRouter } from 'react-router-dom';
+import { browserHistory, BrowserRouter, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import configureStore from '@app/configureStore';
 import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
@@ -24,7 +24,7 @@ export const getComponentStyles = (Component, props = {}) => {
   return window.getComputedStyle(componentRoots[0])._values;
 };
 
-export const renderProvider = (children) => {
+export const renderProvider = (children, history) => {
   const store = configureStore({}, browserHistory).store;
   return render(
     <Provider store={store}>
@@ -34,7 +34,7 @@ export const renderProvider = (children) => {
             main: 'violet'
           }}
         >
-          <BrowserRouter>{children}</BrowserRouter>
+          {history ? <Router history={history}>{children}</Router> : <BrowserRouter>{children}</BrowserRouter>}
         </ThemeProvider>
       </ConnectedLanguageProvider>
     </Provider>
