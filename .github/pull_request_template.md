@@ -31,4 +31,4 @@
 
 ---
 
-- http://wednesday-react.s3-website.ap-south-1.amazonaws.com/<BRANCH_NAME>
+- http://wednesday-react-template.s3-website.ap-south-1.amazonaws.com/<BRANCH_NAME>
