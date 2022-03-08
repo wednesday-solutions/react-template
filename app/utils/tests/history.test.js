@@ -22,9 +22,16 @@ jest.mock('../routeConstants', () => ({
 }));
 
 describe('history tests', () => {
+  const OLD_ENV = process.env;
   beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...OLD_ENV };
     process.env.ENVIRONMENT_NAME = 'development';
     process.env.NODE_ENV = 'production';
+  });
+
+  afterAll(() => {
+    process.env = OLD_ENV;
   });
 
   it("should return getBaseUrl '/' if process.env.NODE_ENV is development", () => {
