@@ -26,3 +26,9 @@
 ### GIF's
 
 ---
+
+### Live Link
+
+---
+
+- http://wednesday-react-template.s3-website.ap-south-1.amazonaws.com/<BRANCH_NAME>

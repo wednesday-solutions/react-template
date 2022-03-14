@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { css } from 'styled-components';
 import * as colors from '../colors';
 import styles, { configureFlex } from '../styles';

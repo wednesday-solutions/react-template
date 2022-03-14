@@ -1,6 +1,7 @@
 {
   "collectCoverageFrom": [
     "app/**/*.{js,jsx}",
+    "uat/**/*.js",
     "!app/**/*.test.{js,jsx}",
     "!app/*/RbGenerated*/*.{js,jsx}",
     "!app/app.js",

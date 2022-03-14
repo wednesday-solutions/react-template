@@ -1,0 +1,53 @@
+name: AWS S3 Static Site Deploy
+on:
+  pull_request:
+    branches: [master]
+jobs:
+  aws_deply:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    env:
+      AWS_S3_BUCKET: wednesday-react-template
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      PATHS: '/*'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get branch name
+        id: vars
+        run: echo ::set-output name=branch::${{ github.event.pull_request.head.ref }}
+
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        run: export BRANCH_NAME=${{ steps.vars.outputs.branch }} && yarn build:uat
+
+      - name: AWS S3 Deploy
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --acl public-read --follow-symlinks
+        env:
+          SOURCE_DIR: './build/'
+          DEST_DIR: ${{ steps.vars.outputs.branch }}
+
+      - name: Deploy S3 fallback index.html
+        uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: --acl public-read --follow-symlinks --exclude 'tests/*'
+        env:
+          SOURCE_DIR: './uat/'
+          DEST_DIR: ''
