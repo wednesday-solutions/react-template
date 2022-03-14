@@ -44,3 +44,11 @@ export const isLocal = () => {
   }
   return false;
 };
+
+export function isUAT() {
+  return process.env.ENVIRONMENT_NAME === 'development' && process.env.NODE_ENV === 'production';
+}
+
+export function isProd() {
+  return process.env.ENVIRONMENT_NAME === 'production' && process.env.NODE_ENV === 'production';
+}
