@@ -16,8 +16,6 @@ export const selectHomeContainerDomain = (state) => state.homeContainer || initi
  * Default selector used by HomeContainer
  */
 
-export const selectHomeContainer = () => createSelector(selectHomeContainerDomain, (substate) => substate);
-
 export const selectReposData = () =>
   createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposData'));
 
@@ -25,4 +23,3 @@ export const selectReposError = () =>
   createSelector(selectHomeContainerDomain, (substate) => get(substate, 'reposError'));
 
 export const selectRepoName = () => createSelector(selectHomeContainerDomain, (substate) => get(substate, 'repoName'));
-export default selectHomeContainer;
