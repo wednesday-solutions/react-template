@@ -1,17 +1,17 @@
 import { createBrowserHistory } from 'history';
 import { isProd, isUAT } from './index';
 
-export function getBaseUrl() {
+export function getBaseName() {
   if (isProd()) {
     // GH Pages
     return '/react-template';
   }
-  if (!isUAT()) {
-    return '';
+  if (isUAT()) {
+    return `/${process.env.BRANCH_NAME}`;
   }
 
-  return process.env.BRANCH_NAME ? `/${process.env.BRANCH_NAME}` : window.location.pathname.replace('/index.html', '');
+  return '';
 }
 
-const history = createBrowserHistory({ basename: getBaseUrl() });
+const history = createBrowserHistory({ basename: getBaseName() });
 export default history;

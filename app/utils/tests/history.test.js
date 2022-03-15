@@ -1,4 +1,4 @@
-import { getBaseUrl } from '../history';
+import { getBaseName } from '../history';
 
 jest.mock('../routeConstants', () => ({
   home: {
@@ -41,27 +41,22 @@ describe('history tests', () => {
     window.location = oldLocation;
   });
 
-  it("should return getBaseUrl '/' if process.env.NODE_ENV is development", () => {
+  it("should return getBaseName '/' if process.env.NODE_ENV is development", () => {
     process.env.NODE_ENV = 'development';
     window.location.pathname = '/tracks/321';
-    expect(getBaseUrl()).toBe('');
+    expect(getBaseName()).toBe('');
   });
 
   it('should return baseURL BRANCH_NAME in UAT environment', () => {
     process.env.BRANCH_NAME = 'feat/test-pr';
     window.location.pathname = '/feat/test-pr/tracks/123';
-    expect(getBaseUrl()).toBe('/' + process.env.BRANCH_NAME);
+    expect(getBaseName()).toBe('/' + process.env.BRANCH_NAME);
     process.env.BRANCH_NAME = undefined;
-  });
-
-  it('should return baseURL from pathname in UAT environment if BRANCH_NAME in undefined', () => {
-    window.location.pathname = '/feat/test-pr/index.html';
-    expect(getBaseUrl()).toBe('/feat/test-pr');
   });
 
   it('should return baseUrl /react-template if NODE_ENV and ENVIRONMENT_NAME is production', () => {
     process.env.ENVIRONMENT_NAME = 'production';
     window.location.pathname = '/test-relative-path';
-    expect(getBaseUrl()).toBe('/react-template');
+    expect(getBaseName()).toBe('/react-template');
   });
 });
