@@ -27,7 +27,7 @@ async function getBranchNames() {
 
 async function updateFallbackPage({ deleteOnly } = {}) {
   let $ = cheerio.load(fs.readFileSync('uat/index.html'));
-  $('ul').html('');
+  $('ul.branches').html('');
   let logMessage = 'Branches deleted';
 
   if (!deleteOnly) {
@@ -37,7 +37,7 @@ async function updateFallbackPage({ deleteOnly } = {}) {
       (branch) =>
         (branchLi += `<li class="branch"><a href="${branch}" target="_blank" rel="noreferrer">${branch}</a></li>\n\t`)
     );
-    $(branchLi).appendTo('ul');
+    $(branchLi).appendTo('ul.branches');
     logMessage = 'Branches added';
   }
   const htmlData = $.html().toString();
