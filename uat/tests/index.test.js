@@ -1,12 +1,17 @@
 import { redirect } from '../index';
 
 describe('UAT script tests', () => {
+  let oldLocation;
+  let oldFetch;
+
   beforeAll(() => {
+    oldLocation = window.location;
+    oldFetch = global.fetch;
     delete window.location;
     window.location = {
       pathname: '/',
       origin: 'http://localhost',
-      assign: jest.fn()
+      replace: jest.fn()
     };
     delete global.fetch;
     global.fetch = jest.fn((url) => {
@@ -18,10 +23,15 @@ describe('UAT script tests', () => {
     });
   });
 
+  afterAll(() => {
+    window.location = oldLocation;
+    global.fetch = oldFetch;
+  });
+
   it('should redirect to spa page', async () => {
     window.location.pathname = '/feat/spa/random/123';
     await redirect();
-    expect(window.location.assign).toBeCalledWith(
+    expect(window.location.replace).toBeCalledWith(
       window.location.origin + '/feat/spa/index.html?redirect_uri=/random/123'
     );
   });
@@ -46,12 +56,12 @@ describe('UAT script tests', () => {
   it("should redirect back to index.html if path couldn't spa file in other route", async () => {
     window.location.pathname = '/some/random/place';
     await redirect();
-    expect(window.location.assign).toBeCalledWith(window.location.origin + '/index.html');
+    expect(window.location.replace).toBeCalledWith(window.location.origin + '/index.html');
   });
 
   it("should trim /index.html at the end redirect back to index.html if path couldn't spa file in other route", async () => {
     window.location.pathname = '/some/random/place/index.html';
     await redirect();
-    expect(window.location.assign).toBeCalledWith(window.location.origin + '/index.html');
+    expect(window.location.replace).toBeCalledWith(window.location.origin + '/index.html');
   });
 });
