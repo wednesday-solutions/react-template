@@ -3,6 +3,11 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 
 async function getBranchNames() {
+  const AWS_CREDENTIAL_KEYS = ['AWS_REGION', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_S3_BUCKET'];
+  const credentialsFound = AWS_CREDENTIAL_KEYS.every((key) => !!process.env[key]);
+  if (!credentialsFound) {
+    throw new Error('AWS Credentials not found');
+  }
   const s3Client = new S3Client({
     region: process.env.AWS_REGION,
     credentials: {
