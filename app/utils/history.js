@@ -10,7 +10,7 @@ export function getBaseUrl() {
     return '';
   }
 
-  return process.env.BRANCH_NAME || window.location.pathname.replace('/index.html', '');
+  return process.env.BRANCH_NAME ? `/${process.env.BRANCH_NAME}` : window.location.pathname.replace('/index.html', '');
 }
 
 const history = createBrowserHistory({ basename: getBaseUrl() });
