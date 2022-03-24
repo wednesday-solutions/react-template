@@ -21,12 +21,12 @@ export async function redirect() {
     let updatedUrl = window.location.origin + newPathname;
     const res = await fetch(updatedUrl);
     if (res.ok) {
-      window.location.assign(updatedUrl + '/index.html' + `?redirect_uri=${pathname.replace(newPathname, '')}`);
+      window.location.replace(updatedUrl + '/index.html' + `?redirect_uri=${pathname.replace(newPathname, '')}`);
       return;
     }
   }
 
-  window.location.assign(window.location.origin + '/index.html');
+  window.location.replace(window.location.origin + '/index.html');
 }
 
 redirect();
