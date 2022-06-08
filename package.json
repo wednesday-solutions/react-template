@@ -105,7 +105,7 @@
     "less": "^4.1.1",
     "less-loader": "7.3.0",
     "lodash": "4.17.19",
-    "minimist": "1.2.3",
+    "minimist": "1.2.6",
     "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
