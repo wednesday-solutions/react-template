@@ -6,6 +6,13 @@
     "type": "git",
     "url": "git://github.com/wednesday-solutions/react-template.git"
   },
+  "keywords": [
+    "react",
+    "starter project",
+    "boilerplate",
+    "react-template",
+    "template"
+  ],
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
