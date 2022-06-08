@@ -1,7 +1,7 @@
 {
   "name": "react-template",
   "version": "1.0.0",
-  "description": "A template react application",
+  "description": "An enterprise react template application showcasing - Testing strategy, Global state management, middleware support, a network layer, component library integration, localization, PWA support, route configuration, lazy loading and CI/CD",
   "repository": {
     "type": "git",
     "url": "git://github.com/wednesday-solutions/react-template.git"
