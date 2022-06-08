@@ -207,7 +207,7 @@
     "react-test-renderer": "17.0.2",
     "react-testing-library": "6.1.2",
     "rimraf": "2.6.3",
-    "shelljs": "0.8.3",
+    "shelljs": "0.8.5",
     "storybook-addon-intl": "^2.4.1",
     "storybook-addon-smart-knobs": "^5.0.0",
     "storybook-router": "^0.3.4",
