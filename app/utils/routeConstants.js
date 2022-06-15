@@ -6,5 +6,13 @@ export default {
       padding: 20
     },
     exact: true
+  },
+  tracks: {
+    route: '/tracks',
+    exact: true
+  },
+  trackInfo: {
+    route: '/tracks/:id',
+    exact: true
   }
 };
