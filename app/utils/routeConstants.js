@@ -6,5 +6,9 @@ export default {
       padding: 20
     },
     exact: true
+  },
+  itunes: {
+    route: '/itunes',
+    exact: true
   }
 };
