@@ -61,7 +61,8 @@
     "build-storybook": "export ENVIRONMENT_NAME=production && build-storybook",
     "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master",
     "generate": "react-generate",
-    "ls-uat-branches": "node ./internals/scripts/ls-branches.js"
+    "ls-uat-branches": "node ./internals/scripts/ls-branches.js",
+    "react-init": "plop --plopfile  ./internals/scripts/predeploy.js"
   },
   "browserslist": [
     "last 2 versions",
@@ -197,7 +198,7 @@
     "ngrok": "4.0.1",
     "node-plop": "0.18.0",
     "null-loader": "0.1.1",
-    "plop": "2.3.0",
+    "plop": "^2.3.0",
     "pre-commit": "1.2.2",
     "prettier": "2.3.1",
     "prettier-config-standard": "4.0.0",
