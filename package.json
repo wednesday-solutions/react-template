@@ -59,10 +59,9 @@
     "prettify": "prettier --write",
     "storybook": "export ENVIRONMENT_NAME=development && start-storybook -p 6006",
     "build-storybook": "export ENVIRONMENT_NAME=production && build-storybook",
-    "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master",
+    "initialize": "plop --plopfile  ./internals/scripts/predeploy.js",
     "generate": "react-generate",
-    "ls-uat-branches": "node ./internals/scripts/ls-branches.js",
-    "react-init": "plop --plopfile  ./internals/scripts/predeploy.js"
+    "ls-uat-branches": "node ./internals/scripts/ls-branches.js"
   },
   "browserslist": [
     "last 2 versions",

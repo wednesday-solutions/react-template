@@ -51,6 +51,8 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 - Install dependencies using `yarn install`
 
+- Run the initialize script using `yarn run initialize`
+
 - Start the dev server using `yarn start`
 
 - Go through the other scripts in `package.json`
@@ -231,10 +233,3 @@ Take a look at the following files
 
 - [app/app.js](app/app.js)
 - [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
-
-## Before making production build
-
-- Run the script using following command
-  ```
-  npm run react-init
-  ```
