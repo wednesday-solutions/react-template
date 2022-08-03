@@ -232,13 +232,9 @@ Take a look at the following files
 - [app/app.js](app/app.js)
 - [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
 
-## Gotchas
+## Before making production build
 
-- For github pages to work on an [arbitrary route](https://wednesday-solutions.github.io/react-template/) we have used some workarounds.
-  For production builds deployed directly on `/` you need to make the following changes
-  1. [publicPath: process.env.NODE_ENV === 'production' ? '/react-template/' : '/'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.base.js#L29)
-     should be: `publicPath: '/'`
-  2. [relativePaths: process.env.NODE_ENV === 'production'](https://github.com/wednesday-solutions/react-template/blob/master/internals/webpack/webpack.config.prod.js#L85)
-     should be: `relativePaths: false,`
-  3. [const history = createBrowserHistory({ basename: baseUrl });](https://github.com/wednesday-solutions/react-template/blob/master/app/utils/history.js#L3)
-     should be: `const history = createBrowserHistory();`
+- Run the script using following command
+  ```
+  npm run react-init
+  ```
