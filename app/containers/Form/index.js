@@ -17,7 +17,6 @@ import saga from './saga';
 import { formCreators } from './reducer';
 
 export function Form({ dispatchAddUserData, somePayLoad }) {
-  console.log(somePayLoad);
   const [inputField, setInputField] = useState({
     name: '',
     mobile: '',
@@ -52,10 +51,27 @@ export function Form({ dispatchAddUserData, somePayLoad }) {
     console.log(inputField);
   };
 
+  const style = {
+    margin : '0px'
+  }
   const onSubmit = () => {
     dispatchAddUserData(inputField);
-    alert(JSON.stringify(inputField));
+    // alert(JSON.stringify(inputField));
   };
+
+  const renderUsers = ()=>{
+    return (
+      somePayLoad.map((user)=>{
+        return (
+          <div>
+           <h1 style={style}>{user.name}</h1>
+           <p>{user.mobile},{user.email}</p>
+         </div>
+        )
+      })
+    )
+  }
+
   return (
     <div>
       {/* <T id={'Form'} /> */}
@@ -74,6 +90,9 @@ export function Form({ dispatchAddUserData, somePayLoad }) {
         </label>
         <input type="submit" name="Submit" onClick={onSubmit} />
       </form>
+      <hr/>
+      <h1>Registered Users</h1>
+      {renderUsers()}
     </div>
   );
 }
