@@ -81,7 +81,7 @@ module.exports = require('./webpack.config.base')({
     // Put it in the end to capture all the HtmlWebpackPlugin's
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
     new OfflinePlugin({
-      relativePaths: isProd() || isUAT(),
+      relativePaths: false,
       publicPath,
       appShell: '/',
 
