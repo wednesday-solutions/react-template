@@ -54,14 +54,14 @@ describe('Tests for styles', () => {
 
   it('should return the borderRaduis stylings according to the radius value and types passed', () => {
     let radius = 12;
-    let expectedResult = css`
-      border-radius: ${radius + `${typeof radius === `string` ? `;` : `px`}`};
+    expectedResult = css`
+      border-radius: ${radius + typeof radius !== 'string' && 'px'};
     `;
     expect(styles.borderRadius(radius)).toEqual(expectedResult);
 
     radius = '12px';
     expectedResult = css`
-      border-radius: ${radius + `${typeof radius === `string` ? `;` : `px`}`};
+      border-radius: ${radius + typeof radius !== 'string' && 'px'};
     `;
     expect(styles.borderRadius(radius)).toEqual(expectedResult);
   });

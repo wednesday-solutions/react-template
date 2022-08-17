@@ -20,7 +20,7 @@ describe('Tests for LanguageProvider selectors', () => {
   });
 
   it('should return the selector', () => {
-    const expectedResult = createSelector(selectLanguage, (initialState) => initialState.locale);
+    const expectedResult = createSelector(selectLanguage, (state) => state.locale);
     expect(JSON.stringify(makeSelectLocale(initialState))).toEqual(JSON.stringify(expectedResult));
   });
 });

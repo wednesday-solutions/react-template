@@ -39,8 +39,8 @@ const unequalColumns = () => css`
   ${configureFlex('column', '', '', '', 0, 0, 0)};
 `;
 
-const height = (height = 4) => css`
-  height: ${height}rem;
+const height = (heightValue = 4) => css`
+  height: ${heightValue}rem;
 `;
 
 const top = (marginTop = 0) =>
@@ -85,7 +85,7 @@ const borderRadiusTop = (topRadius = 0) => css`
 
 const borderRadius = (radius) =>
   css`
-    border-radius: ${radius + `${typeof radius === `string` ? `;` : `px`}`};
+    border-radius: ${radius + typeof radius !== 'string' && 'px'};
   `;
 
 const borderWithRadius = (width = 1, type = 'solid', color = '#ccc', radius = 0) =>
