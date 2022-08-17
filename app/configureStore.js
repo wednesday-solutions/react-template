@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import immutableTransform from 'redux-persist-transform-immutable';
 import storage from 'redux-persist/lib/storage';
-import createReducer from './reducers';
+import createReducer from './createRootReducer';
 import { createInjectorsEnhancer } from 'redux-injectors';
 
 // redux persit configuration
@@ -20,7 +20,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, createReducer());
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(initialState = {}) {
   let composeEnhancers = compose;
   const reduxSagaMonitorOptions = {};
 
@@ -65,7 +65,7 @@ export default function configureStore(initialState = {}, history) {
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
+    module.hot.accept('./createRootReducer', () => {
       store.replaceReducer(createReducer(store.injectedReducers));
     });
   }

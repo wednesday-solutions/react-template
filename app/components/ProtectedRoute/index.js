@@ -9,7 +9,7 @@ import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import routeConstants from '@utils/routeConstants';
 
-const ProtectedRoute = ({ isUserVerified, render: C, isLoggedIn, handleLogout, ...rest }) => {
+const ProtectedRoute = ({ render: C, isLoggedIn, handleLogout, ...rest }) => {
   const isUnprotectedRoute =
     Object.keys(routeConstants)
       .filter((key) => !routeConstants[key].isProtected)
