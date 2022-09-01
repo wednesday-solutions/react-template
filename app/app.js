@@ -84,9 +84,26 @@ if (!window.Intl) {
 // we do not want it installed
 if (process.env.NODE_ENV === 'production') {
   require('@lcdp/offline-plugin/runtime').install({
+    onUpdating: () => {
+      // eslint-disable-next-line
+      console.log('SW Event: onUpdating');
+    },
+    onUpdateReady: () => {
+      // eslint-disable-next-line
+      console.log('SW Event: onUpdateReady');
+      // Tells to new SW to take control immediately
+      require('@lcdp/offline-plugin/runtime').applyUpdate();
+    },
     onUpdated: () => {
+      // eslint-disable-next-line
+      console.log('SW Event: onUpdated');
       // Reload the webpage to load into the new version
       window.location.reload();
+    },
+
+    onUpdateFailed: () => {
+      // eslint-disable-next-line
+      console.log('SW Event: onUpdateFailed');
     }
-  }); // eslint-disable-line global-require
+  });
 }
