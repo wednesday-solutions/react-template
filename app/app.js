@@ -86,7 +86,7 @@ if (process.env.NODE_ENV === 'production') {
   require('@lcdp/offline-plugin/runtime').install({
     onUpdating: () => {
       // eslint-disable-next-line
-      console.log('SW Event: onUpdating');
+      console.log('SW Event: onUpdating-');
     },
     onUpdateReady: () => {
       // eslint-disable-next-line
