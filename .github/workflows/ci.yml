@@ -29,6 +29,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: LHCI Benchmark
+        run: yarn lhci
+
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:

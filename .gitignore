@@ -9,6 +9,7 @@ switcher_backup.env
 yarn-error.log
 storybook-static
 reports/
+.lighthouseci
 # Cruft
 .DS_Store
 npm-debug.log
