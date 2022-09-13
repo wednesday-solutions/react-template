@@ -5,7 +5,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('@lcdp/offline-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const { isProd, isUAT, getBasePublicPath } = require('../utils');
+const { getBasePublicPath } = require('../utils');
 
 const publicPath = getBasePublicPath();
 
@@ -87,7 +87,7 @@ module.exports = require('./webpack.config.base')({
       AppCache: {
         events: true
       },
-      relativePaths: isProd() || isUAT(),
+      relativePaths: false,
       publicPath,
       appShell: '/',
 
