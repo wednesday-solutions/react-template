@@ -209,7 +209,7 @@ An enterprise react template application showcasing - Testing strategies, Global
 - Run single test file by specifying path
 
   ```
-  yarn test: e2e <path to file>
+  yarn test:e2e <path to file>
   ```
 
 For the documentation take a look at: [playwright](https://playwright.dev/docs/intro)
