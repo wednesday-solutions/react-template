@@ -18,6 +18,4 @@ test('example test case', async ({ page }) => {
   await expect(page.getByText(/Repository Name:/i).nth(1)).toBeVisible();
   await expect(page.getByText(/Repository full name:/i).nth(1)).toBeVisible();
   await expect(page.getByText(/Repository stars:/i).nth(1)).toBeVisible();
-
-  await page.pause();
 });
