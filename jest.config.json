@@ -45,11 +45,7 @@
     ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js",
     "^axios$": "axios/dist/node/axios.cjs"
   },
-  "setupFilesAfterEnv": [
-    "<rootDir>/jest.setup.js",
-    "<rootDir>/internals/testing/test-bundler.js",
-    "react-testing-library/cleanup-after-each"
-  ],
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.js", "<rootDir>/internals/testing/test-bundler.js"],
   "setupFiles": ["raf/polyfill"],
   "testRegex": "tests/.*\\.test\\.js$",
   "snapshotSerializers": []

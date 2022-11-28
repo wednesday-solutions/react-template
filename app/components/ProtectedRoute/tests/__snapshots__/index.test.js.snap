@@ -4,20 +4,20 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-l0s8pp-1 haKSMo"
+      class="HomeContainer__Container-l0s8pp-1 iQEnjC"
     >
       <div
-        class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
+        class="HomeContainer__RightContent-l0s8pp-2 iWJscD"
       >
         <p
-          class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-3 fYCmLU"
+          class="T__StyledText-gjlic1-0 jOByUY HomeContainer__StyledT-l0s8pp-3 iOEXgS"
           data-testid="redirect"
         >
           Go to Storybook
         </p>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 liNnZz"
         maxwidth="500"
       >
         <div
@@ -37,7 +37,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 demndm"
+            class="T__StyledText-gjlic1-0 gGweRc"
             data-testid="t"
           >
             Get details of repositories
@@ -87,7 +87,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 fCikHd"
         color="grey"
       >
         <div
@@ -107,7 +107,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__StyledText-gjlic1-0 jOByUY"
             data-testid="default-message"
           >
             Search for a repository by entering it's name in the search box

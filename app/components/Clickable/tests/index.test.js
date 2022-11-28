@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { fireEvent } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/react';
 import { renderWithIntl } from '@utils/testUtils';
 import Clickable from '../index';
 
