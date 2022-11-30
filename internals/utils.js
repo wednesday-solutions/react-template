@@ -11,7 +11,7 @@ function getBranchName() {
 }
 
 function getDefaultPublicPath() {
-  return isProd() && '/';
+  return isProd() ? '/' : '/';
 }
 
 function getBasePublicPath() {
