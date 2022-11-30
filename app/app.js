@@ -8,7 +8,7 @@
 // Needed for redux-saga es6 generator support
 // Import all the third party stuff
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -37,9 +37,9 @@ import { translationMessages } from './i18n';
 const initialState = {};
 const { store, persistor } = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
-
+const root = createRoot(MOUNT_NODE);
 const render = (messages) => {
-  ReactDOM.render(
+  root.render(
     <ErrorBoundary>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -52,8 +52,7 @@ const render = (messages) => {
           </LanguageProvider>
         </PersistGate>
       </Provider>
-    </ErrorBoundary>,
-    MOUNT_NODE
+    </ErrorBoundary>
   );
 };
 
@@ -62,7 +61,8 @@ if (module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
+    // ReactDOM.unmountComponentAtNode(MOUNT_NODE);
+    root.unmount();
     render(translationMessages);
   });
 }

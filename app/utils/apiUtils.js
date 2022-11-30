@@ -1,4 +1,6 @@
 import { create } from 'apisauce';
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import snakeCase from 'lodash/snakeCase';
 import camelCase from 'lodash/camelCase';
 import { mapKeysDeep } from './index';
@@ -20,10 +22,12 @@ export const generateApiClient = (type = 'github') => {
 };
 
 export const createApiClientWithTransForm = (baseURL) => {
-  const api = create({
+  const customAxiosInstance = axios.create({
     baseURL,
     headers: { 'Content-Type': 'application/json' }
   });
+  const api = create({ axiosInstance: customAxiosInstance });
+  axiosRetry(customAxiosInstance, { retries: 3 });
   api.addResponseTransform((response) => {
     const { ok, data } = response;
     if (ok && data) {
