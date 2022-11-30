@@ -17,7 +17,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </p>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 liNnZz"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 liNnZz css-dev-only-do-not-override-jy3e2f"
         maxwidth="500"
       >
         <div
@@ -43,13 +43,13 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
             Get details of repositories
           </p>
           <span
-            class="ant-input-group-wrapper ant-input-search"
+            class="ant-input-group-wrapper ant-input-search css-dev-only-do-not-override-jy3e2f"
           >
             <span
-              class="ant-input-wrapper ant-input-group"
+              class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-jy3e2f"
             >
               <input
-                class="ant-input"
+                class="ant-input css-dev-only-do-not-override-jy3e2f"
                 data-testid="search-bar"
                 type="text"
                 value=""
@@ -58,7 +58,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
                 class="ant-input-group-addon"
               >
                 <button
-                  class="ant-btn ant-btn-icon-only ant-input-search-button"
+                  class="ant-btn css-dev-only-do-not-override-jy3e2f ant-btn-default ant-btn-icon-only ant-input-search-button"
                   type="button"
                 >
                   <span
@@ -87,7 +87,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 fCikHd"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 fCikHd css-dev-only-do-not-override-jy3e2f"
         color="grey"
       >
         <div
