@@ -29,15 +29,15 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: LHCI Benchmark
-        run: yarn lhci
+      - name: Lighthouse-ci
+        run: lhci autorun
 
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORG}}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # - name: SonarCloud Scan
+      #   uses: sonarsource/sonarcloud-github-action@master
+      #   with:
+      #     args: >
+      #       -Dsonar.organization=${{ secrets.SONAR_ORG}}
+      #       -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY}}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
