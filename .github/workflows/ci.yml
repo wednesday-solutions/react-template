@@ -29,6 +29,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Lighthouse-ci
+        run: lhci autorun
+
       # - name: SonarCloud Scan
       #   uses: sonarsource/sonarcloud-github-action@master
       #   with:
