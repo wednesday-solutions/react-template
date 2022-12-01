@@ -19,9 +19,9 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn && yarn run initialize
       - name: Lint
-        run: yarn lint
+        run: yarn lint:ci
 
       - name: Test
         run: yarn test
