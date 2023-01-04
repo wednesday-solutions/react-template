@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { colors } from '@app/themes';
+import colors from '@app/themes/colors';
 
 export const configureFlex = (
   direction = 'row',

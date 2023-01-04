@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { media } from '@app/themes';
+import media from '@app/themes/media';
 
 // sizes
 

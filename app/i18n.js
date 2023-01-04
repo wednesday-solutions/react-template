@@ -8,8 +8,6 @@
  *   You CANNOT use import/export in this file.
  */
 //eslint-disable-line
-import '@formatjs/intl-relativetimeformat/polyfill';
-import '@formatjs/intl-relativetimeformat/locale-data/en';
 
 const enTranslationMessages = require('./translations/en.json');
 

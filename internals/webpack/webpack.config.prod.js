@@ -3,8 +3,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('@lcdp/offline-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const { isProd, isUAT, getBasePublicPath } = require('../utils');
 
 const publicPath = getBasePublicPath();
@@ -12,7 +13,7 @@ const publicPath = getBasePublicPath();
 module.exports = require('./webpack.config.base')({
   mode: 'production',
   // In production, we skip all hot-reloading stuff
-  entry: [require.resolve('react-app-polyfill/ie11'), path.join(process.cwd(), 'app/app.js')],
+  entry: [path.join(process.cwd(), 'app/app.js')],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -22,23 +23,6 @@ module.exports = require('./webpack.config.base')({
 
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          warnings: false,
-          compress: {
-            comparisons: false
-          },
-          parse: {},
-          mangle: true,
-          output: {
-            comments: false,
-            ascii_only: true
-          }
-        },
-        parallel: true
-      })
-    ],
     nodeEnv: 'production',
     sideEffects: false,
     concatenateModules: true,
@@ -133,6 +117,10 @@ module.exports = require('./webpack.config.base')({
           ios: true
         }
       ]
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      generateStatsFile: true
     })
   ],
   devtool: 'source-map',
