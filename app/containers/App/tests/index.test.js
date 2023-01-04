@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderProvider, renderWithIntl } from '@utils/testUtils';
+import { renderProvider } from '@utils/testUtils';
 import App from '../index';
 import { BrowserRouter } from 'react-router-dom';
 import history from '@app/utils/history';
@@ -7,7 +7,7 @@ import { waitFor } from '@testing-library/react';
 
 describe('<App /> container tests', () => {
   it('should render and match the snapshot', () => {
-    const { container } = renderWithIntl(
+    const { container } = renderProvider(
       <BrowserRouter>
         <App />
       </BrowserRouter>

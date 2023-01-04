@@ -20,6 +20,9 @@ import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
 import Header from '@components/Header';
 import For from '@components/For';
+import LanguageProvider from 'containers/LanguageProvider';
+import ErrorBoundary from '@app/components/ErrorBoundary/index';
+import { translationMessages } from '@app/i18n';
 
 const theme = {
   fg: colors.primary,
@@ -35,33 +38,37 @@ export function App({ location, history }) {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Layout.Content>
-        <For
-          ParentComponent={(props) => <Switch {...props} />}
-          of={map(Object.keys(routeConfig))}
-          renderItem={(routeKey, index) => {
-            const Component = routeConfig[routeKey].component;
-            return (
-              <Route
-                exact={routeConfig[routeKey].exact}
-                key={index}
-                path={routeConfig[routeKey].route}
-                render={(props) => {
-                  const updatedProps = {
-                    ...props,
-                    ...routeConfig[routeKey].props
-                  };
-                  return <Component {...updatedProps} />;
-                }}
-              />
-            );
-          }}
-        />
-        <GlobalStyle />
-      </Layout.Content>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <LanguageProvider messages={translationMessages}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Layout.Content>
+            <For
+              ParentComponent={(props) => <Switch {...props} />}
+              of={map(Object.keys(routeConfig))}
+              renderItem={(routeKey, index) => {
+                const Component = routeConfig[routeKey].component;
+                return (
+                  <Route
+                    exact={routeConfig[routeKey].exact}
+                    key={index}
+                    path={routeConfig[routeKey].route}
+                    render={(props) => {
+                      const updatedProps = {
+                        ...props,
+                        ...routeConfig[routeKey].props
+                      };
+                      return <Component {...updatedProps} />;
+                    }}
+                  />
+                );
+              }}
+            />
+            <GlobalStyle />
+          </Layout.Content>
+        </ThemeProvider>
+      </LanguageProvider>
+    </ErrorBoundary>
   );
 }
 App.propTypes = {
