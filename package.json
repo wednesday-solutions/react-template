@@ -95,7 +95,6 @@
     "history": "4.9.x",
     "immer": "9.0.3",
     "immutable": "^4.2.1",
-    "intl": "1.2.5",
     "invariant": "2.2.4",
     "ip": "1.1.5",
     "less": "^4.1.1",

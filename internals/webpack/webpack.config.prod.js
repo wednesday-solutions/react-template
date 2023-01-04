@@ -23,6 +23,26 @@ module.exports = require('./webpack.config.base')({
 
   optimization: {
     minimize: true,
+    minimizer: [
+      (compiler) => {
+        const TerserPlugin = require('terser-webpack-plugin');
+        new TerserPlugin({
+          terserOptions: {
+            warnings: false,
+            compress: {
+              comparisons: false
+            },
+            parse: {},
+            mangle: true,
+            output: {
+              comments: false,
+              ascii_only: true
+            }
+          },
+          parallel: true
+        }).apply(compiler);
+      }
+    ],
     nodeEnv: 'production',
     sideEffects: false,
     concatenateModules: true,
@@ -56,8 +76,8 @@ module.exports = require('./webpack.config.base')({
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
         minifyJS: true,
-        minifyCSS: true
-        // minifyURLs: true
+        minifyCSS: true,
+        minifyURLs: true
       },
       inject: true
     }),
@@ -123,7 +143,6 @@ module.exports = require('./webpack.config.base')({
       generateStatsFile: true
     })
   ],
-  devtool: 'source-map',
   performance: {
     assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
   }
