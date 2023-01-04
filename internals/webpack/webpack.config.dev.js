@@ -6,7 +6,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = require('./webpack.config.base')({
   mode: 'development',
@@ -38,8 +37,7 @@ module.exports = require('./webpack.config.base')({
     new CircularDependencyPlugin({
       exclude: /a\.js|node_modules/, // exclude node_modules
       failOnError: false // show a warning when there is a circular dependency
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ],
 
   // Emit a source map for easier debugging
