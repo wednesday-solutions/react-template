@@ -19,9 +19,7 @@ import 'sanitize.css/sanitize.css';
 import App from 'containers/App/Loadable';
 
 // Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
 import ScrollToTop from 'components/ScrollToTop';
-import ErrorBoundary from '@components/ErrorBoundary';
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
@@ -29,9 +27,6 @@ import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './configureStore';
-
-// Import i18n messages
-import { translationMessages } from './i18n';
 
 // Create redux store with history
 const initialState = {};
@@ -41,19 +36,15 @@ const root = createRoot(container);
 const render = (messages) => {
   root.render(
     <StrictMode>
-      <ErrorBoundary>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <LanguageProvider messages={messages}>
-              <Router history={history}>
-                <ScrollToTop>
-                  <App />
-                </ScrollToTop>
-              </Router>
-            </LanguageProvider>
-          </PersistGate>
-        </Provider>
-      </ErrorBoundary>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router history={history}>
+            <ScrollToTop>
+              <App />
+            </ScrollToTop>
+          </Router>
+        </PersistGate>
+      </Provider>
     </StrictMode>
   );
 };
@@ -63,7 +54,7 @@ if (module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
-    render(translationMessages);
+    render();
   });
 }
 
@@ -71,12 +62,12 @@ if (module.hot) {
 if (!window.Intl) {
   Promise.resolve(import('intl'))
     .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
-    .then(() => render(translationMessages))
+    .then(() => render())
     .catch((err) => {
       throw err;
     });
 } else {
-  render(translationMessages);
+  render();
 }
 
 // Install ServiceWorker and AppCache in the end since
