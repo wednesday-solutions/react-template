@@ -4,20 +4,20 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-l0s8pp-1 haKSMo"
+      class="HomeContainer__Container-l0s8pp-1 iQEnjC"
     >
       <div
-        class="HomeContainer__RightContent-l0s8pp-2 bvlZvV"
+        class="HomeContainer__RightContent-l0s8pp-2 iWJscD"
       >
         <p
-          class="T__StyledText-gjlic1-0 kYcyRq HomeContainer__StyledT-l0s8pp-3 fYCmLU"
+          class="T__StyledText-gjlic1-0 jOByUY HomeContainer__StyledT-l0s8pp-3 iOEXgS"
           data-testid="redirect"
         >
           Go to Storybook
         </p>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 kPJcqJ"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 liNnZz css-dev-only-do-not-override-k83k30"
         maxwidth="500"
       >
         <div
@@ -37,19 +37,19 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 demndm"
+            class="T__StyledText-gjlic1-0 gGweRc"
             data-testid="t"
           >
             Get details of repositories
           </p>
           <span
-            class="ant-input-group-wrapper ant-input-search"
+            class="ant-input-group-wrapper ant-input-search css-dev-only-do-not-override-k83k30"
           >
             <span
-              class="ant-input-wrapper ant-input-group"
+              class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-k83k30"
             >
               <input
-                class="ant-input"
+                class="ant-input css-dev-only-do-not-override-k83k30"
                 data-testid="search-bar"
                 type="text"
                 value=""
@@ -58,7 +58,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
                 class="ant-input-group-addon"
               >
                 <button
-                  class="ant-btn ant-btn-icon-only ant-input-search-button"
+                  class="ant-btn css-dev-only-do-not-override-k83k30 ant-btn-default ant-btn-icon-only ant-input-search-button"
                   type="button"
                 >
                   <span
@@ -87,7 +87,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 gkbTPT"
+        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 fCikHd css-dev-only-do-not-override-k83k30"
         color="grey"
       >
         <div
@@ -107,7 +107,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
           class="ant-card-body"
         >
           <p
-            class="T__StyledText-gjlic1-0 kYcyRq"
+            class="T__StyledText-gjlic1-0 jOByUY"
             data-testid="default-message"
           >
             Search for a repository by entering it's name in the search box
