@@ -27,7 +27,9 @@ const GlobalStyle = createGlobalStyle`
   span,
   button,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    margin-top: 0;
+    font-family: 'Helvetica Neue', Georgia, Times, 'Times New Roman', serif;
+    font-size: 400;
     line-height: 1.5em;
     margin-bottom: 0;
   }

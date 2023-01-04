@@ -7,8 +7,8 @@
 
 // Needed for redux-saga es6 generator support
 // Import all the third party stuff
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -36,24 +36,25 @@ import { translationMessages } from './i18n';
 // Create redux store with history
 const initialState = {};
 const { store, persistor } = configureStore(initialState, history);
-const MOUNT_NODE = document.getElementById('app');
-
+const container = document.getElementById('app');
+const root = createRoot(container);
 const render = (messages) => {
-  ReactDOM.render(
-    <ErrorBoundary>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <LanguageProvider messages={messages}>
-            <Router history={history}>
-              <ScrollToTop>
-                <App />
-              </ScrollToTop>
-            </Router>
-          </LanguageProvider>
-        </PersistGate>
-      </Provider>
-    </ErrorBoundary>,
-    MOUNT_NODE
+  root.render(
+    <StrictMode>
+      <ErrorBoundary>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <LanguageProvider messages={messages}>
+              <Router history={history}>
+                <ScrollToTop>
+                  <App />
+                </ScrollToTop>
+              </Router>
+            </LanguageProvider>
+          </PersistGate>
+        </Provider>
+      </ErrorBoundary>
+    </StrictMode>
   );
 };
 
@@ -62,7 +63,6 @@ if (module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render(translationMessages);
   });
 }

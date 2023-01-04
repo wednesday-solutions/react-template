@@ -1,4 +1,5 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
