@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('@lcdp/offline-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { isProd, isUAT, getBasePublicPath } = require('../utils');
@@ -22,7 +23,26 @@ module.exports = require('./webpack.config.base')({
   },
 
   optimization: {
-    minimize: true,
+    minimizer: [
+      (compiler) => {
+        const TerserPlugin = require('terser-webpack-plugin');
+        new TerserPlugin({
+          terserOptions: {
+            warnings: false,
+            compress: {
+              comparisons: false
+            },
+            parse: {},
+            mangle: true,
+            output: {
+              comments: false,
+              ascii_only: true
+            }
+          },
+          parallel: true
+        }).apply(compiler);
+      }
+    ],
     nodeEnv: 'production',
     sideEffects: false,
     concatenateModules: true,
@@ -56,8 +76,8 @@ module.exports = require('./webpack.config.base')({
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
         minifyJS: true,
-        minifyCSS: true
-        // minifyURLs: true
+        minifyCSS: true,
+        minifyURLs: true
       },
       inject: true
     }),
@@ -98,6 +118,12 @@ module.exports = require('./webpack.config.base')({
       minRatio: 0.8
     }),
 
+    new BrotliPlugin({
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.7
+    }),
+
     new WebpackPwaManifest({
       name: 'React Template',
       short_name: 'React T',
@@ -123,7 +149,6 @@ module.exports = require('./webpack.config.base')({
       generateStatsFile: true
     })
   ],
-  devtool: 'source-map',
   performance: {
     assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
   }
