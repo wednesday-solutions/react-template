@@ -162,8 +162,6 @@ module.exports = (options) => ({
   resolve: {
     modules: ['node_modules', 'app'],
     alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
       '@app': path.resolve(__dirname, '../../app'),
       '@components': path.resolve(__dirname, '../../app/components'),
       '@containers': path.resolve(__dirname, '../../app/containers'),

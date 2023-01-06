@@ -23,8 +23,8 @@ const StyledHeader = styled(Layout.Header)`
   }
 `;
 const Logo = styled.img`
-  height: 5rem;
-  width: auto;
+  height: ${(props) => props.height};
+  width: ${(props) => props.height};
   margin-top: 1rem;
 `;
 const Title = styled(T)`
@@ -38,7 +38,7 @@ const Title = styled(T)`
 function Header(props) {
   return (
     <StyledHeader {...props} data-testid="header">
-      <Logo alt="logo" src={logo} />
+      <Logo alt="logo" src={logo} width="auto" height="5rem" />
       <Title type="heading" id="wednesday_solutions" />
     </StyledHeader>
   );
