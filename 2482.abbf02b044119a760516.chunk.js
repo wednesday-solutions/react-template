@@ -1,1 +1,0 @@
-(self.webpackChunkreact_template=self.webpackChunkreact_template||[]).push([[2482],{12482:()=>{}}]);
