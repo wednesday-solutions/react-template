@@ -5,7 +5,6 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
 // Import all the third party stuff
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
