@@ -9,42 +9,23 @@
 // Import all the third party stuff
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
 import App from 'containers/App/Loadable';
 
-// Import Language Provider
-import ScrollToTop from 'components/ScrollToTop';
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-import configureStore from './configureStore';
-
-// Create redux store with history
-const initialState = {};
-const { store, persistor } = configureStore(initialState, history);
 const container = document.getElementById('app');
 const root = createRoot(container);
 const render = (messages) => {
   root.render(
     <StrictMode>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router history={history}>
-            <ScrollToTop>
-              <App />
-            </ScrollToTop>
-          </Router>
-        </PersistGate>
-      </Provider>
+      <App />
     </StrictMode>
   );
 };
