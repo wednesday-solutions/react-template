@@ -19,14 +19,21 @@ module.exports = {
     '@babel/plugin-syntax-optional-chaining',
     'styled-components',
     '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-syntax-dynamic-import'
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-runtime' // Reduces code duplication
   ],
   env: {
     production: {
       only: ['app'],
       plugins: [
         'lodash',
-        'transform-react-remove-prop-types',
+        [
+          'transform-react-remove-prop-types',
+          {
+            // Removes the import statements for React propTypes
+            removeImport: true
+          }
+        ],
         '@babel/plugin-transform-react-inline-elements',
         '@babel/plugin-transform-react-constant-elements',
         ['import', { libraryName: 'antd', style: true }, 'import-antd'],

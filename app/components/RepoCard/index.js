@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { Card } from 'antd';
 import T from '@components/T';
 import If from '@components/If';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 const CustomCard = styled(Card)`
   && {
