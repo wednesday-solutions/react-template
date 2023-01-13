@@ -1,3 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> container tests should render and match the snapshot 1`] = `<div />`;
+exports[`<App /> container tests should render and match the snapshot 1`] = `
+<div>
+  <header
+    class="ant-layout-header Header__StyledHeader-wp2jxc-0 kCacbk"
+    data-testid="header"
+    intl="[object Object]"
+  >
+    <img
+      alt="logo"
+      class="Header__Logo-wp2jxc-1 kLDLQt"
+      height="5rem"
+      src="IMAGE_MOCK"
+      width="auto"
+    />
+    <p
+      class="T__StyledText-gjlic1-0 guBozt Header__Title-wp2jxc-2 OSRax"
+      data-testid="t"
+    >
+      Wednesday Solutions
+    </p>
+  </header>
+  <main
+    class="ant-layout-content"
+  />
+</div>
+`;

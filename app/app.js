@@ -21,7 +21,7 @@ import 'file-loader?name=.htaccess!./.htaccess';
 
 const container = document.getElementById('app');
 const root = createRoot(container);
-const render = (messages) => {
+const render = () => {
   root.render(
     <StrictMode>
       <App />
