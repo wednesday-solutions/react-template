@@ -66,11 +66,12 @@
     "generate": "react-generate",
     "ls-uat-branches": "node ./internals/scripts/ls-branches.js"
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%",
-    "IE 10"
-  ],
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead"
+  ]
+},
   "lint-staged": {
     "*.js": [
       "npm run lint:eslint:fix",
