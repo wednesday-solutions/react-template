@@ -8,7 +8,9 @@ module.exports = {
         },
         modules: false,
         corejs: '3.6.5',
-        useBuiltIns: 'usage'
+        useBuiltIns: 'usage',
+        // Exclude transforms that make all code slower
+        exclude: ['transform-typeof-symbol']
       }
     ],
     '@babel/preset-react'
