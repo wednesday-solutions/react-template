@@ -5,7 +5,6 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
 // Import all the third party stuff
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -22,7 +21,7 @@ import 'file-loader?name=.htaccess!./.htaccess';
 
 const container = document.getElementById('app');
 const root = createRoot(container);
-const render = (messages) => {
+const render = () => {
   root.render(
     <StrictMode>
       <App />

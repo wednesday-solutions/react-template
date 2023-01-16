@@ -3,12 +3,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        targets: {
-          browsers: ['> 0.25%, not dead']
-        },
-        modules: false,
-        corejs: '3.6.5',
-        useBuiltIns: 'entry'
+        modules: false
       }
     ],
     '@babel/preset-react'
@@ -19,8 +14,7 @@ module.exports = {
     '@babel/plugin-syntax-optional-chaining',
     'styled-components',
     '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-runtime' // Reduces code duplication
+    '@babel/plugin-syntax-dynamic-import'
   ],
   env: {
     production: {

@@ -25,7 +25,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 import ErrorBoundary from '@app/components/ErrorBoundary/index';
 import { translationMessages } from '@app/i18n';
 import { Provider } from 'react-redux';
-import history from '@utils/history'
+import history from '@utils/history';
 import configureStore from '@app/configureStore';
 import If from '@app/components/If/index';
 
@@ -34,14 +34,16 @@ const theme = {
   bg: colors.secondary
 };
 
-export function App({ location }) {
+export function App() {
   const [store, setStore] = useState(null);
   const [persistor, setPersistor] = useState(null);
+
+  const { location } = history;
   useEffect(() => {
-    // if (location.search.includes('?redirect_uri=')) {
-    //   const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
-    //   history.replace(routeToReplace);
-    // }
+    if (location.search.includes('?redirect_uri=')) {
+      const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
+      history.replace(routeToReplace);
+    }
     const { store: s, persistor } = configureStore({}, history);
     setStore(s);
     setPersistor(persistor);
