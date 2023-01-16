@@ -1,12 +1,11 @@
 CACHE MANIFEST
-#ver:1/12/2023, 5:57:51 AM
+#ver:1/16/2023, 6:55:00 AM
 #plugin:5.1.0
 
 CACHE:
 ../favicon.ico
-../main.e5d3a80c1ccd85c577b4.js
-../runtime.2c4822c01adf34841cb1.js
-../npm.babel.caecbaae1c6f78e8a05c.js
+../main.43da8d570d1fb922f5ef.js
+../runtime.fc6d0c11b626d3ae309d.js
 ../npm.react-dom.462729fd17e3483ac2cd.js
 ../npm.scheduler.ac2f164ab4bbd333596e.js
 ../npm.react.83d43d4bc1d4654977c5.js
@@ -23,36 +22,35 @@ CACHE:
 ../npm.react.83d43d4bc1d4654977c5.js.LICENSE.txt
 ../npm.scheduler.ac2f164ab4bbd333596e.js.LICENSE.txt
 ../
-../5877.3cf3780648739d32b550.chunk.js.gz
-../npm.babel.caecbaae1c6f78e8a05c.js.gz
-../npm.lodash.a569eab0620c4b169063.chunk.js.gz
 ../npm.ant-design.da6c5f2870dbf8b0817d.chunk.js.gz
-../npm.rc-util.8cbd9bcf6bd7ebfecfa9.chunk.js.gz
+../npm.redux-saga.2b7d1969bac4e7e69a88.chunk.js.gz
+../npm.lodash.a569eab0620c4b169063.chunk.js.gz
 ../npm.reduxsauce.fddc290954c5f22609a4.chunk.js.gz
 ../npm.ramda.7827be376bd932ed0c76.chunk.js.gz
-../npm.rc-field-form.12b33b1f3ba051de75db.chunk.js.gz
-../npm.rc-tabs.f003b64807c133982015.chunk.js.gz
 ../npm.rc-menu.3436eb6f36970cb8571e.chunk.js.gz
+../npm.rc-dropdown.951bb0c2f75d55a1e605.chunk.js.gz
+../npm.rc-tabs.f003b64807c133982015.chunk.js.gz
+../npm.rc-util.8cbd9bcf6bd7ebfecfa9.chunk.js.gz
 ../npm.axios.c4587bd681dbf57e9b00.chunk.js.gz
 ../npm.react-redux.befcae603b7d5333914b.chunk.js.gz
-../npm.rc-motion.0edd8ba4a9ea30d50d15.chunk.js.gz
-../npm.rc-trigger.70f08833f80ca9ad96e2.chunk.js.gz
+../npm.rc-field-form.12b33b1f3ba051de75db.chunk.js.gz
 ../npm.redux-persist.9e4d9d4ab41bc97d18a4.chunk.js.gz
 ../npm.react-intl.71aba51623db20de50ad.chunk.js.gz
 ../npm.ctrl.dfa9a154ce16a655aed0.chunk.js.gz
 ../npm.react-router.08d7ef2de679c84541ec.chunk.js.gz
-../npm.react-router-dom.756bed0100c59994429e.chunk.js.gz
+../npm.rc-motion.0edd8ba4a9ea30d50d15.chunk.js.gz
 ../npm.intl-messageformat.4b7ced17d6cb5330004a.chunk.js.gz
+../npm.rc-trigger.70f08833f80ca9ad96e2.chunk.js.gz
 ../npm.sanitize.css.efbaa290a979ece59dd7.js.gz
-../npm.emotion.e8e75dc6c099a17d3077.chunk.js.gz
 ../npm.styled-components.2c73e67f6e1d943655af.chunk.js.gz
-../npm.redux-saga.2b7d1969bac4e7e69a88.chunk.js.gz
-../npm.dom-align.6f1fddd235023cb04a5b.chunk.js.gz
-../npm.rc-dropdown.951bb0c2f75d55a1e605.chunk.js.gz
+../npm.react-router-dom.756bed0100c59994429e.chunk.js.gz
 ../5899.bb93a7f3317b1187d6ab.chunk.js.gz
+../5877.6c333b3142e1608dd0ac.chunk.js.gz
+../npm.emotion.e8e75dc6c099a17d3077.chunk.js.gz
+../npm.immutable.2744000b83fd979a0deb.chunk.js.gz
+../npm.dom-align.6f1fddd235023cb04a5b.chunk.js.gz
 ../npm.antd.041d84f6baa0f875fab0.chunk.js.gz
 ../npm.formatjs.81a7e39b1fb08c3dd3c8.chunk.js.gz
-../npm.immutable.2744000b83fd979a0deb.chunk.js.gz
 ../npm.react-dom.462729fd17e3483ac2cd.js.gz
 
 NETWORK:
