@@ -21,7 +21,13 @@ module.exports = {
     curly: ['error', 'all'],
     'no-console': ['error', { allow: ['error'] }],
     'max-lines': ['error', { max: 300, skipBlankLines: true, skipComments: true }],
-    'prettier/prettier': ['error', prettierOptions]
+    'prettier/prettier': ['error', prettierOptions],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['@mui/*/*/*']
+      }
+    ]
   },
   globals: {
     GLOBAL: false,

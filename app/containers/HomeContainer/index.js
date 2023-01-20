@@ -9,22 +9,22 @@ import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { injectSaga } from 'redux-injectors';
-import { Card, Skeleton, Input } from 'antd';
+import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+import { useHistory } from 'react-router-dom';
 import T from '@components/T';
 import If from '@components/If';
-import For from '@app/components/For';
+import For from '@components/For';
+import RepoCard from '@components/RepoCard';
 import colors from '@app/themes/colors';
-import RepoCard from '@app/components/RepoCard';
 import { selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
-import { useHistory } from 'react-router-dom';
-
-const { Search } = Input;
 
 const CustomCard = styled(Card)`
   && {
-    margin: 20px 0;
+    margin: 1.25rem 0;
+    padding: 1.25rem;
     max-width: ${(props) => props.maxwidth};
     color: ${(props) => props.color};
     ${(props) => props.color && `color: ${props.color}`};
@@ -50,6 +50,16 @@ const StyledT = styled(T)`
     color: ${colors.gotoStories};
   }
 `;
+
+const StyledOutlinedInput = styled(OutlinedInput)`
+  legend {
+    display: none;
+  }
+  > fieldset {
+    top: 0;
+  }
+`;
+
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
@@ -77,15 +87,29 @@ export function HomeContainer({
     }
   }, []);
 
+  const searchRepos = (rName) => {
+    dispatchGithubRepos(rName);
+    setLoading(true);
+  };
+
   const handleOnChange = (rName) => {
     if (!isEmpty(rName)) {
-      dispatchGithubRepos(rName);
-      setLoading(true);
+      searchRepos(rName);
     } else {
       dispatchClearGithubRepos();
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
+
+  const renderSkeleton = () => {
+    return (
+      <>
+        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+      </>
+    );
+  };
 
   const renderRepoList = () => {
     const items = get(reposData, 'items', []);
@@ -93,23 +117,25 @@ export function HomeContainer({
     return (
       <If condition={!isEmpty(items) || loading}>
         <CustomCard>
-          <Skeleton loading={loading} active>
-            <If condition={!isEmpty(repoName)}>
-              <div>
-                <T id="search_query" values={{ repoName }} />
-              </div>
-            </If>
-            <If condition={totalCount !== 0}>
-              <div>
-                <T id="matching_repos" values={{ totalCount }} />
-              </div>
-            </If>
-            <For
-              of={items}
-              ParentComponent={Container}
-              renderItem={(item, index) => <RepoCard key={index} {...item} />}
-            />
-          </Skeleton>
+          <If condition={!loading} otherwise={renderSkeleton()}>
+            <>
+              <If condition={!isEmpty(repoName)}>
+                <div>
+                  <T id="search_query" values={{ repoName }} />
+                </div>
+              </If>
+              <If condition={totalCount !== 0}>
+                <div>
+                  <T id="matching_repos" values={{ totalCount }} />
+                </div>
+              </If>
+              <For
+                of={items}
+                ParentComponent={Container}
+                renderItem={(item, index) => <RepoCard key={index} {...item} />}
+              />
+            </>
+          </If>
         </CustomCard>
       </If>
     );
@@ -145,12 +171,25 @@ export function HomeContainer({
       </RightContent>
       <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
         <T marginBottom={10} id="get_repo_details" />
-        <Search
-          data-testid="search-bar"
+
+        <StyledOutlinedInput
+          inputProps={{ 'data-testid': 'search-bar' }}
+          onChange={(event) => debouncedHandleOnChange(event.target.value)}
+          fullWidth
           defaultValue={repoName}
-          type="text"
-          onChange={(evt) => debouncedHandleOnChange(evt.target.value)}
-          onSearch={(searchText) => debouncedHandleOnChange(searchText)}
+          value={repoName}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                data-testid="search-icon"
+                aria-label="search repos"
+                type="button"
+                onClick={() => searchRepos(repoName)}
+              >
+                <SearchIcon />
+              </IconButton>
+            </InputAdornment>
+          }
         />
       </CustomCard>
       {renderRepoList()}

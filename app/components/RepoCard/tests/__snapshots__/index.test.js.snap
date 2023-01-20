@@ -4,31 +4,27 @@ exports[`<RepoCard /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="ant-card ant-card-bordered RepoCard__CustomCard-sc-3wf6pv-0 hBtxvU css-dev-only-do-not-override-k83k30"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root RepoCard__CustomCard-sc-3wf6pv-0 edIplS css-bhp9pd-MuiPaper-root-MuiCard-root"
       data-testid="repo-card"
     >
-      <div
-        class="ant-card-body"
+      <p
+        class="T__StyledText-gjlic1-0 jOByUY"
+        data-testid="name-unavailable"
       >
-        <p
-          class="T__StyledText-gjlic1-0 jOByUY"
-          data-testid="name-unavailable"
-        >
-          Repository name is unavailable
-        </p>
-        <p
-          class="T__StyledText-gjlic1-0 jOByUY"
-          data-testid="fullName-unavailable"
-        >
-          Repository full name unavaiable
-        </p>
-        <p
-          class="T__StyledText-gjlic1-0 jOByUY"
-          data-testid="stargazers-unavaiable"
-        >
-          Repository stars are unavaiable
-        </p>
-      </div>
+        Repository name is unavailable
+      </p>
+      <p
+        class="T__StyledText-gjlic1-0 jOByUY"
+        data-testid="fullName-unavailable"
+      >
+        Repository full name unavaiable
+      </p>
+      <p
+        class="T__StyledText-gjlic1-0 jOByUY"
+        data-testid="stargazers-unavaiable"
+      >
+        Repository stars are unavaiable
+      </p>
     </div>
   </div>
 </body>
