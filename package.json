@@ -86,7 +86,12 @@
   },
   "pre-commit": "lint:staged",
   "dependencies": {
-    "antd": "^5.1.2",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.5",
+    "@mui/styled-engine": "^5.11.0",
+    "@mui/styled-engine-sc": "^5.11.0",
     "apisauce": "2.1.1",
     "chalk": "4.1.1",
     "compression": "1.7.4",

@@ -3,7 +3,7 @@
 exports[`<App /> container tests should render and match the snapshot 1`] = `
 <div>
   <header
-    class="ant-layout-header Header__StyledHeader-wp2jxc-0 kCacbk"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative Header__StyledHeader-wp2jxc-0 bCCjYc css-1pxbjpg-MuiPaper-root-MuiAppBar-root"
     data-testid="header"
     intl="[object Object]"
   >
@@ -21,8 +21,8 @@ exports[`<App /> container tests should render and match the snapshot 1`] = `
       Wednesday Solutions
     </p>
   </header>
-  <main
-    class="ant-layout-content"
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   />
 </div>
 `;

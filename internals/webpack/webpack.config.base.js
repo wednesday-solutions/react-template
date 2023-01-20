@@ -170,8 +170,13 @@ module.exports = (options) => ({
       '@themes': path.resolve(__dirname, '../../app/themes'),
       '@images': path.resolve(__dirname, '../../app/images'),
       '@hooks': path.resolve(__dirname, '../../app/hooks'),
-      moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js'),
-      '@ant-design/icons/lib/dist$': path.resolve(__dirname, './app/icons.js')
+      '@mui/base': '@mui/base/modern',
+      '@mui/lab': '@mui/lab/modern',
+      '@mui/material': '@mui/material/modern',
+      '@mui/styled-engine': '@mui/styled-engine/modern',
+      '@mui/system': '@mui/system/modern',
+      '@mui/utils': '@mui/utils/modern',
+      moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js')
     },
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main']

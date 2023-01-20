@@ -17,102 +17,78 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </p>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 liNnZz css-dev-only-do-not-override-k83k30"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root HomeContainer__CustomCard-l0s8pp-0 bhbYIx css-bhp9pd-MuiPaper-root-MuiCard-root"
         maxwidth="500"
+        title="Repository Search"
       >
-        <div
-          class="ant-card-head"
+        <p
+          class="T__StyledText-gjlic1-0 gGweRc"
+          data-testid="t"
         >
+          Get details of repositories
+        </p>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-adornedEnd HomeContainer__StyledOutlinedInput-l0s8pp-4 huJjiR css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
+        >
+          <input
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
+            data-testid="search-bar"
+            type="text"
+            value=""
+          />
           <div
-            class="ant-card-head-wrapper"
+            class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
           >
-            <div
-              class="ant-card-head-title"
+            <button
+              aria-label="search repos"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              data-testid="search-icon"
+              tabindex="0"
+              type="button"
             >
-              Repository Search
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-card-body"
-        >
-          <p
-            class="T__StyledText-gjlic1-0 gGweRc"
-            data-testid="t"
-          >
-            Get details of repositories
-          </p>
-          <span
-            class="ant-input-group-wrapper ant-input-search css-dev-only-do-not-override-k83k30"
-          >
-            <span
-              class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-k83k30"
-            >
-              <input
-                class="ant-input css-dev-only-do-not-override-k83k30"
-                data-testid="search-bar"
-                type="text"
-                value=""
-              />
-              <span
-                class="ant-input-group-addon"
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="SearchIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
               >
-                <button
-                  class="ant-btn css-dev-only-do-not-override-k83k30 ant-btn-default ant-btn-icon-only ant-input-search-button"
-                  type="button"
-                >
-                  <span
-                    aria-label="search"
-                    class="anticon anticon-search"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="search"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
-                      />
-                    </svg>
-                  </span>
-                </button>
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="css-ihdtdm"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
               </span>
-            </span>
-          </span>
+            </legend>
+          </fieldset>
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered HomeContainer__CustomCard-l0s8pp-0 fCikHd css-dev-only-do-not-override-k83k30"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root HomeContainer__CustomCard-l0s8pp-0 dqPlQv css-bhp9pd-MuiPaper-root-MuiCard-root"
         color="grey"
+        title="Repository List"
       >
-        <div
-          class="ant-card-head"
+        <p
+          class="T__StyledText-gjlic1-0 jOByUY"
+          data-testid="default-message"
         >
-          <div
-            class="ant-card-head-wrapper"
-          >
-            <div
-              class="ant-card-head-title"
-            >
-              Repository List
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-card-body"
-        >
-          <p
-            class="T__StyledText-gjlic1-0 jOByUY"
-            data-testid="default-message"
-          >
-            Search for a repository by entering it's name in the search box
-          </p>
-        </div>
+          Search for a repository by entering it's name in the search box
+        </p>
       </div>
     </div>
   </div>

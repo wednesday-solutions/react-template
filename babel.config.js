@@ -3,7 +3,9 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false
+        targets: {
+          esmodules: true
+        }
       }
     ],
     '@babel/preset-react'
@@ -30,21 +32,91 @@ module.exports = {
         ],
         '@babel/plugin-transform-react-inline-elements',
         '@babel/plugin-transform-react-constant-elements',
-        ['import', { libraryName: 'antd', style: true }, 'import-antd'],
+        [
+          'babel-plugin-import',
+          {
+            libraryName: '@mui/material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'core'
+        ],
+        [
+          'babel-plugin-import',
+          {
+            libraryName: '@mui/icons-material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'icons'
+        ],
         ['import', { libraryName: 'lodash' }, 'import-lodash']
       ]
     },
     dev: {
-      plugins: [['import', { libraryName: 'antd', style: true }]]
+      plugins: [
+        [
+          'import',
+          {
+            libraryName: '@material-ui/core',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          }
+        ],
+        [
+          ('babel-plugin-import',
+          {
+            libraryName: '@mui/icons-material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'icons')
+        ]
+      ]
     },
     development: {
-      plugins: [['import', { libraryName: 'antd', style: true }]]
+      plugins: [
+        [
+          'babel-plugin-import',
+          {
+            libraryName: '@mui/material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'core'
+        ],
+        [
+          'babel-plugin-import',
+          {
+            libraryName: '@mui/icons-material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'icons'
+        ]
+      ]
     },
     test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
         'dynamic-import-node',
-        ['import', { libraryName: 'antd', style: true }]
+        [
+          'import',
+          {
+            libraryName: '@material-ui/core',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          }
+        ],
+        [
+          'babel-plugin-import',
+          {
+            libraryName: '@mui/icons-material',
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'icons'
+        ]
       ]
     }
   }

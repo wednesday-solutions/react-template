@@ -12,10 +12,10 @@ import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import map from 'lodash/map';
-import { Layout } from 'antd';
 import { PersistGate } from 'redux-persist/integration/react';
+import { CssBaseline, Container } from '@mui/material';
+import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
 import { routeConfig } from '@app/routeConfig';
-import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
 import Header from '@components/Header';
@@ -29,10 +29,16 @@ import history from '@utils/history';
 import configureStore from '@app/configureStore';
 import If from '@app/components/If/index';
 
-const theme = {
-  fg: colors.primary,
-  bg: colors.secondary
-};
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.primary
+    },
+    secondary: {
+      main: colors.secondary
+    }
+  }
+});
 
 export function App() {
   const [store, setStore] = useState(null);
@@ -57,33 +63,36 @@ export function App() {
             <ErrorBoundary>
               <Provider store={store}>
                 <LanguageProvider messages={translationMessages}>
-                  <ThemeProvider theme={theme}>
-                    <Header />
-                    <Layout.Content>
-                      <For
-                        ParentComponent={(props) => <Switch {...props} />}
-                        of={map(Object.keys(routeConfig))}
-                        renderItem={(routeKey, index) => {
-                          const Component = routeConfig[routeKey].component;
-                          return (
-                            <Route
-                              exact={routeConfig[routeKey].exact}
-                              key={index}
-                              path={routeConfig[routeKey].route}
-                              render={(props) => {
-                                const updatedProps = {
-                                  ...props,
-                                  ...routeConfig[routeKey].props
-                                };
-                                return <Component {...updatedProps} />;
-                              }}
-                            />
-                          );
-                        }}
-                      />
+                  <StyledEngineProvider injectFirst>
+                    <MUIThemeProvider theme={theme}>
+                      <CssBaseline />
                       <GlobalStyle />
-                    </Layout.Content>
-                  </ThemeProvider>
+                      <Header />
+                      <Container>
+                        <For
+                          ParentComponent={(props) => <Switch {...props} />}
+                          of={map(Object.keys(routeConfig))}
+                          renderItem={(routeKey, index) => {
+                            const Component = routeConfig[routeKey].component;
+                            return (
+                              <Route
+                                exact={routeConfig[routeKey].exact}
+                                key={index}
+                                path={routeConfig[routeKey].route}
+                                render={(props) => {
+                                  const updatedProps = {
+                                    ...props,
+                                    ...routeConfig[routeKey].props
+                                  };
+                                  return <Component {...updatedProps} />;
+                                }}
+                              />
+                            );
+                          }}
+                        />
+                      </Container>
+                    </MUIThemeProvider>
+                  </StyledEngineProvider>
                 </LanguageProvider>
               </Provider>
             </ErrorBoundary>
