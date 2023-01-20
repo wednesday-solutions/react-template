@@ -13,6 +13,8 @@ import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import map from 'lodash/map';
 import { PersistGate } from 'redux-persist/integration/react';
+import { CssBaseline, Container } from '@mui/material';
+import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
 import { routeConfig } from '@app/routeConfig';
 import GlobalStyle from '@app/global-styles';
 import { colors } from '@themes';
@@ -26,9 +28,6 @@ import { Provider } from 'react-redux';
 import history from '@utils/history';
 import configureStore from '@app/configureStore';
 import If from '@app/components/If/index';
-
-import { CssBaseline, Container } from '@mui/material';
-import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
