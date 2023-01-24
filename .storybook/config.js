@@ -1,6 +1,4 @@
 import { configure } from '@storybook/react';
-import '@formatjs/intl-relativetimeformat/polyfill';
-import '@formatjs/intl-relativetimeformat/locale-data/en';
 import React from 'react';
 import { addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';

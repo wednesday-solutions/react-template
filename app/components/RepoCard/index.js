@@ -7,14 +7,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Card } from 'antd';
+import { Card } from '@mui/material';
 import T from '@components/T';
 import If from '@components/If';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 const CustomCard = styled(Card)`
   && {
-    margin: 20px 0;
+    margin: 1rem 0;
+    padding: 1rem;
   }
 `;
 

@@ -5,26 +5,25 @@
  */
 
 import React from 'react';
-import { Layout } from 'antd';
+import { AppBar } from '@mui/material';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
 import { fonts, colors } from '@themes';
 import T from '@components/T';
 import logo from '@images/icon-512x512.png';
-const StyledHeader = styled(Layout.Header)`
+const StyledHeader = styled(AppBar)`
   && {
-    &.ant-layout-header {
-      padding: 0 1rem;
-      height: 7rem;
-    }
+    padding: 0 1rem;
+    height: 7rem;
     display: flex;
     justify-content: center;
     background-color: ${colors.primary};
+    flex-direction: row;
   }
 `;
 const Logo = styled.img`
-  height: 5rem;
-  width: auto;
+  height: ${(props) => props.height};
+  width: ${(props) => props.height};
   margin-top: 1rem;
 `;
 const Title = styled(T)`
@@ -37,8 +36,8 @@ const Title = styled(T)`
 `;
 function Header(props) {
   return (
-    <StyledHeader {...props} data-testid="header">
-      <Logo alt="logo" src={logo} />
+    <StyledHeader position="relative" {...props} data-testid="header">
+      <Logo alt="logo" src={logo} width="auto" height="5rem" />
       <Title type="heading" id="wednesday_solutions" />
     </StyledHeader>
   );

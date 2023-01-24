@@ -61,10 +61,10 @@ describe('<HomeContainer /> tests', () => {
     expect(submitSpy).toBeCalledWith(repoName);
   });
 
-  it('should call dispatchGithubRepos on submit', async () => {
+  it('should call dispatchGithubRepos on clicking the search icon', async () => {
     const repoName = 'react-template';
-    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} />);
-    fireEvent.keyDown(getByTestId('search-bar'), { keyCode: 13, target: { value: repoName } });
+    const { getByTestId } = renderProvider(<HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />);
+    fireEvent.click(getByTestId('search-icon'));
 
     await timeout(500);
     expect(submitSpy).toBeCalledWith(repoName);
@@ -157,11 +157,11 @@ describe('<HomeContainer /> tests', () => {
 
   it('should render Skeleton Comp when "loading" is true', async () => {
     const repoName = 'some repo';
-    const { getByTestId, baseElement } = renderProvider(
+    const { getByTestId, getAllByTestId } = renderProvider(
       <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
     );
     fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
     await timeout(500);
-    expect(baseElement.getElementsByClassName('ant-skeleton').length).toBe(1);
+    expect(getAllByTestId('skeleton').length).toBe(3);
   });
 });

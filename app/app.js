@@ -5,55 +5,27 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
 // Import all the third party stuff
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import history from 'utils/history';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
-import App from 'containers/App';
+import App from 'containers/App/Loadable';
 
-// Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
-import ScrollToTop from 'components/ScrollToTop';
-import ErrorBoundary from '@components/ErrorBoundary';
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-import configureStore from './configureStore';
-
-// Import i18n messages
-import { translationMessages } from './i18n';
-
-// Create redux store with history
-const initialState = {};
-const { store, persistor } = configureStore(initialState, history);
-const MOUNT_NODE = document.getElementById('app');
-
-const render = (messages) => {
-  ReactDOM.render(
-    <ErrorBoundary>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <LanguageProvider messages={messages}>
-            <Router history={history}>
-              <ScrollToTop>
-                <App />
-              </ScrollToTop>
-            </Router>
-          </LanguageProvider>
-        </PersistGate>
-      </Provider>
-    </ErrorBoundary>,
-    MOUNT_NODE
+const container = document.getElementById('app');
+const root = createRoot(container);
+const render = () => {
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>
   );
 };
 
@@ -62,22 +34,11 @@ if (module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(translationMessages);
+    render();
   });
 }
 
-// Chunked polyfill for browsers without Intl support
-if (!window.Intl) {
-  Promise.resolve(import('intl'))
-    .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
-    .then(() => render(translationMessages))
-    .catch((err) => {
-      throw err;
-    });
-} else {
-  render(translationMessages);
-}
+render();
 
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
