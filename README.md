@@ -191,6 +191,29 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [app/services/tests/repoApi.test.js](app/services/tests/repoApi.test.js)
   - [app/components/T/tests/index.test.js](app/components/T/tests/index.test.js)
 
+## End to End testing using playwright
+
+- End to End testing is done using [playwright](https://github.com/microsoft/playwright).
+
+  Take a look at the following files
+
+  - [playwright.config.js](playwright.config.js)
+  - [\_\_tests\_\_/example.spec.js](__tests__/example.spec.js)
+
+- Run all End to End tests using
+
+  ```
+  yarn test:e2e
+  ```
+
+- Run single test file by specifying path
+
+  ```
+  yarn test:e2e <path to file>
+  ```
+
+For the documentation take a look at: [playwright](https://playwright.dev/docs/intro)
+
 ## Scaffolding components/containers/tests using react-floki
 
 - Components, containers, tests and stories can be scaffolded using

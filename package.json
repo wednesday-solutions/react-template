@@ -64,7 +64,8 @@
     "build-storybook": "export ENVIRONMENT_NAME=production && build-storybook",
     "initialize": "plop --plopfile  ./internals/scripts/predeploy.js",
     "generate": "react-generate",
-    "ls-uat-branches": "node ./internals/scripts/ls-branches.js"
+    "ls-uat-branches": "node ./internals/scripts/ls-branches.js",
+    "test:e2e": "npx playwright test"
   },
   "browserslist": {
     "production": [
@@ -141,6 +142,7 @@
     "@babel/runtime": "^7.14.6",
     "@lcdp/offline-plugin": "^5.1.0",
     "@lhci/cli": "0.8.x",
+    "@playwright/test": "^1.27.1",
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-knobs": "^5.2.1",
     "@storybook/addon-links": "^5.2.1",
