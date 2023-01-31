@@ -66,7 +66,8 @@
     "generate": "react-generate",
     "ls-uat-branches": "node ./internals/scripts/ls-branches.js",
     "test:e2e": "npx playwright test",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn test-storybook\""
   },
   "browserslist": {
     "production": [
@@ -100,6 +101,7 @@
     "apisauce": "2.1.1",
     "chalk": "4.1.1",
     "compression": "1.7.4",
+    "concurrently": "^7.6.0",
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
     "express": "4.16.4",
