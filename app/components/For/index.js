@@ -6,7 +6,7 @@
 
 import React from 'react';
 import Proptypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const FlexContainer = styled.div`
   display: flex;

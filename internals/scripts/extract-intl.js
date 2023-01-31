@@ -22,9 +22,6 @@ let plugins = babel.plugins || [];
 
 plugins.push('react-intl');
 
-// NOTE: styled-components plugin is filtered out as it creates errors when used with transform
-plugins = plugins.filter(p => p !== 'styled-components');
-
 // Glob to match all js files except test files
 const FILES_TO_PARSE = 'app/**/!(*.test).js';
 

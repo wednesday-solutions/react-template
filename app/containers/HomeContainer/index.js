@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 import { injectSaga } from 'redux-injectors';
 import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput } from '@mui/material';
@@ -177,7 +177,6 @@ export function HomeContainer({
           onChange={(event) => debouncedHandleOnChange(event.target.value)}
           fullWidth
           defaultValue={repoName}
-          value={repoName}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
