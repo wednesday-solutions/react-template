@@ -4,19 +4,19 @@ exports[`<Header /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative Header__StyledHeader-wp2jxc-0 bCCjYc css-1vazdj7-MuiPaper-root-MuiAppBar-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative esmlbx62 css-h0ut63-MuiPaper-root-MuiAppBar-root"
       data-testid="header"
       intl="[object Object]"
     >
       <img
         alt="logo"
-        class="Header__Logo-wp2jxc-1 kLDLQt"
+        class="css-1725ugr esmlbx61"
         height="5rem"
         src="IMAGE_MOCK"
         width="auto"
       />
       <p
-        class="T__StyledText-gjlic1-0 guBozt Header__Title-wp2jxc-2 OSRax"
+        class="esmlbx60 css-2fgy85 egtqi0h0"
         data-testid="t"
       >
         Wednesday Solutions

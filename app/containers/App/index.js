@@ -13,23 +13,25 @@ import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import map from 'lodash/map';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 import { CssBaseline, Container } from '@mui/material';
 import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
+import { Global } from '@emotion/react';
 import { routeConfig } from '@app/routeConfig';
-import GlobalStyle from '@app/global-styles';
+import globalStyles from '@app/global-styles';
 import { colors } from '@themes';
 import Header from '@components/Header';
 import ScrollToTop from '@components/ScrollToTop';
 import For from '@components/For';
+import If from '@app/components/If/index';
 import LanguageProvider from 'containers/LanguageProvider';
 import ErrorBoundary from '@app/components/ErrorBoundary/index';
 import { translationMessages } from '@app/i18n';
-import { Provider } from 'react-redux';
 import history from '@utils/history';
+import { SCREEN_BREAK_POINTS } from '@utils/constants';
 import configureStore from '@app/configureStore';
-import If from '@app/components/If/index';
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: colors.primary
@@ -37,6 +39,9 @@ const theme = createTheme({
     secondary: {
       main: colors.secondary
     }
+  },
+  breakpoints: {
+    values: SCREEN_BREAK_POINTS
   }
 });
 
@@ -66,7 +71,7 @@ export function App() {
                   <StyledEngineProvider injectFirst>
                     <MUIThemeProvider theme={theme}>
                       <CssBaseline />
-                      <GlobalStyle />
+                      <Global styles={globalStyles} />
                       <Header />
                       <Container>
                         <For

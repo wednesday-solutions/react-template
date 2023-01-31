@@ -4,31 +4,31 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="HomeContainer__Container-l0s8pp-1 iQEnjC"
+      class="css-6azwsi e666d1v3"
     >
       <div
-        class="HomeContainer__RightContent-l0s8pp-2 iWJscD"
+        class="css-1cnh6jp e666d1v2"
       >
         <p
-          class="T__StyledText-gjlic1-0 jOByUY HomeContainer__StyledT-l0s8pp-3 iOEXgS"
+          class="e666d1v1 css-gnuwwn egtqi0h0"
           data-testid="redirect"
         >
           Go to Storybook
         </p>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root HomeContainer__CustomCard-l0s8pp-0 bhbYIx css-bhp9pd-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v4 css-1azwflu-MuiPaper-root-MuiCard-root"
         maxwidth="500"
         title="Repository Search"
       >
         <p
-          class="T__StyledText-gjlic1-0 gGweRc"
+          class="css-darbe1 egtqi0h0"
           data-testid="t"
         >
           Get details of repositories
         </p>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-adornedEnd HomeContainer__StyledOutlinedInput-l0s8pp-4 huJjiR css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-adornedEnd e666d1v0 css-16qisbh-MuiInputBase-root-MuiOutlinedInput-root"
         >
           <input
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
@@ -79,12 +79,12 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root HomeContainer__CustomCard-l0s8pp-0 dqPlQv css-bhp9pd-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v4 css-ckxzvw-MuiPaper-root-MuiCard-root"
         color="grey"
         title="Repository List"
       >
         <p
-          class="T__StyledText-gjlic1-0 jOByUY"
+          class="css-lh9t18 egtqi0h0"
           data-testid="default-message"
         >
           Search for a repository by entering it's name in the search box
