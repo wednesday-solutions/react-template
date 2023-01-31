@@ -15,7 +15,7 @@
   ],
   "engines": {
     "npm": ">=5",
-    "node": ">=8.15.1"
+    "node": ">=18.13.0"
   },
   "author": "Mac",
   "homepage": "http://wednesday-solutions.github.io/react-template",
@@ -34,7 +34,7 @@
     "build:clean": "rimraf ./build",
     "predeploy": "yarn build && yarn build-storybook -o build/stories",
     "deploy": "gh-pages -d build",
-    "start": "export ENVIRONMENT_NAME=local && cross-env NODE_ENV=development node server",
+    "start": "export ENVIRONMENT_NAME=local && cross-env NODE_ENV=development node --openssl-legacy-provider server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
