@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { AppBar } from '@mui/material';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 import { fonts, colors } from '@themes';
 import T from '@components/T';

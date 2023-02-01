@@ -176,6 +176,9 @@ module.exports = (options) => ({
       '@mui/styled-engine': '@mui/styled-engine/modern',
       '@mui/system': '@mui/system/modern',
       '@mui/utils': '@mui/utils/modern',
+      '@emotion/core': path.resolve(__dirname, '../../node_modules/moment/@emotion/react'),
+      '@emotion/styled': path.resolve(__dirname, '../../node_modules/@emotion/styled'),
+      'emotion-theming': path.resolve(__dirname, '../../node_modules/@emotion/react'),
       moment$: path.resolve(__dirname, '../../node_modules/moment/moment.js')
     },
     extensions: ['.js', '.jsx', '.react.js'],

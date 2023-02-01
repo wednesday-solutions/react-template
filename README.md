@@ -91,9 +91,9 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [app/services/repoApi.js](app/services/repoApi.js)
   - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
 
-## Styling using styled-components
+## Styling using emotion
 
-- Styling components using [Styled Components](https://styled-components.com)
+- Styling components using [Emotion](https://emotion.sh/)
 
   Take a look at the following files
 
