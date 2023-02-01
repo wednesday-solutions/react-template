@@ -15,7 +15,7 @@
   ],
   "engines": {
     "npm": ">=5",
-    "node": ">=8.15.1"
+    "node": ">=8.15.1 <17.9.1"
   },
   "author": "Mac",
   "homepage": "http://wednesday-solutions.github.io/react-template",
