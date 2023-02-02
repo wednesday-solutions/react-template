@@ -132,15 +132,24 @@ An enterprise react template application showcasing - Testing strategies, Global
 - Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
 
   - run storybook `yarn storybook`
-  - run accessbility test `yarn test-storybook`
 
 - Take a look at the following files
 
   - [.storybook/webpack.config.js](.storybook/webpack.config.js)
   - [.storybook/main.js](.storybook/main.js)
   - [.storybook/preview.js](.storybook/preview.js)
-  - [.storybook/test-runner.js](.storybook/test-runner.js)
   - [.storybook/reactIntl.js](.storybook/react-Intl.js)
+  - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
+
+## Accessbility test through storybook addon
+
+- Storybooks also allows you to test the accessbility of a component with addon called as a11y. It basically helps to develop components more accessible.
+
+  - run accessbility test `yarn test-storybook`
+
+- Take a look at the following files
+  - [.storybook/main.js](.storybook/main.js)
+  - [.storybook/test-runner.js](.storybook/test-runner.js)
   - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
 
 ## Bundling your application using Webpack
