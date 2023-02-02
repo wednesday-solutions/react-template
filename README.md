@@ -141,16 +141,28 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [.storybook/reactIntl.js](.storybook/react-Intl.js)
   - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
 
-## Accessbility test through storybook addon
+## Accessibility testing using Storybooks a11y Addon
 
-- Storybooks also allows you to test the accessbility of a component with addon called as a11y. It basically helps to develop components more accessible.
+- Accessbility testing is done using [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y).
 
-  - run accessbility test `yarn test-storybook`
+  Take a look at the following files
 
-- Take a look at the following files
   - [.storybook/main.js](.storybook/main.js)
   - [.storybook/test-runner.js](.storybook/test-runner.js)
-  - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
+
+- Run all the accessbility tests using
+
+  ```
+  yarn test-storybook
+  ```
+
+- Run single test file by specifying path
+
+  ```
+  yarn test-storybook <path to file>
+  ```
+
+For the documentation take a look at: [Accessbility test](https://storybook.js.org/docs/react/writing-tests/accessibility-testing)
 
 ## Bundling your application using Webpack
 
