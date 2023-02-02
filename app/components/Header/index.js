@@ -29,6 +29,7 @@ const Logo = styled.img`
 const Title = styled(T)`
   && {
     color: ${colors.text};
+    margin-top: 0;
     margin-bottom: 0;
     ${fonts.dynamicFontSize(fonts.size.xRegular, 1, 0.5)};
     display: flex;

@@ -131,11 +131,16 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 - Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
 
-  Take a look at the following files
+  - run storybook `yarn storybook`
+  - run accessbility test `yarn test-storybook`
+
+- Take a look at the following files
 
   - [.storybook/webpack.config.js](.storybook/webpack.config.js)
-  - [.storybook/config.js](.storybook/config.js)
-  - [.storybook/addons.js](.storybook/addons.js)
+  - [.storybook/main.js](.storybook/main.js)
+  - [.storybook/preview.js](.storybook/preview.js)
+  - [.storybook/test-runner.js](.storybook/test-runner.js)
+  - [.storybook/reactIntl.js](.storybook/react-Intl.js)
   - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
 
 ## Bundling your application using Webpack
@@ -165,6 +170,7 @@ An enterprise react template application showcasing - Testing strategies, Global
   - Install dependencies
   - Lint
   - Test
+  - Accessbility Test
   - Build
 
   The CD pipeline has the following phases
