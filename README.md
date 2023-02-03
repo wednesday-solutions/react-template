@@ -131,12 +131,38 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 - Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
 
-  Take a look at the following files
+  - run storybook `yarn storybook`
+
+- Take a look at the following files
 
   - [.storybook/webpack.config.js](.storybook/webpack.config.js)
-  - [.storybook/config.js](.storybook/config.js)
-  - [.storybook/addons.js](.storybook/addons.js)
+  - [.storybook/main.js](.storybook/main.js)
+  - [.storybook/preview.js](.storybook/preview.js)
+  - [.storybook/reactIntl.js](.storybook/react-Intl.js)
   - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
+
+## Accessibility testing using Storybooks a11y Addon
+
+- Accessbility testing is done using [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y).
+
+  Take a look at the following files
+
+  - [.storybook/main.js](.storybook/main.js)
+  - [.storybook/test-runner.js](.storybook/test-runner.js)
+
+- Run all the accessbility tests using
+
+  ```
+  yarn test-storybook
+  ```
+
+- Run single test file by specifying path
+
+  ```
+  yarn test-storybook <path to file>
+  ```
+
+For the documentation take a look at: [Accessbility test](https://storybook.js.org/docs/react/writing-tests/accessibility-testing)
 
 ## Bundling your application using Webpack
 
@@ -165,6 +191,7 @@ An enterprise react template application showcasing - Testing strategies, Global
   - Install dependencies
   - Lint
   - Test
+  - Accessbility Test
   - Build
 
   The CD pipeline has the following phases

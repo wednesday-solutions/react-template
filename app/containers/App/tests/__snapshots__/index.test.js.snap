@@ -15,7 +15,7 @@ exports[`<App /> container tests should render and match the snapshot 1`] = `
       width="auto"
     />
     <p
-      class="esmlbx60 css-2fgy85 egtqi0h0"
+      class="esmlbx60 css-gl8sku egtqi0h0"
       data-testid="t"
     >
       Wednesday Solutions

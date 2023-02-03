@@ -4,7 +4,7 @@ exports[`<Clickable /> component tests should render and match the snapshot 1`] 
 <body>
   <div>
     <div
-      class="css-8v742f e17o1jny0"
+      class="css-p1hihl e17o1jny0"
       data-testid="clickable"
     >
       <p
