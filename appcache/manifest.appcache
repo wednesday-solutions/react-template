@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2/3/2023, 7:09:21 AM
+#ver:2/3/2023, 7:14:32 AM
 #plugin:5.1.0
 
 CACHE:
@@ -20,23 +20,23 @@ CACHE:
 ../npm.scheduler.20634bb75ec00b974a52.js.LICENSE.txt
 ../
 ../362.f5eec22cda80ea541efc.chunk.js.gz
+../npm.redux-saga.364b7d8c506551243122.chunk.js.gz
 ../npm.lodash.a75fd7e684ba24969f33.chunk.js.gz
-../npm.reduxsauce.f09156029c6342246e3d.chunk.js.gz
 ../npm.ramda.67538a855d222242544e.chunk.js.gz
-../npm.axios.6aa7ea60cff6f3e8343f.chunk.js.gz
-../npm.emotion.6f9b72245c45c39d1d0a.chunk.js.gz
-../npm.react-redux.9ce9bbe6eb723bdcdd4a.chunk.js.gz
+../npm.reduxsauce.f09156029c6342246e3d.chunk.js.gz
 ../npm.redux-persist.741de9ead115ab9a879c.chunk.js.gz
 ../npm.react-transition-group.abd09d8bb542023b8e72.chunk.js.gz
 ../npm.react-intl.4c3b723038e06a21619c.chunk.js.gz
-../npm.redux-saga.364b7d8c506551243122.chunk.js.gz
-../npm.react-router-dom.69f208249ed9fec9ab94.chunk.js.gz
 ../npm.react-router.ee3c32039324e98f1b00.chunk.js.gz
+../npm.react-router-dom.69f208249ed9fec9ab94.chunk.js.gz
 ../npm.intl-messageformat.94e4ebe83e60a892f735.chunk.js.gz
+../npm.axios.6aa7ea60cff6f3e8343f.chunk.js.gz
 ../npm.sanitize.css.eb3081cf5139b3b8a5b0.js.gz
 ../npm.popperjs.33ef830801fd6779cd13.chunk.js.gz
-../npm.mui.8d8c341143d2edb73532.chunk.js.gz
+../npm.emotion.6f9b72245c45c39d1d0a.chunk.js.gz
+../npm.react-redux.9ce9bbe6eb723bdcdd4a.chunk.js.gz
 ../npm.formatjs.700be2f8e2988a826cfb.chunk.js.gz
+../npm.mui.8d8c341143d2edb73532.chunk.js.gz
 ../npm.react-dom.fe0790941a564411d5f5.js.gz
 
 NETWORK:
