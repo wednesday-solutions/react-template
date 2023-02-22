@@ -112,7 +112,7 @@ module.exports = (options) => ({
             }
           },
           {
-            loader: 'image-webpack-loader',
+            loader: 'img-loader',
             options: {
               mozjpeg: {
                 enabled: false
