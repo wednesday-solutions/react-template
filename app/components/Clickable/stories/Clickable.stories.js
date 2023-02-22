@@ -7,7 +7,11 @@
  */
 
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { Clickable } from '../index';
 
-storiesOf('Clickable').add('simple', () => <Clickable />);
+export default {
+  title: 'Clickable',
+  component: Clickable
+};
+
+export const SampleClickable = () => <Clickable onClick={() => {}} textId={'stories'} />;

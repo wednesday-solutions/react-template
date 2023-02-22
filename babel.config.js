@@ -15,8 +15,9 @@ module.exports = {
     'lodash',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-optional-chaining',
-    '@babel/plugin-proposal-class-properties',
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
+    ['@babel/plugin-proposal-private-methods', { loose: true }],
     [
       '@emotion',
       {

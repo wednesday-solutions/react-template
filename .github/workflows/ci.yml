@@ -26,6 +26,9 @@ jobs:
       - name: Test
         run: yarn test
 
+      - name: Accessibility tests using Storybook
+        run: yarn test-storybook:ci
+
       - name: Build
         run: yarn build
 

@@ -7,8 +7,11 @@
  */
 
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs';
 import Header from '../index';
 
-storiesOf('Header').add('simple', () => <Header id={text('id', 'Header')} />);
+export default {
+  title: 'Header',
+  component: Header
+};
+
+export const SampleHeader = () => <Header />;
