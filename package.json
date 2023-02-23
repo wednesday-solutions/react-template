@@ -15,7 +15,7 @@
   ],
   "engines": {
     "npm": ">=5",
-    "node": ">=8.15.1"
+    "node": ">=8.15.1 <17.9.1"
   },
   "author": "Mac",
   "homepage": "http://wednesday-solutions.github.io/react-template",
@@ -193,7 +193,7 @@
     "gh-pages": "^3.2.3",
     "html-loader": "2.1.2",
     "html-webpack-plugin": "^5.5.0",
-    "image-webpack-loader": "^8.1.0",
+    "img-loader": "^4.0.0",
     "http-server": "^14.1.1",
     "imports-loader": "3.0.0",
     "jest-cli": "27.0.5",
