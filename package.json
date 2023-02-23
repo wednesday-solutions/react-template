@@ -100,7 +100,7 @@
     "compression": "1.7.4",
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
-    "express": "4.16.4",
+    "express": "4.17.3",
     "history": "4.9.x",
     "immer": "9.0.3",
     "invariant": "2.2.4",
