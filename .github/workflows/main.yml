@@ -1,0 +1,12 @@
+# Create a folder under the drive root
+$ mkdir actions-runner; cd actions-runner# Download the latest runner package
+$ Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.303.0/actions-runner-win-arm64-2.303.0.zip -OutFile actions-runner-win-arm64-2.303.0.zip# Optional: Validate the hash
+$ if((Get-FileHash -Path actions-runner-win-arm64-2.303.0.zip -Algorithm SHA256).Hash.ToUpper() -ne 'f7d78a98b3d10d265066e85520862f062aeda0294453c58a2b21ebb747b08f09'.ToUpper()){ throw 'Computed checksum did not match' }# Extract the installer
+$ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-arm64-2.303.0.zip", "$PWD")
+Configure
+# Create the runner and start the configuration experience
+$ ./config.cmd --url https://github.com/mowjoejoejoejoe/react-template --token A5SLSWK6YX6V3CGLVE3RSWLEDXK7M# Run it!
+$ ./run.cmd
+Using your self-hosted runner
+# Use this YAML in your workflow file for each job
+runs-on: self-hosted
