@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { translate } from '@app/utils/index';
+import { translate } from '@app/utils';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

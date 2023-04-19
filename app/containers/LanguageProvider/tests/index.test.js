@@ -4,8 +4,8 @@ import { Trans } from '@lingui/macro';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import ConnectedLanguageProvider, { LanguageProvider } from '../index';
-import configureStore from '../../../configureStore';
-import { DEFAULT_LOCALE, translationMessages } from '../../../i18n';
+import configureStore from '@app/configureStore';
+import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
 
 describe('<LanguageProvider /> tests', () => {
   it('should render its children', () => {
