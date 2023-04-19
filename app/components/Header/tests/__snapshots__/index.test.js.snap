@@ -6,7 +6,6 @@ exports[`<Header /> should render and match the snapshot 1`] = `
     <header
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative esmlbx62 css-h0ut63-MuiPaper-root-MuiAppBar-root"
       data-testid="header"
-      intl="[object Object]"
     >
       <img
         alt="logo"

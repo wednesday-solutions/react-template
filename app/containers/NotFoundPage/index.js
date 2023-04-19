@@ -6,14 +6,12 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-
-import messages from './messages';
+import { Trans } from '@lingui/react';
 
 export default function NotFound() {
   return (
     <h1>
-      <FormattedMessage {...messages.header} />
+      <Trans id="not_found_page_container" />
     </h1>
   );
 }

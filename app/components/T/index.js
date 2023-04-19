@@ -6,7 +6,7 @@
 
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
-import { FormattedMessage } from 'react-intl';
+import { Trans } from '@lingui/macro';
 import { PropTypes } from 'prop-types';
 import If from '@components/If';
 import { fonts } from '@app/themes';
@@ -18,10 +18,11 @@ const StyledText = styled.p`
   }
 `;
 const getFontStyle = (type) => fonts.style[type] || (() => '');
+
 export const T = ({ type, text, id, marginBottom, values, ...otherProps }) => (
   <StyledText data-testid="t" font={getFontStyle(type)} marginBottom={marginBottom} {...otherProps}>
     <If condition={id} otherwise={text}>
-      <FormattedMessage id={id} values={values} />
+      <Trans id={id} values={values} />
     </If>
   </StyledText>
 );

@@ -10,15 +10,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { IntlProvider } from 'react-intl';
-import { IntlGlobalProvider } from '@app/components/IntlGlobalProvider';
+import { i18n } from '@lingui/core';
+import { I18nProvider } from '@lingui/react';
 import { makeSelectLocale } from './selectors';
 
 export function LanguageProvider(props) {
+  const messages = props.messages[props.locale];
+  const locale = props.locale;
+  const catalogs = { [props.locale]: messages };
+  i18n.loadLocaleData(locale, { plurals: locale });
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+
   return (
-    <IntlProvider locale={props.locale} key={props.locale} messages={props.messages[props.locale]}>
-      <IntlGlobalProvider>{React.Children.only(props.children)}</IntlGlobalProvider>
-    </IntlProvider>
+    <I18nProvider i18n={i18n} language={locale} catalogs={catalogs}>
+      {React.Children.only(props.children)}
+    </I18nProvider>
   );
 }
 

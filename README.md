@@ -108,9 +108,9 @@ An enterprise react template application showcasing - Testing strategies, Global
 
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
-## Localization using react-intl
+## Localization using Lingui
 
-- Translations using [React Intl](https://github.com/formatjs/react-intl)
+- Translations using [Lingui](https://github.com/lingui/js-lingui)
 
   Take a look at the following files
 

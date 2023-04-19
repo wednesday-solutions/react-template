@@ -3,13 +3,12 @@
  *
  * This will setup the i18n language files and locale data for your app.
  *
- *   IMPORTANT: This file is used by the internal build
- *   script `extract-intl`, and must use CommonJS module syntax
- *   You CANNOT use import/export in this file.
  */
-//eslint-disable-line
 
-const enTranslationMessages = require('./translations/en.json');
+const enTranslationMessages =
+  process.env.NODE_ENV === 'production'
+    ? require('@app/translations/en').messages
+    : require('@app/translations/en.json');
 
 export const DEFAULT_LOCALE = 'en';
 

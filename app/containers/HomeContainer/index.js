@@ -7,9 +7,8 @@ import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import styled from '@emotion/styled';
-import { injectIntl } from 'react-intl';
 import { injectSaga } from 'redux-injectors';
-import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput } from '@mui/material';
+import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput, CardHeader, Divider } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
@@ -20,14 +19,20 @@ import colors from '@app/themes/colors';
 import { selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
+import { translate } from '@app/utils/index';
 
 const CustomCard = styled(Card)`
   && {
     margin: 1.25rem 0;
-    padding: 1.25rem;
+    padding: 1rem;
     max-width: ${(props) => props.maxwidth};
     color: ${(props) => props.color};
     ${(props) => props.color && `color: ${props.color}`};
+  }
+`;
+const CustomCardHeader = styled(CardHeader)`
+  && {
+    padding: 0;
   }
 `;
 const Container = styled.div`
@@ -63,7 +68,6 @@ const StyledOutlinedInput = styled(OutlinedInput)`
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
-  intl,
   reposData,
   reposError,
   repoName,
@@ -150,7 +154,9 @@ export function HomeContainer({
     return (
       !loading &&
       repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'} title={intl.formatMessage({ id: 'repo_list' })}>
+        <CustomCard color={reposError ? 'red' : 'grey'}>
+          <CustomCardHeader title={translate('repo_list')} />
+          <Divider sx={{ mb: 1.25 }} light />
           <If condition={reposError} otherwise={<T data-testid="default-message" id={repoError} />}>
             <T data-testid="error-message" text={reposError} />
           </If>
@@ -169,9 +175,10 @@ export function HomeContainer({
       <RightContent>
         <StyledT onClick={handleStoriesClick} data-testid="redirect" id="stories" />
       </RightContent>
-      <CustomCard title={intl.formatMessage({ id: 'repo_search' })} maxwidth={maxwidth}>
+      <CustomCard maxwidth={maxwidth}>
+        <CustomCardHeader title={translate('repo_search')} />
+        <Divider sx={{ mb: 1.25 }} light />
         <T marginBottom={10} id="get_repo_details" />
-
         <StyledOutlinedInput
           inputProps={{ 'data-testid': 'search-bar' }}
           onChange={(event) => debouncedHandleOnChange(event.target.value)}
@@ -236,11 +243,6 @@ export function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(
-  injectIntl,
-  withConnect,
-  memo,
-  injectSaga({ key: 'homeContainer', saga: homeContainerSaga })
-)(HomeContainer);
+export default compose(withConnect, memo, injectSaga({ key: 'homeContainer', saga: homeContainerSaga }))(HomeContainer);
 
-export const HomeContainerTest = compose(injectIntl)(HomeContainer);
+export const HomeContainerTest = compose()(HomeContainer);

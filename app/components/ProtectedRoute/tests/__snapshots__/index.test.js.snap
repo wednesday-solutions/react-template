@@ -17,10 +17,25 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </p>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v4 css-1azwflu-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-19cof65-MuiPaper-root-MuiCard-root"
         maxwidth="500"
-        title="Repository Search"
       >
+        <div
+          class="MuiCardHeader-root e666d1v4 css-1e709b4-MuiCardHeader-root"
+        >
+          <div
+            class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
+            >
+              Repository Search
+            </span>
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-b2j1b7-MuiDivider-root"
+        />
         <p
           class="css-darbe1 egtqi0h0"
           data-testid="t"
@@ -79,10 +94,25 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v4 css-ckxzvw-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-18bnhwu-MuiPaper-root-MuiCard-root"
         color="grey"
-        title="Repository List"
       >
+        <div
+          class="MuiCardHeader-root e666d1v4 css-1e709b4-MuiCardHeader-root"
+        >
+          <div
+            class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
+            >
+              Repository List
+            </span>
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-b2j1b7-MuiDivider-root"
+        />
         <p
           class="css-lh9t18 egtqi0h0"
           data-testid="default-message"
