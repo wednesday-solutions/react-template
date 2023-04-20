@@ -1,5 +1,6 @@
 import find from 'lodash/find';
 import get from 'lodash/get';
+import { i18n } from '@lingui/core';
 import routeConstants from './routeConstants';
 
 /**
@@ -55,3 +56,5 @@ export function isUAT() {
 export function isProd() {
   return process.env.ENVIRONMENT_NAME === 'production' && process.env.NODE_ENV === 'production';
 }
+
+export const translate = (id, values = {}) => i18n._({ id, values });

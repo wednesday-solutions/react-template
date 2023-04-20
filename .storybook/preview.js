@@ -1,5 +1,4 @@
-import { reactIntl } from './reactIntl.js';
-
+import enMessages from '../app/translations/en.json';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -8,9 +7,5 @@ export const parameters = {
       date: /Date$/
     }
   },
-  reactIntl,
-  locale: reactIntl.defaultLocale,
-  locales: {
-    en: 'English'
-  }
+  lingui: [{ id: 'en', name: 'English', messages: enMessages }]
 };

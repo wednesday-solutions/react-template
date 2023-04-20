@@ -13,9 +13,11 @@ module.exports = {
   ],
   plugins: [
     'lodash',
+    'macros',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-optional-chaining',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-proposal-private-methods', { loose: true }],
     [
@@ -50,8 +52,6 @@ module.exports = {
             removeImport: true
           }
         ],
-        '@babel/plugin-transform-react-inline-elements',
-        '@babel/plugin-transform-react-constant-elements',
         [
           'babel-plugin-import',
           {

@@ -1,21 +1,21 @@
 import React from 'react';
-import { IntlProvider } from 'react-intl';
+import { I18nProvider } from '@lingui/react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter, Router } from 'react-router-dom';
+import { i18n } from '@lingui/core';
 import { ThemeProvider } from '@mui/material/styles';
 import configureStore from '@app/configureStore';
 import { DEFAULT_LOCALE, translationMessages } from '@app/i18n';
 import ConnectedLanguageProvider from '@containers/LanguageProvider';
-import { IntlGlobalProvider } from '@components/IntlGlobalProvider';
 import { theme } from '@containers/App';
 
-export const renderWithIntl = (children) =>
-  render(
-    <IntlProvider locale={DEFAULT_LOCALE} messages={translationMessages[DEFAULT_LOCALE]}>
-      <IntlGlobalProvider>{children}</IntlGlobalProvider>
-    </IntlProvider>
-  );
+export const renderWithIntl = (children) => {
+  i18n.loadLocaleData(DEFAULT_LOCALE, { plurals: DEFAULT_LOCALE });
+  i18n.load(DEFAULT_LOCALE, translationMessages[DEFAULT_LOCALE]);
+  i18n.activate(DEFAULT_LOCALE);
+  return render(<I18nProvider i18n={i18n}>{children}</I18nProvider>);
+};
 
 export const renderProvider = (children, history) => {
   const store = configureStore({}, browserHistory).store;
@@ -34,5 +34,3 @@ export const apiResponseGenerator = (ok, data) => ({
   ok,
   data
 });
-
-export const getStyles = () => {};

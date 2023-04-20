@@ -9,10 +9,10 @@ import { Router } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { fireEvent } from '@testing-library/dom';
 import { timeout, renderProvider } from '@utils/testUtils';
-import { translate } from '@app/components/IntlGlobalProvider';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 import { homeContainerTypes } from '../reducer';
 import { createBrowserHistory } from 'history';
+import { translate } from '@app/utils/index';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
