@@ -140,6 +140,9 @@ module.exports = (options) => ({
               pngquant: {
                 quality: [0.65, 0.9],
                 speed: 4
+              },
+              webp: {
+                quality: 75
               }
             }
           }
