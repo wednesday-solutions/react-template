@@ -7,6 +7,16 @@ const dotenv = require('dotenv');
 const colors = require('../../app/themes/colors');
 const { getBasePublicPath } = require('../utils');
 
+// generate webp format images
+(async () => {
+  const imagemin = (await import('imagemin')).default;
+  const webp = (await import('imagemin-webp')).default;
+  await imagemin(['app/images/*.{jpg,png,jpeg}'], {
+    destination: 'app/images',
+    plugins: [webp({ quality: 75 })]
+  });
+})();
+
 const publicPath = getBasePublicPath();
 
 const dotEnvFile = process.env.ENVIRONMENT_NAME === 'production' ? `.env` : `.env.${process.env.ENVIRONMENT_NAME}`;
@@ -102,7 +112,7 @@ module.exports = (options) => ({
         ]
       },
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|png|gif|webp)$/,
         use: [
           {
             loader: 'url-loader',
@@ -112,7 +122,7 @@ module.exports = (options) => ({
             }
           },
           {
-            loader: 'img-loader',
+            loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
                 enabled: false
@@ -130,6 +140,9 @@ module.exports = (options) => ({
               pngquant: {
                 quality: [0.65, 0.9],
                 speed: 4
+              },
+              webp: {
+                quality: 75
               }
             }
           }

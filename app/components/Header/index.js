@@ -10,6 +10,8 @@ import styled from '@emotion/styled';
 import { fonts, colors } from '@themes';
 import T from '@components/T';
 import logo from '@images/icon-512x512.png';
+import logoWebp from '@images/icon-512x512.webp';
+
 const StyledHeader = styled(AppBar)`
   && {
     padding: 0 1rem;
@@ -38,7 +40,11 @@ const Title = styled(T)`
 function Header(props) {
   return (
     <StyledHeader position="relative" {...props} data-testid="header">
-      <Logo alt="logo" src={logo} width="auto" height="5rem" />
+      <picture>
+        <source type="image/webp" srcSet={logoWebp} />
+        <source type="image/jpeg" srcSet={logo} />
+        <Logo alt="logo" src={logo} width="auto" height="5rem" />
+      </picture>
       <Title type="heading" id="wednesday_solutions" />
     </StyledHeader>
   );

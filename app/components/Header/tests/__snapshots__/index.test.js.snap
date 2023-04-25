@@ -7,13 +7,23 @@ exports[`<Header /> should render and match the snapshot 1`] = `
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative esmlbx62 css-h0ut63-MuiPaper-root-MuiAppBar-root"
       data-testid="header"
     >
-      <img
-        alt="logo"
-        class="css-1725ugr esmlbx61"
-        height="5rem"
-        src="IMAGE_MOCK"
-        width="auto"
-      />
+      <picture>
+        <source
+          srcset="IMAGE_MOCK"
+          type="image/webp"
+        />
+        <source
+          srcset="IMAGE_MOCK"
+          type="image/jpeg"
+        />
+        <img
+          alt="logo"
+          class="css-1725ugr esmlbx61"
+          height="5rem"
+          src="IMAGE_MOCK"
+          width="auto"
+        />
+      </picture>
       <p
         class="esmlbx60 css-gl8sku egtqi0h0"
         data-testid="t"
