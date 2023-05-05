@@ -1,7 +1,9 @@
 name: React Template CI
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - master
+
 jobs:
   build-and-test:
     name: Build & Test
@@ -30,7 +32,7 @@ jobs:
         run: yarn test-storybook:ci
 
       - name: Build
-        run: yarn build
+        run: yarn build:prod
 
       - name: LHCI Benchmark
         run: yarn lhci

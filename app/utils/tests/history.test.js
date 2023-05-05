@@ -54,9 +54,9 @@ describe('history tests', () => {
     process.env.BRANCH_NAME = undefined;
   });
 
-  it('should return baseUrl /react-template if NODE_ENV and ENVIRONMENT_NAME is production', () => {
+  it('should return baseUrl / if NODE_ENV and ENVIRONMENT_NAME is production', () => {
     process.env.ENVIRONMENT_NAME = 'production';
     window.location.pathname = '/test-relative-path';
-    expect(getBaseName()).toBe('/react-template');
+    expect(getBaseName()).toBe('');
   });
 });
