@@ -1,7 +1,7 @@
 name: React Template CD
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
