@@ -43,6 +43,7 @@ jobs:
         env:
           SOURCE_DIR: './build/'
           DEST_DIR: ${{ steps.vars.outputs.branch }}
+
       - name: List UAT branches in fallback page
         run: yarn ls-uat-branches
       - name: Deploy S3 fallback page
