@@ -1,7 +1,7 @@
 name: React Template CD
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -34,7 +34,7 @@ jobs:
           if [[ ${{steps.vars.outputs.short_ref}} == 'master' ]]; then
               echo "ENV_NAME=prod" >> "$GITHUB_ENV"
           else
-              echo "ENV_NAME=prod" >> "$GITHUB_ENV"
+              echo "ENV_NAME=dev" >> "$GITHUB_ENV"
           fi
 
       - name: Install dependencies
@@ -55,7 +55,7 @@ jobs:
           SOURCE_DIR: './build/'
 
       - name: Invalidate CloudFront
-        # if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master'
         uses: chetan/invalidate-cloudfront-action@master
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION_ID }}
