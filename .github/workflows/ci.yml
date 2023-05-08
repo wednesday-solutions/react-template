@@ -1,7 +1,9 @@
 name: React Template CI
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - master
+
 jobs:
   build-and-test:
     name: Build & Test
@@ -12,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -19,7 +22,8 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn && yarn run initialize
+        run: yarn
+
       - name: Lint
         run: yarn lint:ci
 
@@ -30,7 +34,7 @@ jobs:
         run: yarn test-storybook:ci
 
       - name: Build
-        run: yarn build
+        run: yarn build:prod
 
       - name: LHCI Benchmark
         run: yarn lhci

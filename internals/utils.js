@@ -11,7 +11,7 @@ function getBranchName() {
 }
 
 function getDefaultPublicPath() {
-  return isProd() ? '/react-template/' : '/';
+  return '/';
 }
 
 function getBasePublicPath() {

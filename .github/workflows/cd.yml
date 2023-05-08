@@ -1,33 +1,67 @@
 name: React Template CD
+
 on:
   push:
-    branches: [master]
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    branches:
+      - master
 
-      - name: setup git token
-        uses: fregante/setup-git-token@v1
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Get branch name
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Set env.ENV_NAME
+        run: |
+          if [[ ${{steps.vars.outputs.short_ref}} == 'master' ]]; then
+              echo "ENV_NAME=prod" >> "$GITHUB_ENV"
+          else
+              echo "ENV_NAME=dev" >> "$GITHUB_ENV"
+          fi
 
       - name: Install dependencies
         run: yarn
 
-      - name: Deploy storybooks and gh-pages
+      - name: Build
+        run: yarn build:${{ env.ENV_NAME }}
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --exclude 'tests/*'
         env:
-          DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${DEPLOY_KEY}"
-          yarn deploy
-      - name: Set branch name
-        id: vars
-        run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}-${{ env.ENV_NAME }}
+          SOURCE_DIR: './build/'
+
+      - name: Invalidate CloudFront
+        if: github.ref == 'refs/heads/master'
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION_ID }}
+          PATHS: '/*'
+
       - name: Create badges
         run: yarn run test:badges
       - name: Commit badges
@@ -38,9 +72,10 @@ jobs:
           message: 'Update badges'
           add: 'badges/'
           push: false
+
       - name: Pushing to a protected branch
         uses: CasperWA/push-protected@v2
         with:
           token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
-          branch: ${{ steps.vars.outputs.stage }}
+          branch: ${{ steps.vars.outputs.short_ref }}
           unprotect_reviews: true
