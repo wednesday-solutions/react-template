@@ -7,12 +7,19 @@ on:
 jobs:
   build-head:
     name: 'Build head'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestt
+    strategy:
+      matrix:
+        node-version: [16.14.x]
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
           ref: ${{github.event.pull_request.head.ref}}
 
       - name: Install dependencies
@@ -33,11 +40,18 @@ jobs:
   build-base:
     name: 'Build base'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.14.x]
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
           ref: ${{ github.base_ref }}
       - name: Install dependencies
         run: yarn
