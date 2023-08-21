@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'app/**'
+      - '.github/workflows/bundle-analysis.yml'
 
 jobs:
   analyze_bundle:
