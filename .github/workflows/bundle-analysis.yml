@@ -50,17 +50,10 @@ jobs:
             // Create a formatted list of assets and sizes in MB
             const assetList = report.assets
               .map(asset => `- ${asset.name}: ${bytesToMB(asset.size)} MB`)
-              .join('\n');
+              .join('\\n'); // Escape the newline character here
 
             // Create the comment message
-            const comment = `
-Bundle size report:
-
-- Total Size: ${bytesToMB(report.totalSize)} MB
-- Asset Count: ${report.assets.length}
-
-Assets:
-${assetList}`;
+            const comment = "\\nBundle size report:\\n\\n- Total Size: ${bytesToMB(report.totalSize)} MB\\n- Asset Count: ${report.assets.length}\\n\\nAssets:\\n${assetList}";
 
             github.rest.issues.createComment({
               owner: context.repo.owner,
