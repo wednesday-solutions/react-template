@@ -59,8 +59,7 @@ Bundle size report:
 - Asset Count: ${report.assets.length}
 
 Assets:
-${assetList}
-`;
+${assetList}`;
 
             // Create a comment on the pull request
             async function run() {
