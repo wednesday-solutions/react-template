@@ -1,4 +1,4 @@
-leaname: Bundle Size Report with Annotations (CI)
+name: Bundle Size Report with Annotations (CI)
 
 on:
   pull_request:
