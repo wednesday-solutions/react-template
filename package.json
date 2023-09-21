@@ -199,6 +199,7 @@
     "eslint-plugin-standard": "4.0.1",
     "eslint-plugin-storybook": "^0.6.10",
     "file-loader": "6.2.0",
+    "fs": "^0.0.1-security",
     "gh-pages": "^3.2.3",
     "html-loader": "2.1.2",
     "html-webpack-plugin": "^5.5.0",
