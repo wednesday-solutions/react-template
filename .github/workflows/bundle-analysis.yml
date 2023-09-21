@@ -53,7 +53,15 @@ jobs:
               .join('\\n'); // Escape the newline character here
 
             // Create the comment message
-            const comment = "\\nBundle size report:\\n\\n- Total Size: ${bytesToMB(report.totalSize)} MB\\n- Asset Count: ${report.assets.length}\\n\\nAssets:\\n${assetList}";
+            const comment = `
+            Bundle size report:
+
+            - Total Size: ${bytesToMB(report.totalSize)} MB
+            - Asset Count: ${report.assets.length}
+
+            Assets:
+            ${assetList}
+            `;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
