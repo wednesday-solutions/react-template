@@ -22,27 +22,43 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      # - name: Install dependencies
-      #   run: yarn
+      - name: Install dependencies
+        run: yarn
 
-      # - name: Build application
-      #   run: yarn build:prod
+      - name: Build application
+        run: yarn build:prod
 
-      # - name: Run bundle-stats
-      #   uses: vio/bundle-stats-action@v1
-      #   with:
-      #     webpack-stats-path: 'build/stats.json'
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run bundle-stats
+        uses: vio/bundle-stats-action@v1
+        with:
+          webpack-stats-path: 'build/stats.json'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment bundle size report on PR
         uses: actions/github-script@v6
         with:
           script: |
+            const fs = require('fs');
+
+            // Load the bundle size report
+            const statsJson = fs.readFileSync('build/stats.json', 'utf8');
+            const report = JSON.parse(statsJson);
+
+            // Convert bytes to megabytes
+            const bytesToMB = bytes => (bytes / (1024 * 1024)).toFixed(2);
+
+            // Create a formatted list of assets and sizes in MB
+            const assetList = report.assets
+              .map(asset => `- ${asset.name}: ${bytesToMB(asset.size)} MB`)
+              .join('\\n'); // Escape the newline character here
+
+            // Create the comment message
+            const comment = "\\nBundle size report:\\n\\n- Total Size: ${bytesToMB(report.totalSize)} MB\\n- Asset Count: ${report.assets.length}\\n\\nAssets:\\n${assetList}";
+
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `**Welcome**, new contributor!`
-            })
+              body: comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
