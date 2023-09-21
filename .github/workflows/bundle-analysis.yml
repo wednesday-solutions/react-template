@@ -1,4 +1,4 @@
-name: Bundle Size Report with Annotations (CI)
+leaname: Bundle Size Report with Annotations (CI)
 
 on:
   pull_request:
@@ -42,15 +42,17 @@ jobs:
 
             // Load the bundle size report
             const statsJson = fs.readFileSync('build/stats.json', 'utf8');
+            console.log('statsJson', statsJson)
             const report = JSON.parse(statsJson);
-
+            console.log('report', report)
             // Convert bytes to megabytes
             const bytesToMB = bytes => (bytes / (1024 * 1024)).toFixed(2);
-
+            console.log('bytesToMB', bytesToMB)
             // Create a formatted list of assets and sizes in MB
             const assetList = report.assets
               .map(asset => `- ${asset.name}: ${bytesToMB(asset.size)} MB`)
               .join('\\n'); // Escape the newline character here
+             console.log('assetList', assetList)
 
             // Create the comment message
             const comment = `
@@ -62,6 +64,7 @@ jobs:
             Assets:
             ${assetList}
             `;
+            console.log(comment)
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
