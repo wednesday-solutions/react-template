@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { media } from '@themes';
+import media from '@themes/media';
 
 // sizes
 

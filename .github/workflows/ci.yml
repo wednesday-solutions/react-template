@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.14.x]
+        node-version: [21.6.2]
 
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         run: yarn test
 
       - name: Accessibility tests using Storybook
-        run: yarn test-storybook:ci
+        run: yarn playwright install && yarn test-storybook:ci
 
       - name: Build
         run: yarn build:prod
