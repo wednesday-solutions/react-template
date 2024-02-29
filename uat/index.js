@@ -9,7 +9,7 @@ export async function redirect() {
   }
 
   const pathnames = pathname.split('/').filter((val) => val !== '');
-  let loopCount = pathnames.length;
+  const loopCount = pathnames.length;
 
   for (let k = loopCount - 1; k > 0; k--) {
     // remove empty strings in the edges after split
@@ -18,15 +18,15 @@ export async function redirect() {
       newPathname += `/${pathnames[i]}`;
     }
 
-    let updatedUrl = window.location.origin + newPathname;
+    const updatedUrl = window.location.origin + newPathname;
     const res = await fetch(updatedUrl);
     if (res.ok) {
-      window.location.replace(updatedUrl + '/index.html' + `?redirect_uri=${pathname.replace(newPathname, '')}`);
+      window.location.replace(`${updatedUrl}/index.html` + `?redirect_uri=${pathname.replace(newPathname, '')}`);
       return;
     }
   }
 
-  window.location.replace(window.location.origin + '/index.html');
+  window.location.replace(`${window.location.origin}/index.html`);
 }
 
 redirect();

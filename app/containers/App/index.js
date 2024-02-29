@@ -19,7 +19,6 @@ import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } 
 import { Global } from '@emotion/react';
 import { routeConfig } from '@app/routeConfig';
 import globalStyles from '@app/global-styles';
-import { colors } from '@themes';
 import Header from '@components/Header';
 import ScrollToTop from '@components/ScrollToTop';
 import For from '@components/For';
@@ -30,6 +29,7 @@ import { translationMessages } from '@app/i18n';
 import history from '@utils/history';
 import { SCREEN_BREAK_POINTS } from '@utils/constants';
 import configureStore from '@app/configureStore';
+import { colors } from '@themes';
 
 export const theme = createTheme({
   palette: {

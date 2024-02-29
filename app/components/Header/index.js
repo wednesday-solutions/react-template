@@ -7,10 +7,10 @@
 import React from 'react';
 import { AppBar } from '@mui/material';
 import styled from '@emotion/styled';
-import { fonts, colors } from '@themes';
 import T from '@components/T';
 import logo from '@images/icon-512x512.png';
 import logoWebp from '@images/icon-512x512.webp';
+import { fonts, colors } from '@themes';
 
 const StyledHeader = styled(AppBar)`
   && {

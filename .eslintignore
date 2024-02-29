@@ -8,3 +8,5 @@ npm-debug.log
 **/coverage/**
 **/storybook-static/**
 **/server/**
+lighthouserc.js
+lingui.config.js
