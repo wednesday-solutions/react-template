@@ -70,5 +70,19 @@ module.exports = {
     it: false,
     expect: false,
     describe: false
+  },
+  settings: {
+    "import/resolver": {
+      "alias": {
+        map: [
+          ["@app", "./app",],
+          ["@components", "./app/components",],
+          ["@containers", "./app/containers",],
+          ["@utils", "./app/utils",],
+          ["@services", "./app/services",],
+          ["@themes", "./app/themes",]
+        ]
+      }
+    }
   }
 };

@@ -19,7 +19,7 @@ import colors from '@app/themes/colors';
 import { selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
-import { translate } from '@app/utils/index';
+import { translate } from '@app/utils';
 
 const CustomCard = styled(Card)`
   && {

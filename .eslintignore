@@ -10,3 +10,9 @@ npm-debug.log
 **/server/**
 lighthouserc.js
 lingui.config.js
+__tests__
+internals/**/*.*
+coverage/**/*.*
+reports/**/*.*
+badges/**/*.*
+assets/**/*.*

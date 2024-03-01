@@ -23,7 +23,7 @@ import Header from '@components/Header';
 import ScrollToTop from '@components/ScrollToTop';
 import For from '@components/For';
 import If from '@app/components/If/index';
-import LanguageProvider from 'containers/LanguageProvider';
+import LanguageProvider from '@containers/LanguageProvider';
 import ErrorBoundary from '@app/components/ErrorBoundary/index';
 import { translationMessages } from '@app/i18n';
 import history from '@utils/history';

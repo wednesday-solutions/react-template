@@ -12,7 +12,7 @@ import { timeout, renderProvider } from '@utils/testUtils';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 import { homeContainerTypes } from '../reducer';
 import { createBrowserHistory } from 'history';
-import { translate } from '@app/utils/index';
+import { translate } from '@app/utils';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
