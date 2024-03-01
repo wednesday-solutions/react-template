@@ -32,7 +32,8 @@ For.propTypes = {
   parent: Proptypes.object,
   renderItem: Proptypes.func.isRequired,
   noParent: Proptypes.bool,
-  orientation: Proptypes.oneOf(['row', 'column'])
+  orientation: Proptypes.oneOf(['row', 'column']),
+  ParentComponent: Proptypes.elementType
 };
 
 For.defaultProps = {

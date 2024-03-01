@@ -15,7 +15,7 @@
   ],
   "engines": {
     "npm": ">=5",
-    "node": ">=8.15.1 <17.9.1"
+    "node": ">=17.9.1"
   },
   "author": "Mac",
   "homepage": "http://wednesday-solutions.github.io/react-template",
@@ -138,7 +138,7 @@
     "@babel/plugin-transform-modules-commonjs": "7.14.5",
     "@babel/plugin-transform-react-constant-elements": "7.14.5",
     "@babel/plugin-transform-react-inline-elements": "7.14.5",
-    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.18.6",
     "@babel/register": "7.14.5",
@@ -156,7 +156,7 @@
     "@storybook/addon-controls": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addons": "^6.5.16",
-    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/builder-webpack5": "6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/test-runner": "^0.9.3",

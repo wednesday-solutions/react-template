@@ -17,7 +17,7 @@ module.exports = {
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-optional-chaining',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-proposal-private-methods', { loose: true }],
     [
