@@ -51,8 +51,6 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 - Install dependencies using `yarn install`
 
-- Run the initialize script using `yarn run initialize`
-
 - Start the dev server using `yarn start`
 
 - Go through the other scripts in `package.json`
