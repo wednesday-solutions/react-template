@@ -16,6 +16,7 @@ const StyledHeader = styled(AppBar)`
   && {
     padding: 0 1rem;
     height: 7rem;
+
     display: flex;
     justify-content: center;
     background-color: ${colors.primary};
@@ -37,7 +38,16 @@ const Title = styled(T)`
     align-self: center;
   }
 `;
-function Header(props) {
+
+/**
+ * Header component that displays the application logo and title.
+ *
+ * @date 01/03/2024 - 14:47:28
+ *
+ * @param {Object} props - Additional props to be passed to the StyledHeader component.
+ * @returns {JSX.Element} The Header component with the logo and title.
+ */
+export function Header(props) {
   return (
     <StyledHeader position="relative" {...props} data-testid="header">
       <picture>

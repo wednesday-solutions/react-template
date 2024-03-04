@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import colors from '@app/themes/colors';
 
-export const configureFlex = (
+export const configureFlex = ({
   direction = 'row',
   justifyContent = 'center',
   alignItems = 'center',
@@ -9,7 +9,7 @@ export const configureFlex = (
   flexBasis = 0,
   flexGrow = 1,
   flexShrink = 0
-) => css`
+}) => css`
   ${direction === 'row' ? row() : column()}
   flex-direction: ${direction};
   justify-content: ${justifyContent};
@@ -32,11 +32,21 @@ const column = () => css`
 `;
 
 const rowCenter = () => css`
-  ${configureFlex('row', 'center', 'center', 'center')};
+  ${configureFlex({
+    direction: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center'
+  })};
 `;
 
 const unequalColumns = () => css`
-  ${configureFlex('column', '', '', '', 0, 0, 0)};
+  ${configureFlex({
+    direction: 'row',
+    flexBasis: 0,
+    flexGrow: 0,
+    flexShrink: 0
+  })};
 `;
 
 const height = (heightValue = 4) => css`
@@ -88,17 +98,6 @@ const borderRadius = (radius) =>
     border-radius: ${radius + typeof radius !== 'string' && 'px'};
   `;
 
-const borderWithRadius = (width = 1, type = 'solid', color = '#ccc', radius = 0) =>
-  css`
-    border: ${width}px ${type} ${color};
-    ${borderRadius(radius)}
-  `;
-
-const boxShadow = (hOffset = 0, vOffset = 0, blur = 0, spread = 0, color = '#ccc') =>
-  css`
-    box-shadow: ${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color};
-  `;
-
 const primaryBackgroundColor = () =>
   css`
     background-color: ${colors.accent};
@@ -126,7 +125,6 @@ export default {
     vertical,
     horizontal
   },
-  borderWithRadius,
   borderRadius,
   borderRadiusBottom,
   borderRadiusTop,
@@ -136,6 +134,5 @@ export default {
     column,
     rowCenter,
     unequalColumns
-  },
-  boxShadow
+  }
 };

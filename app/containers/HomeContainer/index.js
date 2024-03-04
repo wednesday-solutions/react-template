@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState } from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -12,11 +12,11 @@ import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput, CardHeader, 
 import { Search as SearchIcon } from '@mui/icons-material';
 import { useHistory } from 'react-router-dom';
 import T from '@components/T';
-import If from '@components/If';
-import For from '@components/For';
-import RepoCard from '@components/RepoCard';
+import { If } from '@components/If';
+import { For } from '@components/For';
+import { RepoCard } from '@components/RepoCard';
 import colors from '@app/themes/colors';
-import { selectReposData, selectReposError, selectRepoName } from './selectors';
+import { selectLoading, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
 import { translate } from '@app/utils';
@@ -65,6 +65,22 @@ const StyledOutlinedInput = styled(OutlinedInput)`
   }
 `;
 
+/**
+ * HomeContainer component that handles the logic for searching and displaying GitHub repositories.
+ * It includes input handling, loading state management, and rendering of the repository list or error state.
+ *
+ * @date 01/03/2024 - 14:47:28
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.dispatchGithubRepos - Function to dispatch the action for fetching GitHub repositories.
+ * @param {Function} props.dispatchClearGithubRepos - Function to dispatch the action for clearing the GitHub repositories data.
+ * @param {Object} props.reposData - The data of the repositories fetched.
+ * @param {Object} props.reposError - The error object if there is an error fetching the repositories.
+ * @param {string} props.repoName - The name of the repository to search for.
+ * @param {string} props.maxwidth - The maximum width of the component.
+ * @param {string} props.padding - The padding of the component.
+ * @returns {JSX.Element} The HomeContainer component.
+ */
 export function HomeContainer({
   dispatchGithubRepos,
   dispatchClearGithubRepos,
@@ -72,28 +88,18 @@ export function HomeContainer({
   reposError,
   repoName,
   maxwidth,
-  padding
+  padding,
+  loading
 }) {
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
-
-  useEffect(() => {
-    const loaded = get(reposData, 'items', null) || reposError;
-    if (loaded) {
-      setLoading(false);
-    }
-  }, [reposData]);
-
   useEffect(() => {
     if (repoName && !reposData?.items?.length) {
       dispatchGithubRepos(repoName);
-      setLoading(true);
     }
   }, []);
 
   const searchRepos = (rName) => {
     dispatchGithubRepos(rName);
-    setLoading(true);
   };
 
   const handleOnChange = (rName) => {
@@ -104,66 +110,6 @@ export function HomeContainer({
     }
   };
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
-
-  const renderSkeleton = () => {
-    return (
-      <>
-        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
-        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
-        <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
-      </>
-    );
-  };
-
-  const renderRepoList = () => {
-    const items = get(reposData, 'items', []);
-    const totalCount = get(reposData, 'totalCount', 0);
-    return (
-      <If condition={!isEmpty(items) || loading}>
-        <CustomCard>
-          <If condition={!loading} otherwise={renderSkeleton()}>
-            <>
-              <If condition={!isEmpty(repoName)}>
-                <div>
-                  <T id="search_query" values={{ repoName }} />
-                </div>
-              </If>
-              <If condition={totalCount !== 0}>
-                <div>
-                  <T id="matching_repos" values={{ totalCount }} />
-                </div>
-              </If>
-              <For
-                of={items}
-                ParentComponent={Container}
-                renderItem={(item, index) => <RepoCard key={index} {...item} />}
-              />
-            </>
-          </If>
-        </CustomCard>
-      </If>
-    );
-  };
-  const renderErrorState = () => {
-    let repoError;
-    if (reposError) {
-      repoError = reposError;
-    } else if (isEmpty(repoName)) {
-      repoError = 'repo_search_default';
-    }
-    return (
-      !loading &&
-      repoError && (
-        <CustomCard color={reposError ? 'red' : 'grey'}>
-          <CustomCardHeader title={translate('repo_list')} />
-          <Divider sx={{ mb: 1.25 }} light />
-          <If condition={reposError} otherwise={<T data-testid="default-message" id={repoError} />}>
-            <T data-testid="error-message" text={reposError} />
-          </If>
-        </CustomCard>
-      )
-    );
-  };
 
   const handleStoriesClick = () => {
     history.push('/stories');
@@ -198,11 +144,73 @@ export function HomeContainer({
           }
         />
       </CustomCard>
-      {renderRepoList()}
-      {renderErrorState()}
+      {renderRepoList(reposData, loading, repoName)}
+      {renderErrorState(repoName, loading, reposError)}
     </Container>
   );
 }
+
+const renderSkeleton = () => {
+  return (
+    <>
+      <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+      <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+      <Skeleton data-testid="skeleton" animation="wave" variant="text" height={40} />
+    </>
+  );
+};
+
+const renderRepoList = (reposData, loading, repoName) => {
+  const items = get(reposData, 'items', []);
+  const totalCount = get(reposData, 'totalCount', 0);
+  return (
+    <If condition={!isEmpty(items) || loading}>
+      <CustomCard>
+        <If condition={!loading} otherwise={renderSkeleton()}>
+          <>
+            <If condition={!isEmpty(repoName)}>
+              <div>
+                <T id="search_query" values={{ repoName }} />
+              </div>
+            </If>
+            <If condition={totalCount !== 0}>
+              <div>
+                <T id="matching_repos" values={{ totalCount }} />
+              </div>
+            </If>
+            <For
+              of={items}
+              ParentComponent={Container}
+              renderItem={(item, index) => <RepoCard key={index} {...item} />}
+            />
+          </>
+        </If>
+      </CustomCard>
+    </If>
+  );
+};
+
+const renderErrorState = (repoName, loading, reposError) => {
+  let repoError;
+  let messageId;
+  if (reposError) {
+    repoError = reposError;
+    messageId = 'error-message';
+  } else if (isEmpty(repoName)) {
+    repoError = 'repo_search_default';
+    messageId = 'default-message';
+  }
+
+  return (
+    <If condition={!loading && repoError}>
+      <CustomCard color={reposError ? 'red' : 'grey'}>
+        <CustomCardHeader title={translate('repo_list')} />
+        <Divider sx={{ mb: 1.25 }} light />
+        <T data-testid={messageId} id={repoError} text={repoError} />
+      </CustomCard>
+    </If>
+  );
+};
 
 HomeContainer.propTypes = {
   dispatchGithubRepos: PropTypes.func,
@@ -217,7 +225,8 @@ HomeContainer.propTypes = {
   repoName: PropTypes.string,
   history: PropTypes.object,
   maxwidth: PropTypes.number,
-  padding: PropTypes.number
+  padding: PropTypes.number,
+  loading: PropTypes.bool
 };
 
 HomeContainer.defaultProps = {
@@ -228,11 +237,13 @@ HomeContainer.defaultProps = {
 };
 
 const mapStateToProps = createStructuredSelector({
+  loading: selectLoading(),
   reposData: selectReposData(),
   reposError: selectReposError(),
   repoName: selectRepoName()
 });
 
+// eslint-disable-next-line require-jsdoc
 export function mapDispatchToProps(dispatch) {
   const { requestGetGithubRepos, clearGithubRepos } = homeContainerCreators;
   return {

@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import { css } from '@emotion/react';
-import * as colors from '../colors';
+import { accent, primary, success } from '../colors';
 import styles, { configureFlex } from '../styles';
 
 describe('Tests for styles', () => {
@@ -35,22 +35,11 @@ describe('Tests for styles', () => {
 
   it('should return primaryBackgroundColor styling', () => {
     expectedResult = css`
-      background-color: ${colors.accent};
+      background-color: ${accent};
     `;
     expect(styles.primaryBackgroundColor()['styles']).toEqual(expectedResult['styles']);
   });
 
-  it('should return the boxShadow stylings according to values passed', () => {
-    const hOffset = 2;
-    const vOffset = 1;
-    const blur = 4.3;
-    const spread = 2;
-    const color = colors.primary;
-    expectedResult = css`
-      box-shadow: ${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color};
-    `;
-    expect(styles.boxShadow(hOffset, vOffset, blur, spread, color)['styles']).toEqual(expectedResult['styles']);
-  });
 
   it('should return the borderRaduis stylings according to the radius value and types passed', () => {
     let radius = 12;
@@ -66,17 +55,6 @@ describe('Tests for styles', () => {
     expect(styles.borderRadius(radius)['styles']).toEqual(expectedResult['styles']);
   });
 
-  it('should return the borderWithRadius stylings according to values passed', () => {
-    const width = 2;
-    const type = 'dashed';
-    const color = colors.success;
-    const radius = 12;
-    expectedResult = css`
-      border: ${width}px ${type} ${color};
-      ${styles.borderRadius(radius)}
-    `;
-    expect(styles.borderWithRadius(width, type, color, radius)['styles']).toEqual(expectedResult['styles']);
-  });
 
   it('should return borderRadiusBottom stylings according to the bottomRadius value passed', () => {
     const bottomRadius = 4;
@@ -157,7 +135,11 @@ describe('Tests for styles', () => {
 
   it('should return the rowCenter stylings', () => {
     expectedResult = css`
-      ${configureFlex('row', 'center', 'center', 'center')};
+    ${configureFlex({
+      direction: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center'})}
     `;
     expect(styles.flexConfig.rowCenter()['styles']).toEqual(expectedResult['styles']);
   });
@@ -173,7 +155,12 @@ describe('Tests for styles', () => {
 
   it('should return the unequalColumns stylings', () => {
     expectedResult = css`
-      ${configureFlex('column', '', '', '', 0, 0, 0)};
+    ${configureFlex({
+      direction: 'row',
+      flexBasis: 0,
+      flexGrow: 0,
+      flexShrink: 0,
+    })};
     `;
     expect(styles.flexConfig.unequalColumns()['styles']).toEqual(expectedResult['styles']);
   });
@@ -254,32 +241,6 @@ describe('Tests for styles', () => {
     expect(styles.borderRadiusTop()['styles']).toEqual(expectedResult['styles']);
   });
 
-  it('should return default borderWithRadius stylings', () => {
-    const width = 1;
-    const type = 'solid';
-    const color = '#ccc';
-    const radius = 0;
-
-    expectedResult = css`
-      border: ${width}px ${type} ${color};
-      ${styles.borderRadius(radius)}
-    `;
-    expect(styles.borderWithRadius()['styles']).toEqual(expectedResult['styles']);
-  });
-
-  it('should return default boxShadow stylings', () => {
-    const hOffset = 0;
-    const vOffset = 0;
-    const blur = 0;
-    const spread = 0;
-    const color = '#ccc';
-
-    expectedResult = css`
-      box-shadow: ${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color};
-    `;
-    expect(styles.boxShadow()['styles']).toEqual(expectedResult['styles']);
-  });
-
   it('should return default z-index stylings', () => {
     const z = 1;
     expectedResult = css`
@@ -329,7 +290,7 @@ describe('Tests for ConfigureFlex method', () => {
       flex-shrink: ${flexShrink};
     `;
     expect(
-      configureFlex(direction, justifyContent, alignItems, alignContent, flexBasis, flexGrow, flexShrink)['styles']
+      configureFlex({direction, justifyContent, alignItems, alignContent, flexBasis, flexGrow, flexShrink})['styles']
     ).toEqual(expectedResult['styles']);
   });
   it('should return the default css styling accordingly', () => {
@@ -350,6 +311,6 @@ describe('Tests for ConfigureFlex method', () => {
       flex-grow: ${flexGrow};
       flex-shrink: ${flexShrink};
     `;
-    expect(configureFlex()['styles']).toEqual(expectedResult['styles']);
+    expect(configureFlex({})['styles']).toEqual(expectedResult['styles']);
   });
 });

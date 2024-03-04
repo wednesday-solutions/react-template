@@ -32,4 +32,8 @@ const colors = {
     }
   }
 };
+
+// This same file is used in the webpack.config.base.js as well and hence cannot use
+// export default and must use module.exports
+// eslint-disable-next-line import/no-commonjs
 module.exports = colors;
