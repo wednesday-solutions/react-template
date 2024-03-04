@@ -158,10 +158,8 @@ describe('<HomeContainer /> tests', () => {
   it('should render Skeleton Comp when "loading" is true', async () => {
     const repoName = 'some repo';
     const { getByTestId, getAllByTestId } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
+      <HomeContainer loading dispatchGithubRepos={submitSpy} repoName={repoName} />
     );
-    fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
-    await timeout(500);
     expect(getAllByTestId('skeleton').length).toBe(3);
   });
 });

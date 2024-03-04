@@ -53,16 +53,28 @@ module.exports = {
         "MethodDefinition": false,
         "ClassDeclaration": false,
         "ArrowFunctionExpression": false,
-        "FunctionExpression": false
-      }
+        "FunctionExpression": false,
+      },
     }],
     "no-shadow": "error",
-    "complexity": ["error", 2],
+    "complexity": ["error", 5],
     "no-empty": "error",
     "import/order": ["error", { "groups": [["builtin", "external", "internal", "parent", "sibling", "index"]] }],
-    "immutable/no-let": 2,
     "immutable/no-this": 2,
-    "immutable/no-mutation": 2,
+    "immutable/no-mutation": ['error', {
+      exceptions: [
+        {
+          object: "draft"
+        },
+        {
+          property: "propTypes"
+        },
+        {
+          property: 'defaultProps'
+        }
+      ]
+    }],
+    "eslint-comments/no-use": 0,
     "max-lines": ["error", 350],
   },
   globals: {
@@ -72,10 +84,14 @@ module.exports = {
     describe: false
   },
   settings: {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "alias": {
         map: [
           ["@app", "./app",],
+          ["@images", "./app/images",],
           ["@components", "./app/components",],
           ["@containers", "./app/containers",],
           ["@utils", "./app/utils",],

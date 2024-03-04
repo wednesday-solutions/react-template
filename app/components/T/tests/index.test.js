@@ -7,7 +7,7 @@
 import React from 'react';
 import { matchers } from '@emotion/jest';
 import { renderWithIntl } from '@utils/testUtils';
-import { T } from '../index';
+import T from '../index';
 
 expect.extend(matchers);
 

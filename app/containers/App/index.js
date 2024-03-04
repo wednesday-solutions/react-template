@@ -19,11 +19,11 @@ import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } 
 import { Global } from '@emotion/react';
 import { routeConfig } from '@app/routeConfig';
 import globalStyles from '@app/global-styles';
-import Header from '@components/Header';
-import ScrollToTop from '@components/ScrollToTop';
-import For from '@components/For';
-import If from '@app/components/If/index';
-import LanguageProvider from '@containers/LanguageProvider';
+import { Header } from '@components/Header';
+import { ScrollToTop } from '@components/ScrollToTop';
+import { For } from '@components/For';
+import { If } from '@app/components/If';
+import ConnectedLanguageProvider from '@containers/LanguageProvider';
 import ErrorBoundary from '@app/components/ErrorBoundary/index';
 import { translationMessages } from '@app/i18n';
 import history from '@utils/history';
@@ -44,7 +44,14 @@ export const theme = createTheme({
     values: SCREEN_BREAK_POINTS
   }
 });
-
+/**
+ * App component that sets up the application with routing, theme, and language support.
+ * It also handles redirect logic based on the query parameters in the URL.
+ *
+ * @date 01/03/2024 - 14:47:28
+ *
+ * @returns {JSX.Element} The App component with the application setup.
+ */
 export function App() {
   const [store, setStore] = useState(null);
   const [persistor, setPersistor] = useState(null);
@@ -55,9 +62,9 @@ export function App() {
       const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
       history.replace(routeToReplace);
     }
-    const { store: s, persistor } = configureStore({}, history);
+    const { store: s, persistor: p } = configureStore({}, history);
     setStore(s);
-    setPersistor(persistor);
+    setPersistor(p);
   }, []);
 
   return (
@@ -67,7 +74,7 @@ export function App() {
           <ScrollToTop>
             <ErrorBoundary>
               <Provider store={store}>
-                <LanguageProvider messages={translationMessages}>
+                <ConnectedLanguageProvider messages={translationMessages}>
                   <StyledEngineProvider injectFirst>
                     <MUIThemeProvider theme={theme}>
                       <CssBaseline />
@@ -98,7 +105,7 @@ export function App() {
                       </Container>
                     </MUIThemeProvider>
                   </StyledEngineProvider>
-                </LanguageProvider>
+                </ConnectedLanguageProvider>
               </Provider>
             </ErrorBoundary>
           </ScrollToTop>

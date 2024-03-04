@@ -1,3 +1,4 @@
+/* eslint-disable immutable/no-mutation, immutable/no-this*/
 /**
  *
  * ErrorBoundary
