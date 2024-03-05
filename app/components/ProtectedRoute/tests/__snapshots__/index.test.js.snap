@@ -48,6 +48,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           <input
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
             data-testid="search-bar"
+            placeholder="wednesday-solutions/react-template"
             type="text"
             value=""
           />
