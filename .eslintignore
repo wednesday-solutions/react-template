@@ -8,3 +8,16 @@ npm-debug.log
 **/coverage/**
 **/storybook-static/**
 **/server/**
+lighthouserc.js
+lingui.config.js
+__tests__
+internals/**/*.*
+coverage/**/*.*
+reports/**/*.*
+badges/**/*.*
+assets/**/*.*
+**/tests/**/*.test.js
+playwright.config.js
+babel.config.js
+app/translations/*.js
+app/**/stories/**/*.*

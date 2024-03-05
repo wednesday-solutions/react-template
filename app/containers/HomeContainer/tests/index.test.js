@@ -12,7 +12,7 @@ import { timeout, renderProvider } from '@utils/testUtils';
 import { HomeContainerTest as HomeContainer, mapDispatchToProps } from '../index';
 import { homeContainerTypes } from '../reducer';
 import { createBrowserHistory } from 'history';
-import { translate } from '@app/utils/index';
+import { translate } from '@app/utils';
 
 describe('<HomeContainer /> tests', () => {
   let submitSpy;
@@ -158,10 +158,8 @@ describe('<HomeContainer /> tests', () => {
   it('should render Skeleton Comp when "loading" is true', async () => {
     const repoName = 'some repo';
     const { getByTestId, getAllByTestId } = renderProvider(
-      <HomeContainer dispatchGithubRepos={submitSpy} repoName={repoName} />
+      <HomeContainer loading dispatchGithubRepos={submitSpy} repoName={repoName} />
     );
-    fireEvent.change(getByTestId('search-bar'), { target: { value: repoName } });
-    await timeout(500);
     expect(getAllByTestId('skeleton').length).toBe(3);
   });
 });

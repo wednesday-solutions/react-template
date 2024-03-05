@@ -2,7 +2,7 @@ import React from 'react';
 import { I18nProvider } from '@lingui/react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { browserHistory, BrowserRouter, Router } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { i18n } from '@lingui/core';
 import { ThemeProvider } from '@mui/material/styles';
 import configureStore from '@app/configureStore';
@@ -18,7 +18,7 @@ export const renderWithIntl = (children) => {
 };
 
 export const renderProvider = (children, history) => {
-  const store = configureStore({}, browserHistory).store;
+  const store = configureStore({}).store;
   return render(
     <Provider store={store}>
       <ConnectedLanguageProvider messages={translationMessages}>

@@ -4,7 +4,7 @@
  *
  */
 import { createActions } from 'reduxsauce';
-import produce from 'immer';
+import { produce } from 'immer';
 import { DEFAULT_LOCALE } from '@app/i18n';
 
 export const { Types: languageProviderTypes, Creators: languageProviderActions } = createActions({
@@ -15,9 +15,10 @@ export const initialState = {
   locale: DEFAULT_LOCALE
 };
 
-/* eslint-disable default-case, no-param-reassign */
 export const languageProviderReducer = (state = initialState, action) =>
   produce(state, (draft) => {
+    // the number of languages should and will increase.
+    // eslint-disable-next-line sonarjs/no-small-switch
     switch (action.type) {
       case languageProviderTypes.CHANGE_LOCALE:
         draft.locale = action.locale;

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { T } from '../index';
+import T from '../index';
 
 export default {
   title: 'T',

@@ -3,18 +3,18 @@ import { getCurrentRouteDetails, isLocal, mapKeysDeep } from '@utils/index';
 import routeConstants from '@utils/routeConstants';
 
 describe('Tests for getCurrentRouteDetails method', () => {
-  let location = {};
+  const location = {};
   it('should return null if pathname is not available', () => {
     expect(getCurrentRouteDetails(location)).toEqual(null);
   });
 
   it('should return the details of the route', () => {
-    let location = { pathname: '/' };
+    const location = { pathname: '/' };
     expect(getCurrentRouteDetails(location)).toEqual(routeConstants['repos']);
   });
 
   it('should return null of the route if pathname is not in routeConstants', () => {
-    let location = { pathname: '/repos' };
+    const location = { pathname: '/repos' };
     expect(getCurrentRouteDetails(location)).toEqual(null);
   });
 });

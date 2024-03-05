@@ -8,7 +8,7 @@
     "!app/components/ScrollToTop/*.js",
     "!app/components/ErrorBoundary/*.js",
     "!app/global-styles.js",
-    "!app/*/*/Loadable.{js,jsx}",
+    "!app/*/*/loadable.{js,jsx}",
     "!**/loadable.js",
     "!**/apiUtils.js",
     "!**/testUtils.js",

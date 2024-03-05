@@ -50,7 +50,7 @@ describe('history tests', () => {
   it('should return baseURL BRANCH_NAME in UAT environment', () => {
     process.env.BRANCH_NAME = 'feat/test-pr';
     window.location.pathname = '/feat/test-pr/tracks/123';
-    expect(getBaseName()).toBe('/' + process.env.BRANCH_NAME);
+    expect(getBaseName()).toBe(`/${process.env.BRANCH_NAME}`);
     process.env.BRANCH_NAME = undefined;
   });
 

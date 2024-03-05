@@ -3,8 +3,8 @@
  */
 
 import { combineReducers } from 'redux';
-import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import homeContainerReducer from 'containers/HomeContainer/reducer';
+import LanguageProviderReducer from '@containers/LanguageProvider/reducer';
+import HomeContainerReducer from '@containers/HomeContainer/reducer';
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -12,7 +12,7 @@ import homeContainerReducer from 'containers/HomeContainer/reducer';
 export default function createRootReducer(injectedReducer = {}) {
   return combineReducers({
     ...injectedReducer,
-    language: languageProviderReducer,
-    homeContainer: homeContainerReducer
+    language: LanguageProviderReducer,
+    homeContainer: HomeContainerReducer
   });
 }

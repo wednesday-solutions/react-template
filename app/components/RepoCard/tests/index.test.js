@@ -7,7 +7,7 @@
 import React from 'react';
 import { renderWithIntl } from '@utils/testUtils';
 import RepoCard from '../index';
-import { translate } from '@app/utils/index';
+import { translate } from '@app/utils';
 
 describe('<RepoCard />', () => {
   it('should render and match the snapshot', () => {

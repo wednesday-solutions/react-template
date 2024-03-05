@@ -14,6 +14,18 @@ import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { makeSelectLocale } from './selectors';
 
+/**
+ * Provides language support for the application by loading and activating
+ * the specified locale and its messages. Wraps its children with an I18nProvider.
+ *
+ * @date 01/03/2024 - 14:47:28
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.messages - An object containing message translations for each locale.
+ * @param {string} props.locale - The current locale to be used for translations.
+ * @param {React.ReactNode} props.children - The child components to be wrapped by the I18nProvider.
+ * @returns {JSX.Element} An I18nProvider component wrapping the children with the specified locale and messages.
+ */
 export function LanguageProvider(props) {
   const messages = props.messages[props.locale];
   const locale = props.locale;
@@ -38,11 +50,4 @@ LanguageProvider.propTypes = {
 const mapStateToProps = createSelector(makeSelectLocale(), (locale) => ({
   locale
 }));
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageProvider);
+export default connect(mapStateToProps)(LanguageProvider);

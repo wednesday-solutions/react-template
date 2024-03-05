@@ -267,7 +267,7 @@ Take a look at the following files
 
 Take a look at the following files
 
-- [app/containers/HomeContainer/Loadable.js](app/containers/HomeContainer/Loadable.js)
+- [app/containers/HomeContainer/loadable.js](app/containers/HomeContainer/loadable.js)
 - [app/utils/loadable.js](app/utils/loadable.js)
 
 ### App entry point
