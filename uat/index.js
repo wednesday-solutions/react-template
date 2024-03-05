@@ -32,12 +32,16 @@ const createPotentialIterativePathname = (pathnames, index) => {
 const isRemoteFileAvailable = async (newPathname, pathname) => {
   const updatedUrl = window.location.origin + newPathname;
   // make an API call to check if the s3 buckets returns a match or a miss
-  const res = await fetch(updatedUrl);
-  if (res.ok) {
-    // if it's a match you've now found your baseURL. You will attach the original pathname
-    // for example "profile/settings" as the redirect URL and redirect to the feature-release url
-    window.location.replace(`${updatedUrl}/index.html?redirect_uri=${pathname.replace(newPathname, '')}`);
-    return true;
+  try {
+    const res = await fetch(updatedUrl);
+    if (res.ok) {
+      // if it's a match you've now found your baseURL. You will attach the original pathname
+      // for example "profile/settings" as the redirect URL and redirect to the feature-release url
+      window.location.replace(`${updatedUrl}/index.html?redirect_uri=${pathname.replace(newPathname, '')}`);
+      return true;
+    }
+  } catch (error) {
+    console.error('Failed to check file availability:', error);
   }
   return false;
 };
