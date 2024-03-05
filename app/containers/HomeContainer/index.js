@@ -130,6 +130,7 @@ export function HomeContainer({
           onChange={(event) => debouncedHandleOnChange(event.target.value)}
           fullWidth
           defaultValue={repoName}
+          placeholder={translate('default_template')}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
