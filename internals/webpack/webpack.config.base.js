@@ -135,7 +135,11 @@ module.exports = (options) => ({
                 interlaced: false
               },
               optipng: {
-                optimizationLevel: 7
+                enabled: false
+                // NOTE: optipng is disabled as it causes errors in some Mac M1 & M2 environments
+                // Try enabling it in your environment by switching the config to:
+                // enabled: true,
+                // optimizationLevel: 7
               },
               pngquant: {
                 quality: [0.65, 0.9],
