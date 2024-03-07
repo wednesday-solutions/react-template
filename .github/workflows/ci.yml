@@ -1,8 +1,8 @@
 name: React Template CI
 on:
-  pull_request:
-    branches:
-      - master
+  # pull_request:
+  branches:
+    - master
 
 jobs:
   build-and-test:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
