@@ -1,6 +1,6 @@
 name: AWS S3 Static Site Deploy
 on:
-  pull_request:
+  pull_request_target:
     branches: [master]
 jobs:
   aws_deply:
