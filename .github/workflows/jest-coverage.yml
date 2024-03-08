@@ -1,6 +1,6 @@
 name: Jest Coverage Report with Annotations (CI)
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - master
 jobs:
