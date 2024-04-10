@@ -21,6 +21,7 @@
   "homepage": "http://wednesday-solutions.github.io/react-template",
   "license": "MIT",
   "scripts": {
+    "initialize": "git checkout --orphan temp-branch && git add -A && git commit -m 'Initial commit' && git branch -D master && git branch -m master",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
