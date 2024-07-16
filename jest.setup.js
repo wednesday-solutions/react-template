@@ -1,4 +1,8 @@
 import '@testing-library/jest-dom';
+import { enableMocks } from 'jest-fetch-mock';
+
+// jest.setup.js
+enableMocks();
 
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');

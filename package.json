@@ -102,7 +102,6 @@
     "@mui/material": "^5.11.5",
     "@mui/styled-engine": "^5.11.0",
     "@mui/styled-engine-sc": "^5.11.0",
-    "apisauce": "2.1.1",
     "chalk": "4.1.1",
     "compression": "1.7.4",
     "cross-env": "7.0.3",
@@ -126,7 +125,8 @@
     "redux-saga": "1.1.3",
     "reduxsauce": "^1.1.0",
     "reselect": "4.0.0",
-    "sanitize.css": "8.0.0"
+    "sanitize.css": "8.0.0",
+    "wretch": "^2.9.0"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.54.0",
@@ -166,7 +166,6 @@
     "@testing-library/react": "^13.3.0",
     "add-asset-html-webpack-plugin": "^5.0.2",
     "axe-playwright": "^1.1.12",
-    "axios-mock-adapter": "^1.17.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.2.2",
@@ -216,6 +215,7 @@
     "imports-loader": "3.0.0",
     "jest-cli": "27.0.5",
     "jest-coverage-badges": "^1.1.2",
+    "jest-fetch-mock": "^3.0.3",
     "jest-sonar": "^0.2.12",
     "less": "^4.1.1",
     "less-loader": "7.3.0",
