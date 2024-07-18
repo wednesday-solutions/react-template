@@ -1,4 +1,4 @@
-import { create } from 'apisauce';
+import wretch from 'wretch';
 import snakeCase from 'lodash/snakeCase';
 import camelCase from 'lodash/camelCase';
 import { mapKeysDeep } from './index';
@@ -56,28 +56,36 @@ export const generateApiClient = (type = 'github') => {
  * @returns {Object} The API client with added transformations.
  */
 export const createApiClientWithTransForm = (baseURL) => {
-  const api = create({
-    baseURL,
-    headers: { 'Content-Type': 'application/json' }
-  });
-  api.addResponseTransform((response) => {
-    const { ok, data } = response;
-    if (ok && data) {
-      // this needs to actually mutate the response
-      // eslint-disable-next-line immutable/no-mutation
-      response.data = mapKeysDeep(data, (keys) => camelCase(keys));
-    }
-    return response;
-  });
-
-  api.addRequestTransform((request) => {
-    const { data } = request;
-    if (data) {
+  // Middleware to transform request options
+  const transformRequestOptions = (next) => async (url, opts) => {
+    const { body } = opts;
+    if (body) {
       // this needs to actually mutate the request
       // eslint-disable-next-line immutable/no-mutation
-      request.data = mapKeysDeep(data, (keys) => snakeCase(keys));
+      opts.body = mapKeysDeep(body, (keys) => snakeCase(keys));
     }
-    return request;
-  });
-  return api;
+    return next(url, opts);
+  };
+
+  // Create Wretch instance with middlewares and response resolver
+  return wretch(baseURL)
+    .headers({ 'Content-Type': 'application/json' })
+    .middlewares([transformRequestOptions])
+    .resolve(async (resolver) => {
+      try {
+        const response = await resolver.res((data) => data);
+        const data = await response.json();
+        return {
+          ok: response.ok,
+          status: response.status,
+          data: mapKeysDeep(data, (keys) => camelCase(keys))
+        };
+      } catch (error) {
+        return {
+          ok: false,
+          status: error.status,
+          data: error.json
+        };
+      }
+    });
 };

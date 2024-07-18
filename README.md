@@ -81,9 +81,9 @@ An enterprise react template application showcasing - Testing strategies, Global
   - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
   - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
 
-## Network requests using apisauce
+## Network requests using wretch
 
-- API calls using [Api Sauce](https://github.com/infinitered/apisauce/)
+- API calls using [Wretch](https://github.com/elbywan/wretch)
 
   Take a look at the following files
 
