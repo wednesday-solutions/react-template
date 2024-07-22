@@ -62,7 +62,7 @@ export const createApiClientWithTransForm = (baseURL) => {
     if (body) {
       // this needs to actually mutate the request
       // eslint-disable-next-line immutable/no-mutation
-      opts.body = mapKeysDeep(body, (keys) => snakeCase(keys));
+      opts.body = JSON.stringify(mapKeysDeep(JSON.parse(body), (keys) => snakeCase(keys)));
     }
     return next(url, opts);
   };
