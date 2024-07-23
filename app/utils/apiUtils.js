@@ -61,8 +61,14 @@ export const createApiClientWithTransForm = (baseURL) => {
     const { body } = opts;
     if (body) {
       // this needs to actually mutate the request
-      // eslint-disable-next-line immutable/no-mutation
-      opts.body = mapKeysDeep(body, (keys) => snakeCase(keys));
+      try {
+        const parsedBody = JSON.parse(body);
+        // eslint-disable-next-line immutable/no-mutation
+        opts.body = JSON.stringify(mapKeysDeep(parsedBody, (keys) => snakeCase(keys)));
+      } catch (error) {
+        console.error('Invalid JSON body:', error);
+        throw new Error('Invalid JSON body');
+      }
     }
     return next(url, opts);
   };
