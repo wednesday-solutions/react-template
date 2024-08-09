@@ -1,4 +1,4 @@
-name: React Template CD
+name: react-itunes CD
 
 on:
   push:
@@ -79,9 +79,3 @@ jobs:
           token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
           branch: ${{ steps.vars.outputs.short_ref }}
           unprotect_reviews: true
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

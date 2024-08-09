@@ -1,4 +1,4 @@
-name: React Template CI
+name: react-itunes CI
 on:
   pull_request_target:
     branches:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -38,9 +38,3 @@ jobs:
 
       - name: LHCI Benchmark
         run: yarn lhci
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
