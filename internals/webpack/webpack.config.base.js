@@ -142,6 +142,7 @@ module.exports = (options) => ({
                 // optimizationLevel: 7
               },
               pngquant: {
+                enabled: false,
                 quality: [0.65, 0.9],
                 speed: 4
               },

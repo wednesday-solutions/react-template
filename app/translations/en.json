@@ -15,5 +15,6 @@
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
   "wednesday_solutions": "Wednesday Solutions",
-  "default_template": "wednesday-solutions/react-template"
+  "default_template": "wednesday-solutions/react-template",
+  "songs_search_input_placeholder": "Please enter a song name"
 }
