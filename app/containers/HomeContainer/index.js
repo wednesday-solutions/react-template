@@ -25,8 +25,7 @@ const CustomCard = styled(Card)`
   && {
     margin: 1.25rem 0;
     padding: 1rem;
-    max-width: ${(props) => props.maxwidth};
-    color: ${(props) => props.color};
+    max-width: ${(props) => props.maxwidth}px;
     ${(props) => props.color && `color: ${props.color}`};
   }
 `;

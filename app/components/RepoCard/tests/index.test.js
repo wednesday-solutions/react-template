@@ -32,6 +32,16 @@ describe('<RepoCard />', () => {
     expect(getByTestId('stargazers')).toHaveTextContent(stargazersCount);
   });
 
+  it('should show the star count even when it is 0', () => {
+    const repoName = 'react-template';
+    const fullName = 'wednesday-solutions/react-template';
+    const stargazersCount = 0;
+    const { getByTestId } = renderWithIntl(
+      <RepoCard name={repoName} fullName={fullName} stargazersCount={stargazersCount} />
+    );
+    expect(getByTestId('stargazers')).toHaveTextContent(stargazersCount.toString());
+  });
+
   it('should render the repository unavailable messages in case any props are unavailable or have falsy values', () => {
     const repoUnavailable = translate('repo_name_unavailable');
     const fullNameUnavailable = translate('repo_full_name_unavailable');
@@ -39,6 +49,6 @@ describe('<RepoCard />', () => {
     const { getByTestId } = renderWithIntl(<RepoCard />);
     expect(getByTestId('name-unavailable')).toHaveTextContent(repoUnavailable);
     expect(getByTestId('fullName-unavailable')).toHaveTextContent(fullNameUnavailable);
-    expect(getByTestId('stargazers-unavaiable')).toHaveTextContent(stargazersUnavailable);
+    expect(getByTestId('stargazers-unavailable')).toHaveTextContent(stargazersUnavailable);
   });
 });
