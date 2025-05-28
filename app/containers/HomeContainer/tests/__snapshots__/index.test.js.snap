@@ -17,7 +17,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </p>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-19cof65-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-12lr87k-MuiPaper-root-MuiCard-root"
         maxwidth="500"
       >
         <div
@@ -95,7 +95,7 @@ exports[`<HomeContainer /> tests should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-18bnhwu-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-1veibbr-MuiPaper-root-MuiCard-root"
         color="grey"
       >
         <div

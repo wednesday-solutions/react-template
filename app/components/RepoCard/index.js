@@ -43,7 +43,7 @@ export function RepoCard({ name, fullName, stargazersCount }) {
       >
         <T data-testid="fullName" id="repository_full_name" values={{ fullName }} />
       </If>
-      <If condition={stargazersCount} otherwise={<T data-testid="stargazers-unavaiable" id="repo_stars_unavailable" />}>
+      <If condition={stargazersCount || stargazersCount === 0} otherwise={<T data-testid="stargazers-unavailable" id="repo_stars_unavailable" />}>
         <T data-testid="stargazers" id="repository_stars" values={{ stars: stargazersCount }} />
       </If>
     </CustomCard>
