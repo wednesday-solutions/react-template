@@ -21,15 +21,6 @@ import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
 import { translate } from '@app/utils';
 
-const CustomCard = styled(Card)`
-  && {
-    margin: 1.25rem 0;
-    padding: 1rem;
-    max-width: ${(props) => props.maxwidth};
-    color: ${(props) => props.color};
-    ${(props) => props.color && `color: ${props.color}`};
-  }
-`;
 const CustomCardHeader = styled(CardHeader)`
   && {
     padding: 0;
