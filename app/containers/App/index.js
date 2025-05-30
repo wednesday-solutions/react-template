@@ -17,9 +17,9 @@ import { Provider } from 'react-redux';
 import { CssBaseline, Container } from '@mui/material';
 import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
 import { Global } from '@emotion/react';
+import styled from '@emotion/styled';
 import { routeConfig } from '@app/routeConfig';
 import globalStyles from '@app/global-styles';
-import { Header } from '@components/Header';
 import { ScrollToTop } from '@components/ScrollToTop';
 import { For } from '@components/For';
 import { If } from '@app/components/If';
@@ -29,21 +29,72 @@ import { translationMessages } from '@app/i18n';
 import history from '@utils/history';
 import { SCREEN_BREAK_POINTS } from '@utils/constants';
 import configureStore from '@app/configureStore';
-import { colors } from '@themes';
+
+const TRANSPARENT_VIOLET_BG = 'rgba(30, 27, 75, 0.5)';
+
+const BlurredBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(76, 0, 130, 0.4) 0%, rgba(147, 51, 234, 0.4) 100%);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+`;
+
+const StyledContainer = styled(Container)`
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+`;
 
 export const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: colors.primary
+      main: '#9333EA', // Bright violet
+      light: '#A855F7',
+      dark: '#7E22CE'
     },
     secondary: {
-      main: colors.secondary
+      main: '#2D1B69', // Dark violet
+      light: '#3730A3',
+      dark: '#1E1B4B'
+    },
+    background: {
+      default: '#0F172A', // Dark blue-gray
+      paper: TRANSPARENT_VIOLET_BG // Semi-transparent dark violet
+    },
+    text: {
+      primary: '#F8FAFC',
+      secondary: '#CBD5E1'
+    }
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+          backgroundColor: TRANSPARENT_VIOLET_BG,
+          backdropFilter: 'blur(8px)'
+        }
+      }
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundColor: TRANSPARENT_VIOLET_BG,
+          backdropFilter: 'blur(8px)'
+        }
+      }
     }
   },
   breakpoints: {
     values: SCREEN_BREAK_POINTS
   }
 });
+
 /**
  * App component that sets up the application with routing, theme, and language support.
  * It also handles redirect logic based on the query parameters in the URL.
@@ -79,30 +130,32 @@ export function App() {
                     <MUIThemeProvider theme={theme}>
                       <CssBaseline />
                       <Global styles={globalStyles} />
-                      <Header />
-                      <Container>
-                        <For
-                          ParentComponent={(props) => <Switch {...props} />}
-                          of={map(Object.keys(routeConfig))}
-                          renderItem={(routeKey, index) => {
-                            const Component = routeConfig[routeKey].component;
-                            return (
-                              <Route
-                                exact={routeConfig[routeKey].exact}
-                                key={index}
-                                path={routeConfig[routeKey].route}
-                                render={(props) => {
-                                  const updatedProps = {
-                                    ...props,
-                                    ...routeConfig[routeKey].props
-                                  };
-                                  return <Component {...updatedProps} />;
-                                }}
-                              />
-                            );
-                          }}
-                        />
-                      </Container>
+                      <>
+                        <BlurredBackground />
+                        <StyledContainer>
+                          <For
+                            ParentComponent={(props) => <Switch {...props} />}
+                            of={map(Object.keys(routeConfig))}
+                            renderItem={(routeKey, index) => {
+                              const Component = routeConfig[routeKey].component;
+                              return (
+                                <Route
+                                  exact={routeConfig[routeKey].exact}
+                                  key={index}
+                                  path={routeConfig[routeKey].route}
+                                  render={(props) => {
+                                    const updatedProps = {
+                                      ...props,
+                                      ...routeConfig[routeKey].props
+                                    };
+                                    return <Component {...updatedProps} />;
+                                  }}
+                                />
+                              );
+                            }}
+                          />
+                        </StyledContainer>
+                      </>
                     </MUIThemeProvider>
                   </StyledEngineProvider>
                 </ConnectedLanguageProvider>
@@ -114,8 +167,10 @@ export function App() {
     </If>
   );
 }
+
 App.propTypes = {
   location: PropTypes.object,
   history: PropTypes.object
 };
+
 export default App;
