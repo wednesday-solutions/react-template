@@ -5,44 +5,42 @@
  */
 
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import routeConstants from '@utils/routeConstants';
 
-const ProtectedRoute = ({ render: C, isLoggedIn, handleLogout, ...rest }) => {
-  const isUnprotectedRoute =
+const ProtectedRoute = ({ component: Component, isLoggedIn, handleLogout, ...rest }) => {
+  const location = useLocation();
+
+  const getUnprotectedRoutes = () =>
     Object.keys(routeConstants)
       .filter((key) => !routeConstants[key].isProtected)
-      .map((key) => routeConstants[key].route)
-      .includes(rest.path) && rest.exact;
+      .map((key) => routeConstants[key].route);
 
-  const handleRedirection = (renderProps) => {
-    let to;
-    if (!isLoggedIn) {
-      // user is not logged in
-      if (!isUnprotectedRoute) {
-        to = routeConstants.login.route;
-        handleLogout();
-      } else {
-        // not logged in and trying to access an unprotected route so don't redirect
-        return <C {...renderProps} />;
-      }
-    } else {
-      // user is logged in
-      if (isUnprotectedRoute) {
-        to = routeConstants.dashboard.route;
-      } else {
-        // logged in and accessing a protected route
-        return <C {...renderProps} />;
-      }
+  const isUnprotectedRoute = getUnprotectedRoutes().includes(location.pathname);
+
+  const handleNotLoggedIn = () => {
+    if (isUnprotectedRoute) {
+      return <Component {...rest} />;
     }
-    return <Redirect to={to} />;
+    if (handleLogout) {
+      handleLogout();
+    }
+    return <Navigate to={routeConstants.login?.route || '/'} replace />;
   };
-  return <Route {...rest} render={handleRedirection} />;
+
+  const handleLoggedIn = () => {
+    if (isUnprotectedRoute) {
+      return <Navigate to={routeConstants.dashboard?.route || '/'} replace />;
+    }
+    return <Component {...rest} />;
+  };
+
+  return isLoggedIn ? handleLoggedIn() : handleNotLoggedIn();
 };
 
 ProtectedRoute.propTypes = {
-  render: PropTypes.any,
+  component: PropTypes.any,
   isLoggedIn: PropTypes.bool,
   isUserVerified: PropTypes.bool,
   handleLogout: PropTypes.func
