@@ -14,8 +14,8 @@
     "template"
   ],
   "engines": {
-    "npm": ">=5",
-    "node": ">=17.9.1"
+    "npm": ">=8",
+    "node": ">=18.0.0"
   },
   "author": "Mac",
   "homepage": "http://wednesday-solutions.github.io/react-template",
@@ -115,10 +115,11 @@
     "less-loader": "7.3.0",
     "lodash-es": "4.17.21",
     "minimist": "1.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-redux": "7.0.2",
-    "react-router-dom": "^5.1.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-redux": "^9.2.0",
+    "react-router": "^6.30.1",
+    "react-router-dom": "^6.30.1",
     "redux": "4.0.1",
     "redux-injectors": "^1.3.0",
     "redux-persist": "^6.0.0",
@@ -163,7 +164,7 @@
     "@storybook/test-runner": "^0.9.3",
     "@storybook/testing-library": "^0.0.13",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/react": "^16.3.0",
     "add-asset-html-webpack-plugin": "^5.0.2",
     "axe-playwright": "^1.1.12",
     "babel-core": "7.0.0-bridge.0",
@@ -215,6 +216,7 @@
     "imports-loader": "3.0.0",
     "jest-cli": "27.0.5",
     "jest-coverage-badges": "^1.1.2",
+    "jest-environment-jsdom": "^30.1.2",
     "jest-fetch-mock": "^3.0.3",
     "jest-sonar": "^0.2.12",
     "less": "^4.1.1",

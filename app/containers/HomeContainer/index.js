@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { injectSaga } from 'redux-injectors';
 import { Card, IconButton, Skeleton, InputAdornment, OutlinedInput, CardHeader, Divider } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import T from '@components/T';
 import { If } from '@components/If';
 import { For } from '@components/For';
@@ -91,7 +91,7 @@ export function HomeContainer({
   padding,
   loading
 }) {
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     if (repoName && !reposData?.items?.length) {
       dispatchGithubRepos(repoName);
@@ -112,7 +112,7 @@ export function HomeContainer({
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
   const handleStoriesClick = () => {
-    history.push('/stories');
+    navigate('/stories');
     window.location.reload();
   };
 

@@ -4,6 +4,15 @@ import { enableMocks } from 'jest-fetch-mock';
 // jest.setup.js
 enableMocks();
 
+// Polyfill for TextEncoder/TextDecoder in Node.js test environment
+if (typeof global.TextEncoder === 'undefined') {
+  const { TextEncoder, TextDecoder } = require('util');
+  /* eslint-disable immutable/no-mutation */
+  global.TextEncoder = TextEncoder;
+  global.TextDecoder = TextDecoder;
+  /* eslint-enable immutable/no-mutation */
+}
+
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
   return {
@@ -16,16 +25,7 @@ jest.mock('react-router-dom', () => {
       state: null,
       key: '5nvxpbdafa'
     }),
-    useHistory: jest.fn().mockReturnValue({
-      length: 2,
-      action: 'POP',
-      push: jest.fn(),
-      location: {
-        pathname: '/',
-        search: '',
-        hash: ''
-      }
-    })
+    useNavigate: jest.fn().mockReturnValue(jest.fn())
   };
 });
 Object.defineProperty(window, 'matchMedia', {

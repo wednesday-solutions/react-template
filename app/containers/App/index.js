@@ -8,9 +8,8 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Router } from 'react-router';
 import map from 'lodash/map';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
@@ -26,7 +25,6 @@ import { If } from '@app/components/If';
 import ConnectedLanguageProvider from '@containers/LanguageProvider';
 import ErrorBoundary from '@app/components/ErrorBoundary/index';
 import { translationMessages } from '@app/i18n';
-import history from '@utils/history';
 import { SCREEN_BREAK_POINTS } from '@utils/constants';
 import configureStore from '@app/configureStore';
 import { colors } from '@themes';
@@ -56,13 +54,16 @@ export function App() {
   const [store, setStore] = useState(null);
   const [persistor, setPersistor] = useState(null);
 
-  const { location } = history;
   useEffect(() => {
-    if (location.search.includes('?redirect_uri=')) {
-      const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
-      history.replace(routeToReplace);
+    // Check for redirect_uri in URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUri = urlParams.get('redirect_uri');
+    if (redirectUri) {
+      window.location.replace(redirectUri);
+      return;
     }
-    const { store: s, persistor: p } = configureStore({}, history);
+
+    const { store: s, persistor: p } = configureStore({});
     setStore(s);
     setPersistor(p);
   }, []);
@@ -70,7 +71,7 @@ export function App() {
   return (
     <If condition={!!persistor} otherwise={<div>LOADING</div>}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router history={history}>
+        <Router>
           <ScrollToTop>
             <ErrorBoundary>
               <Provider store={store}>
@@ -81,27 +82,21 @@ export function App() {
                       <Global styles={globalStyles} />
                       <Header />
                       <Container>
-                        <For
-                          ParentComponent={(props) => <Switch {...props} />}
-                          of={map(Object.keys(routeConfig))}
-                          renderItem={(routeKey, index) => {
-                            const Component = routeConfig[routeKey].component;
-                            return (
-                              <Route
-                                exact={routeConfig[routeKey].exact}
-                                key={index}
-                                path={routeConfig[routeKey].route}
-                                render={(props) => {
-                                  const updatedProps = {
-                                    ...props,
-                                    ...routeConfig[routeKey].props
-                                  };
-                                  return <Component {...updatedProps} />;
-                                }}
-                              />
-                            );
-                          }}
-                        />
+                        <Routes>
+                          <For
+                            of={map(Object.keys(routeConfig))}
+                            renderItem={(routeKey, index) => {
+                              const Component = routeConfig[routeKey].component;
+                              return (
+                                <Route
+                                  key={index}
+                                  path={routeConfig[routeKey].route}
+                                  element={<Component {...routeConfig[routeKey].props} />}
+                                />
+                              );
+                            }}
+                          />
+                        </Routes>
                       </Container>
                     </MUIThemeProvider>
                   </StyledEngineProvider>
