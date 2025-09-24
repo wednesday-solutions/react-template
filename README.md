@@ -1,285 +1,797 @@
-<img align="left" src="https://github.com/wednesday-solutions/react-template/blob/master/react_template_github.svg" width="480" height="540" />
-
-<div>
-  <a href="https://www.wednesday.is/?utm_source=github&utm_medium=react_template" align="left" style="margin-left: 0;">
-    <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f5879492fafecdb3e5b0e75_wednesday_logo.svg">
+<div align="center">
+  <img src="https://github.com/wednesday-solutions/react-template/blob/master/react_template_github.svg" width="200" height="200" />
+  
+  # React Enterprise Template
+  
+  ### A comprehensive, production-ready React application template
+  
+  An enterprise-grade React template showcasing modern development practices including testing strategies, global state management, middleware support, network layer implementation, component library integration, internationalization, PWA capabilities, advanced routing, code splitting, and automated CI/CD pipelines.
+  
+  ---
+  
+  [![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)](https://github.com/wednesday-solutions/react-template/actions)
+  [![Coverage](./badges/badge-statements.svg)](./badges/badge-statements.svg)
+  [![Branches](./badges/badge-branches.svg)](./badges/badge-branches.svg)
+  [![Functions](./badges/badge-functions.svg)](./badges/badge-functions.svg)
+  [![Lines](./badges/badge-lines.svg)](./badges/badge-lines.svg)
+  
+  Built with ❤️ by [Wednesday Solutions](https://www.wednesday.is/?utm_source=github&utm_medium=react_template)
+  
+  <a href="https://www.wednesday.is/contact-us/?utm_source=github&utm_medium=react_template" target="_blank">
+    <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88b9005f9ed382fb2a5_button_get_in_touch.svg" width="121" height="34">
   </a>
-  <p>
-    <h1 align="left">React Template
-    </h1>
-  </p>
-
-  <p>
-An enterprise react template application showcasing - Testing strategies, Global state management, middleware support, a network layer, component library integration, localization, PWA support, route configuration, lazy loading, and Continuous integration & deployment.
-  </p>
+  <a href="https://github.com/wednesday-solutions/" target="_blank">
+    <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88bb1958c3253756c39_button_follow_on_github.svg" width="168" height="34">
+  </a>
+  
+</div>
 
 ---
 
-  <p>
-    <h4>
-      Expert teams of digital product strategists, developers, and designers.
-    </h4>
-  </p>
+---
 
-  <div>
-    <a href="https://www.wednesday.is/contact-us/?utm_source=github&utm_medium=react_template" target="_blank">
-      <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88b9005f9ed382fb2a5_button_get_in_touch.svg" width="121" height="34">
-    </a>
-    <a href="https://github.com/wednesday-solutions/" target="_blank">
-      <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88bb1958c3253756c39_button_follow_on_github.svg" width="168" height="34">
-    </a>
-  </div>
+## 📋 Table of Contents
+
+- [🚀 Quick Start](#-quick-start)
+- [📋 Prerequisites](#-prerequisites)
+- [🛠️ Getting Started](#️-getting-started)
+- [🏗️ Tech Stack](#️-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🎯 Features](#-features)
+  - [🏪 Global State Management (Redux Sauce)](#-global-state-management-redux-sauce)
+  - [⚡ Redux Middleware (Saga)](#-redux-middleware-saga)
+  - [🌐 HTTP Client (Wretch)](#-http-client-wretch)
+  - [💅 Styling (Emotion)](#-styling-emotion)
+  - [🎨 UI Components (Material UI)](#-ui-components-material-ui)
+  - [🌍 Internationalization (Lingui)](#-internationalization-lingui)
+  - [🔀 Routing (React Router)](#-routing-react-router)
+  - [📚 Component Development (Storybook)](#-component-development-storybook)
+  - [♿ Accessibility Testing](#-accessibility-testing)
+  - [📦 Bundling (Webpack)](#-bundling-webpack)
+  - [📊 Bundle Analysis](#-bundle-analysis)
+  - [🔄 CI/CD (GitHub Actions)](#-cicd-github-actions)
+  - [🧪 Testing (Testing Library)](#-testing-testing-library)
+  - [🎭 E2E Testing (Playwright)](#-e2e-testing-playwright)
+  - [⚡ Code Generation (React Floki)](#-code-generation-react-floki)
+- [🚀 Deployment](#-deployment)
+- [🤝 Contributing](#-contributing)
+- [🐛 Troubleshooting](#-troubleshooting)
+- [📝 License](#-license)
 
 ---
 
-</div>
+## 🚀 Quick Start
 
-### Built using [react-floki](https://github.com/wednesday-solutions/react-floki)
+Get up and running in less than 5 minutes:
 
-![React Template CD](https://github.com/wednesday-solutions/react-template/workflows/React%20Template%20CD/badge.svg)
+```bash
+# Clone the repository
+git clone https://github.com/wednesday-solutions/react-template.git
+cd react-template
 
-<div>
-<img src='./badges/badge-statements.svg' height="20"/>
-<img src='./badges/badge-branches.svg' height="20"/>
-</div>
-<div>
-<img src='./badges/badge-lines.svg'  height="20"/>
-<img src='./badges/badge-functions.svg' height="20"/>
-</div>
+# Install dependencies
+yarn install
 
-## Getting Started
+# Initialize the project
+yarn run initialize
 
-- Install dependencies using `yarn install`
+# Start the development server
+yarn start
+```
 
-- Run the initialize script using `yarn run initialize`
+Visit [http://localhost:3000](http://localhost:3000) to see your app running! 🎉
 
-- Start the dev server using `yarn start`
+---
 
-- Go through the other scripts in `package.json`
+## 📋 Prerequisites
 
-## Global state management using reduxSauce
+Before you begin, ensure you have the following installed on your system:
 
-- Global state management using [Redux Sauce](https://github.com/infinitered/reduxsauce)
+- **Node.js** (v20.0.0 or higher) - [Download here](https://nodejs.org/)
+- **npm** (v5 or higher) - Comes with Node.js
+- **Yarn** (recommended) - [Installation guide](https://yarnpkg.com/getting-started/install)
+- **Git** - [Download here](https://git-scm.com/)
 
-  Take a look at the following files
+### System Requirements
+
+- **Operating System**: Windows 10+, macOS 10.14+, or Linux
+- **Memory**: 4GB RAM (8GB recommended)
+- **Disk Space**: 2GB free space
+
+---
+
+## 🛠️ Getting Started
+
+### Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/wednesday-solutions/react-template.git
+   cd react-template
+   ```
+
+2. **Install dependencies**
+   ```bash
+   yarn install
+   ```
+
+3. **Initialize the project**
+   ```bash
+   yarn run initialize
+   ```
+   > This script sets up your development environment and configures the project for first-time use.
+
+4. **Start the development server**
+   ```bash
+   yarn start
+   ```
+   
+   The application will be available at [http://localhost:3000](http://localhost:3000)
+
+### Available Scripts
+
+Explore all available commands:
+
+| Command | Description |
+|---------|-------------|
+| `yarn start` | Start development server |
+| `yarn build:prod` | Create production build |
+| `yarn build:dev` | Create development build |
+| `yarn test` | Run unit tests |
+| `yarn test:watch` | Run tests in watch mode |
+| `yarn test:e2e` | Run end-to-end tests |
+| `yarn storybook` | Launch Storybook |
+| `yarn lint` | Run linting checks |
+| `yarn generate` | Scaffold new components |
+
+---
+
+## 🏗️ Tech Stack
+
+This template leverages modern technologies and best practices:
+
+### Core Technologies
+- **[React 19](https://react.dev/)** - Modern React with latest features
+- **[Redux](https://redux.js.org/)** + **[Redux Sauce](https://github.com/infinitered/reduxsauce)** - Predictable state management
+- **[Redux Saga](https://redux-saga.js.org/)** - Side effect management
+- **[React Router](https://reactrouter.com/)** - Declarative routing
+
+### UI & Styling
+- **[Material-UI](https://mui.com/)** - React component library
+- **[Emotion](https://emotion.sh/)** - CSS-in-JS styling
+- **[Storybook](https://storybook.js.org/)** - Component development environment
 
-  - [app/containers/HomeContainer/reducer.js](app/containers/HomeContainer/reducer.js)
-  - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
+### Development Tools
+- **[Webpack](https://webpack.js.org/)** - Module bundler
+- **[Babel](https://babeljs.io/)** - JavaScript compiler
+- **[ESLint](https://eslint.org/)** - Code linting
+- **[Prettier](https://prettier.io/)** - Code formatting
+- **[Lingui](https://lingui.js.org/)** - Internationalization
+
+### Testing Framework
+- **[Jest](https://jestjs.io/)** - JavaScript testing framework
+- **[Testing Library](https://testing-library.com/)** - Simple testing utilities
+- **[Playwright](https://playwright.dev/)** - End-to-end testing
+
+### DevOps & CI/CD
+- **[GitHub Actions](https://github.com/features/actions)** - Continuous integration
+- **[AWS S3](https://aws.amazon.com/s3/)** - Static hosting
+- **[CloudFront](https://aws.amazon.com/cloudfront/)** - CDN
+- **[SonarQube](https://www.sonarqube.org/)** - Code quality analysis
+
+---
+
+## 📁 Project Structure
+
+```
+react-template/
+├── 📁 app/                      # Application source code
+│   ├── 📁 components/           # Reusable UI components
+│   ├── 📁 containers/           # Connected components with business logic
+│   ├── 📁 services/             # API services and external integrations
+│   ├── 📁 utils/                # Utility functions and helpers
+│   ├── 📁 translations/         # Internationalization files
+│   ├── 📁 themes/               # Theme configurations
+│   ├── 📄 app.js                # Application entry point
+│   └── 📄 routeConfig.js        # Route configurations
+├── 📁 internals/                # Build and development tools
+│   ├── 📁 webpack/              # Webpack configurations
+│   └── 📁 scripts/              # Build and setup scripts
+├── 📁 .storybook/               # Storybook configuration
+├── 📁 __tests__/                # End-to-end test files
+├── 📁 .github/workflows/        # CI/CD pipeline definitions
+├── 📄 package.json              # Dependencies and scripts
+├── 📄 jest.config.json          # Jest testing configuration
+├── 📄 playwright.config.js      # Playwright E2E configuration
+└── 📄 README.md                 # You are here!
+```
 
-- Computing and getting state from the redux store using [Reselect](https://github.com/reduxjs/reselect)
+---
 
-  Take a look at the following files
+## 🎯 Features
 
-  - [app/containers/HomeContainer/selectors.js](app/containers/HomeContainer/selectors.js)
+This template includes comprehensive implementations of modern React development patterns:
 
-## Implementing a Redux middleware using redux-sagas
+### 🏪 Global State Management (Redux Sauce)
 
-- Side effects using [Redux Saga](https://github.com/redux-saga/redux-saga)
+Efficient state management using Redux with Redux Sauce for cleaner action creators and reducers.
 
-  Take a look at the following files
+**Key Features:**
+- Simplified action creator syntax
+- Automatic action type generation
+- Immutable state updates with Immer
+- Time-travel debugging with Redux DevTools
+
+**Implementation Files:**
+- [`app/containers/HomeContainer/reducer.js`](app/containers/HomeContainer/reducer.js) - State reducers
+- [`app/containers/HomeContainer/index.js`](app/containers/HomeContainer/index.js) - Container component
+- [`app/containers/HomeContainer/selectors.js`](app/containers/HomeContainer/selectors.js) - Memoized selectors with Reselect
 
-  - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
-  - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
+**Example Usage:**
+```javascript
+// Selector usage with Reselect for optimal performance
+const homeSelector = createSelector(
+  getHomeContainer,
+  homeState => homeState
+);
+```
 
-## Network requests using wretch
+---
 
-- API calls using [Wretch](https://github.com/elbywan/wretch)
+### ⚡ Redux Middleware (Saga)
 
-  Take a look at the following files
+Handle complex asynchronous operations and side effects with Redux Saga.
 
-  - [app/utils/apiUtils.js](app/utils/apiUtils.js)
-  - [app/services/repoApi.js](app/services/repoApi.js)
-  - [app/containers/HomeContainer/saga.js](app/containers/HomeContainer/saga.js)
+**Key Features:**
+- Declarative effects for async operations
+- Easy testing of async flows
+- Cancellable operations
+- Race conditions handling
 
-## Styling using emotion
+**Implementation Files:**
+- [`app/containers/HomeContainer/saga.js`](app/containers/HomeContainer/saga.js) - Saga effects
+- [`app/containers/HomeContainer/index.js`](app/containers/HomeContainer/index.js) - Saga integration
 
-- Styling components using [Emotion](https://emotion.sh/)
+---
 
-  Take a look at the following files
+### 🌐 HTTP Client (Wretch)
 
-  - [app/components/T/index.js](app/components/T/index.js)
-  - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
+Modern, lightweight HTTP client for API communications.
 
-## Using Material UI as the component library
+**Key Features:**
+- Promise-based API
+- Request/response interceptors
+- Built-in error handling
+- Lightweight alternative to Axios
 
-- Reusing components from [Material UI](https://mui.com)
+**Implementation Files:**
+- [`app/utils/apiUtils.js`](app/utils/apiUtils.js) - API utilities and configuration
+- [`app/services/repoApi.js`](app/services/repoApi.js) - API service layer
+- [`app/containers/HomeContainer/saga.js`](app/containers/HomeContainer/saga.js) - API integration
 
-  Take a look at the following files
+---
 
-  - [app/containers/HomeContainer/index.js](app/containers/HomeContainer/index.js)
+### 💅 Styling (Emotion)
 
-## Localization using Lingui
+CSS-in-JS styling solution for component-based styling.
 
-- Translations using [Lingui](https://github.com/lingui/js-lingui)
+**Key Features:**
+- Component-based styling
+- Theme support
+- Server-side rendering
+- Excellent performance
 
-  Take a look at the following files
+**Implementation Files:**
+- [`app/components/T/index.js`](app/components/T/index.js) - Styled text component
+- [`app/containers/HomeContainer/index.js`](app/containers/HomeContainer/index.js) - Container styling
 
-  - [app/translations/en.json](app/translations/en.json)
-  - [app/containers/LanguageProvider/](app/containers/LanguageProvider/)
-  - [app/i18n](app/i18n.js)
+---
 
-## Routing using react-router
+### 🎨 UI Components (Material UI)
 
-- Routing is done using [React Router](https://github.com/ReactTraining/react-router)
+Production-ready React components implementing Google's Material Design.
 
-  Take a look at the following files
+**Key Features:**
+- Comprehensive component library
+- Customizable theming system
+- Accessibility built-in
+- TypeScript support
 
-  - [app/routeConfig.js](app/routeConfig.js)
-  - [app/containers/App/index.js](app/containers/App/index.js)
+**Implementation Files:**
+- [`app/containers/HomeContainer/index.js`](app/containers/HomeContainer/index.js) - Material UI integration
 
-## Creating and showcasing components individually and in isolation using Storybooks
+---
 
-- Storybooks allows you to work on one component at a time. You can develop entire UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
+### 🌍 Internationalization (Lingui)
 
-  - run storybook `yarn storybook`
+Complete i18n solution supporting multiple languages and locales.
 
-- Take a look at the following files
+**Key Features:**
+- ICU MessageFormat support
+- Pluralization rules
+- Number and date formatting
+- Extract/compile workflow
 
-  - [.storybook/webpack.config.js](.storybook/webpack.config.js)
-  - [.storybook/main.js](.storybook/main.js)
-  - [.storybook/preview.js](.storybook/preview.js)
-  - [.storybook/reactIntl.js](.storybook/react-Intl.js)
-  - [app/components/Clickable/stories/Clickable.stories.js](app/components/Clickable/stories/Clickable.stories.js)
+**Implementation Files:**
+- [`app/translations/en.json`](app/translations/en.json) - English translations
+- [`app/containers/LanguageProvider/`](app/containers/LanguageProvider/) - Language provider setup
+- [`app/i18n.js`](app/i18n.js) - i18n configuration
 
-## Accessibility testing using Storybooks a11y Addon
+**Usage:**
+```bash
+# Extract translatable strings
+yarn extract-intl
 
-- Accessbility testing is done using [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y).
+# Compile translations
+yarn compile-intl
+```
 
-  Take a look at the following files
+---
 
-  - [.storybook/main.js](.storybook/main.js)
-  - [.storybook/test-runner.js](.storybook/test-runner.js)
+### 🔀 Routing (React Router)
 
-- Run all the accessbility tests using
+Declarative routing for React applications.
 
-  ```
-  yarn test-storybook
-  ```
+**Key Features:**
+- Dynamic route matching
+- Nested routing
+- Code splitting integration
+- Browser history management
 
-- Run single test file by specifying path
+**Implementation Files:**
+- [`app/routeConfig.js`](app/routeConfig.js) - Route definitions
+- [`app/containers/App/index.js`](app/containers/App/index.js) - Router setup
 
-  ```
-  yarn test-storybook <path to file>
-  ```
+---
 
-For the documentation take a look at: [Accessbility test](https://storybook.js.org/docs/react/writing-tests/accessibility-testing)
+### 📚 Component Development (Storybook)
 
-## Bundling your application using Webpack
+Develop and showcase UI components in isolation.
 
-- We're using and configuring webpack to bundle our React application.
+**Key Features:**
+- Component isolation
+- Interactive props exploration
+- Automated documentation
+- Visual regression testing
 
-  Take a look at the following files
+**Setup Files:**
+- [`.storybook/main.js`](.storybook/main.js) - Storybook configuration
+- [`.storybook/preview.js`](.storybook/preview.js) - Global decorators and parameters
+- [`app/components/Clickable/stories/`](app/components/Clickable/stories/) - Component stories
 
-  - [internals/webpack/webpack.config.base.js](internals/webpack/webpack.config.base.js)
-  - [internals/webpack/webpack.config.dev.js](internals/webpack/webpack.config.dev.js)
-  - [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
+**Commands:**
+```bash
+# Start Storybook development server
+yarn storybook
 
-## Analyzing the bundle size using webpack-bundle-analyzer
+# Build static Storybook
+yarn build-storybook:prod
+```
 
-- The size of the bundle is analyzed using the webpack-bundle-analyzer to make sure that the bundle is lean and optimized.
+---
 
-  Take a look at the following files
+### ♿ Accessibility Testing
 
-  - [internals/webpack/webpack.dev.babel.js](internals/webpack/webpack.dev.babel.js)
+Comprehensive accessibility testing using Storybook's a11y addon.
 
-## Implementing CI/CD pipelines using Github Actions
+**Key Features:**
+- Automated accessibility audits
+- WCAG compliance checking
+- Color contrast validation
+- Keyboard navigation testing
 
-- CI/CD using Github Actions.
-  The CI pipeline has the following phases
+**Configuration Files:**
+- [`.storybook/main.js`](.storybook/main.js) - a11y addon configuration
+- [`.storybook/test-runner.js`](.storybook/test-runner.js) - Test runner setup
 
-  - Checkout
-  - Install dependencies
-  - Lint
-  - Test
-  - Accessbility Test
-  - Build
+**Commands:**
+```bash
+# Run accessibility tests
+yarn test-storybook
 
-  The CD pipeline has the following phases
+# Run specific accessibility test
+yarn test-storybook <path-to-story>
+```
 
-  - Checkout
-  - Install dependencies
-  - Build
-  - Deploy
+---
 
-  Take a look at the following files
+### 📦 Bundling (Webpack)
 
-  - [.github/workflows/ci.yml](.github/workflows/ci.yml)
-  - [.github/workflows/cd.yml](.github/workflows/cd.yml)
+Advanced Webpack configuration for optimal bundling and performance.
 
-## Testing using @testing-library/react
+**Key Features:**
+- Code splitting and lazy loading
+- Tree shaking for smaller bundles
+- Hot module replacement
+- Progressive Web App support
 
-- Testing is done using the @testing-library/react.
+**Configuration Files:**
+- [`internals/webpack/webpack.config.base.js`](internals/webpack/webpack.config.base.js) - Base configuration
+- [`internals/webpack/webpack.config.dev.js`](internals/webpack/webpack.config.dev.js) - Development setup
+- [`internals/webpack/webpack.config.prod.js`](internals/webpack/webpack.config.prod.js) - Production optimization
 
-  Take a look at the following files
+---
 
-  - [jest.config.js](jest.config.js)
-  - [jest.setup.js](jest.setup.js)
-  - [app/containers/HomeContainer/tests](app/containers/HomeContainer/tests)
-  - [app/services/tests/repoApi.test.js](app/services/tests/repoApi.test.js)
-  - [app/components/T/tests/index.test.js](app/components/T/tests/index.test.js)
+### 📊 Bundle Analysis
 
-## End to End testing using playwright
+Analyze and optimize your bundle size with webpack-bundle-analyzer.
 
-- End to End testing is done using [playwright](https://github.com/microsoft/playwright).
+**Key Features:**
+- Visual bundle composition
+- Dependency size analysis
+- Optimization recommendations
+- Performance monitoring
 
-  Take a look at the following files
+**Commands:**
+```bash
+# Analyze bundle size
+yarn analyze
+```
 
-  - [playwright.config.js](playwright.config.js)
-  - [\_\_tests\_\_/example.spec.js](__tests__/example.spec.js)
+---
 
-- Run all End to End tests using
+### 🔄 CI/CD (GitHub Actions)
 
-  ```
-  yarn test:e2e
-  ```
+Automated continuous integration and deployment pipelines.
 
-- Run single test file by specifying path
+**CI Pipeline Features:**
+- ✅ Dependency installation
+- 🔍 Code linting and formatting
+- 🧪 Unit and integration tests
+- ♿ Accessibility testing
+- 🏗️ Production build
+- 📊 Lighthouse performance audit
+- 🔍 SonarQube code quality analysis
 
-  ```
-  yarn test:e2e <path to file>
-  ```
+**CD Pipeline Features:**
+- 🚀 Automated deployment to AWS S3
+- 🌐 CloudFront CDN invalidation
+- 📊 Test coverage badge generation
+- 🔄 Multi-environment support
 
-For the documentation take a look at: [playwright](https://playwright.dev/docs/intro)
+**Configuration Files:**
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) - Continuous Integration
+- [`.github/workflows/cd.yml`](.github/workflows/cd.yml) - Continuous Deployment
 
-## Scaffolding components/containers/tests using react-floki
+---
 
-- Components, containers, tests and stories can be scaffolded using
-  ```
-  yarn generate
-  ```
-  For the documentation take a look at: [react-floki](https://github.com/wednesday-solutions/react-floki)
+### 🧪 Testing (Testing Library)
 
-## Misc
+Comprehensive testing setup with Jest and React Testing Library.
 
-### Aliasing
+**Key Features:**
+- Component testing utilities
+- User-centric testing approach
+- Snapshot testing
+- Coverage reporting
 
-- @app -> app/
-- @containers -> app/containers/
-- @components -> app/components/
-- @services -> app/services/
-- @utils -> app/utils/
+**Test Files:**
+- [`jest.config.json`](jest.config.json) - Jest configuration
+- [`jest.setup.js`](jest.setup.js) - Test environment setup
+- [`app/containers/HomeContainer/tests/`](app/containers/HomeContainer/tests/) - Container tests
+- [`app/services/tests/repoApi.test.js`](app/services/tests/repoApi.test.js) - API service tests
+- [`app/components/T/tests/index.test.js`](app/components/T/tests/index.test.js) - Component tests
 
-Take a look at the following files
+**Commands:**
+```bash
+# Run all tests
+yarn test
 
-- [internals/webpack/webpack.base.babel.js](internals/webpack/webpack.base.babel.js)
+# Run tests in watch mode
+yarn test:watch
 
-### Chunkify and Lazy loading
+# Generate coverage report
+yarn test:coverage
 
-Take a look at the following files
+# Generate coverage badges
+yarn test:badges
+```
 
-- [app/containers/HomeContainer/loadable.js](app/containers/HomeContainer/loadable.js)
-- [app/utils/loadable.js](app/utils/loadable.js)
+---
 
-### App entry point
+### 🎭 E2E Testing (Playwright)
 
-- [app/app.js](app/app.js)
+End-to-end testing with Microsoft Playwright for cross-browser testing.
 
-### PWA
+**Key Features:**
+- Cross-browser testing (Chrome, Firefox, Safari)
+- Mobile device emulation
+- Network interception
+- Visual regression testing
 
+**Configuration Files:**
+- [`playwright.config.js`](playwright.config.js) - Playwright configuration
+- [`__tests__/example.spec.js`](__tests__/example.spec.js) - Example E2E test
+
+**Commands:**
+```bash
+# Run all E2E tests
+yarn test:e2e
+
+# Run specific test file
+yarn test:e2e <path-to-test-file>
+```
+
+**Learn More:** [Playwright Documentation](https://playwright.dev/docs/intro)
+
+---
+
+### ⚡ Code Generation (React Floki)
+
+Scaffold components, containers, and tests with consistent patterns.
+
+**Key Features:**
+- Component generation with tests and stories
+- Container scaffolding with Redux integration
+- Consistent file structure
+- Custom templates support
+
+**Commands:**
+```bash
+# Launch interactive generator
+yarn generate
+```
+
+**Learn More:** [React Floki Documentation](https://github.com/wednesday-solutions/react-floki)
+
+---
+
+## 🔧 Advanced Configuration
+
+### Aliases
+
+The project includes helpful path aliases for cleaner imports:
+
+- `@app` → `app/`
+- `@containers` → `app/containers/`
+- `@components` → `app/components/`
+- `@services` → `app/services/`
+- `@utils` → `app/utils/`
+
+**Configuration:** [`internals/webpack/webpack.base.babel.js`](internals/webpack/webpack.base.babel.js)
+
+### Code Splitting & Lazy Loading
+
+Optimize your app's performance with automatic code splitting:
+
+**Implementation Files:**
+- [`app/containers/HomeContainer/loadable.js`](app/containers/HomeContainer/loadable.js) - Loadable container
+- [`app/utils/loadable.js`](app/utils/loadable.js) - Loadable utility
+
+### Progressive Web App (PWA)
+
+Transform your React app into a PWA with offline capabilities:
+
+**Features:**
+- Service worker integration
+- Offline functionality
+- App manifest generation
+- Installable web app
+
+**Configuration:**
+- [`app/app.js`](app/app.js) - PWA setup
+- [`internals/webpack/webpack.config.prod.js`](internals/webpack/webpack.config.prod.js) - PWA plugins
+
+**Technologies:**
 - [Offline Plugin](https://github.com/NekR/offline-plugin)
 - [Webpack PWA Manifest](https://github.com/arthurbergmz/webpack-pwa-manifest)
 
-Take a look at the following files
+---
 
-- [app/app.js](app/app.js)
-- [internals/webpack/webpack.config.prod.js](internals/webpack/webpack.config.prod.js)
+## 🚀 Deployment
+
+### Automated Deployment
+
+The project includes automated deployment pipelines using GitHub Actions:
+
+1. **Production Deployment** - Triggered on push to `master` branch
+2. **Development Deployment** - Triggered on push to development branches
+
+### Manual Deployment
+
+**Build for Production:**
+```bash
+yarn build:prod
+```
+
+**Build for UAT:**
+```bash
+yarn build:uat
+```
+
+**Deploy to AWS S3:**
+The built files are automatically deployed to AWS S3 with CloudFront CDN integration for optimal performance.
+
+### Environment Configuration
+
+Configure your deployment environments using the following files:
+- `.env` - General environment variables
+- `.env.development` - Development-specific variables
+- `.env.local` - Local development overrides
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+### Getting Started with Contributing
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes**
+4. **Add tests** for new functionality
+5. **Run the test suite**
+   ```bash
+   yarn test
+   yarn test:e2e
+   yarn lint
+   ```
+6. **Commit your changes**
+   ```bash
+   git commit -m "feat: add your feature description"
+   ```
+7. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+8. **Create a Pull Request**
+
+### Development Guidelines
+
+- **Code Style**: Follow the existing code style enforced by ESLint and Prettier
+- **Testing**: Write tests for new features and bug fixes
+- **Documentation**: Update documentation for any new features
+- **Commit Messages**: Use conventional commit format
+
+### Code Style
+
+This project uses:
+- **ESLint** for JavaScript linting
+- **Prettier** for code formatting
+- **Stylelint** for CSS linting
+
+Run formatting and linting:
+```bash
+yarn lint          # Check for issues
+yarn lint:js       # JavaScript linting
+yarn lint:css      # CSS linting
+yarn prettify      # Format code
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**🔧 Node.js Version Issues**
+```bash
+# Check your Node.js version
+node --version
+
+# Use nvm to install the correct version
+nvm install 20
+nvm use 20
+```
+
+**📦 Dependency Installation Failures**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Remove node_modules and reinstall
+rm -rf node_modules
+yarn install
+```
+
+**🔌 Port Already in Use**
+```bash
+# Kill process using port 3000
+lsof -ti:3000 | xargs kill -9
+
+# Or use a different port
+PORT=3001 yarn start
+```
+
+**🏗️ Build Issues**
+```bash
+# Clear build artifacts
+yarn clean:all
+
+# Try building again
+yarn build:prod
+```
+
+**🧪 Test Issues**
+```bash
+# Clear Jest cache
+yarn test --clearCache
+
+# Run tests with verbose output
+yarn test --verbose
+```
+
+### Getting Help
+
+- **Issues**: [GitHub Issues](https://github.com/wednesday-solutions/react-template/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/wednesday-solutions/react-template/discussions)
+- **Documentation**: Check the inline code comments and linked resources
+
+### Performance Tips
+
+1. **Bundle Size**: Use `yarn analyze` to monitor bundle size
+2. **Memory**: Increase Node.js memory if needed: `NODE_OPTIONS="--max-old-space-size=4096"`
+3. **Development**: Use `yarn start` for hot reloading during development
+
+---
+
+## 📚 Additional Resources
+
+### Learning Resources
+- [React Documentation](https://react.dev/)
+- [Redux Toolkit Documentation](https://redux-toolkit.js.org/)
+- [Material-UI Documentation](https://mui.com/)
+- [Testing Library Documentation](https://testing-library.com/)
+- [Storybook Documentation](https://storybook.js.org/)
+
+### Best Practices
+- [React Best Practices](https://react.dev/learn/thinking-in-react)
+- [Redux Style Guide](https://redux.js.org/style-guide)
+- [Testing Best Practices](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
+
+---
+
+## 👥 About Wednesday Solutions
+
+**Wednesday Solutions** is a digital product engineering company that focuses on creating scalable, maintainable solutions using modern technologies.
+
+### Our Services
+- 🔧 **Custom Software Development**
+- 🎨 **UI/UX Design**
+- 📱 **Mobile App Development**
+- ☁️ **Cloud Architecture**
+- 🔒 **DevOps & Security**
+
+### Connect With Us
+- 🌐 **Website**: [wednesday.is](https://www.wednesday.is/)
+- 💼 **LinkedIn**: [Wednesday Solutions](https://www.linkedin.com/company/wednesday-solutions/)
+- 🐦 **Twitter**: [@WednesdaySol](https://twitter.com/WednesdaySol)
+- 📧 **Email**: [hello@wednesday.is](mailto:hello@wednesday.is)
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2024 Wednesday Solutions
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+---
+
+<div align="center">
+
+**⭐ If this project helped you, please give it a star! ⭐**
+
+Built with ❤️ by [Wednesday Solutions](https://www.wednesday.is/?utm_source=github&utm_medium=react_template)
+
+*Happy Coding! 🚀*
+
+</div>
