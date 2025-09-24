@@ -86,3 +86,32 @@ if (!ReactDOM.unmountComponentAtNode) {
     }
   };
 }
+
+// Polyfill for React 19 compatibility - ReactDOM.render was removed
+if (!ReactDOM.render) {
+  // Import createRoot from react-dom/client (React 18+ API)
+  const { createRoot } = require('react-dom/client');
+  
+  ReactDOM.render = (element, container, callback) => {
+    try {
+      // Check if we already have a root for this container
+      if (!container._reactRoot) {
+        container._reactRoot = createRoot(container);
+      }
+      
+      // Render the element
+      container._reactRoot.render(element);
+      
+      // Call the callback if provided (legacy behavior)
+      if (callback) {
+        // Use setTimeout to match legacy ReactDOM.render callback timing
+        setTimeout(callback, 0);
+      }
+      
+      return container._reactRoot;
+    } catch (error) {
+      console.warn('Failed to render component:', error);
+      return null;
+    }
+  };
+}
