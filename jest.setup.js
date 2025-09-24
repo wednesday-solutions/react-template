@@ -46,3 +46,19 @@ jest.mock('redux-persist', () => ({
   ...jest.requireActual('redux-persist'),
   persistReducer: jest.fn().mockImplementation((config, reducer) => reducer)
 }));
+
+// Mock window.scrollTo to prevent jsdom "Not implemented" errors
+if (!window.scrollTo) {
+  Object.defineProperty(window, 'scrollTo', {
+    value: jest.fn(),
+    writable: true
+  });
+}
+
+// Mock window.location.reload to prevent jsdom "Not implemented" errors
+if (!window.location.reload) {
+  Object.defineProperty(window.location, 'reload', {
+    value: jest.fn(),
+    writable: true
+  });
+}
