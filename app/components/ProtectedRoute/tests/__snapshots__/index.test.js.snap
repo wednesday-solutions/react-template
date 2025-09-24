@@ -10,7 +10,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         class="css-1cnh6jp e666d1v2"
       >
         <p
-          class="e666d1v1 css-gnuwwn egtqi0h0"
+          class="e666d1v1 css-16gj8bq egtqi0h0"
           data-testid="redirect"
         >
           Go to Storybook
@@ -37,7 +37,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-b2j1b7-MuiDivider-root"
         />
         <p
-          class="css-darbe1 egtqi0h0"
+          class="css-1u0bpvi egtqi0h0"
           data-testid="t"
         >
           Get details of repositories
@@ -50,7 +50,6 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
             data-testid="search-bar"
             placeholder="wednesday-solutions/react-template"
             type="text"
-            value=""
           />
           <div
             class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
@@ -115,7 +114,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-b2j1b7-MuiDivider-root"
         />
         <p
-          class="css-lh9t18 egtqi0h0"
+          class="css-eswc4a egtqi0h0"
           data-testid="default-message"
         >
           Search for a repository by entering it's name in the search box

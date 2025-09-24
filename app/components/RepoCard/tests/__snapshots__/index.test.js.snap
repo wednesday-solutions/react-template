@@ -8,19 +8,19 @@ exports[`<RepoCard /> should render and match the snapshot 1`] = `
       data-testid="repo-card"
     >
       <p
-        class="css-lh9t18 egtqi0h0"
+        class="css-eswc4a egtqi0h0"
         data-testid="name-unavailable"
       >
         Repository name is unavailable
       </p>
       <p
-        class="css-lh9t18 egtqi0h0"
+        class="css-eswc4a egtqi0h0"
         data-testid="fullName-unavailable"
       >
         Repository full name unavaiable
       </p>
       <p
-        class="css-lh9t18 egtqi0h0"
+        class="css-eswc4a egtqi0h0"
         data-testid="stargazers-unavaiable"
       >
         Repository stars are unavaiable
