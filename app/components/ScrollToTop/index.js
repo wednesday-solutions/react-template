@@ -8,7 +8,9 @@ export const ScrollToTop = (props) => {
 
   // Automatically scrolls to top whenever pathname changes
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined' && window.scrollTo) {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
   return props.children;
 };
