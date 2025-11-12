@@ -12,6 +12,7 @@
   "repository_name": "Repository Name: {name}",
   "repository_stars": "Repository stars: {stars}",
   "search_query": "Search query: {repoName}",
+  "search_tracks_error": "Failed to search tracks",
   "something_went_wrong": "Sorry. Something went wrong! Please try again in sometime.",
   "stories": "Go to Storybook",
   "wednesday_solutions": "Wednesday Solutions",
