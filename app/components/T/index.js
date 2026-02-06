@@ -17,7 +17,14 @@ const StyledText = styled.p`
     ${(props) => props.font()};
   }
 `;
-const getFontStyle = (type) => fonts.style[type] || (() => '');
+const getFontStyle = (type) => {
+  // Safe property access with validation
+  if (type && Object.prototype.hasOwnProperty.call(fonts.style, type)) {
+    // eslint-disable-next-line security/detect-object-injection
+    return fonts.style[type];
+  }
+  return () => '';
+};
 
 const T = ({ type, text, id, marginBottom, values, ...otherProps }) => (
   <StyledText data-testid="t" font={getFontStyle(type)} marginBottom={marginBottom} {...otherProps}>

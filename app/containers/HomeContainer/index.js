@@ -15,7 +15,7 @@ import T from '@components/T';
 import { If } from '@components/If';
 import { For } from '@components/For';
 import { RepoCard } from '@components/RepoCard';
-import colors from '@app/themes/colors';
+import { useTheme } from '@app/contexts/themeContext';
 import { selectLoading, selectReposData, selectReposError, selectRepoName } from './selectors';
 import { homeContainerCreators } from './reducer';
 import homeContainerSaga from './saga';
@@ -26,13 +26,26 @@ const CustomCard = styled(Card)`
     margin: 1.25rem 0;
     padding: 1rem;
     max-width: ${(props) => props.maxwidth};
+    background: ${(props) => props.bgcolor};
     color: ${(props) => props.color};
-    ${(props) => props.color && `color: ${props.color}`};
+    border: 1px solid ${(props) => props.bordercolor};
+    box-shadow: 0 4px 12px ${(props) => props.shadowcolor};
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 20px ${(props) => props.shadowcolor};
+      transform: translateY(-2px);
+    }
   }
 `;
 const CustomCardHeader = styled(CardHeader)`
   && {
     padding: 0;
+
+    .MuiCardHeader-title {
+      color: ${(props) => props.titlecolor};
+      font-weight: 600;
+    }
   }
 `;
 const Container = styled.div`
@@ -52,11 +65,40 @@ const RightContent = styled.div`
 
 const StyledT = styled(T)`
   && {
-    color: ${colors.gotoStories};
+    color: ${(props) => props.accentcolor};
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `;
 
 const StyledOutlinedInput = styled(OutlinedInput)`
+  && {
+    background: ${(props) => props.inputbg};
+    color: ${(props) => props.inputcolor};
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: ${(props) => props.bordercolor};
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: ${(props) => props.hovercolor};
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: ${(props) => props.accentcolor};
+    }
+
+    input::placeholder {
+      color: ${(props) => props.placeholdercolor};
+    }
+  }
+
   legend {
     display: none;
   }
@@ -92,6 +134,8 @@ export function HomeContainer({
   loading
 }) {
   const history = useHistory();
+  const { colors: themeColors } = useTheme();
+
   useEffect(() => {
     if (repoName && !reposData?.items?.length) {
       dispatchGithubRepos(repoName);
@@ -119,11 +163,17 @@ export function HomeContainer({
   return (
     <Container maxwidth={maxwidth} padding={padding}>
       <RightContent>
-        <StyledT onClick={handleStoriesClick} data-testid="redirect" id="stories" />
+        <StyledT onClick={handleStoriesClick} data-testid="redirect" id="stories" accentcolor={themeColors.accent} />
       </RightContent>
-      <CustomCard maxwidth={maxwidth}>
-        <CustomCardHeader title={translate('repo_search')} />
-        <Divider sx={{ mb: 1.25 }} light />
+      <CustomCard
+        maxwidth={maxwidth}
+        bgcolor={themeColors.surface}
+        color={themeColors.text}
+        bordercolor={themeColors.border}
+        shadowcolor={themeColors.shadow}
+      >
+        <CustomCardHeader title={translate('repo_search')} titlecolor={themeColors.text} />
+        <Divider sx={{ mb: 1.25, borderColor: themeColors.border }} />
         <T marginBottom={10} id="get_repo_details" />
         <StyledOutlinedInput
           inputProps={{ 'data-testid': 'search-bar' }}
@@ -131,6 +181,12 @@ export function HomeContainer({
           fullWidth
           defaultValue={repoName}
           placeholder={translate('default_template')}
+          inputbg={themeColors.background}
+          inputcolor={themeColors.text}
+          bordercolor={themeColors.border}
+          hovercolor={themeColors.accent}
+          accentcolor={themeColors.accent}
+          placeholdercolor={themeColors.textSecondary}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -138,6 +194,7 @@ export function HomeContainer({
                 aria-label="search repos"
                 type="button"
                 onClick={() => searchRepos(repoName)}
+                sx={{ color: themeColors.text }}
               >
                 <SearchIcon />
               </IconButton>

@@ -10,18 +10,23 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         class="css-1cnh6jp e666d1v2"
       >
         <p
-          class="e666d1v1 css-16gj8bq egtqi0h0"
+          class="e666d1v1 css-19wkspa egtqi0h0"
           data-testid="redirect"
         >
           Go to Storybook
         </p>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-19cof65-MuiPaper-root-MuiCard-root"
+        bgcolor="#2d3748"
+        bordercolor="#4a5568"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-16z7z58-MuiPaper-root-MuiCard-root"
+        color="#f7fafc"
         maxwidth="500"
+        shadowcolor="rgba(0, 0, 0, 0.3)"
       >
         <div
-          class="MuiCardHeader-root e666d1v4 css-1e709b4-MuiCardHeader-root"
+          class="MuiCardHeader-root e666d1v4 css-g7q57-MuiCardHeader-root"
+          titlecolor="#f7fafc"
         >
           <div
             class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
@@ -34,7 +39,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           </div>
         </div>
         <hr
-          class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-b2j1b7-MuiDivider-root"
+          class="MuiDivider-root MuiDivider-fullWidth css-1q34inh-MuiDivider-root"
         />
         <p
           class="css-1u0bpvi egtqi0h0"
@@ -43,7 +48,13 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           Get details of repositories
         </p>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-adornedEnd e666d1v0 css-16qisbh-MuiInputBase-root-MuiOutlinedInput-root"
+          accentcolor="#60a5fa"
+          bordercolor="#4a5568"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-adornedEnd e666d1v0 css-1mzc5ly-MuiInputBase-root-MuiOutlinedInput-root"
+          hovercolor="#60a5fa"
+          inputbg="#1a202c"
+          inputcolor="#f7fafc"
+          placeholdercolor="#cbd5e0"
         >
           <input
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
@@ -56,7 +67,7 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
           >
             <button
               aria-label="search repos"
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-103yn2t-MuiButtonBase-root-MuiIconButton-root"
               data-testid="search-icon"
               tabindex="0"
               type="button"
@@ -94,11 +105,11 @@ exports[`<ProtectedRoute /> should render and match the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-18bnhwu-MuiPaper-root-MuiCard-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e666d1v5 css-1vk2b77-MuiPaper-root-MuiCard-root"
         color="grey"
       >
         <div
-          class="MuiCardHeader-root e666d1v4 css-1e709b4-MuiCardHeader-root"
+          class="MuiCardHeader-root e666d1v4 css-17coiuq-MuiCardHeader-root"
         >
           <div
             class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"

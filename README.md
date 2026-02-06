@@ -57,6 +57,36 @@ An enterprise react template application showcasing - Testing strategies, Global
 
 - Go through the other scripts in `package.json`
 
+## Dark Mode Support 🌙
+
+- Dark mode toggle with theme persistence using localStorage
+
+  The app supports light and dark themes that can be toggled by the user. The selected theme preference is persisted in localStorage and automatically applied on subsequent visits.
+
+  **Key Features:**
+
+  - Toggle between light and dark themes
+  - Theme preference saved in localStorage
+  - Smooth theme transitions
+  - Automatic theme restoration on app reload
+
+  Take a look at the following files:
+
+  - [app/components/DarkModeToggle/index.js](app/components/DarkModeToggle/index.js) - Toggle button component
+  - [app/contexts/themeContext.js](app/contexts/themeContext.js) - Theme context with light and dark palettes
+  - [app/containers/App/index.js](app/containers/App/index.js) - Theme provider implementation and MUI theme integration
+
+  **Usage:**
+
+  ```jsx
+  import { DarkModeToggle } from '@components/DarkModeToggle';
+
+  // Place the toggle button anywhere in your app
+  <DarkModeToggle />;
+  ```
+
+  The theme state is managed using React Context (ThemeContext) with localStorage persistence. Material-UI's ThemeProvider receives a dynamically generated theme object that updates when dark mode is toggled, ensuring all MUI components respond to theme changes.
+
 ## Global state management using reduxSauce
 
 - Global state management using [Redux Sauce](https://github.com/infinitered/reduxsauce)
